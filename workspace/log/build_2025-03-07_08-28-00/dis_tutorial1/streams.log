@@ -1,0 +1,159 @@
+[0.018s] Invoking command in '/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/FAKS/3.letnik/RINS/poskus/install/second_package:/home/strazi/FAKS/3.letnik/RINS/poskus/install/first_package:/home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1 -- -j8 -l8
+[0.062s] [  1%] Built target dis_tutorial1__cpp
+[0.063s] [  9%] Built target dis_tutorial1__rosidl_generator_c
+[0.067s] [ 13%] Built target simple_subscriber
+[0.068s] [ 17%] Built target simple_set_bool_server_node
+[0.068s] [ 21%] Built target simple_publisher
+[0.070s] [ 21%] Built target ament_cmake_python_symlink_dis_tutorial1
+[0.088s] [ 37%] Built target dis_tutorial1__rosidl_typesupport_cpp
+[0.089s] [ 43%] Built target dis_tutorial1__rosidl_typesupport_fastrtps_cpp
+[0.091s] [ 54%] Built target dis_tutorial1__rosidl_typesupport_introspection_c
+[0.091s] [ 52%] Built target dis_tutorial1__rosidl_typesupport_c
+[0.091s] [ 60%] Built target dis_tutorial1__rosidl_typesupport_introspection_cpp
+[0.093s] [ 68%] Built target dis_tutorial1__rosidl_typesupport_fastrtps_c
+[0.113s] [ 68%] Built target dis_tutorial1
+[0.115s] [ 72%] Built target simple_server_node
+[0.116s] [ 80%] Built target complete_node
+[0.116s] [ 80%] Built target simple_client_node
+[0.132s] [ 82%] Built target dis_tutorial1__py
+[0.150s] [ 88%] Built target dis_tutorial1__rosidl_generator_py
+[0.167s] [ 92%] Built target dis_tutorial1__rosidl_typesupport_introspection_c__pyext
+[0.168s] [100%] Built target dis_tutorial1__rosidl_typesupport_fastrtps_c__pyext
+[0.168s] [100%] Built target dis_tutorial1__rosidl_typesupport_c__pyext
+[0.323s] running egg_info
+[0.324s] writing dis_tutorial1.egg-info/PKG-INFO
+[0.324s] writing dependency_links to dis_tutorial1.egg-info/dependency_links.txt
+[0.324s] writing top-level names to dis_tutorial1.egg-info/top_level.txt
+[0.327s] reading manifest file 'dis_tutorial1.egg-info/SOURCES.txt'
+[0.327s] writing manifest file 'dis_tutorial1.egg-info/SOURCES.txt'
+[0.355s] [100%] Built target ament_cmake_python_build_dis_tutorial1_egg
+[0.365s] Invoked command in '/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/FAKS/3.letnik/RINS/poskus/install/second_package:/home/strazi/FAKS/3.letnik/RINS/poskus/install/first_package:/home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1 -- -j8 -l8
+[0.373s] Invoking command in '/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/FAKS/3.letnik/RINS/poskus/install/second_package:/home/strazi/FAKS/3.letnik/RINS/poskus/install/first_package:/home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1
+[0.379s] -- Install configuration: ""
+[0.380s] -- Execute custom install script
+[0.380s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/ament_index/resource_index/rosidl_interfaces/dis_tutorial1
+[0.381s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/custom_message.h
+[0.381s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__functions.h
+[0.381s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__struct.h
+[0.381s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__type_support.h
+[0.381s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/rosidl_generator_c__visibility_control.h
+[0.381s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/add_two_ints.h
+[0.382s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__functions.h
+[0.382s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__struct.h
+[0.382s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__type_support.h
+[0.382s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/library_path.sh
+[0.382s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/library_path.dsv
+[0.382s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__rosidl_typesupport_fastrtps_c.h
+[0.382s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[0.383s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__rosidl_typesupport_fastrtps_c.h
+[0.383s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/custom_message.hpp
+[0.383s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__builder.hpp
+[0.383s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__struct.hpp
+[0.383s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__traits.hpp
+[0.383s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__type_support.hpp
+[0.384s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/rosidl_generator_cpp__visibility_control.hpp
+[0.384s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/add_two_ints.hpp
+[0.384s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__builder.hpp
+[0.384s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__struct.hpp
+[0.384s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__traits.hpp
+[0.384s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__type_support.hpp
+[0.384s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__rosidl_typesupport_fastrtps_cpp.hpp
+[0.385s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[0.385s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__rosidl_typesupport_fastrtps_cpp.hpp
+[0.385s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__rosidl_typesupport_introspection_c.h
+[0.385s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[0.385s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__rosidl_typesupport_introspection_c.h
+[0.386s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__rosidl_typesupport_introspection_cpp.hpp
+[0.386s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__rosidl_typesupport_introspection_cpp.hpp
+[0.386s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/pythonpath.sh
+[0.386s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/pythonpath.dsv
+[0.386s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1-0.0.1-py3.10.egg-info/PKG-INFO
+[0.387s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1-0.0.1-py3.10.egg-info/SOURCES.txt
+[0.387s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1-0.0.1-py3.10.egg-info/dependency_links.txt
+[0.387s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1-0.0.1-py3.10.egg-info/top_level.txt
+[0.387s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/__init__.py
+[0.388s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/_dis_tutorial1_s.ep.rosidl_typesupport_c.c
+[0.388s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/_dis_tutorial1_s.ep.rosidl_typesupport_fastrtps_c.c
+[0.388s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/_dis_tutorial1_s.ep.rosidl_typesupport_introspection_c.c
+[0.388s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[0.388s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[0.389s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[0.389s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/libdis_tutorial1__rosidl_generator_py.so
+[0.389s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/msg/__init__.py
+[0.389s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/msg/_custom_message.py
+[0.389s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/msg/_custom_message_s.c
+[0.389s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/srv/__init__.py
+[0.389s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/srv/_add_two_ints.py
+[0.390s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/srv/_add_two_ints_s.c
+[0.390s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[0.390s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[0.390s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[0.390s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/msg/CustomMessage.idl
+[0.390s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/srv/AddTwoInts.idl
+[0.391s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/msg/CustomMessage.msg
+[0.391s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/srv/AddTwoInts.srv
+[0.391s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/srv/AddTwoInts_Request.msg
+[0.391s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/srv/AddTwoInts_Response.msg
+[0.391s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/dis_tutorial1/simple_publisher
+[0.392s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/dis_tutorial1/simple_subscriber
+[0.392s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/dis_tutorial1/simple_client_node
+[0.392s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/dis_tutorial1/simple_server_node
+[0.392s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/dis_tutorial1/complete_node
+[0.392s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/dis_tutorial1/simple_set_bool_server_node
+[0.393s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/dis_tutorial1/py_simple_publisher.py
+[0.393s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/dis_tutorial1/py_simple_subscriber.py
+[0.393s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/dis_tutorial1/py_simple_server_node.py
+[0.393s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/dis_tutorial1/py_simple_client_node.py
+[0.393s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/dis_tutorial1/py_complete_node.py
+[0.393s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/dis_tutorial1/py_draw_square.py
+[0.393s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/ament_index/resource_index/package_run_dependencies/dis_tutorial1
+[0.393s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/ament_index/resource_index/parent_prefix_path/dis_tutorial1
+[0.393s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/ament_prefix_path.sh
+[0.393s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/ament_prefix_path.dsv
+[0.393s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/path.sh
+[0.393s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/path.dsv
+[0.394s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/local_setup.bash
+[0.394s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/local_setup.sh
+[0.394s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/local_setup.zsh
+[0.394s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/local_setup.dsv
+[0.394s] -- Symlinking: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/package.dsv
+[0.402s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/ament_index/resource_index/packages/dis_tutorial1
+[0.402s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/rosidl_cmake-extras.cmake
+[0.403s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/ament_cmake_export_dependencies-extras.cmake
+[0.403s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/ament_cmake_export_include_directories-extras.cmake
+[0.403s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/ament_cmake_export_libraries-extras.cmake
+[0.403s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/ament_cmake_export_targets-extras.cmake
+[0.403s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[0.404s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[0.404s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1Config.cmake
+[0.404s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1Config-version.cmake
+[0.404s] -- Up-to-date symlink: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/package.xml
+[0.404s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_generator_c.so
+[0.404s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_fastrtps_c.so
+[0.405s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_fastrtps_cpp.so
+[0.405s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_introspection_c.so
+[0.405s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_c.so
+[0.405s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_introspection_cpp.so
+[0.406s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_cpp.so
+[0.432s] Listing '/home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1'...
+[0.432s] Listing '/home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/msg'...
+[0.432s] Listing '/home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/srv'...
+[0.436s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_generator_py.so
+[0.436s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_generator_cExport.cmake
+[0.436s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_generator_cExport-noconfig.cmake
+[0.436s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_typesupport_fastrtps_cExport.cmake
+[0.436s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[0.437s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_generator_cppExport.cmake
+[0.437s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_typesupport_fastrtps_cppExport.cmake
+[0.437s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[0.437s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_introspection_cExport.cmake
+[0.437s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[0.437s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_cExport.cmake
+[0.437s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_cExport-noconfig.cmake
+[0.438s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_introspection_cppExport.cmake
+[0.438s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[0.438s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_cppExport.cmake
+[0.438s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_cppExport-noconfig.cmake
+[0.438s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_generator_pyExport.cmake
+[0.438s] -- Up-to-date: /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_generator_pyExport-noconfig.cmake
+[0.440s] Invoked command in '/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/FAKS/3.letnik/RINS/poskus/install/second_package:/home/strazi/FAKS/3.letnik/RINS/poskus/install/first_package:/home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1
