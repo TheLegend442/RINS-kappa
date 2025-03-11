@@ -1,0 +1,18 @@
+[0mCMake Error: File /home/strazi/RINS-kappa/workspace/src/dis_tutorial2/package.xml does not exist.[0m
+[31mCMake Error at /opt/ros/iron/share/ament_cmake_core/cmake/core/stamp.cmake:24 (configure_file):
+  configure_file Problem configuring file
+Call Stack (most recent call first):
+  /opt/ros/iron/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:73 (stamp)
+  /opt/ros/iron/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)
+  /opt/ros/iron/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:256 (ament_package_xml)
+  CMakeLists.txt:31 (rosidl_generate_interfaces)
+
+[0m
+[31mCMake Error at /opt/ros/iron/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:259 (message):
+  Packages installing interfaces must include
+  '<member_of_group>rosidl_interface_packages</member_of_group>' in their
+  package.xml
+Call Stack (most recent call first):
+  CMakeLists.txt:31 (rosidl_generate_interfaces)
+
+[0m

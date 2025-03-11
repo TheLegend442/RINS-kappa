@@ -1,0 +1,51 @@
+[0.009s] Invoking command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial2': /usr/bin/cmake /home/strazi/RINS-kappa/workspace/src/dis_tutorial2 -DCMAKE_INSTALL_PREFIX=/home/strazi/RINS-kappa/workspace/install/dis_tutorial2
+[0.058s] -- The C compiler identification is GNU 11.4.0
+[0.109s] -- The CXX compiler identification is GNU 11.4.0
+[0.122s] -- Detecting C compiler ABI info
+[0.190s] -- Detecting C compiler ABI info - done
+[0.196s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.196s] -- Detecting C compile features
+[0.196s] -- Detecting C compile features - done
+[0.199s] -- Detecting CXX compiler ABI info
+[0.269s] -- Detecting CXX compiler ABI info - done
+[0.275s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.276s] -- Detecting CXX compile features
+[0.276s] -- Detecting CXX compile features - done
+[0.278s] -- Found ament_cmake: 2.0.7 (/opt/ros/iron/share/ament_cmake/cmake)
+[0.433s] -- Found Python3: /usr/bin/python3.10 (found version "3.10.12") found components: Interpreter 
+[0.547s] -- Found rclcpp: 21.0.8 (/opt/ros/iron/share/rclcpp/cmake)
+[0.601s] -- Found rosidl_generator_c: 4.0.1 (/opt/ros/iron/share/rosidl_generator_c/cmake)
+[0.612s] -- Found rosidl_generator_cpp: 4.0.1 (/opt/ros/iron/share/rosidl_generator_cpp/cmake)
+[0.626s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.646s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.874s] -- Found rmw_implementation_cmake: 7.1.0 (/opt/ros/iron/share/rmw_implementation_cmake/cmake)
+[0.877s] -- Found rmw_fastrtps_cpp: 7.1.4 (/opt/ros/iron/share/rmw_fastrtps_cpp/cmake)
+[1.065s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[1.108s] -- Found FastRTPS: /opt/ros/iron/include  
+[1.157s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.309s] -- Found rclpy: 4.1.7 (/opt/ros/iron/share/rclpy/cmake)
+[1.310s] -- Found std_msgs: 5.0.1 (/opt/ros/iron/share/std_msgs/cmake)
+[1.338s] -- Found std_srvs: 5.0.1 (/opt/ros/iron/share/std_srvs/cmake)
+[1.381s] -- Found geometry_msgs: 5.0.1 (/opt/ros/iron/share/geometry_msgs/cmake)
+[1.418s] -- Found rosidl_default_generators: 1.5.0 (/opt/ros/iron/share/rosidl_default_generators/cmake)
+[1.429s] -- Found rosidl_adapter: 4.0.1 (/opt/ros/iron/share/rosidl_adapter/cmake)
+[1.550s] [0mCMake Error: File /home/strazi/RINS-kappa/workspace/src/dis_tutorial2/package.xml does not exist.[0m
+[1.550s] [31mCMake Error at /opt/ros/iron/share/ament_cmake_core/cmake/core/stamp.cmake:24 (configure_file):
+[1.550s]   configure_file Problem configuring file
+[1.550s] Call Stack (most recent call first):
+[1.550s]   /opt/ros/iron/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:73 (stamp)
+[1.550s]   /opt/ros/iron/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)
+[1.551s]   /opt/ros/iron/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:256 (ament_package_xml)
+[1.551s]   CMakeLists.txt:31 (rosidl_generate_interfaces)
+[1.551s] 
+[1.551s] [0m
+[1.551s] [31mCMake Error at /opt/ros/iron/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:259 (message):
+[1.551s]   Packages installing interfaces must include
+[1.551s]   '<member_of_group>rosidl_interface_packages</member_of_group>' in their
+[1.551s]   package.xml
+[1.551s] Call Stack (most recent call first):
+[1.551s]   CMakeLists.txt:31 (rosidl_generate_interfaces)
+[1.551s] 
+[1.551s] [0m
+[1.551s] -- Configuring incomplete, errors occurred!
+[1.551s] See also "/home/strazi/RINS-kappa/workspace/build/dis_tutorial2/CMakeFiles/CMakeOutput.log".

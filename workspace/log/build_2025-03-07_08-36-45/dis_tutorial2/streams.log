@@ -1,0 +1,20 @@
+[0.606s] Invoking command in '/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial2': PYTHONPATH=/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial2/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial2/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial2/build --no-deps symlink_data
+[0.807s] running develop
+[0.982s] running egg_info
+[0.982s] writing dis_tutorial2.egg-info/PKG-INFO
+[0.982s] writing dependency_links to dis_tutorial2.egg-info/dependency_links.txt
+[0.983s] writing entry points to dis_tutorial2.egg-info/entry_points.txt
+[0.983s] writing requirements to dis_tutorial2.egg-info/requires.txt
+[0.983s] writing top-level names to dis_tutorial2.egg-info/top_level.txt
+[0.984s] reading manifest file 'dis_tutorial2.egg-info/SOURCES.txt'
+[0.985s] writing manifest file 'dis_tutorial2.egg-info/SOURCES.txt'
+[0.986s] running build_ext
+[0.986s] Creating /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial2/lib/python3.10/site-packages/dis-tutorial2.egg-link (link to .)
+[0.987s] Installing achtung_die_turtle script to /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial2/lib/dis_tutorial2
+[0.987s] Installing go_to_position script to /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial2/lib/dis_tutorial2
+[0.987s] Installing intersection script to /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial2/lib/dis_tutorial2
+[0.987s] Installing random_velocity_publisher script to /home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial2/lib/dis_tutorial2
+[0.987s] 
+[0.987s] Installed /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial2
+[0.987s] running symlink_data
+[1.010s] Invoked command in '/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial2' returned '0': PYTHONPATH=/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial2/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/strazi/FAKS/3.letnik/RINS/workspace/install/dis_tutorial2/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial2/build --no-deps symlink_data

@@ -1,0 +1,17 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from dis_tutorial2/srv/Shape.srv
+// generated code does not contain a copyright notice
+
+
+module dis_tutorial2 {
+  module srv {
+    struct Shape_Request {
+      string shape;
+
+      int32 duration;
+    };
+    struct Shape_Response {
+      string shape;
+    };
+  };
+};
