@@ -1,1 +1,0 @@
-Invoking command in '/home/strazi/RINS-kappa/workspace/build/custom_messages': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/ros2_workspace/install/dis_tutorial2:/opt/ros/iron /usr/bin/cmake /home/strazi/RINS-kappa/workspace/src/custom_messages -DCMAKE_INSTALL_PREFIX=/home/strazi/RINS-kappa/workspace/install/custom_messages

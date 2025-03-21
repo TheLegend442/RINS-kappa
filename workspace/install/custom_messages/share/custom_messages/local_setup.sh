@@ -1,0 +1,1 @@
+/home/kappa/RINS-kappa/workspace/build/custom_messages/ament_cmake_environment_hooks/local_setup.sh

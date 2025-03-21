@@ -8,12 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/strazi/FAKS/3.letnik/RINS/workspace/src/dis_tutorial1/src/simple_client_node.cpp" "CMakeFiles/simple_client_node.dir/src/simple_client_node.cpp.o" "gcc" "CMakeFiles/simple_client_node.dir/src/simple_client_node.cpp.o.d"
+  "/home/kappa/RINS-kappa/workspace/src/dis_tutorial1/src/simple_client_node.cpp" "CMakeFiles/simple_client_node.dir/src/simple_client_node.cpp.o" "gcc" "CMakeFiles/simple_client_node.dir/src/simple_client_node.cpp.o.d"
   )
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/CMakeFiles/dis_tutorial1__rosidl_typesupport_cpp.dir/DependInfo.cmake"
+  "/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/CMakeFiles/dis_tutorial1__rosidl_typesupport_cpp.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

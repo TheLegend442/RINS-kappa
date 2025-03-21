@@ -1,0 +1,1 @@
+/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_py/dis_tutorial1/msg/_custom_message_s.c

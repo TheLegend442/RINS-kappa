@@ -1,1 +1,0 @@
-Invoking command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial2': /usr/bin/cmake /home/strazi/RINS-kappa/workspace/src/dis_tutorial2 -DCMAKE_INSTALL_PREFIX=/home/strazi/RINS-kappa/workspace/install/dis_tutorial2

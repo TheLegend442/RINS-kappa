@@ -1,0 +1,1 @@
+/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/msg/detail/custom_message__type_support.h

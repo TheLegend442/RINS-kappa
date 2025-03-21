@@ -1,11 +1,11 @@
 {
   "package_name": "dis_tutorial1",
-  "output_dir": "/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/rosidl_typesupport_fastrtps_c/dis_tutorial1",
+  "output_dir": "/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_typesupport_fastrtps_c/dis_tutorial1",
   "template_dir": "/opt/ros/humble/share/rosidl_typesupport_fastrtps_c/resource",
   "idl_tuples": [
-    "/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/rosidl_adapter/dis_tutorial1:msg/CustomMessage.idl",
-    "/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/rosidl_adapter/dis_tutorial1:srv/AddTwoInts.idl",
-    "/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/rosidl_adapter/dis_tutorial1:srv/AddArray.idl"
+    "/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_adapter/dis_tutorial1:msg/CustomMessage.idl",
+    "/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_adapter/dis_tutorial1:srv/AddTwoInts.idl",
+    "/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_adapter/dis_tutorial1:srv/AddArray.idl"
   ],
   "ros_interface_dependencies": [
     "std_msgs:/opt/ros/humble/share/std_msgs/msg/Bool.idl",
@@ -50,9 +50,9 @@
     "/opt/ros/humble/share/rosidl_typesupport_fastrtps_c/resource/msg__type_support_c.cpp.em",
     "/opt/ros/humble/share/rosidl_typesupport_fastrtps_c/resource/srv__rosidl_typesupport_fastrtps_c.h.em",
     "/opt/ros/humble/share/rosidl_typesupport_fastrtps_c/resource/srv__type_support_c.cpp.em",
-    "/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/rosidl_adapter/dis_tutorial1/msg/CustomMessage.idl",
-    "/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/rosidl_adapter/dis_tutorial1/srv/AddTwoInts.idl",
-    "/home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/rosidl_adapter/dis_tutorial1/srv/AddArray.idl",
+    "/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_adapter/dis_tutorial1/msg/CustomMessage.idl",
+    "/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_adapter/dis_tutorial1/srv/AddTwoInts.idl",
+    "/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_adapter/dis_tutorial1/srv/AddArray.idl",
     "/opt/ros/humble/share/std_msgs/msg/Bool.idl",
     "/opt/ros/humble/share/std_msgs/msg/Byte.idl",
     "/opt/ros/humble/share/std_msgs/msg/ByteMultiArray.idl",

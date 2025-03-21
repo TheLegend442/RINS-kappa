@@ -1,0 +1,1 @@
+/home/kappa/RINS-kappa/workspace/build/custom_messages/rosidl_generator_cpp/custom_messages/srv/detail/shape__traits.hpp

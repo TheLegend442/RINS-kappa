@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/strazi/FAKS/3.letnik/RINS/workspace/src/dis_tutorial1/src/simple_publisher.cpp" "CMakeFiles/simple_publisher.dir/src/simple_publisher.cpp.o" "gcc" "CMakeFiles/simple_publisher.dir/src/simple_publisher.cpp.o.d"
+  "/home/kappa/RINS-kappa/workspace/src/dis_tutorial1/src/simple_publisher.cpp" "CMakeFiles/simple_publisher.dir/src/simple_publisher.cpp.o" "gcc" "CMakeFiles/simple_publisher.dir/src/simple_publisher.cpp.o.d"
   )
 
 # Targets to which this target links.

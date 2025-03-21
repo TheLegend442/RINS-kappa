@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/strazi/FAKS/3.letnik/RINS/workspace/src/dis_tutorial1
+CMAKE_SOURCE_DIR = /home/kappa/RINS-kappa/workspace/src/dis_tutorial1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1
+CMAKE_BINARY_DIR = /home/kappa/RINS-kappa/workspace/build/dis_tutorial1
 
 # Utility rule file for ament_cmake_python_build_dis_tutorial1_egg.
 
@@ -67,7 +67,7 @@ include CMakeFiles/ament_cmake_python_build_dis_tutorial1_egg.dir/compiler_depen
 include CMakeFiles/ament_cmake_python_build_dis_tutorial1_egg.dir/progress.make
 
 CMakeFiles/ament_cmake_python_build_dis_tutorial1_egg:
-	cd /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/ament_cmake_python/dis_tutorial1 && /usr/bin/python3 setup.py egg_info
+	cd /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/ament_cmake_python/dis_tutorial1 && /usr/bin/python3 setup.py egg_info
 
 ament_cmake_python_build_dis_tutorial1_egg: CMakeFiles/ament_cmake_python_build_dis_tutorial1_egg
 ament_cmake_python_build_dis_tutorial1_egg: CMakeFiles/ament_cmake_python_build_dis_tutorial1_egg.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/ament_cmake_python_build_dis_tutorial1_egg.dir/clean:
 .PHONY : CMakeFiles/ament_cmake_python_build_dis_tutorial1_egg.dir/clean
 
 CMakeFiles/ament_cmake_python_build_dis_tutorial1_egg.dir/depend:
-	cd /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/strazi/FAKS/3.letnik/RINS/workspace/src/dis_tutorial1 /home/strazi/FAKS/3.letnik/RINS/workspace/src/dis_tutorial1 /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1 /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1 /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/CMakeFiles/ament_cmake_python_build_dis_tutorial1_egg.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/kappa/RINS-kappa/workspace/build/dis_tutorial1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kappa/RINS-kappa/workspace/src/dis_tutorial1 /home/kappa/RINS-kappa/workspace/src/dis_tutorial1 /home/kappa/RINS-kappa/workspace/build/dis_tutorial1 /home/kappa/RINS-kappa/workspace/build/dis_tutorial1 /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/CMakeFiles/ament_cmake_python_build_dis_tutorial1_egg.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ament_cmake_python_build_dis_tutorial1_egg.dir/depend
 

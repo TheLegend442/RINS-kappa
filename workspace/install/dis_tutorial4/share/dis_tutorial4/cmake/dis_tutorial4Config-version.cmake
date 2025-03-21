@@ -1,0 +1,1 @@
+/home/kappa/RINS-kappa/workspace/build/dis_tutorial4/ament_cmake_core/dis_tutorial4Config-version.cmake

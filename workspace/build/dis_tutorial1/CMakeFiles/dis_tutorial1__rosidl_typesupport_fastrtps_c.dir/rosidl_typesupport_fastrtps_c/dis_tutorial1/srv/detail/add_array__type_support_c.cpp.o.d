@@ -1,12 +1,12 @@
 CMakeFiles/dis_tutorial1__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/dis_tutorial1/srv/detail/add_array__type_support_c.cpp.o: \
- /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/rosidl_typesupport_fastrtps_c/dis_tutorial1/srv/detail/add_array__type_support_c.cpp \
+ /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_typesupport_fastrtps_c/dis_tutorial1/srv/detail/add_array__type_support_c.cpp \
  /usr/include/stdc-predef.h \
- /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/rosidl_typesupport_fastrtps_c/dis_tutorial1/srv/detail/add_array__rosidl_typesupport_fastrtps_c.h \
+ /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_typesupport_fastrtps_c/dis_tutorial1/srv/detail/add_array__rosidl_typesupport_fastrtps_c.h \
  /usr/lib/gcc/x86_64-linux-gnu/11/include/stddef.h \
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/message_type_support_struct.h \
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h \
  /opt/ros/humble/include/rosidl_typesupport_interface/rosidl_typesupport_interface/macros.h \
- /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/rosidl_typesupport_fastrtps_c/dis_tutorial1/msg/rosidl_typesupport_fastrtps_c__visibility_control.h \
+ /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_typesupport_fastrtps_c/dis_tutorial1/msg/rosidl_typesupport_fastrtps_c__visibility_control.h \
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/service_type_support_struct.h \
  /usr/include/c++/11/cassert \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \
@@ -183,11 +183,11 @@ CMakeFiles/dis_tutorial1__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_f
  /usr/include/c++/11/bits/basic_ios.tcc \
  /usr/include/c++/11/bits/ostream.tcc /usr/include/c++/11/istream \
  /usr/include/c++/11/bits/istream.tcc /usr/include/malloc.h \
- /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/srv/detail/add_array__struct.h \
+ /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/srv/detail/add_array__struct.h \
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h \
- /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/srv/detail/add_array__functions.h \
+ /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/srv/detail/add_array__functions.h \
  /usr/include/c++/11/stdlib.h \
- /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/msg/rosidl_generator_c__visibility_control.h \
+ /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/msg/rosidl_generator_c__visibility_control.h \
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence_functions.h \
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string_functions.h \
  /opt/ros/humble/include/rosidl_typesupport_fastrtps_cpp/rosidl_typesupport_fastrtps_cpp/service_type_support.h \
@@ -230,5 +230,5 @@ CMakeFiles/dis_tutorial1__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_f
  /opt/ros/humble/include/rmw/rmw/subscription_content_filter_options.h \
  /opt/ros/humble/include/rmw/rmw/time.h \
  /opt/ros/humble/include/rosidl_runtime_cpp/rosidl_typesupport_cpp/service_type_support.hpp \
- /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/srv/add_array.h \
- /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/srv/detail/add_array__type_support.h
+ /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/srv/add_array.h \
+ /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/srv/detail/add_array__type_support.h

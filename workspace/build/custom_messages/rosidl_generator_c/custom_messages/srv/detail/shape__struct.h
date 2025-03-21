@@ -38,6 +38,7 @@ typedef struct custom_messages__srv__Shape_Request__Sequence
   size_t capacity;
 } custom_messages__srv__Shape_Request__Sequence;
 
+
 // Constants defined in the message
 
 // Include directives for member types
@@ -60,42 +61,6 @@ typedef struct custom_messages__srv__Shape_Response__Sequence
   /// The number of allocated items in data
   size_t capacity;
 } custom_messages__srv__Shape_Response__Sequence;
-
-// Constants defined in the message
-
-// Include directives for member types
-// Member 'info'
-#include "service_msgs/msg/detail/service_event_info__struct.h"
-
-// constants for array fields with an upper bound
-// request
-enum
-{
-  custom_messages__srv__Shape_Event__request__MAX_SIZE = 1
-};
-// response
-enum
-{
-  custom_messages__srv__Shape_Event__response__MAX_SIZE = 1
-};
-
-/// Struct defined in srv/Shape in the package custom_messages.
-typedef struct custom_messages__srv__Shape_Event
-{
-  service_msgs__msg__ServiceEventInfo info;
-  custom_messages__srv__Shape_Request__Sequence request;
-  custom_messages__srv__Shape_Response__Sequence response;
-} custom_messages__srv__Shape_Event;
-
-// Struct for a sequence of custom_messages__srv__Shape_Event.
-typedef struct custom_messages__srv__Shape_Event__Sequence
-{
-  custom_messages__srv__Shape_Event * data;
-  /// The number of valid items in data
-  size_t size;
-  /// The number of allocated items in data
-  size_t capacity;
-} custom_messages__srv__Shape_Event__Sequence;
 
 #ifdef __cplusplus
 }

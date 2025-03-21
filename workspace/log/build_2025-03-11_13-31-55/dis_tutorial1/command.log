@@ -1,2 +1,0 @@
-Invoking command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/ros2_workspace/install/dis_tutorial2:/opt/ros/iron /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/dis_tutorial1 -- -j12 -l12
-Invoked command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial1' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/ros2_workspace/install/dis_tutorial2:/opt/ros/iron /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/dis_tutorial1 -- -j12 -l12

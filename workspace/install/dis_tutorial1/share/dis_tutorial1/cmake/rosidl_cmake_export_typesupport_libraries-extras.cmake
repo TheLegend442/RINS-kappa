@@ -1,0 +1,1 @@
+/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake

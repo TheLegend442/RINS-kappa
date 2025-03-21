@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/strazi/FAKS/3.letnik/RINS/workspace/src/dis_tutorial1
+CMAKE_SOURCE_DIR = /home/kappa/RINS-kappa/workspace/src/dis_tutorial1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1
+CMAKE_BINARY_DIR = /home/kappa/RINS-kappa/workspace/build/dis_tutorial1
 
 # Utility rule file for uninstall.
 
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/strazi/FAKS/3.letnik/RINS/workspace/src/dis_tutorial1 /home/strazi/FAKS/3.letnik/RINS/workspace/src/dis_tutorial1 /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1 /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1 /home/strazi/FAKS/3.letnik/RINS/workspace/build/dis_tutorial1/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/kappa/RINS-kappa/workspace/build/dis_tutorial1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kappa/RINS-kappa/workspace/src/dis_tutorial1 /home/kappa/RINS-kappa/workspace/src/dis_tutorial1 /home/kappa/RINS-kappa/workspace/build/dis_tutorial1 /home/kappa/RINS-kappa/workspace/build/dis_tutorial1 /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

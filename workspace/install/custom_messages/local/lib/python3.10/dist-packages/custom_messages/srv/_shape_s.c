@@ -1,0 +1,1 @@
+/home/kappa/RINS-kappa/workspace/build/custom_messages/rosidl_generator_py/custom_messages/srv/_shape_s.c

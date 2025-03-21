@@ -1,0 +1,183 @@
+[0.178s] Invoking command in '/home/kappa/RINS-kappa/workspace/build/dis_tutorial3': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/kappa/RINS-kappa/workspace/src/dis_tutorial3 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/kappa/RINS-kappa/workspace/install/dis_tutorial3
+[0.209s] -- The C compiler identification is GNU 11.4.0
+[0.247s] -- The CXX compiler identification is GNU 11.4.0
+[0.253s] -- Detecting C compiler ABI info
+[0.298s] -- Detecting C compiler ABI info - done
+[0.303s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.304s] -- Detecting C compile features
+[0.304s] -- Detecting C compile features - done
+[0.306s] -- Detecting CXX compiler ABI info
+[0.361s] -- Detecting CXX compiler ABI info - done
+[0.367s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.367s] -- Detecting CXX compile features
+[0.368s] -- Detecting CXX compile features - done
+[0.369s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.475s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.527s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.546s] -- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)
+[0.577s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.581s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.587s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.596s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.608s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.640s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.642s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.704s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.726s] -- Found FastRTPS: /opt/ros/humble/include  
+[0.760s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[0.766s] -- Looking for pthread.h
+[0.815s] -- Looking for pthread.h - found
+[0.815s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[0.863s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[0.864s] -- Found Threads: TRUE  
+[0.904s] -- Found rclpy: 3.3.15 (/opt/ros/humble/share/rclpy/cmake)
+[0.905s] -- Found std_srvs: 4.2.4 (/opt/ros/humble/share/std_srvs/cmake)
+[0.961s] -- Configuring done
+[0.964s] -- Generating done
+[0.965s] -- Build files have been written to: /home/kappa/RINS-kappa/workspace/build/dis_tutorial3
+[0.974s] Invoked command in '/home/kappa/RINS-kappa/workspace/build/dis_tutorial3' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake /home/kappa/RINS-kappa/workspace/src/dis_tutorial3 -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/kappa/RINS-kappa/workspace/install/dis_tutorial3
+[0.976s] Invoking command in '/home/kappa/RINS-kappa/workspace/build/dis_tutorial3': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/kappa/RINS-kappa/workspace/build/dis_tutorial3 -- -j16 -l16
+[1.004s] Invoked command in '/home/kappa/RINS-kappa/workspace/build/dis_tutorial3' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/kappa/RINS-kappa/workspace/build/dis_tutorial3 -- -j16 -l16
+[1.011s] Invoking command in '/home/kappa/RINS-kappa/workspace/build/dis_tutorial3': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/kappa/RINS-kappa/workspace/build/dis_tutorial3
+[1.015s] -- Install configuration: ""
+[1.016s] -- Execute custom install script
+[1.016s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//launch/create3_nodes.launch.py
+[1.022s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//launch/dis_sim.launch.py
+[1.028s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//launch/ignition.launch.py
+[1.034s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//launch/localization.launch.py
+[1.039s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//launch/nav2.launch.py
+[1.044s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//launch/sim_turtlebot_nav.launch.py
+[1.050s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//launch/sim_turtlebot_slam.launch.py
+[1.055s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//launch/slam.launch.py
+[1.061s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//launch/turtlebot4_spawn.launch.py
+[1.066s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//launch/turtlebot4_spawn_nav.launch.py
+[1.071s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//config/laser_filter_chain.yaml
+[1.076s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//config/localization.yaml
+[1.081s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//config/nav2.yaml
+[1.085s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//config/slam.yaml
+[1.091s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1.sdf
+[1.095s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/cylinders.jpg
+[1.100s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/fakering1.jpg
+[1.104s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/fakering2.jpg
+[1.110s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/fakering3.jpg
+[1.115s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/ground.jpg
+[1.120s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/map.dae
+[1.125s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/map_colliders.dae
+[1.130s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/objects.jpg
+[1.135s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/parking_space.jpg
+[1.140s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/person1.png
+[1.146s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/person11.png
+[1.151s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/person2.png
+[1.157s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/person3.png
+[1.162s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/person4.png
+[1.166s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/person5.png
+[1.171s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/qr1.jpg
+[1.176s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo1_meshes/qr2.jpg
+[1.181s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2.sdf
+[1.186s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/cylinders.jpg
+[1.190s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/fakering1.jpg
+[1.195s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/fakering2.jpg
+[1.200s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/fakering3.jpg
+[1.205s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/ground.jpg
+[1.210s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/map.dae
+[1.215s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/map_colliders.dae
+[1.220s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/objects.jpg
+[1.225s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/parking_space.jpg
+[1.230s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/person18.png
+[1.235s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/person20.png
+[1.239s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/person6.png
+[1.244s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/person7.png
+[1.249s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/person8.png
+[1.255s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/person9.png
+[1.261s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/qr1.jpg
+[1.267s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/demo2_meshes/qr2.jpg
+[1.274s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis.sdf
+[1.280s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/cylinders.jpg
+[1.287s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/davinci.jpg
+[1.293s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/fakering1.jpg
+[1.299s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/fakering2.jpg
+[1.305s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/fakering3.jpg
+[1.311s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/ground.jpg
+[1.317s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/map.dae
+[1.323s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/map_colliders.dae
+[1.329s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/mona1.jpg
+[1.334s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/objects.jpg
+[1.340s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/parking_space.jpg
+[1.345s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/person1.jpg
+[1.351s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/person2.jpg
+[1.356s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/person3.jpg
+[1.362s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/person4.jpg
+[1.367s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/person5.jpg
+[1.372s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/qr1.jpg
+[1.377s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/qr2.jpg
+[1.383s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/dis_meshes/wood.jpg
+[1.388s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/empty.sdf
+[1.393s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo1.sdf
+[1.399s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo1_meshes/cylinders.jpg
+[1.404s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo1_meshes/fakering1.jpg
+[1.409s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo1_meshes/fakering2.jpg
+[1.415s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo1_meshes/fakering3.jpg
+[1.420s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo1_meshes/ground.jpg
+[1.426s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo1_meshes/map.dae
+[1.434s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo1_meshes/map_colliders.dae
+[1.440s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo1_meshes/objects.jpg
+[1.446s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo1_meshes/parking_space.jpg
+[1.450s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo2.sdf
+[1.455s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo2_meshes/cylinders.jpg
+[1.460s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo2_meshes/fakering1.jpg
+[1.465s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo2_meshes/fakering2.jpg
+[1.471s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo2_meshes/fakering3.jpg
+[1.476s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo2_meshes/ground.jpg
+[1.482s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo2_meshes/map.dae
+[1.488s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo2_meshes/map_colliders.dae
+[1.495s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo2_meshes/objects.jpg
+[1.504s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task2_demo2_meshes/parking_space.jpg
+[1.513s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3.sdf
+[1.523s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/anomona_0.png
+[1.534s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/anomona_1.png
+[1.544s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/anomona_2.png
+[1.556s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/anomona_3.png
+[1.567s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/anomona_4.png
+[1.579s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/cylinders.jpg
+[1.590s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/easy_anomona_0.png
+[1.601s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/easy_anomona_1.png
+[1.612s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/easy_anomona_2.png
+[1.623s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/easy_anomona_3.png
+[1.634s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/easy_anomona_4.png
+[1.645s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/fakering1.jpg
+[1.655s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/fakering2.jpg
+[1.666s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/fakering3.jpg
+[1.677s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/ground.jpg
+[1.687s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/map.dae
+[1.697s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/map_colliders.dae
+[1.708s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/mona.png
+[1.720s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/objects.jpg
+[1.731s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/parking_space.jpg
+[1.740s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/qr_cheat.png
+[1.748s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/qr_url.png
+[1.758s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/qr_wrong.png
+[1.768s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/villager1.png
+[1.779s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/villager2.png
+[1.789s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/villager3.png
+[1.800s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/villager4.png
+[1.810s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//worlds/task3_meshes/villager5.png
+[1.821s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//maps/map.pgm
+[1.832s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3//maps/map.yaml
+[1.843s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/lib/dis_tutorial3/detect_people.py
+[1.855s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/lib/dis_tutorial3/robot_commander.py
+[1.881s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/ament_index/resource_index/package_run_dependencies/dis_tutorial3
+[1.893s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/ament_index/resource_index/parent_prefix_path/dis_tutorial3
+[1.904s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/environment/ament_prefix_path.sh
+[1.912s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/environment/ament_prefix_path.dsv
+[1.923s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/environment/path.sh
+[1.934s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/environment/path.dsv
+[1.945s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/local_setup.bash
+[1.957s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/local_setup.sh
+[1.968s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/local_setup.zsh
+[1.980s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/local_setup.dsv
+[1.989s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.dsv
+[1.999s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/ament_index/resource_index/packages/dis_tutorial3
+[2.009s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/cmake/dis_tutorial3Config.cmake
+[2.018s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/cmake/dis_tutorial3Config-version.cmake
+[2.030s] -- Symlinking: /home/kappa/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.xml
+[2.045s] Invoked command in '/home/kappa/RINS-kappa/workspace/build/dis_tutorial3' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/kappa/RINS-kappa/workspace/build/dis_tutorial3

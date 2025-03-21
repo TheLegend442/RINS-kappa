@@ -7,5 +7,6 @@
 #include "custom_messages/srv/detail/shape__struct.hpp"
 #include "custom_messages/srv/detail/shape__builder.hpp"
 #include "custom_messages/srv/detail/shape__traits.hpp"
+#include "custom_messages/srv/detail/shape__type_support.hpp"
 
 #endif  // CUSTOM_MESSAGES__SRV__SHAPE_HPP_

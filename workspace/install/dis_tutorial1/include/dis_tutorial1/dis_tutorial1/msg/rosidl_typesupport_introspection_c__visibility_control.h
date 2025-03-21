@@ -1,0 +1,1 @@
+/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_typesupport_introspection_c/dis_tutorial1/msg/rosidl_typesupport_introspection_c__visibility_control.h

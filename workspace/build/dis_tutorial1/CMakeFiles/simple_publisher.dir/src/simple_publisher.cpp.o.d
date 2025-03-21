@@ -1,5 +1,5 @@
 CMakeFiles/simple_publisher.dir/src/simple_publisher.cpp.o: \
- /home/strazi/FAKS/3.letnik/RINS/workspace/src/dis_tutorial1/src/simple_publisher.cpp \
+ /home/kappa/RINS-kappa/workspace/src/dis_tutorial1/src/simple_publisher.cpp \
  /usr/include/stdc-predef.h \
  /opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp \
  /usr/include/c++/11/csignal \

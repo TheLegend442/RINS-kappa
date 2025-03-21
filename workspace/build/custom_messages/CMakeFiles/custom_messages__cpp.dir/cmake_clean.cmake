@@ -3,6 +3,7 @@ file(REMOVE_RECURSE
   "rosidl_generator_cpp/custom_messages/srv/detail/shape__builder.hpp"
   "rosidl_generator_cpp/custom_messages/srv/detail/shape__struct.hpp"
   "rosidl_generator_cpp/custom_messages/srv/detail/shape__traits.hpp"
+  "rosidl_generator_cpp/custom_messages/srv/detail/shape__type_support.hpp"
   "rosidl_generator_cpp/custom_messages/srv/shape.hpp"
 )
 

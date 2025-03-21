@@ -1,0 +1,1 @@
+/home/kappa/RINS-kappa/workspace/src/dis_tutorial4/launch/turtlebot4_spawn.launch.py
