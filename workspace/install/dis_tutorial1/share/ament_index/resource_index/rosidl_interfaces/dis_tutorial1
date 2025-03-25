@@ -1,1 +1,10 @@
-/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/ament_cmake_index/share/ament_index/resource_index/rosidl_interfaces/dis_tutorial1
+msg/CustomMessage.idl
+msg/CustomMessage.msg
+srv/AddArray.idl
+srv/AddArray.srv
+srv/AddArray_Request.msg
+srv/AddArray_Response.msg
+srv/AddTwoInts.idl
+srv/AddTwoInts.srv
+srv/AddTwoInts_Request.msg
+srv/AddTwoInts_Response.msg

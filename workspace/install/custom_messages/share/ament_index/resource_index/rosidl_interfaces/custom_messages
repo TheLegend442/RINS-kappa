@@ -1,1 +1,4 @@
-/home/kappa/RINS-kappa/workspace/build/custom_messages/ament_cmake_index/share/ament_index/resource_index/rosidl_interfaces/custom_messages
+srv/Shape.idl
+srv/Shape.srv
+srv/Shape_Request.msg
+srv/Shape_Response.msg

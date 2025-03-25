@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kappa/RINS-kappa/workspace/src/dis_tutorial1
+CMAKE_SOURCE_DIR = /home/strazi/RINS-kappa/workspace/src/dis_tutorial1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kappa/RINS-kappa/workspace/build/dis_tutorial1
+CMAKE_BINARY_DIR = /home/strazi/RINS-kappa/workspace/build/dis_tutorial1
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/CMakeFiles /home/kappa/RINS-kappa/workspace/build/dis_tutorial1//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/strazi/RINS-kappa/workspace/build/dis_tutorial1/CMakeFiles /home/strazi/RINS-kappa/workspace/build/dis_tutorial1//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/strazi/RINS-kappa/workspace/build/dis_tutorial1/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -315,17 +315,17 @@ dis_tutorial1__rosidl_typesupport_cpp/fast:
 .PHONY : dis_tutorial1__rosidl_typesupport_cpp/fast
 
 #=============================================================================
-# Target rules for targets named ament_cmake_python_symlink_dis_tutorial1
+# Target rules for targets named ament_cmake_python_copy_dis_tutorial1
 
 # Build rule for target.
-ament_cmake_python_symlink_dis_tutorial1: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ament_cmake_python_symlink_dis_tutorial1
-.PHONY : ament_cmake_python_symlink_dis_tutorial1
+ament_cmake_python_copy_dis_tutorial1: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ament_cmake_python_copy_dis_tutorial1
+.PHONY : ament_cmake_python_copy_dis_tutorial1
 
 # fast build rule for target.
-ament_cmake_python_symlink_dis_tutorial1/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_symlink_dis_tutorial1.dir/build.make CMakeFiles/ament_cmake_python_symlink_dis_tutorial1.dir/build
-.PHONY : ament_cmake_python_symlink_dis_tutorial1/fast
+ament_cmake_python_copy_dis_tutorial1/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/ament_cmake_python_copy_dis_tutorial1.dir/build.make CMakeFiles/ament_cmake_python_copy_dis_tutorial1.dir/build
+.PHONY : ament_cmake_python_copy_dis_tutorial1/fast
 
 #=============================================================================
 # Target rules for targets named ament_cmake_python_build_dis_tutorial1_egg
@@ -1289,7 +1289,7 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... test"
 	@echo "... ament_cmake_python_build_dis_tutorial1_egg"
-	@echo "... ament_cmake_python_symlink_dis_tutorial1"
+	@echo "... ament_cmake_python_copy_dis_tutorial1"
 	@echo "... dis_tutorial1"
 	@echo "... dis_tutorial1__cpp"
 	@echo "... dis_tutorial1__py"

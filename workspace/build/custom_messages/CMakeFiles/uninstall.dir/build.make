@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kappa/RINS-kappa/workspace/src/custom_messages
+CMAKE_SOURCE_DIR = /home/strazi/RINS-kappa/workspace/src/custom_messages
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kappa/RINS-kappa/workspace/build/custom_messages
+CMAKE_BINARY_DIR = /home/strazi/RINS-kappa/workspace/build/custom_messages
 
 # Utility rule file for uninstall.
 
@@ -78,6 +78,6 @@ CMakeFiles/uninstall.dir/clean:
 .PHONY : CMakeFiles/uninstall.dir/clean
 
 CMakeFiles/uninstall.dir/depend:
-	cd /home/kappa/RINS-kappa/workspace/build/custom_messages && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kappa/RINS-kappa/workspace/src/custom_messages /home/kappa/RINS-kappa/workspace/src/custom_messages /home/kappa/RINS-kappa/workspace/build/custom_messages /home/kappa/RINS-kappa/workspace/build/custom_messages /home/kappa/RINS-kappa/workspace/build/custom_messages/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/strazi/RINS-kappa/workspace/build/custom_messages && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/strazi/RINS-kappa/workspace/src/custom_messages /home/strazi/RINS-kappa/workspace/src/custom_messages /home/strazi/RINS-kappa/workspace/build/custom_messages /home/strazi/RINS-kappa/workspace/build/custom_messages /home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles/uninstall.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/uninstall.dir/depend
 

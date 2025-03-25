@@ -1,1 +1,5 @@
-/home/kappa/RINS-kappa/workspace/src/dis_tutorial1/srv/AddArray.srv
+string description
+int64[] numbers
+---
+string type
+int64 sum

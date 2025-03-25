@@ -1,1 +1,7 @@
-/home/kappa/RINS-kappa/workspace/src/dis_tutorial3/maps/map.yaml
+image: map.pgm
+mode: trinary
+resolution: 0.05
+origin: [-2.16, -2.6, 0]
+negate: 0
+occupied_thresh: 0.65
+free_thresh: 0.25

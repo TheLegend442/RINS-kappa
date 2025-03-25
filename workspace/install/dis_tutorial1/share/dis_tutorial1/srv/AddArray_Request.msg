@@ -1,1 +1,2 @@
-/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_cmake/srv/AddArray_Request.msg
+string description
+int64[] numbers

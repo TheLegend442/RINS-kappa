@@ -1,5 +1,5 @@
 CMakeFiles/dis_tutorial1__rosidl_generator_py.dir/rosidl_generator_py/dis_tutorial1/msg/_custom_message_s.c.o: \
- /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_py/dis_tutorial1/msg/_custom_message_s.c \
+ /home/strazi/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_py/dis_tutorial1/msg/_custom_message_s.c \
  /usr/include/stdc-predef.h /usr/include/python3.10/Python.h \
  /usr/include/python3.10/patchlevel.h /usr/include/python3.10/pyconfig.h \
  /usr/include/x86_64-linux-gnu/python3.10/pyconfig.h \
@@ -207,9 +207,9 @@ CMakeFiles/dis_tutorial1__rosidl_generator_py.dir/rosidl_generator_py/dis_tutori
  /usr/include/python3.10/numpy/_neighborhood_iterator_imp.h \
  /usr/include/python3.10/numpy/__multiarray_api.h \
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/visibility_control.h \
- /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/msg/detail/custom_message__struct.h \
+ /home/strazi/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/msg/detail/custom_message__struct.h \
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string.h \
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/primitives_sequence.h \
- /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/msg/detail/custom_message__functions.h \
- /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/msg/rosidl_generator_c__visibility_control.h \
+ /home/strazi/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/msg/detail/custom_message__functions.h \
+ /home/strazi/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_c/dis_tutorial1/msg/rosidl_generator_c__visibility_control.h \
  /opt/ros/humble/include/rosidl_runtime_c/rosidl_runtime_c/string_functions.h

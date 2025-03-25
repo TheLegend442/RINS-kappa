@@ -36,6 +36,7 @@ from rclpy.qos import QoSProfile, QoSReliabilityPolicy
 from rclpy.qos import qos_profile_sensor_data
 import cv2
 import yaml
+import math
 
 
 class TaskResult(Enum):
@@ -65,6 +66,8 @@ class RobotCommander(Node):
         self.initial_pose_received = False
         self.is_docked = None
         self.clicked_points = []
+        self.is_dragging = False
+        self.start_point = None
         self.map_image, self.map_metadata = None, None
         # ROS2 subscribers
         self.create_subscription(DockStatus,
@@ -314,13 +317,52 @@ class RobotCommander(Node):
 
         return map_image, map_metadata
     
+    def draw_arrow(self, start, end):
+        """Draw an arrow from start to end point."""
+        cv2.arrowedLine(self.map_image, start, end, (0, 255, 0), 2)
+
     def mouse_callback(self, event, x, y, flags, param):
         """Shrani klikane točke in prikaži jih na sliki"""
         if event == cv2.EVENT_LBUTTONDOWN:
-            self.clicked_points.append((x, y))
-            cv2.circle(self.map_image, (x, y), 2, (0, 0, 255), -1)
+            self.is_dragging = True
+            self.start_point = (x, y)  # Save the starting point for dragging
+            self.get_logger().info(f"Started dragging from: {x}, {y}")
+        elif event == cv2.EVENT_MOUSEMOVE and self.is_dragging:
+            # Clear the image and redraw previous points
+            self.map_image, self.map_metadata = self.load_map('src/dis_tutorial3/maps/map.pgm', 'src/dis_tutorial3/maps/map.yaml')
+            self.draw_previous_markers()  # Re-draw any previously stored points
+            # Draw the current arrow
+            self.draw_arrow(self.start_point, (x, y))
             cv2.imshow("Map", self.map_image)
-            self.get_logger().info(f"Kliknjena točka: {x}, {y}")
+        elif event == cv2.EVENT_LBUTTONUP and self.is_dragging:
+            self.is_dragging = False
+            # Calculate orientation in degrees
+            orientation = self.calculate_orientation(self.start_point, (x, y))
+            self.clicked_points.append((self.start_point[0], self.start_point[1], orientation))
+            #self.draw_arrow(self.start_point, (x, y))  # Draw final arrow
+            cv2.imshow("Map", self.map_image)
+            self.get_logger().info(f"Clicked point: {x}, {y} with orientation: {orientation}°")
+
+    def calculate_orientation(self, start, end):
+        """Calculate the angle of the arrow from start to end point."""
+        delta_x = end[0] - start[0]
+        delta_y = start[1] - end[1]  # Invert y-axis for image coordinates
+        angle = math.atan2(delta_y, delta_x)  # Calculate angle in radians
+        return angle
+
+    def draw_previous_markers(self):
+        """Redraw all previously stored points and arrows."""
+        for point in self.clicked_points:
+            x, y, orientation = point
+            # Draw point
+            #cv2.circle(self.map_image, (x, y), 5, (0, 255, 0), -1)
+            if orientation is not None:
+                # Calculate the arrow end position based on orientation
+                arrow_length = 30
+                x_end = int(x + arrow_length * math.cos(orientation))
+                y_end = int(y - arrow_length * math.sin(orientation))  # Inverted Y-axis for image coordinates
+                self.draw_arrow((x, y), (x_end, y_end))
+
 
     def pixel_to_world(self, pixel_x, pixel_y):
         """Pretvori slikovne koordinate v metrične glede na YAML podatke"""
@@ -355,7 +397,7 @@ def main(args=None):
     cv2.waitKey(0)
     cv2.destroyAllWindows()
 
-    for i, (px, py) in enumerate(rc.clicked_points):
+    for i, (px, py, orientation) in enumerate(rc.clicked_points):
         world_x, world_y = rc.pixel_to_world(px, py)
         rc.get_logger().info(f"Točka {i+1}: ({world_x}, {world_y})")
 
@@ -364,7 +406,7 @@ def main(args=None):
         goal_msg.header.stamp = rc.get_clock().now().to_msg()
         goal_msg.pose.position.x = world_x
         goal_msg.pose.position.y = world_y
-        goal_msg.pose.orientation = Quaternion(x=0.0, y=0.0, z=0.0, w=1.0)  # Brez vrtenja
+        goal_msg.pose.orientation = rc.YawToQuaternion(orientation)  
         rc.goToPose(goal_msg)
         while not rc.isTaskComplete():
             rc.info("Waiting for the task to complete...")

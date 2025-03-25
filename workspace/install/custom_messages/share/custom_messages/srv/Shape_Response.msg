@@ -1,1 +1,2 @@
-/home/kappa/RINS-kappa/workspace/build/custom_messages/rosidl_cmake/srv/Shape_Response.msg
+
+string shape

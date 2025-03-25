@@ -1,1 +1,2 @@
-/home/kappa/RINS-kappa/workspace/build/custom_messages/rosidl_cmake/srv/Shape_Request.msg
+string shape
+int32 duration

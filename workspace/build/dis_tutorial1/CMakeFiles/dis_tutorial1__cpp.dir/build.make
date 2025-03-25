@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/kappa/RINS-kappa/workspace/src/dis_tutorial1
+CMAKE_SOURCE_DIR = /home/strazi/RINS-kappa/workspace/src/dis_tutorial1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/kappa/RINS-kappa/workspace/build/dis_tutorial1
+CMAKE_BINARY_DIR = /home/strazi/RINS-kappa/workspace/build/dis_tutorial1
 
 # Utility rule file for dis_tutorial1__cpp.
 
@@ -133,8 +133,8 @@ rosidl_generator_cpp/dis_tutorial1/msg/custom_message.hpp: /opt/ros/humble/share
 rosidl_generator_cpp/dis_tutorial1/msg/custom_message.hpp: /opt/ros/humble/share/std_msgs/msg/UInt8MultiArray.idl
 rosidl_generator_cpp/dis_tutorial1/msg/custom_message.hpp: /opt/ros/humble/share/builtin_interfaces/msg/Duration.idl
 rosidl_generator_cpp/dis_tutorial1/msg/custom_message.hpp: /opt/ros/humble/share/builtin_interfaces/msg/Time.idl
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code for ROS interfaces"
-	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp --generator-arguments-file /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_cpp__arguments.json
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/strazi/RINS-kappa/workspace/build/dis_tutorial1/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code for ROS interfaces"
+	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp --generator-arguments-file /home/strazi/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_cpp__arguments.json
 
 rosidl_generator_cpp/dis_tutorial1/msg/detail/custom_message__builder.hpp: rosidl_generator_cpp/dis_tutorial1/msg/custom_message.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/dis_tutorial1/msg/detail/custom_message__builder.hpp
@@ -206,6 +206,6 @@ CMakeFiles/dis_tutorial1__cpp.dir/clean:
 .PHONY : CMakeFiles/dis_tutorial1__cpp.dir/clean
 
 CMakeFiles/dis_tutorial1__cpp.dir/depend:
-	cd /home/kappa/RINS-kappa/workspace/build/dis_tutorial1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kappa/RINS-kappa/workspace/src/dis_tutorial1 /home/kappa/RINS-kappa/workspace/src/dis_tutorial1 /home/kappa/RINS-kappa/workspace/build/dis_tutorial1 /home/kappa/RINS-kappa/workspace/build/dis_tutorial1 /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/CMakeFiles/dis_tutorial1__cpp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/strazi/RINS-kappa/workspace/build/dis_tutorial1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/strazi/RINS-kappa/workspace/src/dis_tutorial1 /home/strazi/RINS-kappa/workspace/src/dis_tutorial1 /home/strazi/RINS-kappa/workspace/build/dis_tutorial1 /home/strazi/RINS-kappa/workspace/build/dis_tutorial1 /home/strazi/RINS-kappa/workspace/build/dis_tutorial1/CMakeFiles/dis_tutorial1__cpp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/dis_tutorial1__cpp.dir/depend
 

@@ -1,1 +1,11 @@
-/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/ament_cmake_python/dis_tutorial1/dis_tutorial1.egg-info/SOURCES.txt
+setup.py
+dis_tutorial1/__init__.py
+dis_tutorial1.egg-info/PKG-INFO
+dis_tutorial1.egg-info/SOURCES.txt
+dis_tutorial1.egg-info/dependency_links.txt
+dis_tutorial1.egg-info/top_level.txt
+dis_tutorial1/msg/__init__.py
+dis_tutorial1/msg/_custom_message.py
+dis_tutorial1/srv/__init__.py
+dis_tutorial1/srv/_add_array.py
+dis_tutorial1/srv/_add_two_ints.py

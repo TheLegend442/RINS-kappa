@@ -1,1 +1,2 @@
-/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_cmake/srv/AddTwoInts_Request.msg
+int64 a
+int64 b

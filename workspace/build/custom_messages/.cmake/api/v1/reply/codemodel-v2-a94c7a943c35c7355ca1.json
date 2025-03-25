@@ -1,0 +1,233 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1
+					],
+					"hasInstallRule" : true,
+					"jsonFile" : "directory-.-64459a59f245f0734646.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				},
+				{
+					"build" : "custom_messages__py",
+					"jsonFile" : "directory-custom_messages__py-97b662222d84f52bec9b.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 0,
+					"source" : "/home/strazi/RINS-kappa/workspace/build/custom_messages/custom_messages__py",
+					"targetIndexes" : 
+					[
+						4
+					]
+				}
+			],
+			"name" : "",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0,
+						1
+					],
+					"name" : "custom_messages",
+					"targetIndexes" : 
+					[
+						0,
+						1,
+						2,
+						3,
+						4,
+						5,
+						6,
+						7,
+						8,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_build_custom_messages_egg::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_build_custom_messages_egg-e47918b8346e9dbccac3.json",
+					"name" : "ament_cmake_python_build_custom_messages_egg",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ament_cmake_python_copy_custom_messages::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ament_cmake_python_copy_custom_messages-0c60f8d02ac931c6f7a1.json",
+					"name" : "ament_cmake_python_copy_custom_messages",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "custom_messages::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-custom_messages-4110fd77b76cb2ecb21b.json",
+					"name" : "custom_messages",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "custom_messages__cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-custom_messages__cpp-c60d1c75517da3b91e55.json",
+					"name" : "custom_messages__cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "custom_messages__py::@1b1fefc62bafd3be0c03",
+					"jsonFile" : "target-custom_messages__py-ac1b91576f29539e7473.json",
+					"name" : "custom_messages__py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "custom_messages__rosidl_generator_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-custom_messages__rosidl_generator_c-7d2b06b5331162ef7b1a.json",
+					"name" : "custom_messages__rosidl_generator_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "custom_messages__rosidl_generator_py::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-custom_messages__rosidl_generator_py-28d3c877edcc0f771221.json",
+					"name" : "custom_messages__rosidl_generator_py",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "custom_messages__rosidl_typesupport_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-custom_messages__rosidl_typesupport_c-b0ea256c98d10ca4b9cf.json",
+					"name" : "custom_messages__rosidl_typesupport_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "custom_messages__rosidl_typesupport_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-custom_messages__rosidl_typesupport_c__pyext-adb1c39a67e09aea0298.json",
+					"name" : "custom_messages__rosidl_typesupport_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "custom_messages__rosidl_typesupport_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-custom_messages__rosidl_typesupport_cpp-3abe9a7f96cdc7bb8b83.json",
+					"name" : "custom_messages__rosidl_typesupport_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "custom_messages__rosidl_typesupport_fastrtps_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-custom_messages__rosidl_typesupport_fastrtps_c-47117f4d594b1d5a27be.json",
+					"name" : "custom_messages__rosidl_typesupport_fastrtps_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "custom_messages__rosidl_typesupport_fastrtps_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-custom_messages__rosidl_typesupport_fastrtps_c__pyext-0c35fb277ae5f261737e.json",
+					"name" : "custom_messages__rosidl_typesupport_fastrtps_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "custom_messages__rosidl_typesupport_fastrtps_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-custom_messages__rosidl_typesupport_fastrtps_cpp-515576b4ab98c7d14c72.json",
+					"name" : "custom_messages__rosidl_typesupport_fastrtps_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "custom_messages__rosidl_typesupport_introspection_c::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-custom_messages__rosidl_typesupport_introspection_c-ca2c94ca2d3f3b6bcbee.json",
+					"name" : "custom_messages__rosidl_typesupport_introspection_c",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "custom_messages__rosidl_typesupport_introspection_c__pyext::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-custom_messages__rosidl_typesupport_introspection_c__pyext-b8009fe4ca64f02e12c9.json",
+					"name" : "custom_messages__rosidl_typesupport_introspection_c__pyext",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "custom_messages__rosidl_typesupport_introspection_cpp::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-custom_messages__rosidl_typesupport_introspection_cpp-4f7970ff166329ae8f36.json",
+					"name" : "custom_messages__rosidl_typesupport_introspection_cpp",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "custom_messages_uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-custom_messages_uninstall-0c4dfbe4d80204666e90.json",
+					"name" : "custom_messages_uninstall",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "uninstall::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-uninstall-7d78a2a53a52cd3b6cfc.json",
+					"name" : "uninstall",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/strazi/RINS-kappa/workspace/build/custom_messages",
+		"source" : "/home/strazi/RINS-kappa/workspace/src/custom_messages"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 3
+	}
+}

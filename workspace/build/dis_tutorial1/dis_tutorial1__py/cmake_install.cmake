@@ -1,8 +1,8 @@
-# Install script for directory: /home/kappa/RINS-kappa/workspace/build/dis_tutorial1/dis_tutorial1__py
+# Install script for directory: /home/strazi/RINS-kappa/workspace/build/dis_tutorial1/dis_tutorial1__py
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/kappa/RINS-kappa/workspace/install/dis_tutorial1")
+  set(CMAKE_INSTALL_PREFIX "/home/strazi/RINS-kappa/workspace/install/dis_tutorial1")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

@@ -1,1 +1,3 @@
-/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/rosidl_cmake/srv/AddArray_Response.msg
+
+string type
+int64 sum

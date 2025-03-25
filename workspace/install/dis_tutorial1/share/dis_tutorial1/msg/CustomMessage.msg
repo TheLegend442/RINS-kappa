@@ -1,1 +1,3 @@
-/home/kappa/RINS-kappa/workspace/src/dis_tutorial1/msg/CustomMessage.msg
+string content
+int64 id
+bool is_active

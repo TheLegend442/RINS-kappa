@@ -1,1 +1,1 @@
-/home/kappa/RINS-kappa/workspace/build/dis_tutorial1/ament_cmake_environment_hooks/library_path.dsv
+prepend-non-duplicate;LD_LIBRARY_PATH;lib

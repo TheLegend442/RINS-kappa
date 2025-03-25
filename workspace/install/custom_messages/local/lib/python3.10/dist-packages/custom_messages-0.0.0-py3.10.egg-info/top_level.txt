@@ -1,1 +1,1 @@
-/home/kappa/RINS-kappa/workspace/build/custom_messages/ament_cmake_python/custom_messages/custom_messages.egg-info/top_level.txt
+custom_messages

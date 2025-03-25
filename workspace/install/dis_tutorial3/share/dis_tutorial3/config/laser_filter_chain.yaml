@@ -1,1 +1,10 @@
-/home/kappa/RINS-kappa/workspace/src/dis_tutorial3/config/laser_filter_chain.yaml
+scan_to_scan_filter_chain:
+  ros__parameters:
+    filter1:
+      name: angle
+      type: laser_filters/LaserScanAngularBoundsFilter
+      params:
+        lower_angle: -2.52
+        upper_angle: 3.1
+
+        
