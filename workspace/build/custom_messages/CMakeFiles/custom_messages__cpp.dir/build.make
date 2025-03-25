@@ -71,6 +71,16 @@ CMakeFiles/custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail
 CMakeFiles/custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail/shape__struct.hpp
 CMakeFiles/custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail/shape__traits.hpp
 CMakeFiles/custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail/shape__type_support.hpp
+CMakeFiles/custom_messages__cpp: rosidl_generator_cpp/custom_messages/msg/face_coordinates.hpp
+CMakeFiles/custom_messages__cpp: rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__builder.hpp
+CMakeFiles/custom_messages__cpp: rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__struct.hpp
+CMakeFiles/custom_messages__cpp: rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__traits.hpp
+CMakeFiles/custom_messages__cpp: rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__type_support.hpp
+CMakeFiles/custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/poses_in_front_of_faces.hpp
+CMakeFiles/custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__builder.hpp
+CMakeFiles/custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__struct.hpp
+CMakeFiles/custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__traits.hpp
+CMakeFiles/custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__type_support.hpp
 CMakeFiles/custom_messages__cpp: rosidl_generator_cpp/custom_messages/msg/rosidl_generator_cpp__visibility_control.hpp
 
 rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/lib/rosidl_generator_cpp/rosidl_generator_cpp
@@ -89,6 +99,8 @@ rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/rosidl
 rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/rosidl_generator_cpp/resource/srv__struct.hpp.em
 rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/rosidl_generator_cpp/resource/srv__traits.hpp.em
 rosidl_generator_cpp/custom_messages/srv/shape.hpp: rosidl_adapter/custom_messages/srv/Shape.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: rosidl_adapter/custom_messages/msg/FaceCoordinates.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: rosidl_adapter/custom_messages/srv/PosesInFrontOfFaces.idl
 rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/geometry_msgs/msg/Accel.idl
 rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/geometry_msgs/msg/AccelStamped.idl
 rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/geometry_msgs/msg/AccelWithCovariance.idl
@@ -149,6 +161,49 @@ rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/std_ms
 rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/std_msgs/msg/UInt64MultiArray.idl
 rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/std_msgs/msg/UInt8.idl
 rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/std_msgs/msg/UInt8MultiArray.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/visualization_msgs/msg/ImageMarker.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarker.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerControl.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerFeedback.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerInit.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerPose.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerUpdate.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/visualization_msgs/msg/Marker.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/visualization_msgs/msg/MarkerArray.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/visualization_msgs/msg/MenuEntry.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/visualization_msgs/msg/MeshFile.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/visualization_msgs/msg/UVCoordinate.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/visualization_msgs/srv/GetInteractiveMarkers.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/builtin_interfaces/msg/Duration.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/builtin_interfaces/msg/Time.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/BatteryState.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/CameraInfo.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/ChannelFloat32.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/CompressedImage.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/FluidPressure.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/Illuminance.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/Image.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/Imu.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/JointState.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/Joy.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/JoyFeedback.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/JoyFeedbackArray.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/LaserEcho.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/LaserScan.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/MagneticField.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/MultiDOFJointState.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/MultiEchoLaserScan.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/NavSatFix.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/NavSatStatus.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/PointCloud.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/PointCloud2.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/PointField.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/Range.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/RegionOfInterest.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/RelativeHumidity.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/Temperature.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/msg/TimeReference.idl
+rosidl_generator_cpp/custom_messages/srv/shape.hpp: /opt/ros/humble/share/sensor_msgs/srv/SetCameraInfo.idl
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C++ code for ROS interfaces"
 	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_cpp/cmake/../../../lib/rosidl_generator_cpp/rosidl_generator_cpp --generator-arguments-file /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_generator_cpp__arguments.json
 
@@ -164,11 +219,51 @@ rosidl_generator_cpp/custom_messages/srv/detail/shape__traits.hpp: rosidl_genera
 rosidl_generator_cpp/custom_messages/srv/detail/shape__type_support.hpp: rosidl_generator_cpp/custom_messages/srv/shape.hpp
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_messages/srv/detail/shape__type_support.hpp
 
+rosidl_generator_cpp/custom_messages/msg/face_coordinates.hpp: rosidl_generator_cpp/custom_messages/srv/shape.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_messages/msg/face_coordinates.hpp
+
+rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__builder.hpp: rosidl_generator_cpp/custom_messages/srv/shape.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__builder.hpp
+
+rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__struct.hpp: rosidl_generator_cpp/custom_messages/srv/shape.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__struct.hpp
+
+rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__traits.hpp: rosidl_generator_cpp/custom_messages/srv/shape.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__traits.hpp
+
+rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__type_support.hpp: rosidl_generator_cpp/custom_messages/srv/shape.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__type_support.hpp
+
+rosidl_generator_cpp/custom_messages/srv/poses_in_front_of_faces.hpp: rosidl_generator_cpp/custom_messages/srv/shape.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_messages/srv/poses_in_front_of_faces.hpp
+
+rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__builder.hpp: rosidl_generator_cpp/custom_messages/srv/shape.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__builder.hpp
+
+rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__struct.hpp: rosidl_generator_cpp/custom_messages/srv/shape.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__struct.hpp
+
+rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__traits.hpp: rosidl_generator_cpp/custom_messages/srv/shape.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__traits.hpp
+
+rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__type_support.hpp: rosidl_generator_cpp/custom_messages/srv/shape.hpp
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__type_support.hpp
+
 custom_messages__cpp: CMakeFiles/custom_messages__cpp
+custom_messages__cpp: rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__builder.hpp
+custom_messages__cpp: rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__struct.hpp
+custom_messages__cpp: rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__traits.hpp
+custom_messages__cpp: rosidl_generator_cpp/custom_messages/msg/detail/face_coordinates__type_support.hpp
+custom_messages__cpp: rosidl_generator_cpp/custom_messages/msg/face_coordinates.hpp
+custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__builder.hpp
+custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__struct.hpp
+custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__traits.hpp
+custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail/poses_in_front_of_faces__type_support.hpp
 custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail/shape__builder.hpp
 custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail/shape__struct.hpp
 custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail/shape__traits.hpp
 custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/detail/shape__type_support.hpp
+custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/poses_in_front_of_faces.hpp
 custom_messages__cpp: rosidl_generator_cpp/custom_messages/srv/shape.hpp
 custom_messages__cpp: CMakeFiles/custom_messages__cpp.dir/build.make
 .PHONY : custom_messages__cpp

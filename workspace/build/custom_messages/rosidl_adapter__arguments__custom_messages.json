@@ -1,6 +1,8 @@
 {
   "package_name": "custom_messages",
   "non_idl_tuples": [
-    "/home/strazi/RINS-kappa/workspace/src/custom_messages:srv/Shape.srv"
+    "/home/strazi/RINS-kappa/workspace/src/custom_messages:srv/Shape.srv",
+    "/home/strazi/RINS-kappa/workspace/src/custom_messages:msg/FaceCoordinates.msg",
+    "/home/strazi/RINS-kappa/workspace/src/custom_messages:srv/PosesInFrontOfFaces.srv"
   ]
 }

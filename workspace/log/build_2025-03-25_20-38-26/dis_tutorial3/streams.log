@@ -1,0 +1,1 @@
+[0.242s] Invoking command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/dis_tutorial3 -- -j12 -l12

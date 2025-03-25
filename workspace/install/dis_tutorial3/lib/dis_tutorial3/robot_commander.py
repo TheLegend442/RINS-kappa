@@ -19,7 +19,7 @@ import time
 
 from action_msgs.msg import GoalStatus
 from builtin_interfaces.msg import Duration
-from geometry_msgs.msg import Quaternion, PoseStamped, PoseWithCovarianceStamped
+from geometry_msgs.msg import Quaternion, PoseStamped, PoseWithCovarianceStamped, Pose
 from lifecycle_msgs.srv import GetState
 from nav2_msgs.action import Spin, NavigateToPose
 from turtle_tf2_py.turtle_tf2_broadcaster import quaternion_from_euler
@@ -37,6 +37,10 @@ from rclpy.qos import qos_profile_sensor_data
 import cv2
 import yaml
 import math
+
+from custom_messages.msg import FaceCoordinates
+from custom_messages.srv import PosesInFrontOfFaces
+from visualization_msgs.msg import Marker
 
 
 class TaskResult(Enum):
@@ -84,7 +88,13 @@ class RobotCommander(Node):
         self.initial_pose_pub = self.create_publisher(PoseWithCovarianceStamped,
                                                       'initialpose',
                                                       10)
+
+        # client that receives poses in front of detected faces
+        self.pose_client = self.create_client(PosesInFrontOfFaces, 'get_face_pose')
         
+        # publisher for publishing markers of spots in front of faces
+        self.spots_in_front_of_faces_pub = self.create_publisher(Marker, '/spots_in_front_of_faces', 10)
+
         # ROS2 Action clients
         self.nav_to_pose_client = ActionClient(self, NavigateToPose, 'navigate_to_pose')
         self.spin_client = ActionClient(self, Spin, 'spin')
@@ -410,7 +420,49 @@ def main(args=None):
         rc.goToPose(goal_msg)
         while not rc.isTaskComplete():
             rc.info("Waiting for the task to complete...")
-            time.sleep(0.1)
+            time.sleep(3.0)
+
+    
+    # go to all detected faces
+    request = PosesInFrontOfFaces.Request()
+    future = rc.pose_client.call_async(request)
+    rclpy.spin_until_future_complete(rc, future)
+    response = future.result()
+
+    for i, pose in enumerate(response.poses):
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = rc.get_clock().now().to_msg()
+        marker.ns = "spots_in_front_of_faces"
+        marker.id = i
+        marker.type = Marker.SPHERE
+        marker.action = Marker.ADD
+        marker.pose.position = pose.position
+        marker.scale.x = 0.2
+        marker.scale.y = 0.2
+        marker.scale.z = 0.2
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0
+        marker.lifetime = Duration(sec=0)
+        rc.spots_in_front_of_faces_pub.publish(marker)
+
+        print(pose)
+
+    
+    
+    for pose in response.poses:
+        goal_msg = PoseStamped()
+        goal_msg.header.frame_id = "map"
+        goal_msg.header.stamp = rc.get_clock().now().to_msg()
+        goal_msg.pose = pose
+    
+        rc.goToPose(goal_msg)
+        while not rc.isTaskComplete():
+            rc.info("Waiting for the task to complete...")
+            time.sleep(3.0)
+    
 
     rc.destroyNode()
 

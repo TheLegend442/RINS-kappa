@@ -360,6 +360,14 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/custom_messages/msg" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/msg/FaceCoordinates.idl")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/custom_messages/srv" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/srv/PosesInFrontOfFaces.idl")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/custom_messages/srv" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/src/custom_messages/srv/Shape.srv")
 endif()
 
@@ -369,6 +377,22 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/custom_messages/srv" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_cmake/srv/Shape_Response.msg")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/custom_messages/msg" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/src/custom_messages/msg/FaceCoordinates.msg")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/custom_messages/srv" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/src/custom_messages/srv/PosesInFrontOfFaces.srv")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/custom_messages/srv" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_cmake/srv/PosesInFrontOfFaces_Request.msg")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/custom_messages/srv" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_cmake/srv/PosesInFrontOfFaces_Response.msg")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)

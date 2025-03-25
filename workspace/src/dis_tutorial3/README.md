@@ -18,7 +18,7 @@ ros2 run dis_tutorial3 detect_people.py
 ros2 run dis_tutorial3 robot_commander.py
 ```
 
-po zagonu se pojavi mapa, kjer lahko z drag-om načrtujemo pot
+po zagonu se pojavi mapa, kjer lahko z drag-om načrtujemo pot, ko so vsi koraki vnešeni, pritisni 0 in robot se bo začel premikati
 
 # Tutorial 3: The Turtlebot 4
 

@@ -83,6 +83,8 @@ rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/rosidl_gen
 rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/rosidl_generator_c/resource/msg__type_support.h.em
 rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/rosidl_generator_c/resource/srv__type_support.h.em
 rosidl_generator_c/custom_messages/srv/shape.h: rosidl_adapter/custom_messages/srv/Shape.idl
+rosidl_generator_c/custom_messages/srv/shape.h: rosidl_adapter/custom_messages/msg/FaceCoordinates.idl
+rosidl_generator_c/custom_messages/srv/shape.h: rosidl_adapter/custom_messages/srv/PosesInFrontOfFaces.idl
 rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/geometry_msgs/msg/Accel.idl
 rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/geometry_msgs/msg/AccelStamped.idl
 rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/geometry_msgs/msg/AccelWithCovariance.idl
@@ -143,6 +145,49 @@ rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/std_msgs/m
 rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/std_msgs/msg/UInt64MultiArray.idl
 rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/std_msgs/msg/UInt8.idl
 rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/std_msgs/msg/UInt8MultiArray.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/visualization_msgs/msg/ImageMarker.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarker.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerControl.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerFeedback.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerInit.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerPose.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerUpdate.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/visualization_msgs/msg/Marker.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/visualization_msgs/msg/MarkerArray.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/visualization_msgs/msg/MenuEntry.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/visualization_msgs/msg/MeshFile.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/visualization_msgs/msg/UVCoordinate.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/visualization_msgs/srv/GetInteractiveMarkers.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/builtin_interfaces/msg/Duration.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/builtin_interfaces/msg/Time.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/BatteryState.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/CameraInfo.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/ChannelFloat32.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/CompressedImage.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/FluidPressure.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/Illuminance.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/Image.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/Imu.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/JointState.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/Joy.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/JoyFeedback.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/JoyFeedbackArray.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/LaserEcho.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/LaserScan.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/MagneticField.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/MultiDOFJointState.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/MultiEchoLaserScan.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/NavSatFix.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/NavSatStatus.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/PointCloud.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/PointCloud2.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/PointField.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/Range.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/RegionOfInterest.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/RelativeHumidity.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/Temperature.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/msg/TimeReference.idl
+rosidl_generator_c/custom_messages/srv/shape.h: /opt/ros/humble/share/sensor_msgs/srv/SetCameraInfo.idl
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C code for ROS interfaces"
 	/usr/bin/python3 /opt/ros/humble/share/rosidl_generator_c/cmake/../../../lib/rosidl_generator_c/rosidl_generator_c --generator-arguments-file /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_generator_c__arguments.json
 
@@ -155,8 +200,38 @@ rosidl_generator_c/custom_messages/srv/detail/shape__struct.h: rosidl_generator_
 rosidl_generator_c/custom_messages/srv/detail/shape__type_support.h: rosidl_generator_c/custom_messages/srv/shape.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/custom_messages/srv/detail/shape__type_support.h
 
+rosidl_generator_c/custom_messages/msg/face_coordinates.h: rosidl_generator_c/custom_messages/srv/shape.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/custom_messages/msg/face_coordinates.h
+
+rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.h: rosidl_generator_c/custom_messages/srv/shape.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.h
+
+rosidl_generator_c/custom_messages/msg/detail/face_coordinates__struct.h: rosidl_generator_c/custom_messages/srv/shape.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/custom_messages/msg/detail/face_coordinates__struct.h
+
+rosidl_generator_c/custom_messages/msg/detail/face_coordinates__type_support.h: rosidl_generator_c/custom_messages/srv/shape.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/custom_messages/msg/detail/face_coordinates__type_support.h
+
+rosidl_generator_c/custom_messages/srv/poses_in_front_of_faces.h: rosidl_generator_c/custom_messages/srv/shape.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/custom_messages/srv/poses_in_front_of_faces.h
+
+rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.h: rosidl_generator_c/custom_messages/srv/shape.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.h
+
+rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__struct.h: rosidl_generator_c/custom_messages/srv/shape.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__struct.h
+
+rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.h: rosidl_generator_c/custom_messages/srv/shape.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.h
+
 rosidl_generator_c/custom_messages/srv/detail/shape__functions.c: rosidl_generator_c/custom_messages/srv/shape.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/custom_messages/srv/detail/shape__functions.c
+
+rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c: rosidl_generator_c/custom_messages/srv/shape.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c
+
+rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c: rosidl_generator_c/custom_messages/srv/shape.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c
 
 CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/shape__functions.c.o: CMakeFiles/custom_messages__rosidl_generator_c.dir/flags.make
 CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/shape__functions.c.o: rosidl_generator_c/custom_messages/srv/detail/shape__functions.c
@@ -172,22 +247,56 @@ CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_mes
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/shape__functions.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_generator_c/custom_messages/srv/detail/shape__functions.c -o CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/shape__functions.c.s
 
+CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.o: CMakeFiles/custom_messages__rosidl_generator_c.dir/flags.make
+CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.o: rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c
+CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.o: CMakeFiles/custom_messages__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.o -MF CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.o.d -o CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.o -c /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c
+
+CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c > CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.i
+
+CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c -o CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.s
+
+CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.o: CMakeFiles/custom_messages__rosidl_generator_c.dir/flags.make
+CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.o: rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c
+CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.o: CMakeFiles/custom_messages__rosidl_generator_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.o -MF CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.o.d -o CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.o -c /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c
+
+CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c > CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.i
+
+CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c -o CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.s
+
 # Object files for target custom_messages__rosidl_generator_c
 custom_messages__rosidl_generator_c_OBJECTS = \
-"CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/shape__functions.c.o"
+"CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/shape__functions.c.o" \
+"CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.o" \
+"CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.o"
 
 # External object files for target custom_messages__rosidl_generator_c
 custom_messages__rosidl_generator_c_EXTERNAL_OBJECTS =
 
 libcustom_messages__rosidl_generator_c.so: CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/shape__functions.c.o
+libcustom_messages__rosidl_generator_c.so: CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.o
+libcustom_messages__rosidl_generator_c.so: CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.o
 libcustom_messages__rosidl_generator_c.so: CMakeFiles/custom_messages__rosidl_generator_c.dir/build.make
+libcustom_messages__rosidl_generator_c.so: /opt/ros/humble/lib/libvisualization_msgs__rosidl_generator_c.so
+libcustom_messages__rosidl_generator_c.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
 libcustom_messages__rosidl_generator_c.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
 libcustom_messages__rosidl_generator_c.so: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
 libcustom_messages__rosidl_generator_c.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so
 libcustom_messages__rosidl_generator_c.so: /opt/ros/humble/lib/librosidl_runtime_c.so
 libcustom_messages__rosidl_generator_c.so: /opt/ros/humble/lib/librcutils.so
 libcustom_messages__rosidl_generator_c.so: CMakeFiles/custom_messages__rosidl_generator_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C shared library libcustom_messages__rosidl_generator_c.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C shared library libcustom_messages__rosidl_generator_c.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/custom_messages__rosidl_generator_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -198,10 +307,20 @@ CMakeFiles/custom_messages__rosidl_generator_c.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/custom_messages__rosidl_generator_c.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/custom_messages__rosidl_generator_c.dir/clean
 
+CMakeFiles/custom_messages__rosidl_generator_c.dir/depend: rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c
+CMakeFiles/custom_messages__rosidl_generator_c.dir/depend: rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.h
+CMakeFiles/custom_messages__rosidl_generator_c.dir/depend: rosidl_generator_c/custom_messages/msg/detail/face_coordinates__struct.h
+CMakeFiles/custom_messages__rosidl_generator_c.dir/depend: rosidl_generator_c/custom_messages/msg/detail/face_coordinates__type_support.h
+CMakeFiles/custom_messages__rosidl_generator_c.dir/depend: rosidl_generator_c/custom_messages/msg/face_coordinates.h
+CMakeFiles/custom_messages__rosidl_generator_c.dir/depend: rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c
+CMakeFiles/custom_messages__rosidl_generator_c.dir/depend: rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.h
+CMakeFiles/custom_messages__rosidl_generator_c.dir/depend: rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__struct.h
+CMakeFiles/custom_messages__rosidl_generator_c.dir/depend: rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.h
 CMakeFiles/custom_messages__rosidl_generator_c.dir/depend: rosidl_generator_c/custom_messages/srv/detail/shape__functions.c
 CMakeFiles/custom_messages__rosidl_generator_c.dir/depend: rosidl_generator_c/custom_messages/srv/detail/shape__functions.h
 CMakeFiles/custom_messages__rosidl_generator_c.dir/depend: rosidl_generator_c/custom_messages/srv/detail/shape__struct.h
 CMakeFiles/custom_messages__rosidl_generator_c.dir/depend: rosidl_generator_c/custom_messages/srv/detail/shape__type_support.h
+CMakeFiles/custom_messages__rosidl_generator_c.dir/depend: rosidl_generator_c/custom_messages/srv/poses_in_front_of_faces.h
 CMakeFiles/custom_messages__rosidl_generator_c.dir/depend: rosidl_generator_c/custom_messages/srv/shape.h
 	cd /home/strazi/RINS-kappa/workspace/build/custom_messages && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/strazi/RINS-kappa/workspace/src/custom_messages /home/strazi/RINS-kappa/workspace/src/custom_messages /home/strazi/RINS-kappa/workspace/build/custom_messages /home/strazi/RINS-kappa/workspace/build/custom_messages /home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles/custom_messages__rosidl_generator_c.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/custom_messages__rosidl_generator_c.dir/depend

@@ -1,0 +1,28 @@
+[  3%] Built target dis_tutorial1__cpp
+[ 10%] Built target dis_tutorial1__rosidl_generator_c
+[ 13%] Built target simple_subscriber
+[ 16%] Built target simple_publisher
+[ 20%] Built target simple_set_bool_server_node
+[ 20%] Built target ament_cmake_python_copy_dis_tutorial1
+[ 37%] Built target dis_tutorial1__rosidl_typesupport_introspection_c
+[ 37%] Built target dis_tutorial1__rosidl_typesupport_fastrtps_c
+[ 62%] Built target dis_tutorial1__rosidl_typesupport_c
+[ 62%] Built target dis_tutorial1__rosidl_typesupport_cpp
+[ 62%] Built target dis_tutorial1__rosidl_typesupport_introspection_cpp
+[ 71%] Built target dis_tutorial1__rosidl_typesupport_fastrtps_cpp
+[ 71%] Built target dis_tutorial1
+[ 81%] Built target simple_server_node
+[ 81%] Built target complete_node
+[ 81%] Built target simple_client_node
+[ 83%] Built target dis_tutorial1__py
+[ 89%] Built target dis_tutorial1__rosidl_generator_py
+[100%] Built target dis_tutorial1__rosidl_typesupport_introspection_c__pyext
+[100%] Built target dis_tutorial1__rosidl_typesupport_c__pyext
+[100%] Built target dis_tutorial1__rosidl_typesupport_fastrtps_c__pyext
+running egg_info
+writing dis_tutorial1.egg-info/PKG-INFO
+writing dependency_links to dis_tutorial1.egg-info/dependency_links.txt
+writing top-level names to dis_tutorial1.egg-info/top_level.txt
+reading manifest file 'dis_tutorial1.egg-info/SOURCES.txt'
+writing manifest file 'dis_tutorial1.egg-info/SOURCES.txt'
+[100%] Built target ament_cmake_python_build_dis_tutorial1_egg

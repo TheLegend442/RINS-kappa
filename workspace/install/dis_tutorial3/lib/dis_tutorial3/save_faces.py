@@ -2,11 +2,24 @@
 import rclpy
 from rclpy.node import Node
 from visualization_msgs.msg import Marker
-from geometry_msgs.msg import PoseWithCovarianceStamped
+from custom_messages.msg import FaceCoordinates
+from custom_messages.srv import PosesInFrontOfFaces
+from geometry_msgs.msg import PoseWithCovarianceStamped, Pose
 import numpy as np
 import time
 import tf2_ros
 import tf2_geometry_msgs  # Za uporabo transformacij med sporočili
+
+class Face():
+
+    def __init__(self, id, center_point, bottom_left_point, upper_right_point, current_time, robot_position, count):
+        self.id = id
+        self.center_point = center_point
+        self.bottom_left_point = bottom_left_point
+        self.upper_right_point = upper_right_point
+        self.current_time = current_time
+        self.robot_position = robot_position
+        self.count = count
 
 class PeopleMarkerSubscriber(Node):
     def __init__(self):
@@ -19,9 +32,11 @@ class PeopleMarkerSubscriber(Node):
         # Publisher za markerje
         self.marker_publisher = self.create_publisher(Marker, '/detected_faces', 10)
 
+        # Publisher za pozicijo pred sliko
+
         # Subscription za Marker (Obrazi)
         self.subscription = self.create_subscription(
-            Marker, '/people_marker', self.marker_callback, 10
+            FaceCoordinates, '/people_marker', self.marker_callback, 10
         )
         
         # Subscription za pozicijo robota (AMCL)
@@ -29,11 +44,55 @@ class PeopleMarkerSubscriber(Node):
             PoseWithCovarianceStamped, '/amcl_pose', self.robot_position_callback, 10
         )
         
+        # Service that returns poses in front of detected faces
+        self.service = self.create_service(PosesInFrontOfFaces, 'get_face_pose', self.get_face_pose_callback)
+
         self.robot_position = None  # Shranjena pozicija robota
         self.faces = {}  # Slovar {face_id: (position, timestamp, robot_position, count)}
         self.threshold = 0.7  # Razdalja za zaznavanje istega obraza
         self.time_threshold = 5  # Sekunde preden obraz ponovno upoštevamo
         self.face_counter = 0  # Števec za unikatne ID-je obrazov
+
+    def get_face_pose_callback(self, request, response):
+        response.poses = []
+
+        for face in self.faces.values():
+            center = face.center_point
+            bottom_left = face.bottom_left_point
+            upper_right = face.upper_right_point
+            bottom_right = np.array([upper_right[0], upper_right[1], bottom_left[2]])
+            robot_position_when_detected = face.robot_position
+
+            print(f"Center: {center}, Bottom left: {bottom_left}, Upper right: {upper_right}, Bottom right: {bottom_right}, Robot: {robot_position_when_detected}")
+
+            # Izračun točke pol metra pred sliko
+            # normala je pravokotna na bottom_left -> bottom_right in ima z koordinato enako 0
+            smer_slike = bottom_right - bottom_left
+            normala = np.array([smer_slike[1], -smer_slike[0], 0.0])
+            normala = normala / np.linalg.norm(normala)
+
+            # hočemo, da je normala obrnjena proti robotu
+            if np.dot(robot_position_when_detected - bottom_left, normala) < 0:
+                normala = -normala
+
+            tocka_pred_sliko = center + 0.5 * normala
+            tocka_pred_sliko[2] = 0.0 # na tleh
+
+            # orientacija mora biti v isto smer kot negativna normala
+            orientation = np.arctan2(-normala[1], -normala[0])
+
+            pose = Pose()
+            pose.position.x = tocka_pred_sliko[0]
+            pose.position.y = tocka_pred_sliko[1]
+            pose.position.z = tocka_pred_sliko[2]
+            pose.orientation.z = orientation
+
+            # self.get_logger().info(f"Face {face.id} detected at {center}, robot at {robot_position_when_detected}, pose in front of face: {pose}")
+            print(pose)
+            response.poses.append(pose)
+
+        return response
+
 
     def robot_position_callback(self, msg):
         # Shrani pozicijo robota iz AMCL topica
@@ -44,22 +103,43 @@ class PeopleMarkerSubscriber(Node):
             self.get_logger().info("Pozicija robota ni bila prejeta, ignoriram zaznane obraze.")
             return
         
-        current_position = np.array([msg.pose.position.x, msg.pose.position.y, msg.pose.position.z])
+        current_position = np.array([msg.center.pose.position.x, msg.center.pose.position.y, msg.center.pose.position.z])
+        current_bottom_left_position = np.array([msg.bottom_left.pose.position.x, msg.bottom_left.pose.position.y, msg.bottom_left.pose.position.z])
+        current_upper_right_position = np.array([msg.upper_right.pose.position.x, msg.upper_right.pose.position.y, msg.upper_right.pose.position.z])
+
+        print(f"Center: {current_position}, Bottom left: {current_bottom_left_position}, Upper right: {current_upper_right_position}")
+
+        # self.get_logger().info(f"Zaznan obraz na poziciji {current_position}.")
         current_time = time.time()
 
         # Poskusimo pridobiti transformacijo iz robotovega koordinatnega sistema v globalni
         try:
             transform = self.tf_buffer.lookup_transform('map', 'base_link', rclpy.time.Time())
-            transformed_pose = tf2_geometry_msgs.do_transform_pose(msg.pose, transform)
+            transformed_pose = tf2_geometry_msgs.do_transform_pose(msg.center.pose, transform)
             transformed_position = np.array([transformed_pose.position.x, transformed_pose.position.y, transformed_pose.position.z])
+
+            transformed_bottom_left_pose = tf2_geometry_msgs.do_transform_pose(msg.bottom_left.pose, transform)
+            transformed_bottom_left_position = np.array([transformed_bottom_left_pose.position.x, transformed_bottom_left_pose.position.y, transformed_bottom_left_pose.position.z])
+
+            transformed_upper_right_pose = tf2_geometry_msgs.do_transform_pose(msg.upper_right.pose, transform)
+            transformed_upper_right_position = np.array([transformed_upper_right_pose.position.x, transformed_upper_right_pose.position.y, transformed_upper_right_pose.position.z])
+
+            print(f"Transformed center: {transformed_position}, Transformed bottom left: {transformed_bottom_left_position}, Transformed upper right: {transformed_upper_right_position}")
+            time.sleep(1)
 
         except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
             self.get_logger().error(f"Napaka pri transformaciji: {e}")
             return
 
         # Preveri, ali je obraz že bil zaznan
-        for face_id, (face, timestamp, robot_position, count) in self.faces.items():
-            distance = np.linalg.norm(face - transformed_position)
+        for face_id, face in self.faces.items():
+            count = face.count
+            timestamp = face.current_time
+            center_point = face.center_point
+            bottom_left_point = face.bottom_left_point
+            upper_right_point = face.upper_right_point
+
+            distance = np.linalg.norm(center_point - transformed_position)
             
             if distance < self.threshold:
                 if current_time - timestamp < self.time_threshold:
@@ -69,8 +149,10 @@ class PeopleMarkerSubscriber(Node):
                     self.delete_marker(face_id)
 
                     # **Posodobimo obraz s povprečjem**
-                    new_position = (count / (count + 1)) * face + (1 / (count + 1)) * transformed_position
-                    self.faces[face_id] = (new_position, current_time, self.robot_position, count + 1)
+                    new_position = (count / (count + 1)) * center_point + (1 / (count + 1)) * transformed_position
+                    new_bottom_left_position = (count / (count + 1)) * bottom_left_point + (1 / (count + 1)) * transformed_bottom_left_position
+                    new_upper_right_position = (count / (count + 1)) * upper_right_point + (1 / (count + 1)) * transformed_upper_right_position
+                    self.faces[face_id] = Face(face_id, new_position, new_bottom_left_position, new_upper_right_position, current_time, self.robot_position, count + 1)
 
                     # **Objavimo nov marker**
                     self.publish_face_marker(new_position, face_id)
@@ -79,8 +161,13 @@ class PeopleMarkerSubscriber(Node):
         # **Če obraz ni bil zaznan, ga dodamo v slovar**
         self.face_counter += 1
         self.get_logger().info(f"Zaznan nov obraz z ID-jem {self.face_counter}.")
-        self.faces[self.face_counter] = (transformed_position, current_time, self.robot_position, 1)
+        self.faces[self.face_counter] = Face(self.face_counter, transformed_position, transformed_bottom_left_position, transformed_upper_right_position, current_time, self.robot_position, 1)
+        # print(transformed_position)
         self.publish_face_marker(transformed_position, self.face_counter)
+
+
+        # izračun točke pol metra pred sliko
+        
 
     def publish_face_marker(self, position, face_id):
         """Objavi marker za zaznan obraz."""

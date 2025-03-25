@@ -1,0 +1,56 @@
+[0.023s] Invoking command in '/home/strazi/RINS-kappa/workspace/build/custom_messages': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/custom_messages -- -j12 -l12
+[0.251s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.252s] -- Found geometry_msgs: 4.2.4 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.252s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.252s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.252s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.253s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.253s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.289s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.454s] [31mCMake Error at /opt/ros/humble/share/rosidl_adapter/cmake/rosidl_adapt_interfaces.cmake:59 (message):
+[0.454s]   execute_process(/usr/bin/python3 -m rosidl_adapter --package-name
+[0.454s]   custom_messages --arguments-file
+[0.454s]   /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter__arguments__custom_messages.json
+[0.454s]   --output-dir
+[0.454s]   /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages
+[0.454s]   --output-file
+[0.454s]   /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages.idls)
+[0.455s]   returned error code 1:
+[0.455s] 
+[0.455s]   Error processing 'float bottom_left_x' of
+[0.455s]   'custom_messages/FaceCoordinates': ''float' is an invalid message name.  It
+[0.455s]   should have the pattern '^[A-Z][A-Za-z0-9]*$''
+[0.455s] 
+[0.455s]   Traceback (most recent call last):
+[0.455s] 
+[0.455s]     File "/usr/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+[0.455s]       return _run_code(code, main_globals, None,
+[0.455s]     File "/usr/lib/python3.10/runpy.py", line 86, in _run_code
+[0.455s]       exec(code, run_globals)
+[0.455s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/__main__.py", line 19, in <module>
+[0.455s]       sys.exit(main())
+[0.456s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/main.py", line 53, in main
+[0.456s]       abs_idl_file = convert_to_idl(
+[0.456s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/__init__.py", line 19, in convert_to_idl
+[0.456s]       return convert_msg_to_idl(
+[0.456s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/msg/__init__.py", line 28, in convert_msg_to_idl
+[0.456s]       msg = parse_message_string(package_name, input_file.stem, content)
+[0.456s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py", line 520, in parse_message_string
+[0.456s]       Type(type_string, context_package_name=pkg_name),
+[0.456s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py", line 277, in __init__
+[0.456s]       super(Type, self).__init__(
+[0.456s]     File "/opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_adapter/parser.py", line 205, in __init__
+[0.456s]       raise InvalidResourceName(
+[0.456s] 
+[0.456s]   rosidl_adapter.parser.InvalidResourceName: 'float' is an invalid message
+[0.456s]   name.  It should have the pattern '^[A-Z][A-Za-z0-9]*$'
+[0.456s] 
+[0.457s] Call Stack (most recent call first):
+[0.457s]   /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:130 (rosidl_adapt_interfaces)
+[0.457s]   CMakeLists.txt:16 (rosidl_generate_interfaces)
+[0.457s] 
+[0.457s] [0m
+[0.457s] -- Configuring incomplete, errors occurred!
+[0.457s] See also "/home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles/CMakeOutput.log".
+[0.460s] gmake: *** [Makefile:747: cmake_check_build_system] Error 1
+[0.463s] Invoked command in '/home/strazi/RINS-kappa/workspace/build/custom_messages' returned '2': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/custom_messages -- -j12 -l12

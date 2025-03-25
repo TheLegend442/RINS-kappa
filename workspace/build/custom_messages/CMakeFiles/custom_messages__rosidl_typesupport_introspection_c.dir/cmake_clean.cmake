@@ -1,8 +1,16 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.o"
+  "CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.o.d"
+  "CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.o"
+  "CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.o.d"
   "CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c.o"
   "CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c.o.d"
   "libcustom_messages__rosidl_typesupport_introspection_c.pdb"
   "libcustom_messages__rosidl_typesupport_introspection_c.so"
+  "rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c"
+  "rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__rosidl_typesupport_introspection_c.h"
+  "rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c"
   "rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h"
   "rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c"
 )

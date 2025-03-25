@@ -1,0 +1,204 @@
+[0.023s] Invoking command in '/home/strazi/RINS-kappa/workspace/build/custom_messages': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/custom_messages -- -j12 -l12
+[0.245s] [  2%] Built target custom_messages__cpp
+[0.246s] [  2%] Built target ament_cmake_python_copy_custom_messages
+[0.246s] [ 12%] Built target custom_messages__rosidl_typesupport_introspection_cpp
+[0.344s] running egg_info
+[0.344s] writing custom_messages.egg-info/PKG-INFO
+[0.344s] writing dependency_links to custom_messages.egg-info/dependency_links.txt
+[0.345s] writing top-level names to custom_messages.egg-info/top_level.txt
+[0.348s] reading manifest file 'custom_messages.egg-info/SOURCES.txt'
+[0.348s] writing manifest file 'custom_messages.egg-info/SOURCES.txt'
+[0.376s] [ 12%] Built target ament_cmake_python_build_custom_messages_egg
+[0.418s] [ 23%] Built target custom_messages__rosidl_typesupport_fastrtps_cpp
+[0.448s] [ 34%] Built target custom_messages__rosidl_typesupport_cpp
+[0.471s] [ 44%] Built target custom_messages__rosidl_generator_c
+[0.495s] [ 55%] Built target custom_messages__rosidl_typesupport_fastrtps_c
+[0.516s] [ 65%] Built target custom_messages__rosidl_typesupport_c
+[0.540s] [ 76%] Built target custom_messages__rosidl_typesupport_introspection_c
+[0.560s] [ 76%] Built target custom_messages
+[0.582s] [ 78%] Built target custom_messages__py
+[0.604s] [ 87%] Built target custom_messages__rosidl_generator_py
+[0.625s] [ 91%] Built target custom_messages__rosidl_typesupport_fastrtps_c__pyext
+[0.645s] [ 95%] Built target custom_messages__rosidl_typesupport_c__pyext
+[0.666s] [100%] Built target custom_messages__rosidl_typesupport_introspection_c__pyext
+[0.677s] Invoked command in '/home/strazi/RINS-kappa/workspace/build/custom_messages' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/custom_messages -- -j12 -l12
+[0.679s] Invoking command in '/home/strazi/RINS-kappa/workspace/build/custom_messages': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/strazi/RINS-kappa/workspace/build/custom_messages
+[0.686s] -- Install configuration: ""
+[0.686s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/ament_index/resource_index/rosidl_interfaces/custom_messages
+[0.686s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages
+[0.686s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv
+[0.686s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/poses_in_front_of_faces.h
+[0.686s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/shape.h
+[0.686s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail
+[0.687s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__functions.h
+[0.687s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__functions.h
+[0.687s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__struct.h
+[0.687s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__struct.h
+[0.687s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__functions.c
+[0.687s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__type_support.h
+[0.687s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__functions.c
+[0.687s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__type_support.h
+[0.687s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg
+[0.687s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/face_coordinates.h
+[0.688s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/rosidl_generator_c__visibility_control.h
+[0.688s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail
+[0.688s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__functions.h
+[0.688s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__functions.c
+[0.688s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__struct.h
+[0.688s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__type_support.h
+[0.688s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/library_path.sh
+[0.688s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/library_path.dsv
+[0.688s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_generator_c.so
+[0.688s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages
+[0.688s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv
+[0.688s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail
+[0.689s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__rosidl_typesupport_fastrtps_c.h
+[0.689s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__rosidl_typesupport_fastrtps_c.h
+[0.689s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg
+[0.689s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[0.689s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail
+[0.689s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__rosidl_typesupport_fastrtps_c.h
+[0.689s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_fastrtps_c.so
+[0.689s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages
+[0.689s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv
+[0.689s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/shape.hpp
+[0.690s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/poses_in_front_of_faces.hpp
+[0.690s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail
+[0.690s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__traits.hpp
+[0.690s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__struct.hpp
+[0.690s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__struct.hpp
+[0.690s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__builder.hpp
+[0.690s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__type_support.hpp
+[0.690s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__builder.hpp
+[0.690s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__traits.hpp
+[0.690s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__type_support.hpp
+[0.690s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg
+[0.691s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/face_coordinates.hpp
+[0.691s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/rosidl_generator_cpp__visibility_control.hpp
+[0.691s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail
+[0.691s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__type_support.hpp
+[0.691s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__builder.hpp
+[0.691s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__traits.hpp
+[0.691s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__struct.hpp
+[0.691s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages
+[0.691s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv
+[0.691s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail
+[0.691s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__rosidl_typesupport_fastrtps_cpp.hpp
+[0.691s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__rosidl_typesupport_fastrtps_cpp.hpp
+[0.692s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/dds_fastrtps
+[0.692s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg
+[0.692s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[0.692s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail
+[0.692s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/dds_fastrtps
+[0.692s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__rosidl_typesupport_fastrtps_cpp.hpp
+[0.692s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_fastrtps_cpp.so
+[0.692s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages
+[0.692s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv
+[0.692s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail
+[0.692s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__type_support.c
+[0.692s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__rosidl_typesupport_introspection_c.h
+[0.693s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c
+[0.693s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h
+[0.693s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg
+[0.693s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[0.693s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail
+[0.693s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__type_support.c
+[0.693s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__rosidl_typesupport_introspection_c.h
+[0.693s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_introspection_c.so
+[0.693s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_c.so
+[0.693s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages
+[0.693s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv
+[0.693s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail
+[0.693s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__type_support.cpp
+[0.694s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__rosidl_typesupport_introspection_cpp.hpp
+[0.694s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_cpp.hpp
+[0.694s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__type_support.cpp
+[0.694s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg
+[0.694s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail
+[0.694s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__rosidl_typesupport_introspection_cpp.hpp
+[0.694s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__type_support.cpp
+[0.694s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_introspection_cpp.so
+[0.694s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_cpp.so
+[0.694s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/pythonpath.sh
+[0.694s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/pythonpath.dsv
+[0.694s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages-0.0.0-py3.10.egg-info
+[0.694s] -- Installing: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages-0.0.0-py3.10.egg-info/SOURCES.txt
+[0.695s] -- Installing: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages-0.0.0-py3.10.egg-info/top_level.txt
+[0.695s] -- Installing: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages-0.0.0-py3.10.egg-info/dependency_links.txt
+[0.695s] -- Installing: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages-0.0.0-py3.10.egg-info/PKG-INFO
+[0.695s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages
+[0.695s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/_custom_messages_s.ep.rosidl_typesupport_c.c
+[0.695s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/custom_messages_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[0.695s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/libcustom_messages__rosidl_generator_py.so
+[0.695s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/custom_messages_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[0.695s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c
+[0.695s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv
+[0.695s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv/_shape.py
+[0.696s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv/_shape_s.c
+[0.696s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv/__init__.py
+[0.696s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv/_poses_in_front_of_faces_s.c
+[0.696s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv/_poses_in_front_of_faces.py
+[0.696s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/__init__.py
+[0.696s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/_custom_messages_s.ep.rosidl_typesupport_introspection_c.c
+[0.696s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/custom_messages_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[0.696s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/msg
+[0.696s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/msg/_face_coordinates.py
+[0.696s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/msg/_face_coordinates_s.c
+[0.696s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/msg/__init__.py
+[0.724s] Listing '/home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages'...
+[0.724s] Listing '/home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/msg'...
+[0.724s] Listing '/home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv'...
+[0.728s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/custom_messages_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[0.728s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/custom_messages_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[0.728s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/custom_messages_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[0.729s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_generator_py.so
+[0.729s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/Shape.idl
+[0.729s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/msg/FaceCoordinates.idl
+[0.729s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/PosesInFrontOfFaces.idl
+[0.729s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/Shape.srv
+[0.729s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/Shape_Request.msg
+[0.730s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/Shape_Response.msg
+[0.730s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/msg/FaceCoordinates.msg
+[0.730s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/PosesInFrontOfFaces.srv
+[0.730s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/PosesInFrontOfFaces_Request.msg
+[0.730s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/PosesInFrontOfFaces_Response.msg
+[0.730s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/ament_index/resource_index/package_run_dependencies/custom_messages
+[0.730s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/ament_index/resource_index/parent_prefix_path/custom_messages
+[0.730s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/ament_prefix_path.sh
+[0.730s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/ament_prefix_path.dsv
+[0.730s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/path.sh
+[0.730s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/path.dsv
+[0.730s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/local_setup.bash
+[0.730s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/local_setup.sh
+[0.730s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/local_setup.zsh
+[0.731s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/local_setup.dsv
+[0.731s] -- Installing: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.dsv
+[0.731s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/ament_index/resource_index/packages/custom_messages
+[0.731s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_generator_cExport.cmake
+[0.731s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_generator_cExport-noconfig.cmake
+[0.731s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_typesupport_fastrtps_cExport.cmake
+[0.731s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[0.731s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_generator_cppExport.cmake
+[0.732s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_typesupport_fastrtps_cppExport.cmake
+[0.732s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[0.732s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_introspection_cExport.cmake
+[0.732s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[0.732s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_cExport.cmake
+[0.732s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_cExport-noconfig.cmake
+[0.732s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_introspection_cppExport.cmake
+[0.732s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[0.732s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_cppExport.cmake
+[0.733s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_cppExport-noconfig.cmake
+[0.733s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_generator_pyExport.cmake
+[0.733s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_generator_pyExport-noconfig.cmake
+[0.733s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/rosidl_cmake-extras.cmake
+[0.733s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/ament_cmake_export_dependencies-extras.cmake
+[0.733s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/ament_cmake_export_include_directories-extras.cmake
+[0.733s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/ament_cmake_export_libraries-extras.cmake
+[0.733s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/ament_cmake_export_targets-extras.cmake
+[0.733s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[0.733s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[0.733s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messagesConfig.cmake
+[0.733s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messagesConfig-version.cmake
+[0.733s] -- Up-to-date: /home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.xml
+[0.737s] Invoked command in '/home/strazi/RINS-kappa/workspace/build/custom_messages' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/strazi/RINS-kappa/workspace/build/custom_messages

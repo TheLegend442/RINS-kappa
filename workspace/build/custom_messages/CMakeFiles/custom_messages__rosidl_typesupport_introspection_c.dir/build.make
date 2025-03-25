@@ -78,6 +78,8 @@ rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_type
 rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/rosidl_typesupport_introspection_c/resource/srv__rosidl_typesupport_introspection_c.h.em
 rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/rosidl_typesupport_introspection_c/resource/srv__type_support.c.em
 rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: rosidl_adapter/custom_messages/srv/Shape.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: rosidl_adapter/custom_messages/msg/FaceCoordinates.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: rosidl_adapter/custom_messages/srv/PosesInFrontOfFaces.idl
 rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/geometry_msgs/msg/Accel.idl
 rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/geometry_msgs/msg/AccelStamped.idl
 rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/geometry_msgs/msg/AccelWithCovariance.idl
@@ -138,11 +140,66 @@ rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_type
 rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/std_msgs/msg/UInt64MultiArray.idl
 rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/std_msgs/msg/UInt8.idl
 rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/std_msgs/msg/UInt8MultiArray.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/visualization_msgs/msg/ImageMarker.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarker.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerControl.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerFeedback.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerInit.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerPose.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerUpdate.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/visualization_msgs/msg/Marker.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/visualization_msgs/msg/MarkerArray.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/visualization_msgs/msg/MenuEntry.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/visualization_msgs/msg/MeshFile.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/visualization_msgs/msg/UVCoordinate.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/visualization_msgs/srv/GetInteractiveMarkers.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/builtin_interfaces/msg/Duration.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/builtin_interfaces/msg/Time.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/BatteryState.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/CameraInfo.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/ChannelFloat32.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/CompressedImage.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/FluidPressure.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/Illuminance.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/Image.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/Imu.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/JointState.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/Joy.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/JoyFeedback.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/JoyFeedbackArray.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/LaserEcho.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/LaserScan.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/MagneticField.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/MultiDOFJointState.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/MultiEchoLaserScan.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/NavSatFix.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/NavSatStatus.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/PointCloud.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/PointCloud2.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/PointField.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/Range.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/RegionOfInterest.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/RelativeHumidity.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/Temperature.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/msg/TimeReference.idl
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h: /opt/ros/humble/share/sensor_msgs/srv/SetCameraInfo.idl
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating C introspection for ROS interfaces"
 	/usr/bin/python3 /opt/ros/humble/lib/rosidl_typesupport_introspection_c/rosidl_typesupport_introspection_c --generator-arguments-file /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_typesupport_introspection_c__arguments.json
 
+rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__rosidl_typesupport_introspection_c.h: rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__rosidl_typesupport_introspection_c.h
+
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__rosidl_typesupport_introspection_c.h: rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__rosidl_typesupport_introspection_c.h
+
 rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c: rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c
+
+rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c: rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c
+
+rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c: rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c
 
 CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c.o: CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/flags.make
 CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c.o: rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c
@@ -158,27 +215,63 @@ CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesu
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c.s"
 	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c -o CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c.s
 
+CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.o: CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/flags.make
+CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.o: rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c
+CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.o: CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.o -MF CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.o.d -o CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.o -c /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c
+
+CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c > CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.i
+
+CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c -o CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.s
+
+CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.o: CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/flags.make
+CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.o: rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c
+CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.o: CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.o"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -MD -MT CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.o -MF CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.o.d -o CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.o -c /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c
+
+CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.i"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c > CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.i
+
+CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.s"
+	/usr/bin/cc $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c -o CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.s
+
 # Object files for target custom_messages__rosidl_typesupport_introspection_c
 custom_messages__rosidl_typesupport_introspection_c_OBJECTS = \
-"CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c.o"
+"CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c.o" \
+"CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.o" \
+"CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.o"
 
 # External object files for target custom_messages__rosidl_typesupport_introspection_c
 custom_messages__rosidl_typesupport_introspection_c_EXTERNAL_OBJECTS =
 
 libcustom_messages__rosidl_typesupport_introspection_c.so: CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c.o
+libcustom_messages__rosidl_typesupport_introspection_c.so: CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.o
+libcustom_messages__rosidl_typesupport_introspection_c.so: CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.o
 libcustom_messages__rosidl_typesupport_introspection_c.so: CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/build.make
 libcustom_messages__rosidl_typesupport_introspection_c.so: libcustom_messages__rosidl_generator_c.so
+libcustom_messages__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/libvisualization_msgs__rosidl_typesupport_introspection_c.so
+libcustom_messages__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_typesupport_introspection_c.so
 libcustom_messages__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_typesupport_introspection_c.so
 libcustom_messages__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/libstd_msgs__rosidl_typesupport_introspection_c.so
-libcustom_messages__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
-libcustom_messages__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
 libcustom_messages__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_typesupport_introspection_c.so
 libcustom_messages__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/librosidl_typesupport_introspection_c.so
+libcustom_messages__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/libvisualization_msgs__rosidl_generator_c.so
+libcustom_messages__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/libsensor_msgs__rosidl_generator_c.so
+libcustom_messages__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/libgeometry_msgs__rosidl_generator_c.so
+libcustom_messages__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/libstd_msgs__rosidl_generator_c.so
 libcustom_messages__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/libbuiltin_interfaces__rosidl_generator_c.so
 libcustom_messages__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/librosidl_runtime_c.so
 libcustom_messages__rosidl_typesupport_introspection_c.so: /opt/ros/humble/lib/librcutils.so
 libcustom_messages__rosidl_typesupport_introspection_c.so: CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking C shared library libcustom_messages__rosidl_typesupport_introspection_c.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking C shared library libcustom_messages__rosidl_typesupport_introspection_c.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -189,6 +282,10 @@ CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/clean:
 	$(CMAKE_COMMAND) -P CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/cmake_clean.cmake
 .PHONY : CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/clean
 
+CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__rosidl_typesupport_introspection_c.h
+CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c
+CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__rosidl_typesupport_introspection_c.h
+CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c
 CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h
 CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/depend: rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c
 	cd /home/strazi/RINS-kappa/workspace/build/custom_messages && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/strazi/RINS-kappa/workspace/src/custom_messages /home/strazi/RINS-kappa/workspace/src/custom_messages /home/strazi/RINS-kappa/workspace/build/custom_messages /home/strazi/RINS-kappa/workspace/build/custom_messages /home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/DependInfo.cmake --color=$(COLOR)

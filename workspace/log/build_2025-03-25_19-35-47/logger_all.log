@@ -1,0 +1,399 @@
+[0.082s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.082s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=12, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, mixin_files=None, mixin=None, verb_parser=<colcon_mixin.mixin.mixin_argument.MixinArgumentDecorator object at 0x7ee12d05eb00>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x7ee12d0200d0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x7ee12d0200d0>>, mixin_verb=('build',))
+[0.223s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.223s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.223s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.223s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.223s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.223s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.223s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/strazi/RINS-kappa/workspace'
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.223s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.224s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.224s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.231s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.232s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extensions ['ignore', 'ignore_ament_install']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extension 'ignore'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extension 'ignore_ament_install'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extensions ['colcon_pkg']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extension 'colcon_pkg'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extensions ['colcon_meta']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extension 'colcon_meta'
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extensions ['ros']
+[0.233s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extension 'ros'
+[0.235s] DEBUG:colcon.colcon_core.package_identification:Package 'src/custom_messages' with type 'ros.ament_cmake' and name 'custom_messages'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extensions ['ignore', 'ignore_ament_install']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extension 'ignore'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extension 'ignore_ament_install'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extensions ['colcon_pkg']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extension 'colcon_pkg'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extensions ['colcon_meta']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extension 'colcon_meta'
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extensions ['ros']
+[0.235s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extension 'ros'
+[0.236s] DEBUG:colcon.colcon_core.package_identification:Package 'src/dis_tutorial1' with type 'ros.ament_cmake' and name 'dis_tutorial1'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extensions ['ignore', 'ignore_ament_install']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extension 'ignore'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extension 'ignore_ament_install'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extensions ['colcon_pkg']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extension 'colcon_pkg'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extensions ['colcon_meta']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extension 'colcon_meta'
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extensions ['ros']
+[0.236s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extension 'ros'
+[0.238s] DEBUG:colcon.colcon_core.package_identification:Package 'src/dis_tutorial2' with type 'ros.ament_python' and name 'dis_tutorial2'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extensions ['ignore', 'ignore_ament_install']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extension 'ignore'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extension 'ignore_ament_install'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extensions ['colcon_pkg']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extension 'colcon_pkg'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extensions ['colcon_meta']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extension 'colcon_meta'
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extensions ['ros']
+[0.238s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extension 'ros'
+[0.239s] DEBUG:colcon.colcon_core.package_identification:Package 'src/dis_tutorial3' with type 'ros.ament_cmake' and name 'dis_tutorial3'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extensions ['ignore', 'ignore_ament_install']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extension 'ignore'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extension 'ignore_ament_install'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extensions ['colcon_pkg']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extension 'colcon_pkg'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extensions ['colcon_meta']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extension 'colcon_meta'
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extensions ['ros']
+[0.239s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extension 'ros'
+[0.240s] DEBUG:colcon.colcon_core.package_identification:Package 'src/dis_tutorial4' with type 'ros.ament_cmake' and name 'dis_tutorial4'
+[0.240s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.240s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.240s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.240s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.240s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.261s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.261s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.263s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 5 installed packages in /home/strazi/RINS-kappa/workspace/install
+[0.264s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 386 installed packages in /opt/ros/humble
+[0.266s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'cmake_args' from command line to 'None'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'cmake_target' from command line to 'None'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'cmake_clean_cache' from command line to 'False'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'cmake_clean_first' from command line to 'False'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'cmake_force_configure' from command line to 'False'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'ament_cmake_args' from command line to 'None'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'catkin_cmake_args' from command line to 'None'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.304s] DEBUG:colcon.colcon_core.verb:Building package 'custom_messages' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/strazi/RINS-kappa/workspace/build/custom_messages', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/strazi/RINS-kappa/workspace/install/custom_messages', 'merge_install': False, 'path': '/home/strazi/RINS-kappa/workspace/src/custom_messages', 'symlink_install': False, 'test_result_base': None}
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'cmake_args' from command line to 'None'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'cmake_target' from command line to 'None'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'cmake_clean_cache' from command line to 'False'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'cmake_clean_first' from command line to 'False'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'cmake_force_configure' from command line to 'False'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'ament_cmake_args' from command line to 'None'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'catkin_cmake_args' from command line to 'None'
+[0.304s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.304s] DEBUG:colcon.colcon_core.verb:Building package 'dis_tutorial1' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/strazi/RINS-kappa/workspace/build/dis_tutorial1', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1', 'merge_install': False, 'path': '/home/strazi/RINS-kappa/workspace/src/dis_tutorial1', 'symlink_install': False, 'test_result_base': None}
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'cmake_args' from command line to 'None'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'cmake_target' from command line to 'None'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'cmake_clean_cache' from command line to 'False'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'cmake_clean_first' from command line to 'False'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'cmake_force_configure' from command line to 'False'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'ament_cmake_args' from command line to 'None'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'catkin_cmake_args' from command line to 'None'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.305s] DEBUG:colcon.colcon_core.verb:Building package 'dis_tutorial2' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/strazi/RINS-kappa/workspace/build/dis_tutorial2', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2', 'merge_install': False, 'path': '/home/strazi/RINS-kappa/workspace/src/dis_tutorial2', 'symlink_install': False, 'test_result_base': None}
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'cmake_args' from command line to 'None'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'cmake_target' from command line to 'None'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'cmake_clean_cache' from command line to 'False'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'cmake_clean_first' from command line to 'False'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'cmake_force_configure' from command line to 'False'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'ament_cmake_args' from command line to 'None'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'catkin_cmake_args' from command line to 'None'
+[0.305s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.305s] DEBUG:colcon.colcon_core.verb:Building package 'dis_tutorial3' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/strazi/RINS-kappa/workspace/build/dis_tutorial3', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3', 'merge_install': False, 'path': '/home/strazi/RINS-kappa/workspace/src/dis_tutorial3', 'symlink_install': False, 'test_result_base': None}
+[0.306s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'cmake_args' from command line to 'None'
+[0.306s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'cmake_target' from command line to 'None'
+[0.306s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.306s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'cmake_clean_cache' from command line to 'False'
+[0.306s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'cmake_clean_first' from command line to 'False'
+[0.306s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'cmake_force_configure' from command line to 'False'
+[0.306s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'ament_cmake_args' from command line to 'None'
+[0.306s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'catkin_cmake_args' from command line to 'None'
+[0.306s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.306s] DEBUG:colcon.colcon_core.verb:Building package 'dis_tutorial4' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/strazi/RINS-kappa/workspace/build/dis_tutorial4', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4', 'merge_install': False, 'path': '/home/strazi/RINS-kappa/workspace/src/dis_tutorial4', 'symlink_install': False, 'test_result_base': None}
+[0.306s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.307s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.307s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/strazi/RINS-kappa/workspace/src/custom_messages' with build type 'ament_cmake'
+[0.307s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/strazi/RINS-kappa/workspace/src/custom_messages'
+[0.309s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.309s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.309s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.312s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/strazi/RINS-kappa/workspace/src/dis_tutorial1' with build type 'ament_cmake'
+[0.312s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/strazi/RINS-kappa/workspace/src/dis_tutorial1'
+[0.313s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.313s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.316s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/strazi/RINS-kappa/workspace/src/dis_tutorial2' with build type 'ament_python'
+[0.316s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial2', 'ament_prefix_path')
+[0.316s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/hook/ament_prefix_path.ps1'
+[0.316s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/hook/ament_prefix_path.dsv'
+[0.317s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/hook/ament_prefix_path.sh'
+[0.317s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.317s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.320s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/strazi/RINS-kappa/workspace/src/dis_tutorial3' with build type 'ament_cmake'
+[0.320s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/strazi/RINS-kappa/workspace/src/dis_tutorial3'
+[0.320s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.320s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.323s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/strazi/RINS-kappa/workspace/src/dis_tutorial4' with build type 'ament_cmake'
+[0.323s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/strazi/RINS-kappa/workspace/src/dis_tutorial4'
+[0.324s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.324s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.331s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/strazi/RINS-kappa/workspace/build/custom_messages': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/custom_messages -- -j12 -l12
+[0.334s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/dis_tutorial1 -- -j12 -l12
+[0.554s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/strazi/RINS-kappa/workspace/src/dis_tutorial2'
+[0.554s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.554s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.561s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/dis_tutorial3 -- -j12 -l12
+[0.570s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial4': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/dis_tutorial4 -- -j12 -l12
+[0.603s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial3' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/dis_tutorial3 -- -j12 -l12
+[0.613s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/strazi/RINS-kappa/workspace/build/dis_tutorial3
+[0.615s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial4' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/dis_tutorial4 -- -j12 -l12
+[0.616s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial4': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/strazi/RINS-kappa/workspace/build/dis_tutorial4
+[0.626s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial4)
+[0.636s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4' for CMake module files
+[0.637s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial4' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/strazi/RINS-kappa/workspace/build/dis_tutorial4
+[0.637s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4' for CMake config files
+[0.638s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial4', 'cmake_prefix_path')
+[0.638s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/hook/cmake_prefix_path.ps1'
+[0.638s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/hook/cmake_prefix_path.dsv'
+[0.638s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/hook/cmake_prefix_path.sh'
+[0.639s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/lib'
+[0.639s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/bin'
+[0.639s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/lib/pkgconfig/dis_tutorial4.pc'
+[0.639s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/lib/python3.10/site-packages'
+[0.639s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/bin'
+[0.640s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.ps1'
+[0.640s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.dsv'
+[0.641s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.sh'
+[0.641s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.bash'
+[0.642s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.zsh'
+[0.642s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/colcon-core/packages/dis_tutorial4)
+[0.643s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial4)
+[0.643s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4' for CMake module files
+[0.643s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4' for CMake config files
+[0.643s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial4', 'cmake_prefix_path')
+[0.643s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/hook/cmake_prefix_path.ps1'
+[0.644s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/hook/cmake_prefix_path.dsv'
+[0.644s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/hook/cmake_prefix_path.sh'
+[0.644s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/lib'
+[0.645s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/bin'
+[0.645s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/lib/pkgconfig/dis_tutorial4.pc'
+[0.645s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/lib/python3.10/site-packages'
+[0.645s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/bin'
+[0.645s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.ps1'
+[0.646s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.dsv'
+[0.646s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.sh'
+[0.646s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.bash'
+[0.647s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.zsh'
+[0.647s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/strazi/RINS-kappa/workspace/install/dis_tutorial4/share/colcon-core/packages/dis_tutorial4)
+[0.648s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial3)
+[0.648s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3' for CMake module files
+[0.648s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial3' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/strazi/RINS-kappa/workspace/build/dis_tutorial3
+[0.649s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3' for CMake config files
+[0.649s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial3', 'cmake_prefix_path')
+[0.649s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/hook/cmake_prefix_path.ps1'
+[0.649s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/hook/cmake_prefix_path.dsv'
+[0.649s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/hook/cmake_prefix_path.sh'
+[0.650s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/lib'
+[0.650s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/bin'
+[0.650s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/lib/pkgconfig/dis_tutorial3.pc'
+[0.650s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/lib/python3.10/site-packages'
+[0.650s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/bin'
+[0.650s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.ps1'
+[0.651s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.dsv'
+[0.651s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.sh'
+[0.651s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.bash'
+[0.652s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.zsh'
+[0.652s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/colcon-core/packages/dis_tutorial3)
+[0.652s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial3)
+[0.652s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3' for CMake module files
+[0.653s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3' for CMake config files
+[0.653s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial3', 'cmake_prefix_path')
+[0.653s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/hook/cmake_prefix_path.ps1'
+[0.653s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/hook/cmake_prefix_path.dsv'
+[0.654s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/hook/cmake_prefix_path.sh'
+[0.654s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/lib'
+[0.654s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/bin'
+[0.654s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/lib/pkgconfig/dis_tutorial3.pc'
+[0.654s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/lib/python3.10/site-packages'
+[0.654s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/bin'
+[0.655s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.ps1'
+[0.655s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.dsv'
+[0.655s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.sh'
+[0.656s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.bash'
+[0.656s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.zsh'
+[0.656s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/strazi/RINS-kappa/workspace/install/dis_tutorial3/share/colcon-core/packages/dis_tutorial3)
+[0.657s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/dis_tutorial1 -- -j12 -l12
+[0.659s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/strazi/RINS-kappa/workspace/build/dis_tutorial1
+[0.712s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial1)
+[0.713s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1' for CMake module files
+[0.713s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/strazi/RINS-kappa/workspace/build/dis_tutorial1
+[0.714s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1' for CMake config files
+[0.714s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial1', 'cmake_prefix_path')
+[0.714s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/cmake_prefix_path.ps1'
+[0.715s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/cmake_prefix_path.dsv'
+[0.715s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/cmake_prefix_path.sh'
+[0.716s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/lib'
+[0.716s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial1', 'ld_library_path_lib')
+[0.716s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/ld_library_path_lib.ps1'
+[0.716s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/ld_library_path_lib.dsv'
+[0.716s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/ld_library_path_lib.sh'
+[0.717s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/bin'
+[0.717s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/lib/pkgconfig/dis_tutorial1.pc'
+[0.717s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/lib/python3.10/site-packages'
+[0.717s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/bin'
+[0.717s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.ps1'
+[0.718s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.dsv'
+[0.718s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.sh'
+[0.718s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.bash'
+[0.718s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.zsh'
+[0.719s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/colcon-core/packages/dis_tutorial1)
+[0.719s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial1)
+[0.719s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1' for CMake module files
+[0.720s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1' for CMake config files
+[0.721s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial1', 'cmake_prefix_path')
+[0.721s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/cmake_prefix_path.ps1'
+[0.721s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/cmake_prefix_path.dsv'
+[0.721s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/cmake_prefix_path.sh'
+[0.722s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/lib'
+[0.722s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial1', 'ld_library_path_lib')
+[0.722s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/ld_library_path_lib.ps1'
+[0.722s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/ld_library_path_lib.dsv'
+[0.722s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/ld_library_path_lib.sh'
+[0.723s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/bin'
+[0.723s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/lib/pkgconfig/dis_tutorial1.pc'
+[0.723s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/lib/python3.10/site-packages'
+[0.723s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/bin'
+[0.723s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.ps1'
+[0.724s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.dsv'
+[0.724s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.sh'
+[0.724s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.bash'
+[0.725s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.zsh'
+[0.725s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/strazi/RINS-kappa/workspace/install/dis_tutorial1/share/colcon-core/packages/dis_tutorial1)
+[0.860s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/strazi/RINS-kappa/workspace/src/dis_tutorial2': PYTHONPATH=/home/strazi/RINS-kappa/workspace/build/dis_tutorial2/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/dis_tutorial2 build --build-base /home/strazi/RINS-kappa/workspace/build/dis_tutorial2/build install --record /home/strazi/RINS-kappa/workspace/build/dis_tutorial2/install.log --single-version-externally-managed install_data
+[1.090s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2' for CMake module files
+[1.090s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/strazi/RINS-kappa/workspace/src/dis_tutorial2' returned '0': PYTHONPATH=/home/strazi/RINS-kappa/workspace/build/dis_tutorial2/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/dis_tutorial2 build --build-base /home/strazi/RINS-kappa/workspace/build/dis_tutorial2/build install --record /home/strazi/RINS-kappa/workspace/build/dis_tutorial2/install.log --single-version-externally-managed install_data
+[1.090s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2' for CMake config files
+[1.091s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/lib'
+[1.091s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/bin'
+[1.091s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/lib/pkgconfig/dis_tutorial2.pc'
+[1.091s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/lib/python3.10/site-packages'
+[1.091s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial2', 'pythonpath')
+[1.091s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/hook/pythonpath.ps1'
+[1.092s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/hook/pythonpath.dsv'
+[1.092s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/hook/pythonpath.sh'
+[1.092s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/bin'
+[1.092s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial2)
+[1.092s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/package.ps1'
+[1.093s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/package.dsv'
+[1.093s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/package.sh'
+[1.093s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/package.bash'
+[1.094s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/package.zsh'
+[1.094s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/strazi/RINS-kappa/workspace/install/dis_tutorial2/share/colcon-core/packages/dis_tutorial2)
+[3.407s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/strazi/RINS-kappa/workspace/build/custom_messages' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/custom_messages -- -j12 -l12
+[3.408s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/strazi/RINS-kappa/workspace/build/custom_messages': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/strazi/RINS-kappa/workspace/build/custom_messages
+[3.475s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(custom_messages)
+[3.476s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/custom_messages' for CMake module files
+[3.476s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/strazi/RINS-kappa/workspace/build/custom_messages' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/strazi/RINS-kappa/workspace/build/custom_messages
+[3.477s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/custom_messages' for CMake config files
+[3.477s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_messages', 'cmake_prefix_path')
+[3.478s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/cmake_prefix_path.ps1'
+[3.478s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/cmake_prefix_path.dsv'
+[3.478s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/cmake_prefix_path.sh'
+[3.479s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/custom_messages/lib'
+[3.479s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_messages', 'ld_library_path_lib')
+[3.479s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/ld_library_path_lib.ps1'
+[3.479s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/ld_library_path_lib.dsv'
+[3.480s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/ld_library_path_lib.sh'
+[3.480s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/custom_messages/bin'
+[3.480s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/custom_messages/lib/pkgconfig/custom_messages.pc'
+[3.480s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/custom_messages/lib/python3.10/site-packages'
+[3.481s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/custom_messages/bin'
+[3.481s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.ps1'
+[3.481s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.dsv'
+[3.482s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.sh'
+[3.482s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.bash'
+[3.483s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.zsh'
+[3.483s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/strazi/RINS-kappa/workspace/install/custom_messages/share/colcon-core/packages/custom_messages)
+[3.483s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(custom_messages)
+[3.484s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/custom_messages' for CMake module files
+[3.484s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/custom_messages' for CMake config files
+[3.485s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_messages', 'cmake_prefix_path')
+[3.485s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/cmake_prefix_path.ps1'
+[3.486s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/cmake_prefix_path.dsv'
+[3.486s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/cmake_prefix_path.sh'
+[3.486s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/custom_messages/lib'
+[3.486s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_messages', 'ld_library_path_lib')
+[3.487s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/ld_library_path_lib.ps1'
+[3.487s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/ld_library_path_lib.dsv'
+[3.487s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/ld_library_path_lib.sh'
+[3.488s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/custom_messages/bin'
+[3.488s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/custom_messages/lib/pkgconfig/custom_messages.pc'
+[3.488s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/custom_messages/lib/python3.10/site-packages'
+[3.488s] Level 1:colcon.colcon_core.environment:checking '/home/strazi/RINS-kappa/workspace/install/custom_messages/bin'
+[3.488s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.ps1'
+[3.489s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.dsv'
+[3.489s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.sh'
+[3.490s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.bash'
+[3.490s] INFO:colcon.colcon_core.shell:Creating package script '/home/strazi/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.zsh'
+[3.491s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/strazi/RINS-kappa/workspace/install/custom_messages/share/colcon-core/packages/custom_messages)
+[3.491s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[3.491s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[3.491s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[3.491s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[3.498s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[3.499s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[3.499s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[3.511s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[3.512s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/strazi/RINS-kappa/workspace/install/local_setup.ps1'
+[3.513s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/strazi/RINS-kappa/workspace/install/_local_setup_util_ps1.py'
+[3.515s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/strazi/RINS-kappa/workspace/install/setup.ps1'
+[3.516s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/strazi/RINS-kappa/workspace/install/local_setup.sh'
+[3.517s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/strazi/RINS-kappa/workspace/install/_local_setup_util_sh.py'
+[3.518s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/strazi/RINS-kappa/workspace/install/setup.sh'
+[3.520s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/strazi/RINS-kappa/workspace/install/local_setup.bash'
+[3.520s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/strazi/RINS-kappa/workspace/install/setup.bash'
+[3.522s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/strazi/RINS-kappa/workspace/install/local_setup.zsh'
+[3.523s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/strazi/RINS-kappa/workspace/install/setup.zsh'

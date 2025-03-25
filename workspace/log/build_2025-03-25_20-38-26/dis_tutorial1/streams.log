@@ -1,0 +1,29 @@
+[0.020s] Invoking command in '/home/strazi/RINS-kappa/workspace/build/dis_tutorial1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/strazi/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/strazi/RINS-kappa/workspace/build/dis_tutorial1 -- -j12 -l12
+[0.251s] [  3%] Built target dis_tutorial1__cpp
+[0.252s] [ 10%] Built target dis_tutorial1__rosidl_generator_c
+[0.252s] [ 13%] Built target simple_subscriber
+[0.252s] [ 16%] Built target simple_publisher
+[0.252s] [ 20%] Built target simple_set_bool_server_node
+[0.252s] [ 20%] Built target ament_cmake_python_copy_dis_tutorial1
+[0.252s] [ 37%] Built target dis_tutorial1__rosidl_typesupport_introspection_c
+[0.252s] [ 37%] Built target dis_tutorial1__rosidl_typesupport_fastrtps_c
+[0.252s] [ 62%] Built target dis_tutorial1__rosidl_typesupport_c
+[0.252s] [ 62%] Built target dis_tutorial1__rosidl_typesupport_cpp
+[0.252s] [ 62%] Built target dis_tutorial1__rosidl_typesupport_introspection_cpp
+[0.252s] [ 71%] Built target dis_tutorial1__rosidl_typesupport_fastrtps_cpp
+[0.252s] [ 71%] Built target dis_tutorial1
+[0.252s] [ 81%] Built target simple_server_node
+[0.252s] [ 81%] Built target complete_node
+[0.252s] [ 81%] Built target simple_client_node
+[0.252s] [ 83%] Built target dis_tutorial1__py
+[0.253s] [ 89%] Built target dis_tutorial1__rosidl_generator_py
+[0.253s] [100%] Built target dis_tutorial1__rosidl_typesupport_introspection_c__pyext
+[0.253s] [100%] Built target dis_tutorial1__rosidl_typesupport_c__pyext
+[0.253s] [100%] Built target dis_tutorial1__rosidl_typesupport_fastrtps_c__pyext
+[0.310s] running egg_info
+[0.311s] writing dis_tutorial1.egg-info/PKG-INFO
+[0.311s] writing dependency_links to dis_tutorial1.egg-info/dependency_links.txt
+[0.311s] writing top-level names to dis_tutorial1.egg-info/top_level.txt
+[0.314s] reading manifest file 'dis_tutorial1.egg-info/SOURCES.txt'
+[0.314s] writing manifest file 'dis_tutorial1.egg-info/SOURCES.txt'
+[0.334s] [100%] Built target ament_cmake_python_build_dis_tutorial1_egg
