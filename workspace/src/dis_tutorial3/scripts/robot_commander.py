@@ -34,6 +34,8 @@ from rclpy.node import Node
 from rclpy.qos import QoSDurabilityPolicy, QoSHistoryPolicy
 from rclpy.qos import QoSProfile, QoSReliabilityPolicy
 from rclpy.qos import qos_profile_sensor_data
+import cv2
+import yaml
 
 
 class TaskResult(Enum):
@@ -62,7 +64,8 @@ class RobotCommander(Node):
         self.status = None
         self.initial_pose_received = False
         self.is_docked = None
-
+        self.clicked_points = []
+        self.map_image, self.map_metadata = None, None
         # ROS2 subscribers
         self.create_subscription(DockStatus,
                                  'dock_status',
@@ -296,6 +299,39 @@ class RobotCommander(Node):
     def debug(self, msg):
         self.get_logger().debug(msg)
         return
+    def load_map(self, pgm_path, yaml_path):
+        """Naloži PGM sliko in YAML metapodatke zemljevida"""
+        with open(yaml_path, 'r') as yaml_file:
+            map_metadata = yaml.safe_load(yaml_file)
+
+        map_image = cv2.imread(pgm_path, cv2.IMREAD_GRAYSCALE)
+        if map_image is None:
+            self.get_logger().error("Napaka pri nalaganju map.pgm!")
+            exit(1)
+
+        # Obrni sliko, če je potrebno (PGM zemljevidi so pogosto obrnjeni)
+        #map_image = cv2.flip(map_image, 0)
+
+        return map_image, map_metadata
+    
+    def mouse_callback(self, event, x, y, flags, param):
+        """Shrani klikane točke in prikaži jih na sliki"""
+        if event == cv2.EVENT_LBUTTONDOWN:
+            self.clicked_points.append((x, y))
+            cv2.circle(self.map_image, (x, y), 2, (0, 0, 255), -1)
+            cv2.imshow("Map", self.map_image)
+            self.get_logger().info(f"Kliknjena točka: {x}, {y}")
+
+    def pixel_to_world(self, pixel_x, pixel_y):
+        """Pretvori slikovne koordinate v metrične glede na YAML podatke"""
+        origin = self.map_metadata['origin']
+        resolution = self.map_metadata['resolution']
+        height, _ = self.map_image.shape
+
+        world_x = origin[0] + pixel_x * resolution
+        world_y = origin[1] + (height - pixel_y) * resolution  # Obrnemo os Y
+
+        return world_x, world_y
     
 def main(args=None):
     
@@ -312,23 +348,27 @@ def main(args=None):
     # If it is docked, undock it first
     if rc.is_docked:
         rc.undock()
-    
-    # Finally send it a goal to reach
-    goal_pose = PoseStamped()
-    goal_pose.header.frame_id = 'map'
-    goal_pose.header.stamp = rc.get_clock().now().to_msg()
+    #Load the map
+    rc.map_image, rc.map_metadata = rc.load_map('src/dis_tutorial3/maps/map.pgm', 'src/dis_tutorial3/maps/map.yaml')
+    cv2.imshow("Map", rc.map_image)
+    cv2.setMouseCallback("Map", rc.mouse_callback)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
-    goal_pose.pose.position.x = 2.6
-    goal_pose.pose.position.y = -1.3
-    goal_pose.pose.orientation = rc.YawToQuaternion(0.57)
+    for i, (px, py) in enumerate(rc.clicked_points):
+        world_x, world_y = rc.pixel_to_world(px, py)
+        rc.get_logger().info(f"Točka {i+1}: ({world_x}, {world_y})")
 
-    rc.goToPose(goal_pose)
-
-    while not rc.isTaskComplete():
-        rc.info("Waiting for the task to complete...")
-        time.sleep(1)
-
-    rc.spin(-0.57)
+        goal_msg = PoseStamped()
+        goal_msg.header.frame_id = "map"
+        goal_msg.header.stamp = rc.get_clock().now().to_msg()
+        goal_msg.pose.position.x = world_x
+        goal_msg.pose.position.y = world_y
+        goal_msg.pose.orientation = Quaternion(x=0.0, y=0.0, z=0.0, w=1.0)  # Brez vrtenja
+        rc.goToPose(goal_msg)
+        while not rc.isTaskComplete():
+            rc.info("Waiting for the task to complete...")
+            time.sleep(0.1)
 
     rc.destroyNode()
 
