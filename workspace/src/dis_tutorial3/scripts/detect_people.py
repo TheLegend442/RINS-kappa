@@ -8,6 +8,7 @@ from sensor_msgs.msg import Image, PointCloud2
 from sensor_msgs_py import point_cloud2 as pc2
 
 from visualization_msgs.msg import Marker
+from custom_messages.msg import FaceCoordinates
 
 from cv_bridge import CvBridge, CvBridgeError
 import cv2
@@ -17,6 +18,19 @@ from ultralytics import YOLO
 
 # from rclpy.parameter import Parameter
 # from rcl_interfaces.msg import SetParametersResult
+
+class Point():
+	def __init__(self, x, y):
+		self.x = x
+		self.y = y
+
+class Face():
+
+	def __init__(self, center_point, bottom_right_point, upper_left_point):
+		self.center_point = center_point
+		self.bottom_right_point = bottom_right_point
+		self.upper_left_point = upper_left_point
+
 
 class detect_faces(Node):
 
@@ -40,7 +54,7 @@ class detect_faces(Node):
 		self.rgb_image_sub = self.create_subscription(Image, "/oakd/rgb/preview/image_raw", self.rgb_callback, qos_profile_sensor_data)
 		self.pointcloud_sub = self.create_subscription(PointCloud2, "/oakd/rgb/preview/depth/points", self.pointcloud_callback, qos_profile_sensor_data)
 
-		self.marker_pub = self.create_publisher(Marker, marker_topic, QoSReliabilityPolicy.BEST_EFFORT)
+		self.marker_pub = self.create_publisher(FaceCoordinates, marker_topic, QoSReliabilityPolicy.BEST_EFFORT) # Publish face markers (center, bottom right, upper left)
 
 		self.model = YOLO("yolov8n.pt")
 
@@ -76,10 +90,21 @@ class detect_faces(Node):
 				cx = int((bbox[0]+bbox[2])/2)
 				cy = int((bbox[1]+bbox[3])/2)
 
+				bottom_right_x = int((2/3*bbox[0]+1/3*bbox[2]))
+				bottom_right_y = int((2/3*bbox[1]+1/3*bbox[3]))
+				upper_left_x = int((1/3*bbox[0]+2/3*bbox[2]))
+				upper_left_y = int((1/3*bbox[1]+2/3*bbox[3]))
+
+				bottom_right_point = Point(bottom_right_x, bottom_right_y)
+				upper_left_point = Point(upper_left_x, upper_left_y)
+				center_point = Point(cx, cy)
+
 				# draw the center of bounding box
 				cv_image = cv2.circle(cv_image, (cx,cy), 5, self.detection_color, -1)
+				cv_image = cv2.circle(cv_image, (bottom_right_x, bottom_right_y), 5, self.detection_color, -1)
+				cv_image = cv2.circle(cv_image, (upper_left_x, upper_left_y), 5, self.detection_color, -1)
 
-				self.faces.append((cx,cy))
+				self.faces.append(Face(center_point, bottom_right_point, upper_left_point))
 
 			cv2.imshow("image", cv_image)
 			key = cv2.waitKey(1)
@@ -90,6 +115,73 @@ class detect_faces(Node):
 		except CvBridgeError as e:
 			print(e)
 
+	def create_marker(self, d, data):
+		marker = Marker()
+
+		marker.header.frame_id = "/base_link"
+		marker.header.stamp = data.header.stamp
+
+		marker.type = 2
+		marker.id = 0
+
+		# Set the scale of the marker
+		scale = 0.1
+		marker.scale.x = scale
+		marker.scale.y = scale
+		marker.scale.z = scale
+
+		# Set the color
+		marker.color.r = 1.0
+		marker.color.g = 0.0
+		marker.color.b = 0.0
+		marker.color.a = 1.0
+
+		# Set the pose of the marker
+		marker.pose.position.x = float(d[0])
+		marker.pose.position.y = float(d[1])
+		marker.pose.position.z = float(d[2])
+
+		self.get_logger().info(f"Marker created at {d[0]}, {d[1]}, {d[2]}")
+
+		return marker
+
+	def create_face_coordinates_message(self, face, data):
+		# get point cloud attributes
+		height = data.height
+		width = data.width
+		point_step = data.point_step
+		row_step = data.row_step	
+
+		face_coordinates = FaceCoordinates()
+		
+		# get 3-channel representation of the point cloud in numpy format
+		a = pc2.read_points_numpy(data, field_names= ("x", "y", "z"))
+		a = a.reshape((height,width,3))
+
+		# read center coordinates d = [x,y,z] v koordinatah sveta
+		x = face.center_point.x
+		y = face.center_point.y
+		d = a[y,x,:]
+		center_marker = self.create_marker(d, data)
+
+		# read bottom right coordinates d = [x,y,z] v koordinatah sveta
+		x = face.bottom_right_point.x
+		y = face.bottom_right_point.y
+		d = a[y,x,:]
+		bottom_right_marker = self.create_marker(d, data)
+
+		# read upper left coordinates d = [x,y,z] v koordinatah sveta
+		x = face.upper_left_point.x
+		y = face.upper_left_point.y
+		d = a[y,x,:]
+		upper_left_marker = self.create_marker(d, data)
+
+		face_coordinates.center = center_marker
+		face_coordinates.bottom_right = bottom_right_marker
+		face_coordinates.upper_left = upper_left_marker
+
+		return face_coordinates
+
 	def pointcloud_callback(self, data):
 
 		# get point cloud attributes
@@ -99,42 +191,11 @@ class detect_faces(Node):
 		row_step = data.row_step		
 
 		# iterate over face coordinates
-		for x,y in self.faces:
+		for face in self.faces:
 
-			# get 3-channel representation of the poitn cloud in numpy format
-			a = pc2.read_points_numpy(data, field_names= ("x", "y", "z"))
-			a = a.reshape((height,width,3))
+			face_coordinates_msg = self.create_face_coordinates_message(face, data)
 
-			# read center coordinates
-			d = a[y,x,:]
-
-			# create marker
-			marker = Marker()
-
-			marker.header.frame_id = "/base_link"
-			marker.header.stamp = data.header.stamp
-
-			marker.type = 2
-			marker.id = 0
-
-			# Set the scale of the marker
-			scale = 0.1
-			marker.scale.x = scale
-			marker.scale.y = scale
-			marker.scale.z = scale
-
-			# Set the color
-			marker.color.r = 1.0
-			marker.color.g = 0.0
-			marker.color.b = 0.0
-			marker.color.a = 1.0
-
-			# Set the pose of the marker
-			marker.pose.position.x = float(d[0])
-			marker.pose.position.y = float(d[1])
-			marker.pose.position.z = float(d[2])
-
-			self.marker_pub.publish(marker)
+			self.marker_pub.publish(face_coordinates_msg)
 
 def main():
 	print('Face detection node starting.')

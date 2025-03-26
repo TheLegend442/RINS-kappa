@@ -66,9 +66,13 @@ include CMakeFiles/custom_messages.dir/compiler_depend.make
 # Include the progress variables for this target.
 include CMakeFiles/custom_messages.dir/progress.make
 
+CMakeFiles/custom_messages: /home/strazi/RINS-kappa/workspace/src/custom_messages/msg/FaceCoordinates.msg
 CMakeFiles/custom_messages: /home/strazi/RINS-kappa/workspace/src/custom_messages/srv/Shape.srv
 CMakeFiles/custom_messages: rosidl_cmake/srv/Shape_Request.msg
 CMakeFiles/custom_messages: rosidl_cmake/srv/Shape_Response.msg
+CMakeFiles/custom_messages: /home/strazi/RINS-kappa/workspace/src/custom_messages/srv/PosesInFrontOfFaces.srv
+CMakeFiles/custom_messages: rosidl_cmake/srv/PosesInFrontOfFaces_Request.msg
+CMakeFiles/custom_messages: rosidl_cmake/srv/PosesInFrontOfFaces_Response.msg
 CMakeFiles/custom_messages: /opt/ros/humble/share/geometry_msgs/msg/Accel.idl
 CMakeFiles/custom_messages: /opt/ros/humble/share/geometry_msgs/msg/AccelStamped.idl
 CMakeFiles/custom_messages: /opt/ros/humble/share/geometry_msgs/msg/AccelWithCovariance.idl
@@ -99,6 +103,19 @@ CMakeFiles/custom_messages: /opt/ros/humble/share/geometry_msgs/msg/Vector3Stamp
 CMakeFiles/custom_messages: /opt/ros/humble/share/geometry_msgs/msg/VelocityStamped.idl
 CMakeFiles/custom_messages: /opt/ros/humble/share/geometry_msgs/msg/Wrench.idl
 CMakeFiles/custom_messages: /opt/ros/humble/share/geometry_msgs/msg/WrenchStamped.idl
+CMakeFiles/custom_messages: /opt/ros/humble/share/visualization_msgs/msg/ImageMarker.idl
+CMakeFiles/custom_messages: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarker.idl
+CMakeFiles/custom_messages: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerControl.idl
+CMakeFiles/custom_messages: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerFeedback.idl
+CMakeFiles/custom_messages: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerInit.idl
+CMakeFiles/custom_messages: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerPose.idl
+CMakeFiles/custom_messages: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerUpdate.idl
+CMakeFiles/custom_messages: /opt/ros/humble/share/visualization_msgs/msg/Marker.idl
+CMakeFiles/custom_messages: /opt/ros/humble/share/visualization_msgs/msg/MarkerArray.idl
+CMakeFiles/custom_messages: /opt/ros/humble/share/visualization_msgs/msg/MenuEntry.idl
+CMakeFiles/custom_messages: /opt/ros/humble/share/visualization_msgs/msg/MeshFile.idl
+CMakeFiles/custom_messages: /opt/ros/humble/share/visualization_msgs/msg/UVCoordinate.idl
+CMakeFiles/custom_messages: /opt/ros/humble/share/visualization_msgs/srv/GetInteractiveMarkers.idl
 
 custom_messages: CMakeFiles/custom_messages
 custom_messages: CMakeFiles/custom_messages.dir/build.make

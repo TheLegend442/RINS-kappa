@@ -69,9 +69,14 @@ include custom_messages__py/CMakeFiles/custom_messages__py.dir/progress.make
 custom_messages__py/CMakeFiles/custom_messages__py: rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c
 custom_messages__py/CMakeFiles/custom_messages__py: rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_introspection_c.c
 custom_messages__py/CMakeFiles/custom_messages__py: rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_c.c
+custom_messages__py/CMakeFiles/custom_messages__py: rosidl_generator_py/custom_messages/msg/_face_coordinates.py
 custom_messages__py/CMakeFiles/custom_messages__py: rosidl_generator_py/custom_messages/srv/_shape.py
+custom_messages__py/CMakeFiles/custom_messages__py: rosidl_generator_py/custom_messages/srv/_poses_in_front_of_faces.py
+custom_messages__py/CMakeFiles/custom_messages__py: rosidl_generator_py/custom_messages/msg/__init__.py
 custom_messages__py/CMakeFiles/custom_messages__py: rosidl_generator_py/custom_messages/srv/__init__.py
+custom_messages__py/CMakeFiles/custom_messages__py: rosidl_generator_py/custom_messages/msg/_face_coordinates_s.c
 custom_messages__py/CMakeFiles/custom_messages__py: rosidl_generator_py/custom_messages/srv/_shape_s.c
+custom_messages__py/CMakeFiles/custom_messages__py: rosidl_generator_py/custom_messages/srv/_poses_in_front_of_faces_s.c
 
 rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/lib/rosidl_generator_py/rosidl_generator_py
 rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/local/lib/python3.10/dist-packages/rosidl_generator_py/__init__.py
@@ -86,7 +91,9 @@ rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fas
 rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/rosidl_generator_py/resource/_msg.py.em
 rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/rosidl_generator_py/resource/_srv_pkg_typesupport_entry_point.c.em
 rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/rosidl_generator_py/resource/_srv.py.em
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/custom_messages/msg/FaceCoordinates.idl
 rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/custom_messages/srv/Shape.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: rosidl_adapter/custom_messages/srv/PosesInFrontOfFaces.idl
 rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geometry_msgs/msg/Accel.idl
 rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geometry_msgs/msg/AccelStamped.idl
 rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/geometry_msgs/msg/AccelWithCovariance.idl
@@ -147,6 +154,49 @@ rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fas
 rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/std_msgs/msg/UInt64MultiArray.idl
 rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/std_msgs/msg/UInt8.idl
 rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/std_msgs/msg/UInt8MultiArray.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/visualization_msgs/msg/ImageMarker.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarker.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerControl.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerFeedback.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerInit.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerPose.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/visualization_msgs/msg/InteractiveMarkerUpdate.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/visualization_msgs/msg/Marker.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/visualization_msgs/msg/MarkerArray.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/visualization_msgs/msg/MenuEntry.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/visualization_msgs/msg/MeshFile.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/visualization_msgs/msg/UVCoordinate.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/visualization_msgs/srv/GetInteractiveMarkers.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/builtin_interfaces/msg/Duration.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/builtin_interfaces/msg/Time.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/BatteryState.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/CameraInfo.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/ChannelFloat32.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/CompressedImage.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/FluidPressure.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/Illuminance.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/Image.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/Imu.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/JointState.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/Joy.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/JoyFeedback.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/JoyFeedbackArray.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/LaserEcho.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/LaserScan.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/MagneticField.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/MultiDOFJointState.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/MultiEchoLaserScan.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/NavSatFix.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/NavSatStatus.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/PointCloud.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/PointCloud2.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/PointField.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/Range.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/RegionOfInterest.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/RelativeHumidity.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/Temperature.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/msg/TimeReference.idl
+rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c: /opt/ros/humble/share/sensor_msgs/srv/SetCameraInfo.idl
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating Python code for ROS interfaces"
 	cd /home/strazi/RINS-kappa/workspace/build/custom_messages/custom_messages__py && /usr/bin/python3 /opt/ros/humble/share/rosidl_generator_py/cmake/../../../lib/rosidl_generator_py/rosidl_generator_py --generator-arguments-file /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_generator_py__arguments.json --typesupport-impls "rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c;rosidl_typesupport_c"
 
@@ -156,20 +206,40 @@ rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_int
 rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_c.c: rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_c.c
 
+rosidl_generator_py/custom_messages/msg/_face_coordinates.py: rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/custom_messages/msg/_face_coordinates.py
+
 rosidl_generator_py/custom_messages/srv/_shape.py: rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/custom_messages/srv/_shape.py
+
+rosidl_generator_py/custom_messages/srv/_poses_in_front_of_faces.py: rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/custom_messages/srv/_poses_in_front_of_faces.py
+
+rosidl_generator_py/custom_messages/msg/__init__.py: rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/custom_messages/msg/__init__.py
 
 rosidl_generator_py/custom_messages/srv/__init__.py: rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/custom_messages/srv/__init__.py
 
+rosidl_generator_py/custom_messages/msg/_face_coordinates_s.c: rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/custom_messages/msg/_face_coordinates_s.c
+
 rosidl_generator_py/custom_messages/srv/_shape_s.c: rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c
 	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/custom_messages/srv/_shape_s.c
+
+rosidl_generator_py/custom_messages/srv/_poses_in_front_of_faces_s.c: rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c
+	@$(CMAKE_COMMAND) -E touch_nocreate rosidl_generator_py/custom_messages/srv/_poses_in_front_of_faces_s.c
 
 custom_messages__py: custom_messages__py/CMakeFiles/custom_messages__py
 custom_messages__py: rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_c.c
 custom_messages__py: rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c
 custom_messages__py: rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_introspection_c.c
+custom_messages__py: rosidl_generator_py/custom_messages/msg/__init__.py
+custom_messages__py: rosidl_generator_py/custom_messages/msg/_face_coordinates.py
+custom_messages__py: rosidl_generator_py/custom_messages/msg/_face_coordinates_s.c
 custom_messages__py: rosidl_generator_py/custom_messages/srv/__init__.py
+custom_messages__py: rosidl_generator_py/custom_messages/srv/_poses_in_front_of_faces.py
+custom_messages__py: rosidl_generator_py/custom_messages/srv/_poses_in_front_of_faces_s.c
 custom_messages__py: rosidl_generator_py/custom_messages/srv/_shape.py
 custom_messages__py: rosidl_generator_py/custom_messages/srv/_shape_s.c
 custom_messages__py: custom_messages__py/CMakeFiles/custom_messages__py.dir/build.make
