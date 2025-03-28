@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/strazi/RINS-kappa/workspace/src/custom_messages
+CMAKE_SOURCE_DIR = /home/kappa/RINS-kappa/workspace/src/custom_messages
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/strazi/RINS-kappa/workspace/build/custom_messages
+CMAKE_BINARY_DIR = /home/kappa/RINS-kappa/workspace/build/custom_messages
 
 # Utility rule file for ament_cmake_python_copy_custom_messages.
 
@@ -67,7 +67,7 @@ include CMakeFiles/ament_cmake_python_copy_custom_messages.dir/compiler_depend.m
 include CMakeFiles/ament_cmake_python_copy_custom_messages.dir/progress.make
 
 CMakeFiles/ament_cmake_python_copy_custom_messages:
-	/usr/bin/cmake -E copy_directory /home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_generator_py/custom_messages /home/strazi/RINS-kappa/workspace/build/custom_messages/ament_cmake_python/custom_messages/custom_messages
+	/usr/bin/cmake -E copy_directory /home/kappa/RINS-kappa/workspace/build/custom_messages/rosidl_generator_py/custom_messages /home/kappa/RINS-kappa/workspace/build/custom_messages/ament_cmake_python/custom_messages/custom_messages
 
 ament_cmake_python_copy_custom_messages: CMakeFiles/ament_cmake_python_copy_custom_messages
 ament_cmake_python_copy_custom_messages: CMakeFiles/ament_cmake_python_copy_custom_messages.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/ament_cmake_python_copy_custom_messages.dir/clean:
 .PHONY : CMakeFiles/ament_cmake_python_copy_custom_messages.dir/clean
 
 CMakeFiles/ament_cmake_python_copy_custom_messages.dir/depend:
-	cd /home/strazi/RINS-kappa/workspace/build/custom_messages && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/strazi/RINS-kappa/workspace/src/custom_messages /home/strazi/RINS-kappa/workspace/src/custom_messages /home/strazi/RINS-kappa/workspace/build/custom_messages /home/strazi/RINS-kappa/workspace/build/custom_messages /home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles/ament_cmake_python_copy_custom_messages.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/kappa/RINS-kappa/workspace/build/custom_messages && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/kappa/RINS-kappa/workspace/src/custom_messages /home/kappa/RINS-kappa/workspace/src/custom_messages /home/kappa/RINS-kappa/workspace/build/custom_messages /home/kappa/RINS-kappa/workspace/build/custom_messages /home/kappa/RINS-kappa/workspace/build/custom_messages/CMakeFiles/ament_cmake_python_copy_custom_messages.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ament_cmake_python_copy_custom_messages.dir/depend
 

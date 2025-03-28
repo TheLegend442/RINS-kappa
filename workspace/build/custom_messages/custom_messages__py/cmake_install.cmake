@@ -1,8 +1,8 @@
-# Install script for directory: /home/strazi/RINS-kappa/workspace/build/custom_messages/custom_messages__py
+# Install script for directory: /home/kappa/RINS-kappa/workspace/build/custom_messages/custom_messages__py
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/strazi/RINS-kappa/workspace/install/custom_messages")
+  set(CMAKE_INSTALL_PREFIX "/home/kappa/RINS-kappa/workspace/install/custom_messages")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 

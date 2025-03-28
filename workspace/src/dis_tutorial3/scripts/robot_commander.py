@@ -37,6 +37,8 @@ from rclpy.qos import qos_profile_sensor_data
 import cv2
 import yaml
 import math
+import os
+import numpy as np
 
 from custom_messages.msg import FaceCoordinates
 from custom_messages.srv import PosesInFrontOfFaces
@@ -402,10 +404,21 @@ def main(args=None):
         rc.undock()
     #Load the map
     rc.map_image, rc.map_metadata = rc.load_map('src/dis_tutorial3/maps/map.pgm', 'src/dis_tutorial3/maps/map.yaml')
-    cv2.imshow("Map", rc.map_image)
-    cv2.setMouseCallback("Map", rc.mouse_callback)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+
+    # če obhod že obstaja
+    if not os.path.exists('src/dis_tutorial3/data/obhod.npy'):
+        cv2.imshow("Map", rc.map_image)
+        cv2.setMouseCallback("Map", rc.mouse_callback)
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+
+        # save coordinates
+        np.save('src/dis_tutorial3/data/obhod.npy', rc.clicked_points)
+
+    else:
+        print("Obhod že obstaja")
+        rc.clicked_points = np.load('src/dis_tutorial3/data/obhod.npy')
+
 
     for i, (px, py, orientation) in enumerate(rc.clicked_points):
         world_x, world_y = rc.pixel_to_world(px, py)

@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/strazi/RINS-kappa/workspace/src/custom_messages
+CMAKE_SOURCE_DIR = /home/kappa/RINS-kappa/workspace/src/custom_messages
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/strazi/RINS-kappa/workspace/build/custom_messages
+CMAKE_BINARY_DIR = /home/kappa/RINS-kappa/workspace/build/custom_messages
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -142,9 +142,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles /home/strazi/RINS-kappa/workspace/build/custom_messages//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kappa/RINS-kappa/workspace/build/custom_messages/CMakeFiles /home/kappa/RINS-kappa/workspace/build/custom_messages//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/strazi/RINS-kappa/workspace/build/custom_messages/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/kappa/RINS-kappa/workspace/build/custom_messages/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

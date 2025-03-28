@@ -69,7 +69,7 @@ class detect_faces(Node):
 		try:
 			cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
 
-			self.get_logger().info(f"Running inference on image...")
+			# self.get_logger().info(f"Running inference on image...")
 
 			# run inference
 			res = self.model.predict(cv_image, imgsz=(256, 320), show=False, verbose=False, classes=[0], device=self.device)
@@ -80,7 +80,7 @@ class detect_faces(Node):
 				if bbox.nelement() == 0: # skip if empty
 					continue
 
-				self.get_logger().info(f"Person has been detected!")
+				# self.get_logger().info(f"Person has been detected!")
 
 				bbox = bbox[0]
 
@@ -141,7 +141,7 @@ class detect_faces(Node):
 		marker.pose.position.y = float(d[1])
 		marker.pose.position.z = float(d[2])
 
-		self.get_logger().info(f"Marker created at {d[0]}, {d[1]}, {d[2]}")
+		# self.get_logger().info(f"Marker created at {d[0]}, {d[1]}, {d[2]}")
 
 		return marker
 

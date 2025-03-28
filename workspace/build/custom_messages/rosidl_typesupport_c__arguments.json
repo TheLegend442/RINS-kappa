@@ -1,11 +1,11 @@
 {
   "package_name": "custom_messages",
-  "output_dir": "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_typesupport_c/custom_messages",
+  "output_dir": "/home/kappa/RINS-kappa/workspace/build/custom_messages/rosidl_typesupport_c/custom_messages",
   "template_dir": "/opt/ros/humble/share/rosidl_typesupport_c/resource",
   "idl_tuples": [
-    "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:msg/FaceCoordinates.idl",
-    "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:srv/Shape.idl",
-    "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:srv/PosesInFrontOfFaces.idl"
+    "/home/kappa/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:msg/FaceCoordinates.idl",
+    "/home/kappa/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:srv/Shape.idl",
+    "/home/kappa/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:srv/PosesInFrontOfFaces.idl"
   ],
   "ros_interface_dependencies": [
     "geometry_msgs:/opt/ros/humble/share/geometry_msgs/msg/Accel.idl",
@@ -119,9 +119,9 @@
     "/opt/ros/humble/share/rosidl_typesupport_c/resource/idl__type_support.cpp.em",
     "/opt/ros/humble/share/rosidl_typesupport_c/resource/msg__type_support.cpp.em",
     "/opt/ros/humble/share/rosidl_typesupport_c/resource/srv__type_support.cpp.em",
-    "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/msg/FaceCoordinates.idl",
-    "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/srv/Shape.idl",
-    "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/srv/PosesInFrontOfFaces.idl",
+    "/home/kappa/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/msg/FaceCoordinates.idl",
+    "/home/kappa/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/srv/Shape.idl",
+    "/home/kappa/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/srv/PosesInFrontOfFaces.idl",
     "/opt/ros/humble/share/geometry_msgs/msg/Accel.idl",
     "/opt/ros/humble/share/geometry_msgs/msg/AccelStamped.idl",
     "/opt/ros/humble/share/geometry_msgs/msg/AccelWithCovariance.idl",
