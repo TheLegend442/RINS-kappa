@@ -1,4 +1,0 @@
-Invoking command in '/home/kappa/RINS-kappa/workspace/build/dis_tutorial1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/kappa/RINS-kappa/workspace/build/dis_tutorial1 -- -j16 -l16
-Invoked command in '/home/kappa/RINS-kappa/workspace/build/dis_tutorial1' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --build /home/kappa/RINS-kappa/workspace/build/dis_tutorial1 -- -j16 -l16
-Invoking command in '/home/kappa/RINS-kappa/workspace/build/dis_tutorial1': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/kappa/RINS-kappa/workspace/build/dis_tutorial1
-Invoked command in '/home/kappa/RINS-kappa/workspace/build/dis_tutorial1' returned '0': CMAKE_PREFIX_PATH=/opt/ros/humble /usr/bin/cmake --install /home/kappa/RINS-kappa/workspace/build/dis_tutorial1
