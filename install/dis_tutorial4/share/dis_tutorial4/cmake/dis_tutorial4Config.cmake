@@ -1,0 +1,1 @@
+/home/thelegend442/faxic/RINS-kappa/build/dis_tutorial4/ament_cmake_core/dis_tutorial4Config.cmake

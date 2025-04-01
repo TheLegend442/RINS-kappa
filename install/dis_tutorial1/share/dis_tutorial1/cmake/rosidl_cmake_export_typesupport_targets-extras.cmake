@@ -1,0 +1,1 @@
+/home/thelegend442/faxic/RINS-kappa/build/dis_tutorial1/rosidl_cmake/rosidl_cmake_export_typesupport_targets-extras.cmake

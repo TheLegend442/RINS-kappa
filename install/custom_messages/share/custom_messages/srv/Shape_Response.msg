@@ -1,0 +1,1 @@
+/home/thelegend442/faxic/RINS-kappa/build/custom_messages/rosidl_cmake/srv/Shape_Response.msg

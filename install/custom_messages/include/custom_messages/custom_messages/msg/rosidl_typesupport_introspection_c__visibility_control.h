@@ -1,0 +1,1 @@
+/home/thelegend442/faxic/RINS-kappa/build/custom_messages/rosidl_typesupport_introspection_c/custom_messages/msg/rosidl_typesupport_introspection_c__visibility_control.h

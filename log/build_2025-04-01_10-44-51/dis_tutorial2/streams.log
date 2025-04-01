@@ -1,0 +1,33 @@
+[0.873s] Invoking command in '/home/thelegend442/faxic/RINS-kappa/build/dis_tutorial2': PYTHONPATH=/home/thelegend442/faxic/RINS-kappa/build/dis_tutorial2/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/thelegend442/faxic/RINS-kappa/build/dis_tutorial2/build --no-deps symlink_data
+[1.194s] running develop
+[1.402s] running egg_info
+[1.402s] creating dis_tutorial2.egg-info
+[1.418s] writing dis_tutorial2.egg-info/PKG-INFO
+[1.419s] writing dependency_links to dis_tutorial2.egg-info/dependency_links.txt
+[1.419s] writing entry points to dis_tutorial2.egg-info/entry_points.txt
+[1.419s] writing requirements to dis_tutorial2.egg-info/requires.txt
+[1.420s] writing top-level names to dis_tutorial2.egg-info/top_level.txt
+[1.420s] writing manifest file 'dis_tutorial2.egg-info/SOURCES.txt'
+[1.452s] reading manifest file 'dis_tutorial2.egg-info/SOURCES.txt'
+[1.453s] writing manifest file 'dis_tutorial2.egg-info/SOURCES.txt'
+[1.470s] running build_ext
+[1.470s] Creating /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/lib/python3.10/site-packages/dis-tutorial2.egg-link (link to .)
+[1.471s] Installing achtung_die_turtle script to /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/lib/dis_tutorial2
+[1.471s] Installing draw_client script to /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/lib/dis_tutorial2
+[1.471s] Installing draw_shape script to /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/lib/dis_tutorial2
+[1.471s] Installing go_to_position script to /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/lib/dis_tutorial2
+[1.471s] Installing random_velocity_publisher script to /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/lib/dis_tutorial2
+[1.472s] 
+[1.472s] Installed /home/thelegend442/faxic/RINS-kappa/build/dis_tutorial2
+[1.472s] running symlink_data
+[1.472s] creating /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/share/ament_index
+[1.472s] creating /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/share/ament_index/resource_index
+[1.472s] creating /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/share/ament_index/resource_index/packages
+[1.472s] symbolically linking /home/thelegend442/faxic/RINS-kappa/build/dis_tutorial2/resource/dis_tutorial2 -> /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/share/ament_index/resource_index/packages
+[1.472s] symbolically linking /home/thelegend442/faxic/RINS-kappa/build/dis_tutorial2/package.xml -> /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/share/dis_tutorial2
+[1.473s] creating /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/share/dis_tutorial2/launch
+[1.473s] symbolically linking /home/thelegend442/faxic/RINS-kappa/build/dis_tutorial2/launch/example_launch.py -> /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/share/dis_tutorial2/launch
+[1.473s] symbolically linking /home/thelegend442/faxic/RINS-kappa/build/dis_tutorial2/launch/go_to_position_launch.py -> /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/share/dis_tutorial2/launch
+[1.473s] symbolically linking /home/thelegend442/faxic/RINS-kappa/build/dis_tutorial2/launch/example_launch.xml -> /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/share/dis_tutorial2/launch
+[1.473s] symbolically linking /home/thelegend442/faxic/RINS-kappa/build/dis_tutorial2/launch/example_launch.yaml -> /home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/share/dis_tutorial2/launch
+[1.549s] Invoked command in '/home/thelegend442/faxic/RINS-kappa/build/dis_tutorial2' returned '0': PYTHONPATH=/home/thelegend442/faxic/RINS-kappa/build/dis_tutorial2/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/thelegend442/faxic/RINS-kappa/install/dis_tutorial2/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/thelegend442/faxic/RINS-kappa/build/dis_tutorial2/build --no-deps symlink_data

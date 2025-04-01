@@ -1,0 +1,354 @@
+[0.021s] Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial1 -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1
+[0.196s] -- The C compiler identification is GNU 11.4.0
+[0.196s] -- The CXX compiler identification is GNU 11.4.0
+[0.196s] -- Detecting C compiler ABI info
+[0.196s] -- Detecting C compiler ABI info - done
+[0.197s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.197s] -- Detecting C compile features
+[0.197s] -- Detecting C compile features - done
+[0.197s] -- Detecting CXX compiler ABI info
+[0.264s] -- Detecting CXX compiler ABI info - done
+[0.271s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.271s] -- Detecting CXX compile features
+[0.271s] -- Detecting CXX compile features - done
+[0.275s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.657s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.747s] -- Found rclcpp: 16.0.11 (/opt/ros/humble/share/rclcpp/cmake)
+[0.787s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.793s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.799s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.810s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.825s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.865s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[0.867s] -- Found rmw_fastrtps_cpp: 6.2.7 (/opt/ros/humble/share/rmw_fastrtps_cpp/cmake)
+[0.953s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.2")  
+[0.982s] -- Found FastRTPS: /opt/ros/humble/include  
+[1.024s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[1.034s] -- Looking for pthread.h
+[1.118s] -- Looking for pthread.h - found
+[1.118s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.198s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.199s] -- Found Threads: TRUE  
+[1.244s] -- Found rclpy: 3.3.15 (/opt/ros/humble/share/rclpy/cmake)
+[1.246s] -- Found std_srvs: 4.2.4 (/opt/ros/humble/share/std_srvs/cmake)
+[1.255s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[1.516s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[1.855s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.977s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.996s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[1.998s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[2.020s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[2.020s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[2.020s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[2.020s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[2.039s] -- Found PythonExtra: .so  
+[2.104s] -- Configuring done
+[2.165s] -- Generating done
+[2.182s] -- Build files have been written to: /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1
+[2.196s] Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial1 -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1
+[2.198s] Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1 -- -j16 -l16
+[2.239s] [  1%] [34m[1mGenerating C code for ROS interfaces[0m
+[2.250s] [  3%] [32mBuilding CXX object CMakeFiles/simple_subscriber.dir/src/simple_subscriber.cpp.o[0m
+[2.250s] [  5%] [32mBuilding CXX object CMakeFiles/simple_publisher.dir/src/simple_publisher.cpp.o[0m
+[2.251s] [  6%] [32mBuilding CXX object CMakeFiles/simple_set_bool_server_node.dir/src/simple_set_bool_server_node.cpp.o[0m
+[2.251s] [  8%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[2.262s] [  8%] Built target ament_cmake_python_copy_dis_tutorial1
+[2.477s] running egg_info
+[2.477s] creating dis_tutorial1.egg-info
+[2.502s] writing dis_tutorial1.egg-info/PKG-INFO
+[2.503s] writing dependency_links to dis_tutorial1.egg-info/dependency_links.txt
+[2.503s] writing top-level names to dis_tutorial1.egg-info/top_level.txt
+[2.503s] writing manifest file 'dis_tutorial1.egg-info/SOURCES.txt'
+[2.567s] reading manifest file 'dis_tutorial1.egg-info/SOURCES.txt'
+[2.568s] writing manifest file 'dis_tutorial1.egg-info/SOURCES.txt'
+[2.657s] [  8%] Built target ament_cmake_python_build_dis_tutorial1_egg
+[2.785s] [ 11%] [32mBuilding C object CMakeFiles/dis_tutorial1__rosidl_generator_c.dir/rosidl_generator_c/dis_tutorial1/srv/detail/add_two_ints__functions.c.o[0m
+[2.785s] [ 11%] [32mBuilding C object CMakeFiles/dis_tutorial1__rosidl_generator_c.dir/rosidl_generator_c/dis_tutorial1/msg/detail/custom_message__functions.c.o[0m
+[2.787s] [ 13%] [32mBuilding C object CMakeFiles/dis_tutorial1__rosidl_generator_c.dir/rosidl_generator_c/dis_tutorial1/srv/detail/add_array__functions.c.o[0m
+[2.787s] [ 13%] Built target dis_tutorial1__cpp
+[2.804s] [ 15%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[2.806s] [ 16%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[2.816s] [ 18%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[2.885s] [ 20%] [32m[1mLinking C shared library libdis_tutorial1__rosidl_generator_c.so[0m
+[2.951s] [ 20%] Built target dis_tutorial1__rosidl_generator_c
+[2.969s] [ 22%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[2.969s] [ 23%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[2.980s] [ 25%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[3.498s] [ 27%] [32mBuilding CXX object CMakeFiles/dis_tutorial1__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/dis_tutorial1/msg/custom_message__type_support.cpp.o[0m
+[3.506s] [ 28%] [32mBuilding CXX object CMakeFiles/dis_tutorial1__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/dis_tutorial1/srv/add_two_ints__type_support.cpp.o[0m
+[3.517s] [ 30%] [32mBuilding CXX object CMakeFiles/dis_tutorial1__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/dis_tutorial1/srv/add_array__type_support.cpp.o[0m
+[3.705s] [ 32%] [32mBuilding CXX object CMakeFiles/dis_tutorial1__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/dis_tutorial1/msg/detail/custom_message__type_support.cpp.o[0m
+[3.727s] [ 33%] [32mBuilding CXX object CMakeFiles/dis_tutorial1__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/dis_tutorial1/srv/detail/add_array__type_support.cpp.o[0m
+[3.743s] [ 35%] [32mBuilding CXX object CMakeFiles/dis_tutorial1__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/dis_tutorial1/srv/detail/add_two_ints__type_support.cpp.o[0m
+[3.750s] [ 37%] [32mBuilding CXX object CMakeFiles/dis_tutorial1__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/dis_tutorial1/msg/detail/dds_fastrtps/custom_message__type_support.cpp.o[0m
+[3.756s] [ 38%] [32mBuilding CXX object CMakeFiles/dis_tutorial1__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/dis_tutorial1/srv/detail/dds_fastrtps/add_two_ints__type_support.cpp.o[0m
+[3.773s] [ 40%] [32mBuilding CXX object CMakeFiles/dis_tutorial1__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/dis_tutorial1/srv/detail/dds_fastrtps/add_array__type_support.cpp.o[0m
+[3.789s] [ 42%] [32mBuilding C object CMakeFiles/dis_tutorial1__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/dis_tutorial1/msg/detail/custom_message__type_support.c.o[0m
+[3.790s] [ 44%] [32mBuilding C object CMakeFiles/dis_tutorial1__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/dis_tutorial1/srv/detail/add_two_ints__type_support.c.o[0m
+[3.905s] [ 45%] [32mBuilding C object CMakeFiles/dis_tutorial1__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/dis_tutorial1/srv/detail/add_array__type_support.c.o[0m
+[3.925s] [ 47%] [32mBuilding CXX object CMakeFiles/dis_tutorial1__rosidl_typesupport_c.dir/rosidl_typesupport_c/dis_tutorial1/msg/custom_message__type_support.cpp.o[0m
+[3.942s] [ 49%] [32mBuilding CXX object CMakeFiles/dis_tutorial1__rosidl_typesupport_c.dir/rosidl_typesupport_c/dis_tutorial1/srv/add_two_ints__type_support.cpp.o[0m
+[4.036s] [ 50%] [32mBuilding CXX object CMakeFiles/dis_tutorial1__rosidl_typesupport_c.dir/rosidl_typesupport_c/dis_tutorial1/srv/add_array__type_support.cpp.o[0m
+[4.083s] [ 52%] [32m[1mLinking C shared library libdis_tutorial1__rosidl_typesupport_introspection_c.so[0m
+[4.149s] [ 54%] [32m[1mLinking CXX shared library libdis_tutorial1__rosidl_typesupport_c.so[0m
+[4.192s] [ 55%] [32mBuilding CXX object CMakeFiles/dis_tutorial1__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/dis_tutorial1/srv/detail/add_array__type_support_c.cpp.o[0m
+[4.192s] [ 57%] Built target dis_tutorial1__rosidl_typesupport_introspection_c
+[4.192s] [ 57%] [32mBuilding CXX object CMakeFiles/dis_tutorial1__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/dis_tutorial1/srv/detail/add_two_ints__type_support_c.cpp.o[0m
+[4.193s] [ 59%] [32mBuilding CXX object CMakeFiles/dis_tutorial1__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/dis_tutorial1/msg/detail/custom_message__type_support_c.cpp.o[0m
+[4.201s] [ 61%] [32m[1mLinking CXX shared library libdis_tutorial1__rosidl_typesupport_cpp.so[0m
+[4.242s] [ 61%] Built target dis_tutorial1__rosidl_typesupport_c
+[4.319s] [ 61%] Built target dis_tutorial1__rosidl_typesupport_cpp
+[4.371s] [ 62%] [32mBuilding CXX object CMakeFiles/simple_server_node.dir/src/simple_server_node.cpp.o[0m
+[4.375s] [ 64%] [32mBuilding CXX object CMakeFiles/complete_node.dir/src/complete_node.cpp.o[0m
+[4.383s] [ 66%] [32mBuilding CXX object CMakeFiles/simple_client_node.dir/src/simple_client_node.cpp.o[0m
+[4.562s] [ 67%] [32m[1mLinking CXX shared library libdis_tutorial1__rosidl_typesupport_introspection_cpp.so[0m
+[4.753s] [ 69%] [32m[1mLinking CXX shared library libdis_tutorial1__rosidl_typesupport_fastrtps_c.so[0m
+[4.794s] [ 69%] Built target dis_tutorial1__rosidl_typesupport_introspection_cpp
+[4.842s] [ 71%] [32m[1mLinking CXX shared library libdis_tutorial1__rosidl_typesupport_fastrtps_cpp.so[0m
+[4.898s] [ 71%] Built target dis_tutorial1__rosidl_typesupport_fastrtps_c
+[4.973s] [ 71%] Built target dis_tutorial1__rosidl_typesupport_fastrtps_cpp
+[4.996s] [ 71%] Built target dis_tutorial1
+[5.019s] [ 72%] [34m[1mGenerating Python code for ROS interfaces[0m
+[5.647s] [ 72%] Built target dis_tutorial1__py
+[5.678s] [ 74%] [32mBuilding C object CMakeFiles/dis_tutorial1__rosidl_generator_py.dir/rosidl_generator_py/dis_tutorial1/msg/_custom_message_s.c.o[0m
+[5.688s] [ 76%] [32mBuilding C object CMakeFiles/dis_tutorial1__rosidl_generator_py.dir/rosidl_generator_py/dis_tutorial1/srv/_add_two_ints_s.c.o[0m
+[5.688s] [ 77%] [32mBuilding C object CMakeFiles/dis_tutorial1__rosidl_generator_py.dir/rosidl_generator_py/dis_tutorial1/srv/_add_array_s.c.o[0m
+[5.856s] [ 79%] [32m[1mLinking C shared library rosidl_generator_py/dis_tutorial1/libdis_tutorial1__rosidl_generator_py.so[0m
+[5.928s] [ 79%] Built target dis_tutorial1__rosidl_generator_py
+[5.957s] [ 83%] [32mBuilding C object CMakeFiles/dis_tutorial1__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/dis_tutorial1/_dis_tutorial1_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[5.957s] [ 83%] [32mBuilding C object CMakeFiles/dis_tutorial1__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/dis_tutorial1/_dis_tutorial1_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[5.959s] [ 84%] [32mBuilding C object CMakeFiles/dis_tutorial1__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/dis_tutorial1/_dis_tutorial1_s.ep.rosidl_typesupport_c.c.o[0m
+[6.103s] [ 86%] [32m[1mLinking C shared library rosidl_generator_py/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[6.117s] [ 88%] [32m[1mLinking C shared library rosidl_generator_py/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[6.131s] [ 89%] [32m[1mLinking C shared library rosidl_generator_py/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[6.165s] [ 89%] Built target dis_tutorial1__rosidl_typesupport_introspection_c__pyext
+[6.177s] [ 89%] Built target dis_tutorial1__rosidl_typesupport_fastrtps_c__pyext
+[6.202s] [ 89%] Built target dis_tutorial1__rosidl_typesupport_c__pyext
+[7.610s] [ 91%] [32m[1mLinking CXX executable simple_set_bool_server_node[0m
+[7.880s] [ 91%] Built target simple_set_bool_server_node
+[8.379s] [ 93%] [32m[1mLinking CXX executable simple_publisher[0m
+[8.442s] [ 94%] [32m[1mLinking CXX executable simple_server_node[0m
+[8.619s] [ 94%] Built target simple_publisher
+[8.622s] [ 94%] Built target simple_server_node
+[8.744s] [ 96%] [32m[1mLinking CXX executable simple_client_node[0m
+[8.911s] [ 96%] Built target simple_client_node
+[12.132s] [ 98%] [32m[1mLinking CXX executable simple_subscriber[0m
+[12.479s] [ 98%] Built target simple_subscriber
+[14.305s] [100%] [32m[1mLinking CXX executable complete_node[0m
+[14.732s] [100%] Built target complete_node
+[14.745s] Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1 -- -j16 -l16
+[14.746s] Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1
+[14.755s] -- Install configuration: ""
+[14.755s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/ament_index/resource_index/rosidl_interfaces/dis_tutorial1
+[14.755s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1
+[14.755s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg
+[14.755s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/rosidl_generator_c__visibility_control.h
+[14.755s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/custom_message.h
+[14.756s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail
+[14.756s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__functions.c
+[14.756s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__type_support.h
+[14.756s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__struct.h
+[14.756s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__functions.h
+[14.756s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv
+[14.756s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/add_array.h
+[14.756s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail
+[14.756s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__struct.h
+[14.756s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__type_support.h
+[14.757s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_array__struct.h
+[14.757s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_array__type_support.h
+[14.757s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_array__functions.c
+[14.757s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__functions.c
+[14.757s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_array__functions.h
+[14.757s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__functions.h
+[14.758s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/add_two_ints.h
+[14.758s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/library_path.sh
+[14.758s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/library_path.dsv
+[14.758s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_generator_c.so
+[14.759s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_generator_c.so" to ""
+[14.759s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1
+[14.759s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg
+[14.759s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[14.759s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail
+[14.759s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__rosidl_typesupport_fastrtps_c.h
+[14.759s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv
+[14.759s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail
+[14.759s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_array__rosidl_typesupport_fastrtps_c.h
+[14.759s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__rosidl_typesupport_fastrtps_c.h
+[14.759s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_fastrtps_c.so
+[14.760s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_fastrtps_c.so" to ""
+[14.760s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1
+[14.760s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg
+[14.760s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/custom_message.hpp
+[14.760s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/rosidl_generator_cpp__visibility_control.hpp
+[14.760s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail
+[14.760s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__type_support.hpp
+[14.760s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__traits.hpp
+[14.760s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__builder.hpp
+[14.761s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__struct.hpp
+[14.761s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv
+[14.761s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/add_two_ints.hpp
+[14.761s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/add_array.hpp
+[14.761s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail
+[14.761s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_array__builder.hpp
+[14.761s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__traits.hpp
+[14.761s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_array__type_support.hpp
+[14.761s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__struct.hpp
+[14.762s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_array__struct.hpp
+[14.762s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__builder.hpp
+[14.762s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_array__traits.hpp
+[14.762s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__type_support.hpp
+[14.762s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1
+[14.762s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg
+[14.762s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[14.762s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail
+[14.762s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__rosidl_typesupport_fastrtps_cpp.hpp
+[14.763s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/dds_fastrtps
+[14.763s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv
+[14.763s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail
+[14.763s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__rosidl_typesupport_fastrtps_cpp.hpp
+[14.763s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_array__rosidl_typesupport_fastrtps_cpp.hpp
+[14.763s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/dds_fastrtps
+[14.763s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_fastrtps_cpp.so
+[14.764s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_fastrtps_cpp.so" to ""
+[14.764s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1
+[14.764s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg
+[14.764s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[14.764s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail
+[14.764s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__type_support.c
+[14.764s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__rosidl_typesupport_introspection_c.h
+[14.764s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv
+[14.764s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail
+[14.764s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__rosidl_typesupport_introspection_c.h
+[14.764s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__type_support.c
+[14.764s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_array__type_support.c
+[14.765s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_array__rosidl_typesupport_introspection_c.h
+[14.765s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_introspection_c.so
+[14.765s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_introspection_c.so" to ""
+[14.765s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_c.so
+[14.766s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_c.so" to ""
+[14.766s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1
+[14.766s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg
+[14.766s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail
+[14.766s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__rosidl_typesupport_introspection_cpp.hpp
+[14.766s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/msg/detail/custom_message__type_support.cpp
+[14.766s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv
+[14.766s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail
+[14.766s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__type_support.cpp
+[14.766s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_array__rosidl_typesupport_introspection_cpp.hpp
+[14.766s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_two_ints__rosidl_typesupport_introspection_cpp.hpp
+[14.766s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/include/dis_tutorial1/dis_tutorial1/srv/detail/add_array__type_support.cpp
+[14.767s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_introspection_cpp.so
+[14.767s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_introspection_cpp.so" to ""
+[14.767s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_cpp.so
+[14.768s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_typesupport_cpp.so" to ""
+[14.768s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/pythonpath.sh
+[14.768s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/pythonpath.dsv
+[14.768s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1-0.0.1-py3.10.egg-info
+[14.768s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1-0.0.1-py3.10.egg-info/dependency_links.txt
+[14.768s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1-0.0.1-py3.10.egg-info/SOURCES.txt
+[14.768s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1-0.0.1-py3.10.egg-info/PKG-INFO
+[14.768s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1-0.0.1-py3.10.egg-info/top_level.txt
+[14.769s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1
+[14.769s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/_dis_tutorial1_s.ep.rosidl_typesupport_introspection_c.c
+[14.769s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/libdis_tutorial1__rosidl_generator_py.so
+[14.769s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/_dis_tutorial1_s.ep.rosidl_typesupport_fastrtps_c.c
+[14.769s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/msg
+[14.769s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/msg/_custom_message.py
+[14.769s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/msg/__init__.py
+[14.769s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/msg/_custom_message_s.c
+[14.770s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/srv
+[14.770s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/srv/_add_two_ints.py
+[14.770s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/srv/_add_two_ints_s.c
+[14.770s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/srv/_add_array_s.c
+[14.770s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/srv/__init__.py
+[14.770s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/srv/_add_array.py
+[14.770s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[14.770s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/__init__.py
+[14.771s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[14.771s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/_dis_tutorial1_s.ep.rosidl_typesupport_c.c
+[14.771s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[14.807s] Listing '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1'...
+[14.807s] Compiling '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/__init__.py'...
+[14.807s] Listing '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/msg'...
+[14.807s] Compiling '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/msg/__init__.py'...
+[14.807s] Compiling '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/msg/_custom_message.py'...
+[14.807s] Listing '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/srv'...
+[14.807s] Compiling '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/srv/__init__.py'...
+[14.807s] Compiling '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/srv/_add_array.py'...
+[14.807s] Compiling '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/srv/_add_two_ints.py'...
+[14.812s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[14.812s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[14.812s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[14.813s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[14.813s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[14.813s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/local/lib/python3.10/dist-packages/dis_tutorial1/dis_tutorial1_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[14.813s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_generator_py.so
+[14.814s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/libdis_tutorial1__rosidl_generator_py.so" to ""
+[14.814s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/msg/CustomMessage.idl
+[14.814s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/srv/AddTwoInts.idl
+[14.814s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/srv/AddArray.idl
+[14.814s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/msg/CustomMessage.msg
+[14.814s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/srv/AddTwoInts.srv
+[14.814s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/srv/AddTwoInts_Request.msg
+[14.814s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/srv/AddTwoInts_Response.msg
+[14.815s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/srv/AddArray.srv
+[14.815s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/srv/AddArray_Request.msg
+[14.815s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/srv/AddArray_Response.msg
+[14.815s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/simple_publisher
+[14.817s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/simple_publisher" to ""
+[14.817s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/simple_subscriber
+[14.822s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/simple_subscriber" to ""
+[14.822s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/simple_client_node
+[14.823s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/simple_client_node" to ""
+[14.823s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/simple_server_node
+[14.824s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/simple_server_node" to ""
+[14.824s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/complete_node
+[14.830s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/complete_node" to ""
+[14.830s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/simple_set_bool_server_node
+[14.831s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/simple_set_bool_server_node" to ""
+[14.831s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/py_simple_publisher.py
+[14.831s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/py_simple_subscriber.py
+[14.831s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/py_simple_server_node.py
+[14.831s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/py_simple_client_node.py
+[14.831s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/py_complete_node.py
+[14.832s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/dis_tutorial1/py_draw_square.py
+[14.832s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/ament_index/resource_index/package_run_dependencies/dis_tutorial1
+[14.832s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/ament_index/resource_index/parent_prefix_path/dis_tutorial1
+[14.832s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/ament_prefix_path.sh
+[14.832s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/ament_prefix_path.dsv
+[14.832s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/path.sh
+[14.833s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/environment/path.dsv
+[14.833s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/local_setup.bash
+[14.833s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/local_setup.sh
+[14.833s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/local_setup.zsh
+[14.833s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/local_setup.dsv
+[14.833s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.dsv
+[14.833s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/ament_index/resource_index/packages/dis_tutorial1
+[14.834s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_generator_cExport.cmake
+[14.834s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_generator_cExport-noconfig.cmake
+[14.834s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_typesupport_fastrtps_cExport.cmake
+[14.834s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[14.834s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_generator_cppExport.cmake
+[14.834s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_typesupport_fastrtps_cppExport.cmake
+[14.835s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[14.835s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_introspection_cExport.cmake
+[14.835s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[14.835s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_cExport.cmake
+[14.835s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_cExport-noconfig.cmake
+[14.835s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_introspection_cppExport.cmake
+[14.836s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[14.836s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_cppExport.cmake
+[14.836s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1__rosidl_typesupport_cppExport-noconfig.cmake
+[14.836s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_generator_pyExport.cmake
+[14.836s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/export_dis_tutorial1__rosidl_generator_pyExport-noconfig.cmake
+[14.836s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/rosidl_cmake-extras.cmake
+[14.837s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/ament_cmake_export_dependencies-extras.cmake
+[14.837s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/ament_cmake_export_include_directories-extras.cmake
+[14.837s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/ament_cmake_export_libraries-extras.cmake
+[14.837s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/ament_cmake_export_targets-extras.cmake
+[14.837s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[14.837s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[14.837s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1Config.cmake
+[14.838s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/cmake/dis_tutorial1Config-version.cmake
+[14.838s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.xml
+[14.841s] Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1

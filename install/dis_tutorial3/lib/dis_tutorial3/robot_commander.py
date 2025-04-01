@@ -1,0 +1,1 @@
+/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial3/scripts/robot_commander.py

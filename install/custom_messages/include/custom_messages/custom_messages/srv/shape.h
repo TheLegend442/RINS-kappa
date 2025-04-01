@@ -1,0 +1,1 @@
+/home/thelegend442/faxic/RINS-kappa/build/custom_messages/rosidl_generator_c/custom_messages/srv/shape.h

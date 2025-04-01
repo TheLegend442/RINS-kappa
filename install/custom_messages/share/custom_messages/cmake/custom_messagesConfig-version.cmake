@@ -1,0 +1,1 @@
+/home/thelegend442/faxic/RINS-kappa/build/custom_messages/ament_cmake_core/custom_messagesConfig-version.cmake
