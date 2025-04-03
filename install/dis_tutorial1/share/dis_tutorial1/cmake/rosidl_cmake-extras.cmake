@@ -1,1 +1,0 @@
-/home/thelegend442/faxic/RINS-kappa/build/dis_tutorial1/rosidl_cmake/rosidl_cmake-extras.cmake

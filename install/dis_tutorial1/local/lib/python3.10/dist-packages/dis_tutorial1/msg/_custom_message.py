@@ -1,1 +1,0 @@
-/home/thelegend442/faxic/RINS-kappa/build/dis_tutorial1/rosidl_generator_py/dis_tutorial1/msg/_custom_message.py

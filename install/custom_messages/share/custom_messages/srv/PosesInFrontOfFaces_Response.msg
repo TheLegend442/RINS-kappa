@@ -1,1 +1,0 @@
-/home/thelegend442/faxic/RINS-kappa/build/custom_messages/rosidl_cmake/srv/PosesInFrontOfFaces_Response.msg

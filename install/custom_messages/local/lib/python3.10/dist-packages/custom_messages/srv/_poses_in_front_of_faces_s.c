@@ -1,1 +1,0 @@
-/home/thelegend442/faxic/RINS-kappa/build/custom_messages/rosidl_generator_py/custom_messages/srv/_poses_in_front_of_faces_s.c

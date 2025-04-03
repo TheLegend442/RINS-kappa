@@ -1,1 +1,0 @@
-/home/thelegend442/faxic/RINS-kappa/build/dis_tutorial2/launch/go_to_position_launch.py

@@ -1,1 +1,0 @@
-/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial1/scripts/py_draw_square.py

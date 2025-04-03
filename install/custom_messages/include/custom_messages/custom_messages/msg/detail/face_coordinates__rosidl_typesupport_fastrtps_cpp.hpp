@@ -1,1 +1,0 @@
-/home/thelegend442/faxic/RINS-kappa/build/custom_messages/rosidl_typesupport_fastrtps_cpp/custom_messages/msg/detail/face_coordinates__rosidl_typesupport_fastrtps_cpp.hpp

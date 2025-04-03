@@ -1,1 +1,0 @@
-/home/thelegend442/faxic/RINS-kappa/workspace/src/custom_messages/msg/FaceCoordinates.msg

@@ -1,1 +1,0 @@
-/home/thelegend442/faxic/RINS-kappa/build/custom_messages/rosidl_typesupport_introspection_cpp/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_cpp.hpp

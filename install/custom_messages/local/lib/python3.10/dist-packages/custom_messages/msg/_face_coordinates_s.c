@@ -1,1 +1,0 @@
-/home/thelegend442/faxic/RINS-kappa/build/custom_messages/rosidl_generator_py/custom_messages/msg/_face_coordinates_s.c

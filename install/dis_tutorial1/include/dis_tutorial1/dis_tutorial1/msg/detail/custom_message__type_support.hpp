@@ -1,1 +1,0 @@
-/home/thelegend442/faxic/RINS-kappa/build/dis_tutorial1/rosidl_generator_cpp/dis_tutorial1/msg/detail/custom_message__type_support.hpp

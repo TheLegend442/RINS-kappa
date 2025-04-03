@@ -1,1 +1,0 @@
-/home/thelegend442/faxic/RINS-kappa/build/dis_tutorial1/ament_cmake_environment_hooks/local_setup.bash

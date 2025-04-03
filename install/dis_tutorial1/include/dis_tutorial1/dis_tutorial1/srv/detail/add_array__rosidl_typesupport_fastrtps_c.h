@@ -1,1 +1,0 @@
-/home/thelegend442/faxic/RINS-kappa/build/dis_tutorial1/rosidl_typesupport_fastrtps_c/dis_tutorial1/srv/detail/add_array__rosidl_typesupport_fastrtps_c.h
