@@ -1,8 +1,0 @@
-{
-  "package_name": "custom_messages",
-  "non_idl_tuples": [
-    "/home/thelegend442/faxic/RINS-kappa/workspace/src/custom_messages:msg/FaceCoordinates.msg",
-    "/home/thelegend442/faxic/RINS-kappa/workspace/src/custom_messages:srv/Shape.srv",
-    "/home/thelegend442/faxic/RINS-kappa/workspace/src/custom_messages:srv/PosesInFrontOfFaces.srv"
-  ]
-}

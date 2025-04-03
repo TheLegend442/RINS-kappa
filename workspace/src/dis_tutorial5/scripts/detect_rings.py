@@ -51,12 +51,13 @@ class RingDetector(Node):
         # self.tf_listener = tf2_ros.TransformListener(self.tf_buf)
 
         cv2.namedWindow("Binary Image", cv2.WINDOW_NORMAL)
-        cv2.namedWindow("Detected contours", cv2.WINDOW_NORMAL)
+        # cv2.namedWindow("Detected contours", cv2.WINDOW_NORMAL)
         cv2.namedWindow("Detected rings", cv2.WINDOW_NORMAL)
-        cv2.namedWindow("Gray Image", cv2.WINDOW_NORMAL)
+        # cv2.namedWindow("Gray Image", cv2.WINDOW_NORMAL)
         # cv2.namedWindow("Depth window", cv2.WINDOW_NORMAL)
         cv2.namedWindow("Live camera feed", cv2.WINDOW_NORMAL)
         # cv2.namedWindow("Ring depth", cv2.WINDOW_NORMAL)
+        cv2.namedWindow("Edges", cv2.WINDOW_NORMAL)
 
     def image_callback(self, data):
         self.get_logger().info(f"I got a new image! Will try to find rings...")
@@ -71,7 +72,9 @@ class RingDetector(Node):
         red = cv_image[:,:,2]
 
         cv_image_copy = cv_image.copy()
-        
+
+
+        ## ____Draw dashed a line on the image at y=90____
         start_point = (0, 90)
         end_point = (cv_image.shape[1], 90)
 
@@ -89,6 +92,7 @@ class RingDetector(Node):
             cv2.line(cv_image_copy, (x1, y1), (x2, y2), (0, 0, 0), 1)
         
         
+        ## ____Check for the image dimensions____
         ## Image dimensions: 240x320
         # cv2.putText(cv_image_copy, f"HxW: {cv_image.shape[0]}x{cv_image.shape[1]}", (0, 200), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
         
@@ -97,68 +101,105 @@ class RingDetector(Node):
 
         # Tranform image to grayscale
         gray = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
-        cv2.imshow("Gray Image", gray)
-        cv2.waitKey(1)
-        gray = gray[0:90, 0:320] # Crop the image to the upper half
-       
-
-        # Apply Gaussian Blur
-        gray = cv2.GaussianBlur(gray,(3,3),0)
-
-        # Do histogram equalization
-        # gray = cv2.equalizeHist(gray)
-
-        # Binarize the image, there are different ways to do it
-        #ret, thresh = cv2.threshold(img, 50, 255, 0)
-        #ret, thresh = cv2.threshold(img, 70, 255, cv2.THRESH_BINARY)
-        # thresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 15, 30)
-        _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
-
-        kernel = np.ones((5,5), np.uint8)
-        thresh = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)
+        # cv2.imshow("Gray Image", gray)
+        # cv2.waitKey(1)
         
-        cv2.imshow("Binary Image", thresh)
-        cv2.waitKey(1)
+        ##
+        ## ____Original ellipse detectiion code____
+        ##
 
-        # Extract contours
-        contours, hierarchy = cv2.findContours(thresh, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+        # # Apply Gaussian Blur
+        # gray = cv2.GaussianBlur(gray,(3,3),0)
 
-        # Example of how to draw the contours, only for visualization purposes
-        cv2.drawContours(gray, contours, -1, (255, 0, 0), 3)
-        cv2.imshow("Detected contours", gray)
-        cv2.waitKey(1)
+        # # Do histogram equalization
+        # # gray = cv2.equalizeHist(gray)
 
-        # Fit elipses to all extracted contours
-        elps = []
-        elps_flat = []
-        for cnt in contours:
-            #     print cnt
-            #     print cnt.shape
-            if cnt.shape[0] >= 20:
+        # # Binarize the image, there are different ways to do it
+        # #ret, thresh = cv2.threshold(img, 50, 255, 0)
+        # #ret, thresh = cv2.threshold(img, 70, 255, cv2.THRESH_BINARY)
+        # # thresh = cv2.adaptiveThreshold(gray, 255, cv2.ADAPTIVE_THRESH_GAUSSIAN_C, cv2.THRESH_BINARY, 15, 30)
+        # _, thresh = cv2.threshold(gray, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
 
-                # mask = np.zeros(gray.shape, dtype=np.uint8)
-                # mask = cv2.drawContours(mask, [cnt], -1, (255, 0, 0), -1)
+        # kernel = np.ones((5,5), np.uint8)
+        # thresh = cv2.morphologyEx(thresh, cv2.MORPH_CLOSE, kernel)
+        
+        # cv2.imshow("Binary Image", thresh)
+        # cv2.waitKey(1)
 
-                # depth_image = self.depth_img
-                # depth_image[depth_image == np.inf] = 0
-                # depth_image[depth_image == 0] = 0
-                # # depth_image = cv2.GaussianBlur(depth_image, (3, 3), 0)
-                # depth_values = depth_image[mask == 255]
+        # # Extract contours
+        # contours, hierarchy = cv2.findContours(thresh, cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
 
-                # cv2.imshow("Ring depth", depth_values)
-                # cv2.waitKey(1)
+        # # Example of how to draw the contours, only for visualization purposes
+        # cv2.drawContours(gray, contours, -1, (255, 0, 0), 3)
+        # cv2.imshow("Detected contours", gray)
+        # cv2.waitKey(1)
 
-                # if len(depth_values) > 0:
-                #     depth_variation = np.std(depth_values)
-                #     depth_range = np.max(depth_values) - np.min(depth_values)
+        # # Fit elipses to all extracted contours
+        # elps = []
+        # elps_flat = []
+        # for cnt in contours:
+        #     #     print cnt
+        #     #     print cnt.shape
+        #     if cnt.shape[0] >= 20:
+
+        #         # mask = np.zeros(gray.shape, dtype=np.uint8)
+        #         # mask = cv2.drawContours(mask, [cnt], -1, (255, 0, 0), -1)
+
+        #         # depth_image = self.depth_img
+        #         # depth_image[depth_image == np.inf] = 0
+        #         # depth_image[depth_image == 0] = 0
+        #         # # depth_image = cv2.GaussianBlur(depth_image, (3, 3), 0)
+        #         # depth_values = depth_image[mask == 255]
+
+        #         # cv2.imshow("Ring depth", depth_values)
+        #         # cv2.waitKey(1)
+
+        #         # if len(depth_values) > 0:
+        #         #     depth_variation = np.std(depth_values)
+        #         #     depth_range = np.max(depth_values) - np.min(depth_values)
                 
-                ellipse = cv2.fitEllipse(cnt)
-                elps.append(ellipse)
-                # if depth_variation < 0.1 and depth_range < 0.1:
-                #     elps_flat.append(ellipse)
-                # else:
-                #     elps.append(ellipse)
+        #         ellipse = cv2.fitEllipse(cnt)
+        #         elps.append(ellipse)
+        #         # if depth_variation < 0.1 and depth_range < 0.1:
+        #         #     elps_flat.append(ellipse)
+        #         # else:
+        #         #     elps.append(ellipse)
+        
+        ##
+        ## ____End of original ellipse detection code____
+        ##
 
+        ## ____New ellipse detection code____
+
+        def ellipse_detection(image, canny_threshold1=50, canny_threshold2=150, min_major_axis=10, max_major_axis=50):
+            cut_image = image[0:90,0:320]
+            image_blured = cv2.GaussianBlur(cut_image, (3, 3), 0)
+            
+            ellipses = []
+                
+            edges = cv2.Canny(image_blured, canny_threshold1, canny_threshold2) # Apply Canny edge detection
+            
+            contours, _ = cv2.findContours(edges, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
+            
+            for contour in contours:
+                if len(contour) >= 5:  # Fit ellipse requires at least 5 points
+                    ellipse = cv2.fitEllipse(contour)
+                    (center, axes, angle) = ellipse
+                    major_axis = max(axes)
+                    minor_axis = min(axes)
+                    if major_axis == 0 or minor_axis == 0:
+                        continue
+                    if major_axis/minor_axis > 2:
+                        continue
+                    if min_major_axis <= major_axis <= max_major_axis:
+                        ellipses.append(ellipse)
+            
+            return ellipses, edges
+        
+        elps, edges = ellipse_detection(gray)
+
+        cv2.imshow("Edges", edges)
+        cv2.waitKey(1)
 
         # Find two elipses with same centers
         candidates = []
