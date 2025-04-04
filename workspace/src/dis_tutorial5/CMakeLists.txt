@@ -68,4 +68,13 @@ install(PROGRAMS
   scripts/detect_rings.py
   DESTINATION lib/${PROJECT_NAME})
 
+
+install(PROGRAMS
+scripts/detect_rings_final.py
+DESTINATION lib/${PROJECT_NAME})
+
+install(PROGRAMS
+scripts/save_rings.py
+DESTINATION lib/${PROJECT_NAME})
+
 ament_package()

@@ -1,0 +1,12 @@
+msg/FaceCoordinates.idl
+msg/FaceCoordinates.msg
+msg/RingCoordinates.idl
+msg/RingCoordinates.msg
+srv/PosesInFrontOfFaces.idl
+srv/PosesInFrontOfFaces.srv
+srv/PosesInFrontOfFaces_Request.msg
+srv/PosesInFrontOfFaces_Response.msg
+srv/Shape.idl
+srv/Shape.srv
+srv/Shape_Request.msg
+srv/Shape_Response.msg

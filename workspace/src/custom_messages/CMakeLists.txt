@@ -16,6 +16,7 @@ find_package(visualization_msgs REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/FaceCoordinates.msg"
+  "msg/RingCoordinates.msg"
   "srv/Shape.srv"
   "srv/PosesInFrontOfFaces.srv"
   DEPENDENCIES 
