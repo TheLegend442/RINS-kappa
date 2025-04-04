@@ -4,19 +4,21 @@ import rclpy
 from rclpy.node import Node
 import cv2
 import numpy as np
+import time
 
 
 import tf2_ros
 import tf2_geometry_msgs
-from sensor_msgs.msg import Image
+from sensor_msgs.msg import Image, PointCloud2
 from geometry_msgs.msg import PoseWithCovarianceStamped
 from geometry_msgs.msg import PoseStamped
 from geometry_msgs.msg import PointStamped, Vector3, Pose
 from cv_bridge import CvBridge, CvBridgeError
 from visualization_msgs.msg import Marker, MarkerArray
 from std_msgs.msg import ColorRGBA
-from rclpy.qos import QoSDurabilityPolicy, QoSHistoryPolicy
+from rclpy.qos import QoSDurabilityPolicy, QoSHistoryPolicy, qos_profile_sensor_data
 from rclpy.qos import QoSProfile, QoSReliabilityPolicy
+from sensor_msgs_py import point_cloud2 as pc2
 import message_filters
 
 qos_profile = QoSProfile(
@@ -27,7 +29,7 @@ qos_profile = QoSProfile(
 
 
 class Ring():
-    def __init__(self, ellipse1, ellipse2):
+    def __init__(self, ellipse1, ellipse2, count_detected=1, position3D=None):
         self.ellipse1 = ellipse1
         self.ellipse2 = ellipse2
 
@@ -36,6 +38,11 @@ class Ring():
 
         self.depth1 = 0
         self.depth2 = 0
+
+        self.position3D = None
+
+        self.count_detected = count_detected
+        self.timestamp = 0
 
 class RingDetector(Node):
     def __init__(self):
@@ -49,21 +56,24 @@ class RingDetector(Node):
         self.bridge = CvBridge()
 
         # Marker array object used for visualizations
-        self.marker_array = MarkerArray()
-        self.marker_id = 0
+        # self.marker_array = MarkerArray()
+        # self.marker_id = 0
+
+        self.rings = {}
 
         self.depth_img = None
 
         # Subscribe to the image and/or depth topi
         self.depth_sub = self.create_subscription(Image, "/oakd/rgb/preview/depth", self.depth_callback, 1)
         self.image_sub = self.create_subscription(Image, "/oakd/rgb/preview/image_raw", self.image_callback, 1)
-
-        # self.robot_position_subscription = self.create_subscription(
-        #     PoseWithCovarianceStamped, '/amcl_pose', self.robot_position_callback, 10
-        # )
+        self.pointcloud_sub = self.create_subscription(PointCloud2, "/oakd/rgb/preview/depth/points", self.pointcloud_callback, qos_profile_sensor_data)
+        self.robot_position_subscription = self.create_subscription(
+            PoseWithCovarianceStamped, '/amcl_pose', self.robot_position_callback, 10
+        )
+        self.robot_position = None  # Shranjena pozicija robota
 
         # Publiser for the visualization markers
-        self.marker_pub = self.create_publisher(MarkerArray, "/ring", QoSReliabilityPolicy.BEST_EFFORT)
+        self.marker_pub = self.create_publisher(Marker, "/ring", QoSReliabilityPolicy.BEST_EFFORT)
 
         # Object we use for transforming between coordinate frames
         self.tf_buf = tf2_ros.Buffer()
@@ -78,6 +88,10 @@ class RingDetector(Node):
         # cv2.namedWindow("Ring depth", cv2.WINDOW_NORMAL)
         cv2.namedWindow("Edges", cv2.WINDOW_NORMAL)
         cv2.namedWindow("Detected ellipses", cv2.WINDOW_NORMAL)
+
+    def robot_position_callback(self, msg):
+        # Shrani pozicijo robota iz AMCL topica
+        self.robot_position = np.array([msg.pose.pose.position.x, msg.pose.pose.position.y, msg.pose.pose.position.z])
 
     def image_callback(self, data):
         # self.get_logger().info(f"I got a new image! Will try to find rings...")
@@ -353,7 +367,26 @@ class RingDetector(Node):
                 cv2.waitKey(1)
 
         # Publish the markers for the detected rings
-        self.publish_ellipse_markers(candidates)
+        for c in candidates:
+            u = c[0][0][0]
+            v = c[0][0][1]
+            z = self.depth_img[int(v), int(u)]
+
+            fx, fy = K[0,0], K[1,1]
+            cx, cy = K[0,2], K[1,2]
+            x = (u - cx) * z / fx
+            y = (v - cy) * z / fy
+            
+            pose = PoseStamped()
+            pose.header.frame_id = "camera_link"
+            pose.header.stamp = rclpy.time.Time().to_msg()
+            pose.pose.position.x = x
+            pose.pose.position.y = y
+            pose.pose.position.z = z
+            pose.pose.orientation.w = 1.0  # Identity quaternion
+            self.marker_callback(c[0])
+
+        # self.marker_callback(candidates)
 
 
     def depth_callback(self,data):
@@ -377,6 +410,132 @@ class RingDetector(Node):
 
         # cv2.imshow("Depth window", image_viz)
         cv2.waitKey(1)
+
+
+    def create_face_coordinates_message(self, face, data):
+		# get point cloud attributes
+        height = data.height
+        width = data.width
+        point_step = data.point_step
+        row_step = data.row_step	
+
+        ring_coordinates = Marker()
+		
+        # get 3-channel representation of the point cloud in numpy format
+        a = pc2.read_points_numpy(data, field_names= ("x", "y", "z"))
+        a = a.reshape((height,width,3))
+
+        # read center coordinates d = [x,y,z] v koordinatah sveta
+        x = face.center_point.x
+        y = face.center_point.y
+        d = a[y,x,:]
+        center_marker = self.create_marker(d, data)
+
+        ring_coordinates.pose = center_marker
+
+        return ring_coordinates
+    
+    def pointcloud_callback(self, data):
+        # iterate over face coordinates
+        for ring in self.rings:
+            face_coordinates_msg = self.create_face_coordinates_message(ring, data)
+
+            self.marker_callback(face_coordinates_msg)
+
+    def marker_callback(self, msg):
+        if self.robot_position is None:
+            self.get_logger().info("Pozicija robota ni bila prejeta, ignoriram zaznane obraze.")
+            return
+        
+        # current_position = np.array([msg.center.pose.position.x, msg.center.pose.position.y, msg.center.pose.position.z])
+        current_time = time.time()
+
+        # Poskusimo pridobiti transformacijo iz robotovega koordinatnega sistema v globalni za sredinsko točko in še oba kota
+        try:
+            transform = self.tf_buffer.lookup_transform('map', 'base_link', rclpy.time.Time())
+            transformed_pose = tf2_geometry_msgs.do_transform_pose(msg.pose, transform)
+            transformed_position = np.array([transformed_pose.position.x, transformed_pose.position.y, transformed_pose.position.z])
+            
+
+        except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
+            self.get_logger().error(f"Napaka pri transformaciji: {e}")
+            return
+
+        # Preveri, ali je obraz že bil zaznan
+        for ring_id, ring in self.rings.items():
+            count = ring.count
+            timestamp = ring.current_time
+            center = ring.center1
+            
+
+            distance = np.linalg.norm(center - transformed_position)
+            
+            if distance < self.threshold:
+                if current_time - timestamp < self.time_threshold:
+                    return
+                else:
+                    # **Izbrišemo prejšnji marker**
+                    self.delete_marker(ring_id)
+
+                    # **Posodobimo obraz s povprečjem**
+                    new_position = (count / (count + 1)) * center + (1 / (count + 1)) * transformed_position
+
+                    self.ring[ring_id] = Ring(ring.ellipse1, ring.ellipse2, count + 1, new_position)
+
+                    # **Objavimo nov marker**
+                    self.publish_ring_marker(new_position, ring_id)
+                    return
+
+        # **Če obraz ni bil zaznan, ga dodamo v slovar**
+        self.ring_counter += 1
+        self.get_logger().info(f"Zaznan nov obroč z ID-jem {self.ring_counter}.")
+        #transformed_bottom_right_position = None; transformed_upper_left_position = None
+        self.rings[self.ring_counter] = Ring(self.ring_counter, transformed_position, current_time, self.robot_position)
+        self.publish_ring_marker(transformed_position, self.ring_counter)
+
+
+    def publish_ring_marker(self, position, ring_id):
+        """Objavi marker za zaznan obraz."""
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = self.get_clock().now().to_msg()
+        marker.ns = "faces"
+        marker.id = ring_id  # Unikatni ID markerja
+        marker.type = Marker.SPHERE  # Oblika markerja
+        marker.action = Marker.ADD  # Dodajanje ali posodabljanje markerja
+        marker.pose.position.x = position[0]
+        marker.pose.position.y = position[1]
+        marker.pose.position.z = position[2]
+        marker.scale.x = 0.2
+        marker.scale.y = 0.2
+        marker.scale.z = 0.2
+        marker.color.r = 1.0
+        marker.color.g = 0.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0  # Polna vidljivost
+        marker.lifetime.sec = 0  # Ne izgine avtomatsko
+
+        self.marker_publisher.publish(marker)
+
+
+    def delete_marker(self, ring_id):
+        """Izbriše prejšnji marker, ko posodobimo obraz."""
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = self.get_clock().now().to_msg()
+        marker.ns = "faces"
+        marker.id = ring_id
+        marker.action = Marker.DELETE  # Izbriši prejšnji marker
+
+        self.marker_publisher.publish(marker)
+
+
+
+
+
+
+
+
 
     def transform_point(self, x, y, z, from_frame='base_link', to_frame="map"):
 
