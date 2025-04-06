@@ -100,6 +100,10 @@ class RingMarkerSubscriber(Node):
         # **Če obroč ni bil zaznan, ga dodamo v slovar**
         self.ring_counter += 1
         self.get_logger().info(f"Zaznan nov obroč z ID-jem {self.ring_counter}.")
+    
+        for ring in self.rings.values():
+            print(ring.center)
+
         self.rings[self.ring_counter] = Ring(self.ring_counter, transformed_position, current_time, self.robot_position)
         self.publish_ring_marker(transformed_position, self.ring_counter)
 

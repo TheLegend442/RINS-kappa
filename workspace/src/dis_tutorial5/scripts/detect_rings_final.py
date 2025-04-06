@@ -20,7 +20,7 @@ class Point:
         self.y = y
 
 class Ring():
-    def __init__(self, ellipse1, ellipse2):
+    def __init__(self, ellipse1, ellipse2, center3D=None):
         self.ellipse1 = ellipse1
         self.ellipse2 = ellipse2
 
@@ -32,6 +32,8 @@ class Ring():
 
         self.center2.x = int(ellipse2[0][0])
         self.center2.y = int(ellipse2[0][1])
+
+        self.center3D = center3D  # np.array([x, y, z]=
 
 class detect_rings(Node):
     def __init__(self):
@@ -309,16 +311,64 @@ class detect_rings(Node):
         ring_coordinates = RingCoordinates()
 
         # get 3-channel representation of the point cloud in numpy format
-        a = pc2.read_points_numpy(data, field_names= ("x", "y", "z"))
-        a = a.reshape((height,width,3))
+        map_2d_to_3d = pc2.read_points_numpy(data, field_names= ("x", "y", "z"))
+        map_2d_to_3d = map_2d_to_3d.reshape((height,width,3))
 
-        # read center coordinates d = [x,y,z] v koordinatah sveta
-        x = ring.center1.x
-        y = ring.center1.y
-        d = a[y,x,:]
-        center = self.create_marker(d, data)
+        # read center coordinates d[y_slika][x_slika] = [x,y,z] v koordinatah sveta
 
-        ring_coordinates.center = center
+        # we look for all pixels in the image between the two ellipses
+        # we take the average of the depth values which are not nan
+        coordinate_sum = np.array([.0,.0,.0])
+        points_between_counter = 0
+        for y in range(height):
+            for x in range(width):
+                # if [x, y] is inside ring.ellipse1 and outside ring.ellipse2
+
+
+                a1b1 = ring.ellipse1[1]
+                a1 = a1b1[0] / 2
+                b1 = a1b1[1] / 2
+                x1_prime = x - ring.center1.x
+                y1_prime = y - ring.center1.y
+                fi1 = ring.ellipse1[2]
+                cos1 = np.cos(np.radians(fi1))
+                sin1 = np.sin(np.radians(fi1))
+
+                # Check if the point is inside the ellipse1
+                if ((cos1 * x1_prime + sin1 * y1_prime) ** 2) / (a1 ** 2) + ((sin1 * x1_prime - cos1 * y1_prime) ** 2) / (b1 ** 2) < 1:
+                    # Check if the point is outside the ellipse2
+                    a2b2 = ring.ellipse2[1]
+                    a2 = a2b2[0] / 2
+                    b2 = a2b2[1] / 2
+                    x2_prime = x - ring.center2.x
+                    y2_prime = y - ring.center2.y
+                    fi2 = ring.ellipse2[2]
+                    cos2 = np.cos(np.radians(fi2))
+                    sin2 = np.sin(np.radians(fi2))
+
+                    if ((cos2 * x2_prime + sin2 * y2_prime) ** 2) / (a2 ** 2) + ((sin2 * x2_prime - cos2 * y2_prime) ** 2) / (b2 ** 2) > 1:
+                        d = map_2d_to_3d[y,x,:]
+                        # check if 3D coordinates are valid (not inf or nan)
+                        if not np.isnan(d[0]) and not np.isinf(d[0]):
+                            points_between_counter += 1
+                            coordinate_sum += d
+        
+        # average the coordinates
+        if points_between_counter > 0:
+            coordinate_sum /= points_between_counter
+        else:
+            # raise error
+            self.get_logger().error("No points between the ellipses")
+
+        # x = ring.center1.x
+        # y = ring.center1.y
+        # d = a[y,x,:]
+        # center = self.create_marker(d, data)
+        # ring_coordinates.center = center
+
+        # create ring coordinates message ... it is just Marker
+        ring_coordinates.center = self.create_marker(coordinate_sum, data)
+        print(coordinate_sum)
 
         return ring_coordinates
 
