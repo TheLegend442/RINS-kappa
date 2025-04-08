@@ -42,6 +42,7 @@ import numpy as np
 
 from custom_messages.msg import FaceCoordinates
 from custom_messages.srv import PosesInFrontOfFaces
+from std_msgs.msg import String
 from visualization_msgs.msg import Marker
 
 
@@ -90,6 +91,8 @@ class RobotCommander(Node):
         self.initial_pose_pub = self.create_publisher(PoseWithCovarianceStamped,
                                                       'initialpose',
                                                       10)
+        #ROS2 speach
+        self.speech_pub = self.create_publisher(String, '/speech_text', 10)
 
         # client that receives poses in front of detected faces
         self.pose_client = self.create_client(PosesInFrontOfFaces, 'get_face_pose')
@@ -386,7 +389,13 @@ class RobotCommander(Node):
         world_y = origin[1] + (height - pixel_y) * resolution  # Obrnemo os Y
 
         return world_x, world_y
-    
+    def say_something(self, text):
+        """Send a message to the speech node"""
+        msg = String()
+        msg.data = text
+        self.speech_pub.publish(msg)
+        self.get_logger().info(f"Sending speech command: {text}")
+        return
 def main(args=None):
     
     rclpy.init(args=args)
@@ -462,16 +471,17 @@ def main(args=None):
         rc.spots_in_front_of_faces_pub.publish(marker)
 
     for pose in response.poses:
+        rc.info(f"{len(response.poses)} detected faces")
         goal_msg = PoseStamped()
         goal_msg.header.frame_id = "map"
         goal_msg.header.stamp = rc.get_clock().now().to_msg()
         goal_msg.pose = pose
-    
+
         rc.goToPose(goal_msg)
         while not rc.isTaskComplete():
             rc.info("Waiting for the task to complete...")
             time.sleep(0.1)
-
+        rc.say_something("Hello, I am robot Kappa!")
         time.sleep(2.0)
 
     rc.destroyNode()
