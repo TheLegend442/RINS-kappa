@@ -1,5 +1,10 @@
 # Homework 3:
 
+glej da imas instaliran pip install pyttsx3
+```
+pip install pyttsx3
+```
+
 Na mapi označimo pot, po kateri robot raziskuje. Robot gre po določeni poti in detektira obraze.
 
 TODO: Po tem, ko gre po celi poti, obiskuje obraze.
