@@ -4,8 +4,10 @@ from rclpy.node import Node
 from visualization_msgs.msg import Marker
 from custom_messages.msg import RingCoordinates
 from builtin_interfaces.msg import Time
-# from custom_messages.srv import PosesInFrontOfRings
+from custom_messages.srv import PosesInFrontOfRings
 from geometry_msgs.msg import PoseWithCovarianceStamped, Pose
+from nav_msgs.msg import OccupancyGrid
+
 import numpy as np
 import time
 import tf2_ros
@@ -38,8 +40,10 @@ class RingMarkerSubscriber(Node):
             PoseWithCovarianceStamped, '/amcl_pose', self.robot_position_callback, 10
         )
 
+        self.map_subscriber = self.create_subscription(OccupancyGrid, '/map', self.map_callback, 10)
+
         # Service that returns poses in front of detected rings
-        # self.service = self.create_service(PosesInFrontOfRings, 'get_ring_pose', self.get_ring_pose_callback)
+        self.service = self.create_service(PosesInFrontOfRings, 'get_ring_pose', self.get_ring_pose_callback)
 
         self.robot_position = None  # Shranjena pozicija robota
         self.rings = {}  # Slovar {ring_id: (position, timestamp, robot_position, count)}
@@ -47,12 +51,11 @@ class RingMarkerSubscriber(Node):
         self.time_threshold = 5  # Sekunde preden obroč ponovno upoštevamo
         self.ring_counter = 0  # Števec za unikatne ID-je obročev
 
-    # def get_ring_pose_callback(self, request, response):
-    #     response.poses = []
-
-    #     for ring in self.rings.values():
-    #         center = ring.center
-    #         robot_position_when_detected = ring.robot_position
+        self.map_data = None
+        self.map_width = None
+        self.map_height = None
+        self.map_resolution = None
+        self.map_origin = None
 
     def robot_position_callback(self, msg):
         # Shrani pozicijo robota iz AMCL topica
@@ -160,6 +163,79 @@ class RingMarkerSubscriber(Node):
         marker.action = Marker.DELETE  # Izbriši prejšnji marker
 
         self.marker_pub.publish(marker)
+
+    def map_callback(self,msg):
+        # Get the map's metadata
+        self.map_data = np.array(msg.data).reshape((msg.info.height, msg.info.width))
+        self.map_width = msg.info.width
+        self.map_height = msg.info.height
+        self.map_resolution = msg.info.resolution
+        self.map_origin = msg.info.origin.position
+
+        self.get_logger().info("Map data received successfully")
+
+    def get_ring_pose_callback(self, request, response):
+
+        if self.map_data is None:
+            self.get_logger().error("Map data not available")
+            return response
+        
+        response.poses = []
+
+        for ring in self.rings.values():
+            center_x = ring.center[0]
+            center_y = ring.center[1]
+
+            cell_x = int((center_x - self.map_origin.x) / self.map_resolution)
+            cell_y = int((center_y - self.map_origin.y) / self.map_resolution)
+
+            nearest_wall_x, nearest_wall_y = self.find_nearest_wall(cell_x, cell_y)
+
+            if nearest_wall_x is not None and nearest_wall_y is not None:
+                # Add an offset from the wall (for example, 2 cells away)
+                offset = 2
+                marker_x = nearest_wall_x + offset
+                marker_y = nearest_wall_y + offset
+
+                # Convert marker position back to meters
+                marker_x_meters = marker_x * self.map_resolution + self.map_origin.x
+                marker_y_meters = marker_y * self.map_resolution + self.map_origin.y
+
+                # Populate the response with the marker position
+                pose = Pose()
+                pose.position.x = marker_x_meters
+                pose.position.y = marker_y_meters
+                pose.position.z = 0
+
+                response.poses.append(pose)
+            else:
+                self.get_logger().error("No wall found near the ring")
+                continue
+        
+        return response
+
+
+    def find_nearest_wall(self, start_x, start_y):
+        """Helper function to find the nearest wall in the occupancy grid"""
+        visited = np.zeros_like(self.map_data)
+        queue = [(start_x, start_y)]
+        visited[start_y, start_x] = 1
+
+        while queue:
+            x, y = queue.pop(0)
+
+            # Check if the current cell is an occupied space (wall)
+            if self.map_data[y, x] == 100:
+                return x, y  # Return the coordinates of the nearest wall
+
+            # Explore the neighboring cells
+            for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                nx, ny = x + dx, y + dy
+                if 0 <= nx < self.map_width and 0 <= ny < self.map_height and not visited[ny, nx]:
+                    visited[ny, nx] = 1
+                    queue.append((nx, ny))
+
+        return None, None  # No wall found
 
 def main(args=None):
     rclpy.init(args=args)

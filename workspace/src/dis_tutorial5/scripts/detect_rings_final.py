@@ -5,19 +5,14 @@ from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data, QoSReliabilityPolicy
 
 from sensor_msgs.msg import Image, PointCloud2
-from sensor_msgs_py import point_cloud2 as pc2
-from geometry_msgs.msg import PoseWithCovarianceStamped
-
 from visualization_msgs.msg import Marker
 from custom_messages.msg import RingCoordinates
-import tf2_geometry_msgs 
 
 from cv_bridge import CvBridge, CvBridgeError
 import cv2
 import numpy as np
 from enum import Enum
 
-import tf2_ros
 
 class RingColor(Enum):
     BLACK = 1
@@ -70,12 +65,6 @@ class detect_rings(Node):
         self.device = self.get_parameter('device').get_parameter_value().string_value
 
         self.bridge = CvBridge() # An object we use for converting images between ROS format and OpenCV format
-
-        # self.tf_buffer = tf2_ros.Buffer()
-        # self.tf_listener = tf2_ros.TransformListener(self.tf_buffer, self)
-        # self.robot_position_subscription = self.create_subscription(
-        #     PoseWithCovarianceStamped, '/amcl_pose', self.robot_position_callback, 10
-        # )
 
         self.depth_sub = self.create_subscription(Image, "/oakd/rgb/preview/depth", self.depth_callback, 1)
         self.image_sub = self.create_subscription(Image, "/oakd/rgb/preview/image_raw", self.image_callback, 1)
@@ -139,12 +128,6 @@ class detect_rings(Node):
             cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
         except CvBridgeError as e:
             print(e)
-
-        # try:
-        #     self.transform = self.tf_buffer.lookup_transform('map', 'base_link', rclpy.time.Time())
-        # except:
-        #     self.get_logger().warn("Transform not available yet")
-        #     return
         
         ## ____VIZUALIZATION (dashed line at y=90)____
 
@@ -218,10 +201,6 @@ class detect_rings(Node):
                 # The center of the elipses should be above the line
                 if e1[0][1] > 90 or e2[0][1] > 90: 
                     continue
-
-                # The rotation of the elipses should be whitin 4 degrees of eachother
-                # if angle_diff>4:
-                #     continue
 
                 e1_minor_axis = e1[1][0]
                 e1_major_axis = e1[1][1]

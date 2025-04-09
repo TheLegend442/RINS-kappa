@@ -19,6 +19,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/RingCoordinates.msg"
   "srv/Shape.srv"
   "srv/PosesInFrontOfFaces.srv"
+  "srv/PosesInFrontOfRings.srv"
   DEPENDENCIES 
   geometry_msgs
   visualization_msgs
