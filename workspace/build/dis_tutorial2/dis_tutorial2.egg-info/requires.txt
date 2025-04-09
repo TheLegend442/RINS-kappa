@@ -1,2 +1,2 @@
-rosidl_runtime_py
 setuptools
+rosidl_runtime_py

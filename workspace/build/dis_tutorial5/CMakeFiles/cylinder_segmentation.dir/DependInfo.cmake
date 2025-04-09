@@ -8,7 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/home/strazi/RINS-kappa/workspace/src/dis_tutorial5/src/cylinder_segmentation.cpp" "CMakeFiles/cylinder_segmentation.dir/src/cylinder_segmentation.cpp.o" "gcc" "CMakeFiles/cylinder_segmentation.dir/src/cylinder_segmentation.cpp.o.d"
+  "/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial5/src/cylinder_segmentation.cpp" "CMakeFiles/cylinder_segmentation.dir/src/cylinder_segmentation.cpp.o" "gcc" "CMakeFiles/cylinder_segmentation.dir/src/cylinder_segmentation.cpp.o.d"
   )
 
 # Targets to which this target links.

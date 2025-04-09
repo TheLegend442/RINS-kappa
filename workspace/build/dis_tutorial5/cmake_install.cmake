@@ -1,8 +1,8 @@
-# Install script for directory: /home/strazi/RINS-kappa/workspace/src/dis_tutorial5
+# Install script for directory: /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial5
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/strazi/RINS-kappa/workspace/install/dis_tutorial5")
+  set(CMAKE_INSTALL_PREFIX "/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -49,7 +49,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5/pcl_forwarder"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5" TYPE EXECUTABLE FILES "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/pcl_forwarder")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5" TYPE EXECUTABLE FILES "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/pcl_forwarder")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5/pcl_forwarder" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5/pcl_forwarder")
     file(RPATH_CHANGE
@@ -69,7 +69,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5/planes"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5" TYPE EXECUTABLE FILES "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/planes")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5" TYPE EXECUTABLE FILES "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/planes")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5/planes" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5/planes")
     file(RPATH_CHANGE
@@ -89,7 +89,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5/cylinder_segmentation"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5" TYPE EXECUTABLE FILES "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/cylinder_segmentation")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5" TYPE EXECUTABLE FILES "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/cylinder_segmentation")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5/cylinder_segmentation" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5/cylinder_segmentation")
     file(RPATH_CHANGE
@@ -103,23 +103,23 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5" TYPE PROGRAM FILES "/home/strazi/RINS-kappa/workspace/src/dis_tutorial5/scripts/detect_rings.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5" TYPE PROGRAM FILES "/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial5/scripts/detect_rings.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5" TYPE PROGRAM FILES "/home/strazi/RINS-kappa/workspace/src/dis_tutorial5/scripts/detect_rings_final.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5" TYPE PROGRAM FILES "/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial5/scripts/detect_rings_final.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5" TYPE PROGRAM FILES "/home/strazi/RINS-kappa/workspace/src/dis_tutorial5/scripts/save_rings.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/dis_tutorial5" TYPE PROGRAM FILES "/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial5/scripts/save_rings.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/dis_tutorial5")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/package_run_dependencies" TYPE FILE FILES "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_index/share/ament_index/resource_index/package_run_dependencies/dis_tutorial5")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/dis_tutorial5")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/parent_prefix_path" TYPE FILE FILES "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_index/share/ament_index/resource_index/parent_prefix_path/dis_tutorial5")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -127,7 +127,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5/environment" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_environment_hooks/ament_prefix_path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5/environment" TYPE FILE FILES "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_environment_hooks/ament_prefix_path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -135,42 +135,42 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5/environment" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_environment_hooks/path.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5/environment" TYPE FILE FILES "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_environment_hooks/path.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_environment_hooks/local_setup.bash")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5" TYPE FILE FILES "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_environment_hooks/local_setup.bash")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_environment_hooks/local_setup.sh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5" TYPE FILE FILES "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_environment_hooks/local_setup.sh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_environment_hooks/local_setup.zsh")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5" TYPE FILE FILES "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_environment_hooks/local_setup.zsh")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_environment_hooks/local_setup.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5" TYPE FILE FILES "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_environment_hooks/local_setup.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_environment_hooks/package.dsv")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5" TYPE FILE FILES "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_environment_hooks/package.dsv")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_index/share/ament_index/resource_index/packages/dis_tutorial5")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/ament_index/resource_index/packages" TYPE FILE FILES "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_index/share/ament_index/resource_index/packages/dis_tutorial5")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5/cmake" TYPE FILE FILES
-    "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_core/dis_tutorial5Config.cmake"
-    "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_core/dis_tutorial5Config-version.cmake"
+    "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_core/dis_tutorial5Config.cmake"
+    "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/ament_cmake_core/dis_tutorial5Config-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5" TYPE FILE FILES "/home/strazi/RINS-kappa/workspace/src/dis_tutorial5/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/dis_tutorial5" TYPE FILE FILES "/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial5/package.xml")
 endif()
 
 if(CMAKE_INSTALL_COMPONENT)
@@ -181,5 +181,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/strazi/RINS-kappa/workspace/build/dis_tutorial5/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

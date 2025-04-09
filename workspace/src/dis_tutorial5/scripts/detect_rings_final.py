@@ -13,6 +13,15 @@ from custom_messages.msg import RingCoordinates
 from cv_bridge import CvBridge, CvBridgeError
 import cv2
 import numpy as np
+from enum import Enum
+
+class RingColor(Enum):
+    BLACK = 1
+    RED = 2
+    YELLOW = 3
+    GREEN = 4
+    BLUE = 5
+    UNKNOWN = 0
 
 class Point:
     def __init__(self, x=0, y=0):
@@ -20,7 +29,7 @@ class Point:
         self.y = y
 
 class Ring():
-    def __init__(self, ellipse1, ellipse2, center3D=None):
+    def __init__(self, ellipse1, ellipse2, center3D=None, mask=None, color=RingColor.UNKNOWN):
         self.ellipse1 = ellipse1
         self.ellipse2 = ellipse2
 
@@ -34,6 +43,9 @@ class Ring():
         self.center2.y = int(ellipse2[0][1])
 
         self.center3D = center3D  # np.array([x, y, z]=
+
+        self.mask = mask
+        self.color = color
 
 class detect_rings(Node):
     def __init__(self):
@@ -73,6 +85,8 @@ class detect_rings(Node):
         # cv2.namedWindow("Ring depth", cv2.WINDOW_NORMAL)
         cv2.namedWindow("Edges", cv2.WINDOW_NORMAL)
         cv2.namedWindow("Detected ellipses", cv2.WINDOW_NORMAL)
+        cv2.namedWindow("Ring mask", cv2.WINDOW_NORMAL)
+        cv2.resizeWindow("Ring mask", 600, 600)
 
 
         self.get_logger().info(f"Node has been initialized! Will publish face markers to {marker_topic}.")
@@ -200,7 +214,7 @@ class detect_rings(Node):
                 else:
                     continue # if one ellipse does not contain the other, it is not a ring
 
-                h, w = 320, 240
+                h, w = cv_image.shape[:2]
 
                 x1, y1 = e1[0]
                 x2, y2 = e2[0]
@@ -217,10 +231,50 @@ class detect_rings(Node):
 
                 # Check if the depth is within a certain range - detection of flat objects
                 if (depth1 > 0.01 and depth1 < 3) or (depth2 > 0.01 and depth2 < 3):
-                    self.flat_rings.append(Ring(e1,e2))
+                    self.flat_rings.append(Ring(le,se)) # First large, then small ellipse
                     continue
-                    
-                self.rings.append(Ring(e1,e2))
+
+                ## _____COLOR DETECTION (only for the 3D rings)_____
+                ring = Ring(le,se)
+                yy, xx = np.meshgrid(np.arange(h), np.arange(w), indexing='ij')
+
+                def ellipse_mask(xx, yy, center, axes, angle_deg):
+                    a = axes[0] / 2
+                    b = axes[1] / 2
+                    x_prime = xx - center[0]
+                    y_prime = yy - center[1]
+                    angle_rad = np.radians(angle_deg)
+                    cos = np.cos(angle_rad)
+                    sin = np.sin(angle_rad)
+                    ellipse_eq = ((cos * x_prime + sin * y_prime) ** 2) / (a ** 2) + \
+                                ((sin * x_prime - cos * y_prime) ** 2) / (b ** 2)
+                    return ellipse_eq < 1
+                
+                outer_mask = ellipse_mask(xx, yy, (ring.center1.x, ring.center1.y), ring.ellipse1[1], ring.ellipse1[2])
+                inner_mask = ellipse_mask(xx, yy, (ring.center2.x, ring.center2.y), ring.ellipse2[1], ring.ellipse2[2])
+                ring_mask = outer_mask & (~inner_mask)
+
+                valid_depth = (self.depth_img > 0) # eliminate background pixels
+                final_mask = ring_mask & valid_depth
+
+                ring_colors = cv_image[final_mask].copy()
+
+                ## Conversion to HSV
+                if ring_colors.size > 0:
+                    hsv_colors = cv2.cvtColor(ring_colors.reshape(-1, 1, 3).astype(np.uint8), cv2.COLOR_BGR2HSV).reshape(-1, 3)
+
+                    hue = hsv_colors[:, 0]
+                    saturation = hsv_colors[:, 1]
+
+                    avg_hue = np.mean(hue)
+                    avg_saturation = np.mean(saturation)
+                else:
+                    self.get_logger().warn("No ring colors found inside mask — skipping color conversion.")
+                    return
+            
+                
+                ring.mask = final_mask
+                self.rings.append(ring) # First large, then small ellipse
 
 
         ## ____VIZUALIZATION (grayscale)____
@@ -245,16 +299,18 @@ class detect_rings(Node):
 
 
         ## ____VIZUALIZATION (detected rings)____
-        for c in self.rings:
+        det_rings = cv_image.copy()
+
+        for c in self.rings:    
 
             depth1 = self.depth_img[c.center1.y,c.center1.x]
             depth2 = self.depth_img[c.center2.y,c.center2.x]
 
-            cv2.putText(cv_image, f"Dist2center: {depth1:.3f}, {depth2:.3f}", (0, 180), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 255, 0), 1)
+            cv2.putText(det_rings, f"Dist2center: {depth1:.3f}, {depth2:.3f}", (0, 180), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 255, 0), 1)
 
             # drawing the ellipses on the image
-            cv2.ellipse(cv_image, c.ellipse1, (0, 255, 0), 2)
-            cv2.ellipse(cv_image, c.ellipse2, (0, 255, 0), 2)
+            cv2.ellipse(det_rings, c.ellipse1, (0, 255, 0), 2)
+            cv2.ellipse(det_rings, c.ellipse2, (0, 255, 0), 2)
 
 
         ## ____VIZUALITATION (detected flat rings)____
@@ -264,15 +320,49 @@ class detect_rings(Node):
             depth1 = self.depth_img[f.center1.y,f.center1.x]
             depth2 = self.depth_img[f.center2.y,f.center2.x]
 
-            cv2.putText(cv_image, f"Dist2center: {depth1:.3f}, {depth2:.3f}", (0, 200), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 1)
+            cv2.putText(det_rings, f"Dist2center: {depth1:.3f}, {depth2:.3f}", (0, 200), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 1)
 
-            cv2.ellipse(cv_image, f.ellipse1, (0, 0, 255), 2)
-            cv2.ellipse(cv_image, f.ellipse2, (0, 0, 255), 2)
+            cv2.ellipse(det_rings, f.ellipse1, (0, 0, 255), 2)
+            cv2.ellipse(det_rings, f.ellipse2, (0, 0, 255), 2)
 
             if (len(self.rings)+len(self.flat_rings))>0:
-                cv2.imshow("Detected rings",cv_image)
+                cv2.imshow("Detected rings",det_rings)
                 cv2.waitKey(1)
 
+        ## ____VIZUALITATION (inside of the ring)____
+        
+        if len(self.rings) > 0:
+            ring = self.rings[-1]
+            masked_image = cv_image.copy()
+            masked_image[~ring.mask] = 255
+            
+            # Get the bounding boxes of the ellipses
+            (x1, y1), (a1, b1), _ = ring.ellipse1
+            (x2, y2), (a2, b2), _ = ring.ellipse2
+
+            # Get the center of the ring (average of centers)
+            center_x = int((x1 + x2) / 2)
+            center_y = int((y1 + y2) / 2)
+
+            # Define padding around the ring (adjust as needed)
+            padding = int(max(a1, b1, a2, b2)) * 2  # e.g., 2x the ellipse size
+
+            # Define crop boundaries
+            x_min = max(center_x - padding, 0)
+            x_max = min(center_x + padding, masked_image.shape[1])
+            y_min = max(center_y - padding, 0)
+            y_max = min(center_y + padding, masked_image.shape[0])
+
+            # Crop the image
+            cropped = masked_image[y_min:y_max, x_min:x_max]
+            
+            scale = 4.0
+            resized_crop = cv2.resize(cropped, None, fx=scale, fy=scale, interpolation=cv2.INTER_NEAREST)
+
+            
+            cv2.imshow("Ring mask", resized_crop)
+            cv2.waitKey(1)
+        
 
     def create_marker(self, d, data):
         marker = Marker()

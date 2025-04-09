@@ -1,5 +1,5 @@
 CMakeFiles/simple_subscriber.dir/src/simple_subscriber.cpp.o: \
- /home/strazi/RINS-kappa/workspace/src/dis_tutorial1/src/simple_subscriber.cpp \
+ /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial1/src/simple_subscriber.cpp \
  /usr/include/stdc-predef.h \
  /opt/ros/humble/include/rclcpp/rclcpp/rclcpp.hpp \
  /usr/include/c++/11/csignal \

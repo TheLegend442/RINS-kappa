@@ -1,5 +1,5 @@
 CMakeFiles/planes.dir/src/planes.cpp.o: \
- /home/strazi/RINS-kappa/workspace/src/dis_tutorial5/src/planes.cpp \
+ /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial5/src/planes.cpp \
  /usr/include/stdc-predef.h /usr/include/pcl-1.12/pcl/ModelCoefficients.h \
  /usr/include/c++/11/vector /usr/include/c++/11/bits/stl_algobase.h \
  /usr/include/x86_64-linux-gnu/c++/11/bits/c++config.h \

@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/strazi/RINS-kappa/workspace/src/dis_tutorial1
+CMAKE_SOURCE_DIR = /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/strazi/RINS-kappa/workspace/build/dis_tutorial1
+CMAKE_BINARY_DIR = /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1
 
 # Utility rule file for ament_cmake_python_copy_dis_tutorial1.
 
@@ -67,7 +67,7 @@ include CMakeFiles/ament_cmake_python_copy_dis_tutorial1.dir/compiler_depend.mak
 include CMakeFiles/ament_cmake_python_copy_dis_tutorial1.dir/progress.make
 
 CMakeFiles/ament_cmake_python_copy_dis_tutorial1:
-	/usr/bin/cmake -E copy_directory /home/strazi/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_py/dis_tutorial1 /home/strazi/RINS-kappa/workspace/build/dis_tutorial1/ament_cmake_python/dis_tutorial1/dis_tutorial1
+	/usr/bin/cmake -E copy_directory /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1/rosidl_generator_py/dis_tutorial1 /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1/ament_cmake_python/dis_tutorial1/dis_tutorial1
 
 ament_cmake_python_copy_dis_tutorial1: CMakeFiles/ament_cmake_python_copy_dis_tutorial1
 ament_cmake_python_copy_dis_tutorial1: CMakeFiles/ament_cmake_python_copy_dis_tutorial1.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/ament_cmake_python_copy_dis_tutorial1.dir/clean:
 .PHONY : CMakeFiles/ament_cmake_python_copy_dis_tutorial1.dir/clean
 
 CMakeFiles/ament_cmake_python_copy_dis_tutorial1.dir/depend:
-	cd /home/strazi/RINS-kappa/workspace/build/dis_tutorial1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/strazi/RINS-kappa/workspace/src/dis_tutorial1 /home/strazi/RINS-kappa/workspace/src/dis_tutorial1 /home/strazi/RINS-kappa/workspace/build/dis_tutorial1 /home/strazi/RINS-kappa/workspace/build/dis_tutorial1 /home/strazi/RINS-kappa/workspace/build/dis_tutorial1/CMakeFiles/ament_cmake_python_copy_dis_tutorial1.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1 && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial1 /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial1 /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1 /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1 /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1/CMakeFiles/ament_cmake_python_copy_dis_tutorial1.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/ament_cmake_python_copy_dis_tutorial1.dir/depend
 

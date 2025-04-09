@@ -1,12 +1,12 @@
 {
   "package_name": "custom_messages",
-  "output_dir": "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_generator_py/custom_messages",
+  "output_dir": "/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages/rosidl_generator_py/custom_messages",
   "template_dir": "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource",
   "idl_tuples": [
-    "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:msg/FaceCoordinates.idl",
-    "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:msg/RingCoordinates.idl",
-    "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:srv/Shape.idl",
-    "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:srv/PosesInFrontOfFaces.idl"
+    "/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:msg/FaceCoordinates.idl",
+    "/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:msg/RingCoordinates.idl",
+    "/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:srv/Shape.idl",
+    "/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:srv/PosesInFrontOfFaces.idl"
   ],
   "ros_interface_dependencies": [
     "geometry_msgs:/opt/ros/humble/share/geometry_msgs/msg/Accel.idl",
@@ -127,10 +127,10 @@
     "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_msg.py.em",
     "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_srv_pkg_typesupport_entry_point.c.em",
     "/opt/ros/humble/share/rosidl_generator_py/cmake/../resource/_srv.py.em",
-    "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/msg/FaceCoordinates.idl",
-    "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/msg/RingCoordinates.idl",
-    "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/srv/Shape.idl",
-    "/home/strazi/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/srv/PosesInFrontOfFaces.idl",
+    "/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/msg/FaceCoordinates.idl",
+    "/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/msg/RingCoordinates.idl",
+    "/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/srv/Shape.idl",
+    "/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages/srv/PosesInFrontOfFaces.idl",
     "/opt/ros/humble/share/geometry_msgs/msg/Accel.idl",
     "/opt/ros/humble/share/geometry_msgs/msg/AccelStamped.idl",
     "/opt/ros/humble/share/geometry_msgs/msg/AccelWithCovariance.idl",
