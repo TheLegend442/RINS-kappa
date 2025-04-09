@@ -50,6 +50,8 @@ class Ring():
 
         self.mask = mask
         self.color = color
+        self.avg_hue = 0
+        self.avg_saturation = 0
 
 class detect_rings(Node):
     def __init__(self):
@@ -68,15 +70,15 @@ class detect_rings(Node):
 
         self.bridge = CvBridge() # An object we use for converting images between ROS format and OpenCV format
 
-        self.tf_buffer = tf2_ros.Buffer()
-        self.tf_listener = tf2_ros.TransformListener(self.tf_buffer, self)
-        self.robot_position_subscription = self.create_subscription(
-            PoseWithCovarianceStamped, '/amcl_pose', self.robot_position_callback, 10
-        )
+        # self.tf_buffer = tf2_ros.Buffer()
+        # self.tf_listener = tf2_ros.TransformListener(self.tf_buffer, self)
+        # self.robot_position_subscription = self.create_subscription(
+        #     PoseWithCovarianceStamped, '/amcl_pose', self.robot_position_callback, 10
+        # )
 
         self.depth_sub = self.create_subscription(Image, "/oakd/rgb/preview/depth", self.depth_callback, 1)
         self.image_sub = self.create_subscription(Image, "/oakd/rgb/preview/image_raw", self.image_callback, 1)
-        self.pointcloud_sub = self.create_subscription(PointCloud2, "/oakd/rgb/preview/depth/points", self.pointcloud_callback, qos_profile_sensor_data)
+        # self.pointcloud_sub = self.create_subscription(PointCloud2, "/oakd/rgb/preview/depth/points", self.pointcloud_callback, qos_profile_sensor_data)
 
         self.marker_pub = self.create_publisher(RingCoordinates, marker_topic, QoSReliabilityPolicy.BEST_EFFORT)
 
@@ -135,11 +137,11 @@ class detect_rings(Node):
         except CvBridgeError as e:
             print(e)
 
-        try:
-            self.transform = self.tf_buffer.lookup_transform('map', 'base_link', rclpy.time.Time())
-        except:
-            self.get_logger().warn("Transform not available yet")
-            return
+        # try:
+        #     self.transform = self.tf_buffer.lookup_transform('map', 'base_link', rclpy.time.Time())
+        # except:
+        #     self.get_logger().warn("Transform not available yet")
+        #     return
         
         ## ____VIZUALIZATION (dashed line at y=90)____
 
@@ -254,6 +256,7 @@ class detect_rings(Node):
                     continue
 
                 ## _____COLOR DETECTION (only for the 3D rings)_____
+
                 ring = Ring(le,se)
                 yy, xx = np.meshgrid(np.arange(h), np.arange(w), indexing='ij')
 
@@ -285,8 +288,8 @@ class detect_rings(Node):
                     hue = hsv_colors[:, 0]
                     saturation = hsv_colors[:, 1]
 
-                    avg_hue = np.mean(hue)
-                    avg_saturation = np.mean(saturation)
+                    ring.avg_hue = np.mean(hue)
+                    ring.avg_saturation = np.mean(saturation)
                 else:
                     self.get_logger().warn("No ring colors found inside mask — skipping color conversion.")
                     return
@@ -378,6 +381,7 @@ class detect_rings(Node):
             scale = 4.0
             resized_crop = cv2.resize(cropped, None, fx=scale, fy=scale, interpolation=cv2.INTER_NEAREST)
 
+            cv2.putText(resized_crop, f"Mean hue: {ring.avg_hue:.3f} | Mean saturation: {ring.avg_saturation:.3f}", (0, 200), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 1)
             
             cv2.imshow("Ring mask", resized_crop)
             cv2.waitKey(1)
@@ -477,33 +481,34 @@ class detect_rings(Node):
 
         # transform into map frame
         
-        try:
-            transformed_pose = tf2_geometry_msgs.do_transform_pose(coordinate_sum, self.transform)
-            transformed_position = np.array([transformed_pose.position.x, transformed_pose.position.y, transformed_pose.position.z])
-        except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
-            self.get_logger().error(f"Napaka pri transformaciji: {e}")
-            return
+        # try:
+        #     transformed_pose = tf2_geometry_msgs.do_transform_pose(coordinate_sum, self.transform)
+        #     transformed_position = np.array([transformed_pose.position.x, transformed_pose.position.y, transformed_pose.position.z])
+        # except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
+        #     self.get_logger().error(f"Napaka pri transformaciji: {e}")
+        #     return
         
-        ring_coordinates.center = self.create_marker(transformed_position, data)
+        # ring_coordinates.center = self.create_marker(transformed_position, data)
     
 
         return ring_coordinates
 
 
-    def pointcloud_callback(self, data):	
+    # def pointcloud_callback(self, data):	
         
 	
 
-        # iterate over ring coordinates
-        for ring in self.rings:
+    #     # iterate over ring coordinates
+    #     # for ring in self.rings:
 
-            ring_coordinates_msg = self.create_ring_coordinates_message(ring, data)
-            self.marker_pub.publish(ring_coordinates_msg)
+    #         # ring_coordinates_msg = self.create_ring_coordinates_message(ring, data)
+    #         # self.marker_pub.publish(ring_coordinates_msg)
 
+    #     return None
     
-    def robot_position_callback(self, msg):
-        # Shrani pozicijo robota iz AMCL topica
-        self.robot_position = np.array([msg.pose.pose.position.x, msg.pose.pose.position.y, msg.pose.pose.position.z])
+    # def robot_position_callback(self, msg):
+    #     # Shrani pozicijo robota iz AMCL topica
+    #     self.robot_position = np.array([msg.pose.pose.position.x, msg.pose.pose.position.y, msg.pose.pose.position.z])
 
 
 def main():
