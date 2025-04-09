@@ -52,6 +52,7 @@ class Ring():
         self.color = color
         self.avg_hue = 0
         self.avg_saturation = 0
+        self.avg_value = 0
 
 class detect_rings(Node):
     def __init__(self):
@@ -88,6 +89,8 @@ class detect_rings(Node):
         self.depth_img = None
         self.rings = []
         self.flat_rings = []
+
+        self.save_counter = 0
 
         ## ____Vizualization____
 
@@ -284,12 +287,26 @@ class detect_rings(Node):
                 ## Conversion to HSV
                 if ring_colors.size > 0:
                     hsv_colors = cv2.cvtColor(ring_colors.reshape(-1, 1, 3).astype(np.uint8), cv2.COLOR_BGR2HSV).reshape(-1, 3)
+                    np.save(f"./src/dis_tutorial5/colors/ring_colors_blue{self.save_counter}.npy", hsv_colors)  # Save the HSV colors for debugging
+                    self.save_counter += 1
 
                     hue = hsv_colors[:, 0]
                     saturation = hsv_colors[:, 1]
+                    value = hsv_colors[:, 2]
 
                     ring.avg_hue = np.mean(hue)
                     ring.avg_saturation = np.mean(saturation)
+                    ring.avg_value = np.mean(value)
+
+                    if ring.avg_saturation > 150 and ring.avg_value < 50:
+                        ring.color = RingColor.BLACK
+                    elif ring.avg_hue < 30 or ring.avg_hue > 315:   
+                        ring.color = RingColor.RED
+                    elif 30 <= ring.avg_hue < 70:
+                        ring.color = RingColor.GREEN
+                    elif 70 <= ring.avg_hue < 260:
+                        ring.color = RingColor.BLUE 
+
                 else:
                     self.get_logger().warn("No ring colors found inside mask — skipping color conversion.")
                     return
@@ -380,9 +397,11 @@ class detect_rings(Node):
             
             scale = 4.0
             resized_crop = cv2.resize(cropped, None, fx=scale, fy=scale, interpolation=cv2.INTER_NEAREST)
+            hr, _ = resized_crop.shape[:2]
 
-            cv2.putText(resized_crop, f"Mean hue: {ring.avg_hue:.3f} | Mean saturation: {ring.avg_saturation:.3f}", (0, 200), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 1)
-            
+            cv2.putText(resized_crop, f"H:{ring.avg_hue:.1f} | S:{ring.avg_saturation:.1f} | V:{ring.avg_value:.1f}", (0, hr-20), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 1)
+            cv2.putText(resized_crop, f"{ring.color.name}",(0, hr-10), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 1)
+
             cv2.imshow("Ring mask", resized_crop)
             cv2.waitKey(1)
         

@@ -1,74 +1,81 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 import rclpy
 from rclpy.node import Node
-import cv2
-import numpy as np
-import time
+from rclpy.qos import qos_profile_sensor_data, QoSReliabilityPolicy
 
-
-import tf2_ros
-import tf2_geometry_msgs
 from sensor_msgs.msg import Image, PointCloud2
-from geometry_msgs.msg import PoseWithCovarianceStamped
-from geometry_msgs.msg import PoseStamped
-from cv_bridge import CvBridge, CvBridgeError
-from visualization_msgs.msg import Marker
-from std_msgs.msg import ColorRGBA
-from rclpy.qos import QoSDurabilityPolicy, QoSHistoryPolicy, qos_profile_sensor_data
-from rclpy.qos import QoSProfile, QoSReliabilityPolicy
 from sensor_msgs_py import point_cloud2 as pc2
 
-qos_profile = QoSProfile(
-          durability=QoSDurabilityPolicy.TRANSIENT_LOCAL,
-          reliability=QoSReliabilityPolicy.RELIABLE,
-          history=QoSHistoryPolicy.KEEP_LAST,
-          depth=1)
+from visualization_msgs.msg import Marker
+from custom_messages.msg import RingCoordinates
 
+from cv_bridge import CvBridge, CvBridgeError
+import cv2
+import numpy as np
+from enum import Enum
+
+class RingColor(Enum):
+    BLACK = 1
+    RED = 2
+    YELLOW = 3
+    GREEN = 4
+    BLUE = 5
+    UNKNOWN = 0
+
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
 
 class Ring():
-    def __init__(self, ellipse1, ellipse2, count_detected=1, position3D=None):
+    def __init__(self, ellipse1, ellipse2, center3D=None):
         self.ellipse1 = ellipse1
         self.ellipse2 = ellipse2
 
-        self.center1 = ellipse1[0]
-        self.center2 = ellipse2[0]
+        self.center1 = Point(0, 0)
+        self.center2 = Point(0, 0)
 
-        self.depth1 = 0
-        self.depth2 = 0
+        self.center1.x = int(ellipse1[0][0])
+        self.center1.y = int(ellipse1[0][1])
 
-        self.position3D = position3D
+        self.center2.x = int(ellipse2[0][0])
+        self.center2.y = int(ellipse2[0][1])
 
-        self.count_detected = count_detected
-        self.timestamp = 0
+        self.center3D = center3D  # np.array([x, y, z]=
 
-class RingDetector(Node):
+        self.mask = None
+        self.color = RingColor.UNKNOWN
+        self.avg_hue = 0
+        self.avg_saturation = 0
+        self.avg_value = 0
+
+class detect_rings(Node):
     def __init__(self):
-        super().__init__('ring_detector')
+        super().__init__('detect_rings')
 
-        # An object we use for converting images between ROS format and OpenCV format
-        self.bridge = CvBridge()
+        self.declare_parameters(
+                namespace='',
+                parameters=[
+                    ('device', ''),
+        ])
 
-        self.rings = {}
-        self.ring_counter = 0
-        self.rings_array = []
-        self.depth_img = None
-        self.robot_position = None  # Shranjena pozicija robota
+        marker_topic = '/ring_marker'
+        self.detection_color = (255,0,0) # blue
+        
+        self.device = self.get_parameter('device').get_parameter_value().string_value
 
-        # Subscribe to the image and/or depth topi
-        self.robot_position_sub = self.create_subscription(
-            PoseWithCovarianceStamped, '/amcl_pose', self.robot_position_callback, 10
-        )
+        self.bridge = CvBridge() # An object we use for converting images between ROS format and OpenCV format
+
         self.depth_sub = self.create_subscription(Image, "/oakd/rgb/preview/depth", self.depth_callback, 1)
         self.image_sub = self.create_subscription(Image, "/oakd/rgb/preview/image_raw", self.image_callback, 1)
         self.pointcloud_sub = self.create_subscription(PointCloud2, "/oakd/rgb/preview/depth/points", self.pointcloud_callback, qos_profile_sensor_data)
 
-        self.marker_pub = self.create_publisher(Marker, "/ring", QoSReliabilityPolicy.BEST_EFFORT)
+        self.marker_pub = self.create_publisher(RingCoordinates, marker_topic, QoSReliabilityPolicy.BEST_EFFORT)
 
-        # Object we use for transforming between coordinate frames
-        self.tf_buf = tf2_ros.Buffer()
-        self.tf_listener = tf2_ros.TransformListener(self.tf_buf, self)
-
+        self.depth_img = None
+        self.rings = []
+        self.flat_rings = []
 
         ## ____Vizualization____
 
@@ -81,17 +88,34 @@ class RingDetector(Node):
         # cv2.namedWindow("Ring depth", cv2.WINDOW_NORMAL)
         cv2.namedWindow("Edges", cv2.WINDOW_NORMAL)
         cv2.namedWindow("Detected ellipses", cv2.WINDOW_NORMAL)
+        cv2.namedWindow("Ring mask", cv2.WINDOW_NORMAL)
+        cv2.resizeWindow("Ring mask", 600, 600)
 
 
+        self.get_logger().info(f"Node has been initialized! Will publish face markers to {marker_topic}.")
 
-    def robot_position_callback(self, msg):
-        # Shrani pozicijo robota iz AMCL topica
-        self.robot_position = np.array([msg.pose.pose.position.x, msg.pose.pose.position.y, msg.pose.pose.position.z])
+    def depth_callback(self,data):
+        try:
+            depth_image = self.bridge.imgmsg_to_cv2(data, "32FC1")
+        except CvBridgeError as e:
+            print(e)
 
-    def image_callback(self, data):
-        # self.get_logger().info(f"I got a new image! Will try to find rings...")
-        
-        if self.depth_img is None:
+        depth_image[depth_image==np.inf] = 0
+        self.depth_img = depth_image
+
+        ## ____VIZUALIZATION____
+
+        # image_1 = depth_image / 65536.0 * 255 # Do the necessairy conversion so we can visuzalize it in OpenCV
+        # image_1 = image_1/np.max(image_1)*255
+
+        # image_viz = np.array(image_1, dtype= np.uint8)
+
+        # cv2.imshow("Depth window", image_viz)
+        # cv2.waitKey(1)
+
+    def image_callback(self,data):
+
+        if self.depth_img is None: # Check if depth image is present
             self.get_logger().info("No depth image yet, skipping this image")
             return
         
@@ -100,19 +124,14 @@ class RingDetector(Node):
         except CvBridgeError as e:
             print(e)
 
-        blue = cv_image[:,:,0]
-        green = cv_image[:,:,1]
-        red = cv_image[:,:,2]
+        
+        ## ____VIZUALIZATION (dashed line at y=90)____
 
-        cv_image_copy = cv_image.copy()
-
-
-        ## ____Draw dashed a line on the image at y=90____
+        cv_dashed = cv_image.copy()
         start_point = (0, 90)
         end_point = (cv_image.shape[1], 90)
 
         dash_length, gap_length = 10, 5
-    
         line_length = int(np.linalg.norm(np.array(start_point) - np.array(end_point)))
 
         for i in range(0, line_length, dash_length + gap_length):
@@ -122,29 +141,24 @@ class RingDetector(Node):
             x2 = int(start_point[0] + (i + dash_length) * (end_point[0] - start_point[0]) / line_length)
             y2 = int(start_point[1] + (i + dash_length) * (end_point[1] - start_point[1]) / line_length)
      
-            cv2.line(cv_image_copy, (x1, y1), (x2, y2), (0, 0, 0), 1)
-        
-        
-        ## ____Check for the image dimensions____
-        ## Image dimensions: 240x320
-        # cv2.putText(cv_image_copy, f"HxW: {cv_image.shape[0]}x{cv_image.shape[1]}", (0, 200), cv2.FONT_HERSHEY_SIMPLEX, 1, (255, 0, 0), 2)
-        
-        cv2.imshow("Live camera feed", cv_image_copy)
+            cv2.line(cv_dashed, (x1, y1), (x2, y2), (0, 0, 0), 1)
+
+        cv2.imshow("Live camera feed", cv_dashed)
         cv2.waitKey(1)
 
-        # Tranform image to grayscale
-        gray = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
-        # cv2.imshow("Gray Image", gray)
-        # cv2.waitKey(1)
 
-        ## ____New ellipse detection code____
+        ## ____ELLIPSE DETECTION____
+
+        gray = cv2.cvtColor(cv_image, cv2.COLOR_BGR2GRAY)
+        self.rings = []
+        self.flat_rings = []
 
         def ellipse_detection(image, canny_threshold1=50, canny_threshold2=150, min_major_axis=10, max_major_axis=50):
             cut_image = image[0:90,0:320]
             image_blured = cv2.GaussianBlur(cut_image, (3, 3), 0)
             
             ellipses = []
-                
+            
             edges = cv2.Canny(image_blured, canny_threshold1, canny_threshold2) # Apply Canny edge detection
             
             contours, _ = cv2.findContours(edges, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
@@ -163,21 +177,10 @@ class RingDetector(Node):
                         ellipses.append(ellipse)
             
             return ellipses, edges
-        
+
         elps, edges = ellipse_detection(gray)
 
-        cv2.imshow("Edges", edges)
-        cv2.waitKey(1)
-
-        img_ellipses = cv_image.copy()
-        for e in elps:
-            cv2.ellipse(img_ellipses, e, (255, 0, 0), 2)
-        cv2.imshow("Detected ellipses", img_ellipses)
-        cv2.waitKey(1)
-
-        # Find two elipses with same centers
-        candidates = []
-        flat_rings = []
+        # Find ellipses that form a ring
         for n in range(len(elps)):
             for m in range(n + 1, len(elps)):
                 # e[0] is the center of the ellipse (x,y), e[1] are the lengths of major and minor axis (major, minor), e[2] is the rotation in degrees
@@ -213,17 +216,8 @@ class RingDetector(Node):
                     se = e1 # e1 is smaller ellipse
                 else:
                     continue # if one ellipse does not contain the other, it is not a ring
-                
-                # # The widths of the ring along the major and minor axis should be roughly the same
-                # border_major = (le[1][1]-se[1][1])/2
-                # border_minor = (le[1][0]-se[1][0])/2
-                # border_diff = np.abs(border_major - border_minor)
 
-                # if border_diff>4:
-                #     continue
-
-
-                h, w = 320, 240
+                h, w = cv_image.shape[:2]
 
                 x1, y1 = e1[0]
                 x2, y2 = e2[0]
@@ -239,95 +233,155 @@ class RingDetector(Node):
                     continue  # Ignore invalid depth values
 
                 # Check if the depth is within a certain range - detection of flat objects
-                if (depth1 > 0.01 and depth1 < 3) or (depth2 > 0.01 and depth2 < 3):
-                    flat_rings.append((e1,e2))
+                if (depth1 > 0.01 and depth1 < 10) or (depth2 > 0.01 and depth2 < 10):
+                    self.flat_rings.append(Ring(le,se)) # First large, then small ellipse
                     continue
-                    
-                candidates.append((e1,e2))
 
-    
-        print("Processing is done! found", len(candidates), "candidates for rings")
+                ## _____COLOR DETECTION (only for the 3D rings)_____
 
-        # Plot the rings on the image
-        for c in candidates:
+                ring = Ring(le,se)
+                yy, xx = np.meshgrid(np.arange(h), np.arange(w), indexing='ij')
 
-            # the centers of the ellipses
-            e1 = c[0]
-            e2 = c[1]
+                def ellipse_mask(xx, yy, center, axes, angle_deg):
+                    a = axes[0] / 2
+                    b = axes[1] / 2
+                    x_prime = xx - center[0]
+                    y_prime = yy - center[1]
+                    angle_rad = np.radians(angle_deg)
+                    cos = np.cos(angle_rad)
+                    sin = np.sin(angle_rad)
+                    ellipse_eq = ((cos * x_prime + sin * y_prime) ** 2) / (a ** 2) + \
+                                ((sin * x_prime - cos * y_prime) ** 2) / (b ** 2)
+                    return ellipse_eq < 1
+                
+                outer_mask = ellipse_mask(xx, yy, (ring.center1.x, ring.center1.y), ring.ellipse1[1], ring.ellipse1[2])
+                inner_mask = ellipse_mask(xx, yy, (ring.center2.x, ring.center2.y), ring.ellipse2[1], ring.ellipse2[2])
+                ring_mask = outer_mask & (~inner_mask)
 
-            center1 = e1[0]
-            center2 = e2[0]
-            depth1 = self.depth_img[int(center1[1]), int(center1[0])]
-            depth2 = self.depth_img[int(center2[1]), int(center2[0])]
+                valid_depth = (self.depth_img > 0) # eliminate background pixels
+                final_mask = ring_mask & valid_depth
 
+                ring_colors = cv_image[final_mask].copy()
+
+                ## Conversion to HSV
+                if ring_colors.size > 0:
+                    hsv_colors = cv2.cvtColor(ring_colors.reshape(-1, 1, 3).astype(np.uint8), cv2.COLOR_BGR2HSV).reshape(-1, 3)
+                    # np.save(f"./src/dis_tutorial5/colors/ring_colors_blue{self.save_counter}.npy", hsv_colors)  # Save the HSV colors for debugging
+                    # self.save_counter += 1
+
+                    hue = hsv_colors[:, 0]
+                    saturation = hsv_colors[:, 1]
+                    value = hsv_colors[:, 2]
+
+                    ring.avg_hue = np.mean(hue)
+                    ring.avg_saturation = np.mean(saturation)
+                    ring.avg_value = np.mean(value)
+
+                    if ring.avg_saturation > 150 and ring.avg_value < 50:
+                        ring.color = RingColor.BLACK
+                    elif ring.avg_hue < 30 or ring.avg_hue > 315:   
+                        ring.color = RingColor.RED
+                    elif 30 <= ring.avg_hue < 70:
+                        ring.color = RingColor.GREEN
+                    elif 70 <= ring.avg_hue < 260:
+                        ring.color = RingColor.BLUE 
+
+                else:
+                    self.get_logger().warn("No ring colors found inside mask — skipping color conversion.")
+                    return
+            
+                
+                ring.mask = final_mask
+                self.rings.append(ring) # First large, then small ellipse
+
+
+        ## ____VIZUALIZATION (grayscale)____
+
+        # cv2.imshow("Gray Image", gray)
+        # cv2.waitKey(1)
+
+
+        ## ____VIZUALIZATION (edges)____
+
+        cv2.imshow("Edges", edges)
+        cv2.waitKey(1)
+
+
+        ## ____VIZUALIZATION (detected ellipses)____
+
+        cv_elps = cv_image.copy()
+        for e in elps:
+            cv2.ellipse(cv_elps, e, (255, 0, 0), 2)
+        cv2.imshow("Detected ellipses", cv_elps)
+        cv2.waitKey(1)
+
+
+        ## ____VIZUALIZATION (detected rings)____
+        for c in self.rings:
+
+            depth1 = self.depth_img[c.center1.y,c.center1.x]
+            depth2 = self.depth_img[c.center2.y,c.center2.x]
 
             cv2.putText(cv_image, f"Dist2center: {depth1:.3f}, {depth2:.3f}", (0, 180), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 255, 0), 1)
 
             # drawing the ellipses on the image
-            cv2.ellipse(cv_image, e1, (0, 255, 0), 2)
-            cv2.ellipse(cv_image, e2, (0, 255, 0), 2)
-
-            # Get a bounding box, around the first ellipse ('average' of both elipsis)
-            size = (e1[1][0]+e1[1][1])/2
-            center = (e1[0][1], e1[0][0])
-
-            x1 = int(center[0] - size / 2)
-            x2 = int(center[0] + size / 2)
-            x_min = x1 if x1>0 else 0
-            x_max = x2 if x2<cv_image.shape[0] else cv_image.shape[0]
-
-            y1 = int(center[1] - size / 2)
-            y2 = int(center[1] + size / 2)
-            y_min = y1 if y1 > 0 else 0
-            y_max = y2 if y2 < cv_image.shape[1] else cv_image.shape[1]
-
-            temp_ring = Ring(e1,e2)
-            temp_ring.depth1 = depth1
-            temp_ring.depth2 = depth2
-            temp_ring.timestamp = time.time()
-
-            self.rings_array.append(temp_ring)
-        
-
-        for f in flat_rings:
-
-            e1 = f[0]
-            e2 = f[1]
-
-            cv2.putText(cv_image, f"Dist2center: {self.depth_img[int(e1[0][1]), int(e1[0][0])]:.3f}, {self.depth_img[int(e2[0][1]), int(e2[0][0])]:.3f}", (0, 200), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 1)
-
-            cv2.ellipse(cv_image, e1, (0, 0, 255), 2)
-            cv2.ellipse(cv_image, e2, (0, 0, 255), 2)
+            cv2.ellipse(cv_image, c.ellipse1, (0, 255, 0), 2)
+            cv2.ellipse(cv_image, c.ellipse2, (0, 255, 0), 2)
 
 
-        if (len(candidates)+len(flat_rings))>0:
+        ## ____VIZUALITATION (detected flat rings)____
+
+        for f in self.flat_rings:
+
+            depth1 = self.depth_img[f.center1.y,f.center1.x]
+            depth2 = self.depth_img[f.center2.y,f.center2.x]
+
+            cv2.putText(cv_image, f"Dist2center: {depth1:.3f}, {depth2:.3f}", (0, 200), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 1)
+
+            cv2.ellipse(cv_image, f.ellipse1, (0, 0, 255), 2)
+            cv2.ellipse(cv_image, f.ellipse2, (0, 0, 255), 2)
+
+            if (len(self.rings)+len(self.flat_rings))>0:
                 cv2.imshow("Detected rings",cv_image)
                 cv2.waitKey(1)
 
-        # self.marker_callback(candidates)
-
-
-    def depth_callback(self,data):
-
-        try:
-            depth_image = self.bridge.imgmsg_to_cv2(data, "32FC1")
-        except CvBridgeError as e:
-            print(e)
-
-        self.depth_img = depth_image
-
-        depth_image[depth_image==np.inf] = 0
-
-
+        ## ____VIZUALITATION (inside of the ring)____
         
-        # Do the necessairy conversion so we can visuzalize it in OpenCV
-        image_1 = depth_image / 65536.0 * 255
-        image_1 = image_1/np.max(image_1)*255
+        if len(self.rings) > 0:
+            ring = self.rings[-1]
+            masked_image = cv_image.copy()
+            masked_image[~ring.mask] = 255
+            
+            # Get the bounding boxes of the ellipses
+            (x1, y1), (a1, b1), _ = ring.ellipse1
+            (x2, y2), (a2, b2), _ = ring.ellipse2
 
-        image_viz = np.array(image_1, dtype= np.uint8)
+            # Get the center of the ring (average of centers)
+            center_x = int((x1 + x2) / 2)
+            center_y = int((y1 + y2) / 2)
 
-        # cv2.imshow("Depth window", image_viz)
-        cv2.waitKey(1)
+            # Define padding around the ring (adjust as needed)
+            padding = int(max(a1, b1, a2, b2)) * 2  # e.g., 2x the ellipse size
+
+            # Define crop boundaries
+            x_min = max(center_x - padding, 0)
+            x_max = min(center_x + padding, masked_image.shape[1])
+            y_min = max(center_y - padding, 0)
+            y_max = min(center_y + padding, masked_image.shape[0])
+
+            # Crop the image
+            cropped = masked_image[y_min:y_max, x_min:x_max]
+            
+            scale = 4.0
+            resized_crop = cv2.resize(cropped, None, fx=scale, fy=scale, interpolation=cv2.INTER_NEAREST)
+            hr, _ = resized_crop.shape[:2]
+
+            cv2.putText(resized_crop, f"H:{ring.avg_hue:.1f} | S:{ring.avg_saturation:.1f} | V:{ring.avg_value:.1f}", (0, hr-20), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 1)
+            cv2.putText(resized_crop, f"{ring.color.name}",(0, hr-10), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 0, 255), 1)
+
+            cv2.imshow("Ring mask", resized_crop)
+            cv2.waitKey(1)
+
 
     def create_marker(self, d, data):
         marker = Marker()
@@ -355,196 +409,90 @@ class RingDetector(Node):
         marker.pose.position.y = float(d[1])
         marker.pose.position.z = float(d[2])
 
-        # self.get_logger().info(f"Marker created at {d[0]}, {d[1]}, {d[2]}")
-
         return marker
 
-    def create_face_coordinates_message(self, face, data):
-		# get point cloud attributes
+
+    def create_ring_coordinates_message(self, ring, data):
+        from sensor_msgs_py import point_cloud2 as pc2
+        import math
         height = data.height
-        width = data.width
-        point_step = data.point_step
-        row_step = data.row_step	
+        width = data.width	
 
-        ring_coordinates = Marker()
-		
-        # get 3-channel representation of the point cloud in numpy format
-        a = pc2.read_points_numpy(data, field_names= ("x", "y", "z"))
-        a = a.reshape((height,width,3))
+        ring_coordinates = RingCoordinates()
+        map_2d_to_3d = pc2.read_points_numpy(data, field_names=("x", "y", "z"))
+        map_2d_to_3d = map_2d_to_3d.reshape((height, width, 3))
 
-        # read center coordinates d = [x,y,z] v koordinatah sveta
-        x = int(face.center1[0])
-        y = int(face.center1[1])
-        d = a[y,x,:]
-        center_marker = self.create_marker(d, data)
+        coordinate_sum = np.array([0.0, 0.0, 0.0])
+        points_between_counter = 0
 
-        ring_coordinates.pose = center_marker.pose
+        # Elipsa 1 (večja)
+        a1, b1 = ring.ellipse1[1][0] / 2, ring.ellipse1[1][1] / 2
+        fi1 = math.radians(ring.ellipse1[2])
+        cos1 = math.cos(fi1)
+        sin1 = math.sin(fi1)
+        cx1, cy1 = ring.center1.x, ring.center1.y
 
+        # Elipsa 2 (manjša)
+        a2, b2 = ring.ellipse2[1][0] / 2, ring.ellipse2[1][1] / 2
+        fi2 = math.radians(ring.ellipse2[2])
+        cos2 = math.cos(fi2)
+        sin2 = math.sin(fi2)
+        cx2, cy2 = ring.center2.x, ring.center2.y
+
+        # Bounding box okoli večje elipse
+        min_x = max(int(cx1 - a1), 0)
+        max_x = min(int(cx1 + a1), width)
+        min_y = max(int(cy1 - b1), 0)
+        max_y = min(int(cy1 + b1), height)
+
+        for y in range(min_y, max_y):
+            for x in range(min_x, max_x):
+                # Transformacija v eliptične koordinate
+                x1p = x - cx1
+                y1p = y - cy1
+                val1 = ((cos1 * x1p + sin1 * y1p) ** 2) / (a1 ** 2) + ((sin1 * x1p - cos1 * y1p) ** 2) / (b1 ** 2)
+
+                if val1 < 1:
+                    x2p = x - cx2
+                    y2p = y - cy2
+                    val2 = ((cos2 * x2p + sin2 * y2p) ** 2) / (a2 ** 2) + ((sin2 * x2p - cos2 * y2p) ** 2) / (b2 ** 2)
+
+                    if val2 > 1:
+                        d = map_2d_to_3d[y, x, :]
+                        if not np.isnan(d[0]) and not np.isinf(d[0]):
+                            points_between_counter += 1
+                            coordinate_sum += d
+
+        if points_between_counter > 0:
+            coordinate_sum /= points_between_counter
+        else:
+            self.get_logger().error("No points between the ellipses")
+
+        ring_coordinates.center = self.create_marker(coordinate_sum, data)
+        print(coordinate_sum)
         return ring_coordinates
-    
-    def pointcloud_callback(self, data):
-        # iterate over face coordinates
-        for ring in self.rings_array:
-            ring_coordinates_msg = self.create_face_coordinates_message(ring, data)
 
-            self.marker_callback(ring_coordinates_msg)
+    def pointcloud_callback(self, data):		
 
-    def marker_callback(self, msg):
-        if self.robot_position is None:
-            self.get_logger().info("Pozicija robota ni bila prejeta, ignoriram zaznane obraze.")
-            return
-        
-        # current_position = np.array([msg.center.pose.position.x, msg.center.pose.position.y, msg.center.pose.position.z])
-        current_time = time.time()
-
-        # Poskusimo pridobiti transformacijo iz robotovega koordinatnega sistema v globalni za sredinsko točko in še oba kota
-        try:
-            transform = self.tf_buf.lookup_transform('map', 'base_link', rclpy.time.Time())
-            transformed_pose = tf2_geometry_msgs.do_transform_pose(msg.pose, transform)
-            transformed_position = np.array([transformed_pose.position.x, transformed_pose.position.y, transformed_pose.position.z])
-            
-
-        except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
-            self.get_logger().error(f"Napaka pri transformaciji: {e}")
-            return
-
-        # Preveri, ali je obraz že bil zaznan
-        for ring_id, ring in self.rings.items():
-            count = ring.count
-            timestamp = ring.current_time
-            center = ring.center1
-
-            distance = np.linalg.norm(center - transformed_position)
-            
-            if distance < self.threshold:
-                if current_time - timestamp < self.time_threshold:
-                    return
-                else:
-                    # **Izbrišemo prejšnji marker**
-                    self.delete_marker(ring_id)
-
-                    # **Posodobimo obraz s povprečjem**
-                    new_position = (count / (count + 1)) * center + (1 / (count + 1)) * transformed_position
-
-                    self.ring[ring_id] = Ring(ring.ellipse1, ring.ellipse2, count + 1, new_position)
-
-                    # **Objavimo nov marker**
-                    self.publish_ring_marker(new_position, ring_id)
-                    return
-
-        # **Če obraz ni bil zaznan, ga dodamo v slovar**
-        self.ring_counter += 1
-        self.get_logger().info(f"Zaznan nov obroč z ID-jem {self.ring_counter}.")
-        #transformed_bottom_right_position = None; transformed_upper_left_position = None
-        self.rings[self.ring_counter] = Ring(self.ring_counter, transformed_position, current_time, self.robot_position)
-        self.publish_ring_marker(transformed_position, self.ring_counter)
-
-
-    def publish_ring_marker(self, position, ring_id):
-        """Objavi marker za zaznan obraz."""
-        marker = Marker()
-        marker.header.frame_id = "map"
-        marker.header.stamp = self.get_clock().now().to_msg()
-        marker.ns = "faces"
-        marker.id = ring_id  # Unikatni ID markerja
-        marker.type = Marker.SPHERE  # Oblika markerja
-        marker.action = Marker.ADD  # Dodajanje ali posodabljanje markerja
-        marker.pose.position.x = position[0]
-        marker.pose.position.y = position[1]
-        marker.pose.position.z = position[2]
-        marker.scale.x = 0.2
-        marker.scale.y = 0.2
-        marker.scale.z = 0.2
-        marker.color.r = 1.0
-        marker.color.g = 0.0
-        marker.color.b = 0.0
-        marker.color.a = 1.0  # Polna vidljivost
-        marker.lifetime.sec = 0  # Ne izgine avtomatsko
-
-        self.marker_publisher.publish(marker)
-
-
-    def delete_marker(self, ring_id):
-        """Izbriše prejšnji marker, ko posodobimo obraz."""
-        marker = Marker()
-        marker.header.frame_id = "map"
-        marker.header.stamp = self.get_clock().now().to_msg()
-        marker.ns = "faces"
-        marker.id = ring_id
-        marker.action = Marker.DELETE  # Izbriši prejšnji marker
-
-        self.marker_publisher.publish(marker)
-
-
-    def transform_point(self, x, y, z, from_frame='base_link', to_frame="map"):
-
-        try:
-            # Create a PoseStamped message with the detected point
-            pose = PoseStamped()
-            pose.header.frame_id = from_frame
-            pose.header.stamp = self.get_clock().now().to_msg()
-
-            # Set the point's position
-            pose.pose.position.x = float(x)
-            pose.pose.position.y = float(y)
-            pose.pose.position.z = float(z)
-
-            # Transform the point to the target frame
-            transform = self.tf_buffer.lookup_transform(to_frame, from_frame, rclpy.time.Time(), timeout=rclpy.duration.Duration(seconds=1.0))
-            transformed_pose = tf2_geometry_msgs.do_transform_pose(pose, transform)
-
-            return (
-                transformed_pose.pose.position.x,
-                transformed_pose.pose.position.y,
-                transformed_pose.pose.position.z
-            )
-
-        except tf2_ros.LookupException:
-            self.get_logger().warn(f"TF lookup failed: {from_frame} -> {to_frame}")
-            return None
-        except tf2_ros.ConnectivityException:
-            self.get_logger().warn(f"TF connectivity issue: {from_frame} -> {to_frame}")
-            return None
-        except tf2_ros.ExtrapolationException:
-            self.get_logger().warn(f"TF extrapolation issue: {from_frame} -> {to_frame}")
-            return None
-
-    def publish_ellipse_markers(self, candidates):
-        for c in candidates:
-            e1, _ = c
-            marker = Marker()
-            marker.header.frame_id = "base_link"  # Or whichever frame you are using
-            marker.header.stamp = self.get_clock().now().to_msg()
-            marker.ns = "ring_detector"
-            marker.id = self.marker_id
-            self.marker_id += 1
-            marker.type = Marker.SPHERE  # Or any type that suits your use case
-            marker.action = Marker.ADD
-            marker.pose.position.x = e1[0][0]  # X position from ellipse 1 center
-            marker.pose.position.y = e1[0][1]  # Y position from ellipse 1 center
-            marker.pose.position.z = 0  # Or depth from depth image
-            
-            marker.scale.x = 0.1  # Size of the marker, adjust as necessary
-            marker.scale.y = 0.1
-            marker.scale.z = 0.1
-            
-            marker.color = ColorRGBA(1.0, 0.0, 0.0, 1.0)  # Red color, fully opaque
-            
-            self.marker_array.markers.append(marker)
-        
-        # Publish all markers in the MarkerArray
-        self.marker_pub.publish(self.marker_array)
+        # iterate over ring coordinates
+        for ring in self.rings:
+            ring_coordinates_msg = self.create_ring_coordinates_message(ring, data)
+            if not np.allclose([ring_coordinates_msg.center.pose.position.x,
+                                ring_coordinates_msg.center.pose.position.y,
+                                ring_coordinates_msg.center.pose.position.z], [0.0, 0.0, 0.0]):
+                self.marker_pub.publish(ring_coordinates_msg)
+            else:
+                self.get_logger().warn("Marker not published: computed center is (0, 0, 0)")
 
 
 def main():
+	print('Ring detection node starting.')
 
-    rclpy.init(args=None)
-    rd_node = RingDetector()
-
-    rclpy.spin(rd_node)
-
-    cv2.destroyAllWindows()
-
+	rclpy.init(args=None)
+	node = detect_rings()
+	rclpy.spin(node)
+	node.destroy_node()
+	rclpy.shutdown()
 
 if __name__ == '__main__':
-    main()
+	main()
