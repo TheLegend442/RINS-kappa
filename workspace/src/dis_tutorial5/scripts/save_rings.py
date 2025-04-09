@@ -65,16 +65,17 @@ class RingMarkerSubscriber(Node):
         current_time = time.time()
 
         # Poskusimo pridobiti transformacijo iz robotovega koordinatnega sistema v globalni za sredinsko točko in še oba kota
-        try:
-            transform = self.tf_buffer.lookup_transform('map', 'base_link', rclpy.time.Time())
-            transformed_pose = tf2_geometry_msgs.do_transform_pose(msg.center.pose, transform)
-            transformed_position = np.array([transformed_pose.position.x, transformed_pose.position.y, transformed_pose.position.z])
+        # try:
+        #     transform = self.tf_buffer.lookup_transform('map', 'base_link', rclpy.time.Time())
+        #     transformed_pose = tf2_geometry_msgs.do_transform_pose(msg.center.pose, transform)
+        #     transformed_position = np.array([transformed_pose.position.x, transformed_pose.position.y, transformed_pose.position.z])
 
-        except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
-            self.get_logger().error(f"Napaka pri transformaciji: {e}")
-            return
+        # except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
+        #     self.get_logger().error(f"Napaka pri transformaciji: {e}")
+        #     return
 
         # Preveri, ali je obroč že bil zaznan
+        transformed_position = np.array([msg.center.pose.position.x, msg.center.pose.position.y, msg.center.pose.position.z])
         for ring_id, ring in self.rings.items():
             count = ring.count
             timestamp = ring.current_time

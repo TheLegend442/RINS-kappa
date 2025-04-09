@@ -1,0 +1,339 @@
+[0.022s] Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/custom_messages -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages
+[0.182s] -- The C compiler identification is GNU 11.4.0
+[0.182s] -- The CXX compiler identification is GNU 11.4.0
+[0.182s] -- Detecting C compiler ABI info
+[0.182s] -- Detecting C compiler ABI info - done
+[0.182s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.183s] -- Detecting C compile features
+[0.183s] -- Detecting C compile features - done
+[0.183s] -- Detecting CXX compiler ABI info
+[0.243s] -- Detecting CXX compiler ABI info - done
+[0.249s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.249s] -- Detecting CXX compile features
+[0.249s] -- Detecting CXX compile features - done
+[0.251s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.534s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[0.613s] -- Found geometry_msgs: 4.8.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.645s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[0.650s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.657s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[0.667s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.680s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.712s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.720s] -- Found visualization_msgs: 4.8.0 (/opt/ros/humble/share/visualization_msgs/cmake)
+[1.002s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[1.407s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.563s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.583s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6") 
+[1.584s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[1.606s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5") 
+[1.606s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.606s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[1.606s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[1.624s] -- Found PythonExtra: .so  
+[1.689s] -- Found ament_lint_auto: 0.12.12 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.707s] -- Added test 'lint_cmake' to check CMake code style
+[1.708s] -- Added test 'xmllint' to check XML markup files
+[1.710s] -- Configuring done
+[1.746s] -- Generating done
+[1.756s] -- Build files have been written to: /home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages
+[1.766s] Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/custom_messages -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages
+[1.767s] Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages -- -j16 -l16
+[1.802s] [  1%] [34m[1mGenerating C code for ROS interfaces[0m
+[1.810s] [  3%] [34m[1mGenerating C++ code for ROS interfaces[0m
+[1.818s] [  3%] Built target ament_cmake_python_copy_custom_messages
+[1.983s] running egg_info
+[1.985s] creating custom_messages.egg-info
+[1.998s] writing custom_messages.egg-info/PKG-INFO
+[1.999s] writing dependency_links to custom_messages.egg-info/dependency_links.txt
+[1.999s] writing top-level names to custom_messages.egg-info/top_level.txt
+[1.999s] writing manifest file 'custom_messages.egg-info/SOURCES.txt'
+[2.049s] reading manifest file 'custom_messages.egg-info/SOURCES.txt'
+[2.050s] writing manifest file 'custom_messages.egg-info/SOURCES.txt'
+[2.080s] [  3%] Built target ament_cmake_python_build_custom_messages_egg
+[2.168s] [  3%] Built target custom_messages__cpp
+[2.179s] [  7%] [34m[1mGenerating C++ type support dispatch for ROS interfaces[0m
+[2.179s] [  7%] [34m[1mGenerating C++ type support for eProsima Fast-RTPS[0m
+[2.179s] [  9%] [34m[1mGenerating C++ introspection for ROS interfaces[0m
+[2.195s] [ 10%] [32mBuilding C object CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/poses_in_front_of_faces__functions.c.o[0m
+[2.195s] [ 14%] [32mBuilding C object CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/face_coordinates__functions.c.o[0m
+[2.196s] [ 14%] [32mBuilding C object CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/msg/detail/ring_coordinates__functions.c.o[0m
+[2.197s] [ 16%] [32mBuilding C object CMakeFiles/custom_messages__rosidl_generator_c.dir/rosidl_generator_c/custom_messages/srv/detail/shape__functions.c.o[0m
+[2.263s] [ 18%] [32m[1mLinking C shared library libcustom_messages__rosidl_generator_c.so[0m
+[2.315s] [ 18%] Built target custom_messages__rosidl_generator_c
+[2.331s] [ 21%] [34m[1mGenerating C type support dispatch for ROS interfaces[0m
+[2.331s] [ 21%] [34m[1mGenerating C type support for eProsima Fast-RTPS[0m
+[2.332s] [ 23%] [34m[1mGenerating C introspection for ROS interfaces[0m
+[2.625s] [ 25%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/custom_messages/msg/face_coordinates__type_support.cpp.o[0m
+[2.626s] [ 27%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/custom_messages/srv/shape__type_support.cpp.o[0m
+[2.630s] [ 29%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/custom_messages/msg/ring_coordinates__type_support.cpp.o[0m
+[2.632s] [ 30%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_cpp.dir/rosidl_typesupport_cpp/custom_messages/srv/poses_in_front_of_faces__type_support.cpp.o[0m
+[2.683s] [ 32%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_messages/msg/detail/face_coordinates__type_support.cpp.o[0m
+[2.695s] [ 34%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_messages/srv/detail/shape__type_support.cpp.o[0m
+[2.695s] [ 36%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_messages/msg/detail/ring_coordinates__type_support.cpp.o[0m
+[2.695s] [ 38%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_introspection_cpp.dir/rosidl_typesupport_introspection_cpp/custom_messages/srv/detail/poses_in_front_of_faces__type_support.cpp.o[0m
+[2.808s] [ 40%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_messages/msg/detail/dds_fastrtps/face_coordinates__type_support.cpp.o[0m
+[2.817s] [ 41%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_messages/srv/detail/dds_fastrtps/shape__type_support.cpp.o[0m
+[2.817s] [ 43%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_messages/msg/detail/dds_fastrtps/ring_coordinates__type_support.cpp.o[0m
+[2.822s] [ 45%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_fastrtps_cpp.dir/rosidl_typesupport_fastrtps_cpp/custom_messages/srv/detail/dds_fastrtps/poses_in_front_of_faces__type_support.cpp.o[0m
+[2.852s] [ 47%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_c.dir/rosidl_typesupport_c/custom_messages/msg/face_coordinates__type_support.cpp.o[0m
+[2.854s] [ 49%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_c.dir/rosidl_typesupport_c/custom_messages/msg/ring_coordinates__type_support.cpp.o[0m
+[2.963s] [ 50%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_c.dir/rosidl_typesupport_c/custom_messages/srv/shape__type_support.cpp.o[0m
+[3.028s] [ 52%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_c.dir/rosidl_typesupport_c/custom_messages/srv/poses_in_front_of_faces__type_support.cpp.o[0m
+[3.097s] [ 54%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/custom_messages/msg/detail/face_coordinates__type_support_c.cpp.o[0m
+[3.150s] [ 56%] [32m[1mLinking CXX shared library libcustom_messages__rosidl_typesupport_c.so[0m
+[3.164s] [ 58%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/custom_messages/msg/detail/ring_coordinates__type_support_c.cpp.o[0m
+[3.178s] [ 60%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/custom_messages/srv/detail/shape__type_support_c.cpp.o[0m
+[3.196s] [ 61%] [32mBuilding CXX object CMakeFiles/custom_messages__rosidl_typesupport_fastrtps_c.dir/rosidl_typesupport_fastrtps_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support_c.cpp.o[0m
+[3.219s] [ 63%] [32mBuilding C object CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/face_coordinates__type_support.c.o[0m
+[3.293s] [ 65%] [32mBuilding C object CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/msg/detail/ring_coordinates__type_support.c.o[0m
+[3.303s] [ 65%] Built target custom_messages__rosidl_typesupport_c
+[3.343s] [ 67%] [32mBuilding C object CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/shape__type_support.c.o[0m
+[3.352s] [ 69%] [32mBuilding C object CMakeFiles/custom_messages__rosidl_typesupport_introspection_c.dir/rosidl_typesupport_introspection_c/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c.o[0m
+[3.492s] [ 70%] [32m[1mLinking C shared library libcustom_messages__rosidl_typesupport_introspection_c.so[0m
+[3.614s] [ 70%] Built target custom_messages__rosidl_typesupport_introspection_c
+[3.650s] [ 72%] [32m[1mLinking CXX shared library libcustom_messages__rosidl_typesupport_cpp.so[0m
+[3.803s] [ 72%] Built target custom_messages__rosidl_typesupport_cpp
+[3.948s] [ 74%] [32m[1mLinking CXX shared library libcustom_messages__rosidl_typesupport_fastrtps_cpp.so[0m
+[4.107s] [ 76%] [32m[1mLinking CXX shared library libcustom_messages__rosidl_typesupport_introspection_cpp.so[0m
+[4.132s] [ 76%] Built target custom_messages__rosidl_typesupport_fastrtps_cpp
+[4.168s] [ 78%] [32m[1mLinking CXX shared library libcustom_messages__rosidl_typesupport_fastrtps_c.so[0m
+[4.266s] [ 78%] Built target custom_messages__rosidl_typesupport_introspection_cpp
+[4.317s] [ 78%] Built target custom_messages__rosidl_typesupport_fastrtps_c
+[4.342s] [ 78%] Built target custom_messages
+[4.371s] [ 80%] [34m[1mGenerating Python code for ROS interfaces[0m
+[5.232s] [ 80%] Built target custom_messages__py
+[5.263s] [ 83%] [32mBuilding C object CMakeFiles/custom_messages__rosidl_generator_py.dir/rosidl_generator_py/custom_messages/msg/_face_coordinates_s.c.o[0m
+[5.264s] [ 83%] [32mBuilding C object CMakeFiles/custom_messages__rosidl_generator_py.dir/rosidl_generator_py/custom_messages/srv/_shape_s.c.o[0m
+[5.264s] [ 87%] [32mBuilding C object CMakeFiles/custom_messages__rosidl_generator_py.dir/rosidl_generator_py/custom_messages/srv/_poses_in_front_of_faces_s.c.o[0m
+[5.264s] [ 87%] [32mBuilding C object CMakeFiles/custom_messages__rosidl_generator_py.dir/rosidl_generator_py/custom_messages/msg/_ring_coordinates_s.c.o[0m
+[5.418s] [ 89%] [32m[1mLinking C shared library rosidl_generator_py/custom_messages/libcustom_messages__rosidl_generator_py.so[0m
+[5.481s] [ 89%] Built target custom_messages__rosidl_generator_py
+[5.510s] [ 94%] [32mBuilding C object CMakeFiles/custom_messages__rosidl_typesupport_fastrtps_c__pyext.dir/rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c.o[0m
+[5.510s] [ 94%] [32mBuilding C object CMakeFiles/custom_messages__rosidl_typesupport_c__pyext.dir/rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_c.c.o[0m
+[5.510s] [ 94%] [32mBuilding C object CMakeFiles/custom_messages__rosidl_typesupport_introspection_c__pyext.dir/rosidl_generator_py/custom_messages/_custom_messages_s.ep.rosidl_typesupport_introspection_c.c.o[0m
+[5.676s] [100%] [32m[1mLinking C shared library rosidl_generator_py/custom_messages/custom_messages_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so[0m
+[5.676s] [100%] [32m[1mLinking C shared library rosidl_generator_py/custom_messages/custom_messages_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so[0m
+[5.676s] [100%] [32m[1mLinking C shared library rosidl_generator_py/custom_messages/custom_messages_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so[0m
+[5.737s] [100%] Built target custom_messages__rosidl_typesupport_c__pyext
+[5.737s] [100%] Built target custom_messages__rosidl_typesupport_fastrtps_c__pyext
+[5.737s] [100%] Built target custom_messages__rosidl_typesupport_introspection_c__pyext
+[5.757s] Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages -- -j16 -l16
+[5.759s] Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages
+[5.770s] -- Install configuration: ""
+[5.770s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/ament_index/resource_index/rosidl_interfaces/custom_messages
+[5.770s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages
+[5.771s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg
+[5.771s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/ring_coordinates.h
+[5.771s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/rosidl_generator_c__visibility_control.h
+[5.771s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/face_coordinates.h
+[5.771s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail
+[5.771s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/ring_coordinates__functions.c
+[5.772s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__functions.h
+[5.772s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/ring_coordinates__type_support.h
+[5.772s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__type_support.h
+[5.772s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__struct.h
+[5.772s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__functions.c
+[5.772s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/ring_coordinates__struct.h
+[5.773s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/ring_coordinates__functions.h
+[5.773s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv
+[5.773s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/shape.h
+[5.773s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/poses_in_front_of_faces.h
+[5.773s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail
+[5.773s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__struct.h
+[5.774s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__functions.c
+[5.774s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__type_support.h
+[5.774s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__struct.h
+[5.774s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__type_support.h
+[5.774s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__functions.h
+[5.774s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__functions.h
+[5.775s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__functions.c
+[5.775s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/library_path.sh
+[5.775s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/library_path.dsv
+[5.776s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_generator_c.so
+[5.776s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_generator_c.so" to ""
+[5.776s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages
+[5.776s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg
+[5.776s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[5.777s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail
+[5.777s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/ring_coordinates__rosidl_typesupport_fastrtps_c.h
+[5.777s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__rosidl_typesupport_fastrtps_c.h
+[5.777s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv
+[5.777s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail
+[5.777s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__rosidl_typesupport_fastrtps_c.h
+[5.777s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__rosidl_typesupport_fastrtps_c.h
+[5.777s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_fastrtps_c.so
+[5.778s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_fastrtps_c.so" to ""
+[5.778s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages
+[5.778s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg
+[5.778s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/face_coordinates.hpp
+[5.778s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/ring_coordinates.hpp
+[5.779s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/rosidl_generator_cpp__visibility_control.hpp
+[5.779s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail
+[5.779s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__struct.hpp
+[5.779s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/ring_coordinates__struct.hpp
+[5.779s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__traits.hpp
+[5.780s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/ring_coordinates__type_support.hpp
+[5.780s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__type_support.hpp
+[5.780s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__builder.hpp
+[5.780s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/ring_coordinates__builder.hpp
+[5.780s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/ring_coordinates__traits.hpp
+[5.780s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv
+[5.781s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/shape.hpp
+[5.781s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail
+[5.781s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__struct.hpp
+[5.781s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__struct.hpp
+[5.781s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__builder.hpp
+[5.781s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__traits.hpp
+[5.781s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__type_support.hpp
+[5.782s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__builder.hpp
+[5.782s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__type_support.hpp
+[5.782s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__traits.hpp
+[5.782s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/poses_in_front_of_faces.hpp
+[5.782s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages
+[5.783s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg
+[5.783s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[5.783s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail
+[5.783s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/ring_coordinates__rosidl_typesupport_fastrtps_cpp.hpp
+[5.783s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__rosidl_typesupport_fastrtps_cpp.hpp
+[5.783s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/dds_fastrtps
+[5.783s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv
+[5.783s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail
+[5.784s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__rosidl_typesupport_fastrtps_cpp.hpp
+[5.784s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/dds_fastrtps
+[5.784s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__rosidl_typesupport_fastrtps_cpp.hpp
+[5.784s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_fastrtps_cpp.so
+[5.785s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_fastrtps_cpp.so" to ""
+[5.785s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages
+[5.785s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg
+[5.785s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[5.785s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail
+[5.785s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/ring_coordinates__type_support.c
+[5.785s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/ring_coordinates__rosidl_typesupport_introspection_c.h
+[5.785s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__type_support.c
+[5.786s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__rosidl_typesupport_introspection_c.h
+[5.786s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv
+[5.786s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail
+[5.786s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_c.h
+[5.786s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__rosidl_typesupport_introspection_c.h
+[5.786s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__type_support.c
+[5.786s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__type_support.c
+[5.787s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_introspection_c.so
+[5.787s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_introspection_c.so" to ""
+[5.787s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_c.so
+[5.788s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_c.so" to ""
+[5.788s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages
+[5.788s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg
+[5.788s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail
+[5.788s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/ring_coordinates__type_support.cpp
+[5.788s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__rosidl_typesupport_introspection_cpp.hpp
+[5.788s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/face_coordinates__type_support.cpp
+[5.789s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/msg/detail/ring_coordinates__rosidl_typesupport_introspection_cpp.hpp
+[5.789s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv
+[5.789s] -- Up-to-date: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail
+[5.789s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__rosidl_typesupport_introspection_cpp.hpp
+[5.789s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/shape__type_support.cpp
+[5.789s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__rosidl_typesupport_introspection_cpp.hpp
+[5.789s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/include/custom_messages/custom_messages/srv/detail/poses_in_front_of_faces__type_support.cpp
+[5.790s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_introspection_cpp.so
+[5.790s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_introspection_cpp.so" to ""
+[5.791s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_cpp.so
+[5.791s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_typesupport_cpp.so" to ""
+[5.791s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/pythonpath.sh
+[5.791s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/pythonpath.dsv
+[5.791s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages-0.0.0-py3.10.egg-info
+[5.792s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages-0.0.0-py3.10.egg-info/dependency_links.txt
+[5.792s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages-0.0.0-py3.10.egg-info/SOURCES.txt
+[5.792s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages-0.0.0-py3.10.egg-info/PKG-INFO
+[5.792s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages-0.0.0-py3.10.egg-info/top_level.txt
+[5.792s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages
+[5.793s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/_custom_messages_s.ep.rosidl_typesupport_fastrtps_c.c
+[5.793s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/_custom_messages_s.ep.rosidl_typesupport_c.c
+[5.793s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/msg
+[5.793s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/msg/_face_coordinates_s.c
+[5.793s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/msg/_ring_coordinates_s.c
+[5.793s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/msg/_ring_coordinates.py
+[5.794s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/msg/__init__.py
+[5.794s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/msg/_face_coordinates.py
+[5.794s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/custom_messages_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[5.794s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv
+[5.794s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv/_shape_s.c
+[5.795s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv/_poses_in_front_of_faces.py
+[5.795s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv/_poses_in_front_of_faces_s.c
+[5.795s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv/_shape.py
+[5.795s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv/__init__.py
+[5.795s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/libcustom_messages__rosidl_generator_py.so
+[5.796s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/_custom_messages_s.ep.rosidl_typesupport_introspection_c.c
+[5.796s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/__init__.py
+[5.796s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/custom_messages_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[5.796s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/custom_messages_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[5.849s] Listing '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages'...
+[5.849s] Compiling '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/__init__.py'...
+[5.849s] Listing '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/msg'...
+[5.849s] Compiling '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/msg/__init__.py'...
+[5.849s] Compiling '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/msg/_face_coordinates.py'...
+[5.849s] Compiling '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/msg/_ring_coordinates.py'...
+[5.849s] Listing '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv'...
+[5.849s] Compiling '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv/__init__.py'...
+[5.849s] Compiling '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv/_poses_in_front_of_faces.py'...
+[5.850s] Compiling '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/srv/_shape.py'...
+[5.857s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/custom_messages_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[5.858s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/custom_messages_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so" to ""
+[5.858s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/custom_messages_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[5.858s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/custom_messages_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so" to ""
+[5.859s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/custom_messages_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[5.859s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/local/lib/python3.10/dist-packages/custom_messages/custom_messages_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so" to ""
+[5.859s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_generator_py.so
+[5.860s] -- Set runtime path of "/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/libcustom_messages__rosidl_generator_py.so" to ""
+[5.860s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/msg/FaceCoordinates.idl
+[5.860s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/msg/RingCoordinates.idl
+[5.860s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/Shape.idl
+[5.861s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/PosesInFrontOfFaces.idl
+[5.861s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/msg/FaceCoordinates.msg
+[5.861s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/msg/RingCoordinates.msg
+[5.861s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/Shape.srv
+[5.861s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/Shape_Request.msg
+[5.862s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/Shape_Response.msg
+[5.862s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/PosesInFrontOfFaces.srv
+[5.862s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/PosesInFrontOfFaces_Request.msg
+[5.862s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/srv/PosesInFrontOfFaces_Response.msg
+[5.863s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/ament_index/resource_index/package_run_dependencies/custom_messages
+[5.863s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/ament_index/resource_index/parent_prefix_path/custom_messages
+[5.863s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/ament_prefix_path.sh
+[5.863s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/ament_prefix_path.dsv
+[5.863s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/path.sh
+[5.864s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/environment/path.dsv
+[5.864s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/local_setup.bash
+[5.864s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/local_setup.sh
+[5.864s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/local_setup.zsh
+[5.865s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/local_setup.dsv
+[5.865s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.dsv
+[5.865s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/ament_index/resource_index/packages/custom_messages
+[5.865s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_generator_cExport.cmake
+[5.866s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_generator_cExport-noconfig.cmake
+[5.866s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_typesupport_fastrtps_cExport.cmake
+[5.866s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[5.866s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_generator_cppExport.cmake
+[5.866s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_typesupport_fastrtps_cppExport.cmake
+[5.867s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[5.867s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_introspection_cExport.cmake
+[5.867s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[5.867s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_cExport.cmake
+[5.868s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_cExport-noconfig.cmake
+[5.868s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_introspection_cppExport.cmake
+[5.868s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[5.868s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_cppExport.cmake
+[5.869s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messages__rosidl_typesupport_cppExport-noconfig.cmake
+[5.869s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_generator_pyExport.cmake
+[5.869s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/export_custom_messages__rosidl_generator_pyExport-noconfig.cmake
+[5.869s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/rosidl_cmake-extras.cmake
+[5.869s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/ament_cmake_export_dependencies-extras.cmake
+[5.870s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/ament_cmake_export_include_directories-extras.cmake
+[5.870s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/ament_cmake_export_libraries-extras.cmake
+[5.870s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/ament_cmake_export_targets-extras.cmake
+[5.870s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[5.871s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[5.871s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messagesConfig.cmake
+[5.871s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/cmake/custom_messagesConfig-version.cmake
+[5.871s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.xml
+[5.876s] Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages
