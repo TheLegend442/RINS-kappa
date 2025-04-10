@@ -102,10 +102,10 @@ class PeopleMarkerSubscriber(Node):
         
         current_position = np.array([msg.center.pose.position.x, msg.center.pose.position.y, msg.center.pose.position.z])
         current_time = time.time()
+        stamp = msg.center.header.stamp
 
-        # Poskusimo pridobiti transformacijo iz robotovega koordinatnega sistema v globalni za sredinsko točko in še oba kota
         try:
-            transform = self.tf_buffer.lookup_transform('map', 'base_link', rclpy.time.Time())
+            transform = self.tf_buffer.lookup_transform('map', 'base_link', stamp,timeout=rclpy.duration.Duration(seconds=0.3))
             transformed_pose = tf2_geometry_msgs.do_transform_pose(msg.center.pose, transform)
             transformed_position = np.array([transformed_pose.position.x, transformed_pose.position.y, transformed_pose.position.z])
             
@@ -164,7 +164,7 @@ class PeopleMarkerSubscriber(Node):
         marker.header.stamp = self.get_clock().now().to_msg()
         marker.ns = "faces"
         marker.id = face_id  # Unikatni ID markerja
-        marker.type = Marker.SPHERE  # Oblika markerja
+        marker.type = Marker.CUBE # Oblika markerja
         marker.action = Marker.ADD  # Dodajanje ali posodabljanje markerja
         marker.pose.position.x = position[0]
         marker.pose.position.y = position[1]

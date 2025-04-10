@@ -39,6 +39,7 @@ import yaml
 import math
 import os
 import numpy as np
+from random import randrange
 
 from custom_messages.msg import FaceCoordinates
 from custom_messages.srv import PosesInFrontOfFaces, PosesInFrontOfRings
@@ -405,40 +406,54 @@ class RobotCommander(Node):
         self.get_logger().info(f"Sending speech command: {text}")
         return
     
+def best_round(robot_position, all_targets):
+    def trenutna_dolžina_poti(robot_position, all_targets):
+        # Dobimo trenutno pot robota
+        current_position = robot_position
+        distance = 0
+        for target in all_targets:
+            distance += math.sqrt((current_position[0] - target["pose"].position.x) ** 2 +
+                                 (current_position[1] - target["pose"].position.y) ** 2)
+            
+            current_position = (target["pose"].position.x, target["pose"].position.y)
+        return distance
+    current_score = trenutna_dolžina_poti(robot_position, all_targets)
+    for i in range(10000):
+        k,m = randrange(0, len(all_targets)), randrange(0, len(all_targets))
+        all_targets[k], all_targets[m] = all_targets[m], all_targets[k]
+        new_score = trenutna_dolžina_poti(robot_position, all_targets)
+        if new_score < current_score:
+            current_score = new_score
+        else:
+            all_targets[k], all_targets[m] = all_targets[m], all_targets[k]
+    return all_targets
+        
 def main(args=None):
-    
     rclpy.init(args=args)
     rc = RobotCommander()
 
-    # Wait until Nav2 and Localizer are available
     rc.waitUntilNav2Active()
 
-    # Check if the robot is docked, only continue when a message is recieved
     while rc.is_docked is None:
         rclpy.spin_once(rc, timeout_sec=0.5)
 
-    # If it is docked, undock it first
     if rc.is_docked:
         rc.undock()
-        
-    #Load the map
+
     rc.map_image, rc.map_metadata = rc.load_map('src/dis_tutorial3/maps/map.pgm', 'src/dis_tutorial3/maps/map.yaml')
 
-    # če obhod že obstaja
+    # Točke obhoda
     if not os.path.exists('src/dis_tutorial3/data/obhod.npy'):
         cv2.imshow("Map", rc.map_image)
         cv2.setMouseCallback("Map", rc.mouse_callback)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
-
-        # save coordinates
         np.save('src/dis_tutorial3/data/obhod.npy', rc.clicked_points)
-
     else:
         print("Obhod že obstaja")
         rc.clicked_points = np.load('src/dis_tutorial3/data/obhod.npy')
-
-
+    
+    
     for i, (px, py, orientation) in enumerate(rc.clicked_points):
         world_x, world_y = rc.pixel_to_world(px, py)
         rc.get_logger().info(f"Točka {i+1}: ({world_x}, {world_y})")
@@ -449,20 +464,27 @@ def main(args=None):
         goal_msg.pose.position.x = world_x
         goal_msg.pose.position.y = world_y
         goal_msg.pose.orientation = rc.YawToQuaternion(orientation)  
+        rc.info(f"Going to pose: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
         rc.goToPose(goal_msg)
         while not rc.isTaskComplete():
-            rc.info("Waiting for the task to complete...")
+            #rc.info("Waiting for the task to complete...")
             time.sleep(0.1)
 
+    for i  in range(10):
+        rc.info("KOČAL Z OBHODOM")
 
-    # go to all detected rings
+    # Dobimo obroče
     request_rings = PosesInFrontOfRings.Request()
     future_rings = rc.ring_client.call_async(request_rings)
     rclpy.spin_until_future_complete(rc, future_rings)
     response_rings = future_rings.result()
     rc.info(f"{len(response_rings.poses)} detected rings")
 
-    for i, pose in enumerate(response_rings.poses):
+    # Simulirano: dodajamo 'color' atribut (tu bi moral biti del dejanskega odziva)
+    rings_with_meta = [{"pose": pose, "type": "ring", "color": getattr(pose, "color", "neznane")} for pose in response_rings.poses]
+
+    for i, item in enumerate(rings_with_meta):
+        pose = item["pose"]
         marker = Marker()
         marker.header.frame_id = "map"
         marker.header.stamp = rc.get_clock().now().to_msg()
@@ -470,8 +492,7 @@ def main(args=None):
         marker.id = i
         marker.type = Marker.ARROW
         marker.action = Marker.ADD
-        marker.pose.position = pose.position
-        marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
+        marker.pose = pose
         marker.scale.x = 0.4
         marker.scale.y = 0.1
         marker.scale.z = 0.1
@@ -482,27 +503,17 @@ def main(args=None):
         marker.lifetime = Duration(sec=0)
         rc.ring_spots_pub.publish(marker)
 
-    for pose in response_rings.poses:
-        goal_msg = PoseStamped()
-        goal_msg.header.frame_id = "map"
-        goal_msg.header.stamp = rc.get_clock().now().to_msg()
-        goal_msg.pose = pose
+    # Dobimo obraze
+    request_faces = PosesInFrontOfFaces.Request()
+    future_faces = rc.pose_client.call_async(request_faces)
+    rclpy.spin_until_future_complete(rc, future_faces)
+    response_faces = future_faces.result()
+    rc.info(f"{len(response_faces.poses)} detected faces")
 
-        rc.goToPose(goal_msg)
-        while not rc.isTaskComplete():
-            rc.info("Waiting for the task to complete...")
-            time.sleep(0.1)
-        rc.say_something("Hello, I am robot Kappa!")
-        time.sleep(2.0)
+    faces_with_meta = [{"pose": pose, "type": "face"} for pose in response_faces.poses]
 
-
-    # go to all detected faces
-    request = PosesInFrontOfFaces.Request()
-    future = rc.pose_client.call_async(request)
-    rclpy.spin_until_future_complete(rc, future)
-    response = future.result()
-
-    for i, pose in enumerate(response.poses):
+    for i, item in enumerate(faces_with_meta):
+        pose = item["pose"]
         marker = Marker()
         marker.header.frame_id = "map"
         marker.header.stamp = rc.get_clock().now().to_msg()
@@ -510,8 +521,7 @@ def main(args=None):
         marker.id = i
         marker.type = Marker.ARROW
         marker.action = Marker.ADD
-        marker.pose.position = pose.position
-        marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
+        marker.pose = pose
         marker.scale.x = 0.4
         marker.scale.y = 0.1
         marker.scale.z = 0.1
@@ -522,18 +532,29 @@ def main(args=None):
         marker.lifetime = Duration(sec=0)
         rc.spots_in_front_of_faces_pub.publish(marker)
 
-    for pose in response.poses:
-        rc.info(f"{len(response.poses)} detected faces")
+    # Združimo v eno zaporedje
+    all_targets = rings_with_meta + faces_with_meta
+    all_targets = best_round((rc.current_pose.pose.position.x, rc.current_pose.pose.position.y), all_targets)
+    rc.info(f"Going to {len(all_targets)} targets")
+
+    for i, item in enumerate(all_targets):
+        pose = item["pose"]
         goal_msg = PoseStamped()
         goal_msg.header.frame_id = "map"
         goal_msg.header.stamp = rc.get_clock().now().to_msg()
         goal_msg.pose = pose
-
+        rc.info(f"Going to pose {i+1}: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
         rc.goToPose(goal_msg)
+
         while not rc.isTaskComplete():
-            rc.info("Waiting for the task to complete...")
             time.sleep(0.1)
-        rc.say_something("Hello, I am robot Kappa!")
+
+        if item["type"] == "face":
+            rc.say_something("Hello, how are you?")
+        elif item["type"] == "ring":
+            barva = item.get("color", "neznane")
+            rc.say_something(f"This is {barva} ring.")
+
         time.sleep(2.0)
 
     rc.destroyNode()
