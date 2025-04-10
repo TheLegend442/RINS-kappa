@@ -73,7 +73,7 @@ class PeopleMarkerSubscriber(Node):
             if np.dot(robot_position_when_detected - center, normala) < 0:
                 normala = -normala
 
-            tocka_pred_sliko = center + 0.5 * normala
+            tocka_pred_sliko = center + 0.7 * normala
             tocka_pred_sliko[2] = 0.0 # na tleh
 
             # orientacija mora biti v isto smer kot negativna normala

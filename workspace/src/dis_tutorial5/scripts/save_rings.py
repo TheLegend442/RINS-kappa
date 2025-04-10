@@ -62,7 +62,7 @@ class RingMarkerSubscriber(Node):
         self.threshold = 0.7
         self.time_threshold = 5
         self.ring_counter = 0
-        self.min_wall_distance_m = 0.5
+        self.min_wall_distance_m = 0.7
         self.load_and_process_map('src/dis_tutorial3/maps/map.pgm', 'src/dis_tutorial3/maps/map.yaml')
         self.map_data = (self.map_image.flatten() / 255 * 100).astype(int).tolist()
 

@@ -1,5 +1,0 @@
-string description
-int64[] numbers
----
-string type
-int64 sum
