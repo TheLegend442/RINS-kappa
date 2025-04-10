@@ -59,7 +59,7 @@ class RingMarkerSubscriber(Node):
 
         self.robot_position = None
         self.rings = {}
-        self.threshold = 1.3
+        self.threshold = 0.7
         self.time_threshold = 5
         self.ring_counter = 0
         self.min_wall_distance_m = 0.5
