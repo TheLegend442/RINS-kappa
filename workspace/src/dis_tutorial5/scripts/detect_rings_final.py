@@ -13,6 +13,8 @@ import cv2
 import numpy as np
 from enum import Enum
 
+from ultralytics import YOLO
+
 
 class RingColor(Enum):
     BLACK = 1
@@ -474,6 +476,8 @@ class detect_rings(Node):
             self.get_logger().error("No points between the ellipses")
 
         ring_coordinates.center = self.create_marker(coordinate_sum, data)
+        ring_coordinates.strength = float(points_between_counter)
+
         return ring_coordinates
 
     def pointcloud_callback(self, data):		

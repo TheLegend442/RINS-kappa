@@ -32,14 +32,21 @@ class Ring():
         self.count = count
         self.color_counts = {color: 1} if color else {}
         self.color = color
+        self.color_strength = 0
+        self.num_detections = 1
 
-    def update_color(self, new_color):
+    def update_color(self, new_color, new_strength):
         if new_color in self.color_counts:
             self.color_counts[new_color] += 1
         else:
             self.color_counts[new_color] = 1
 
-        self.color = max(self.color_counts, key=self.color_counts.get)
+        if new_strength > self.color_strength:
+            self.color_strength = new_strength
+            self.color = new_color
+        # else:
+        #     self.color = max(self.color_counts, key=self.color_counts.get)
+        #     self
 
 class RingMarkerSubscriber(Node):
     def __init__(self):
@@ -59,7 +66,7 @@ class RingMarkerSubscriber(Node):
 
         self.robot_position = None
         self.rings = {}
-        self.threshold = 0.7
+        self.threshold = 0.4
         self.time_threshold = 5
         self.ring_counter = 0
         self.min_wall_distance_m = 0.7
@@ -137,6 +144,7 @@ class RingMarkerSubscriber(Node):
 
         current_position = np.array([msg.center.pose.position.x, msg.center.pose.position.y, msg.center.pose.position.z])
         color = msg.color
+        strength = msg.strength
         current_time = time.time()
         stamp = msg.center.header.stamp
 
@@ -168,17 +176,19 @@ class RingMarkerSubscriber(Node):
                     ring.current_time = current_time
                     ring.robot_position = self.robot_position
                     ring.count += 1
-                    ring.update_color(color)
+                    ring.update_color(color, strength)
+                    ring.num_detections += 1
 
                     self.rings[ring_id] = ring
-                    self.publish_ring_marker(new_position, ring_id)
+                    if ring.num_detections >= 2: self.publish_ring_marker(new_position, ring_id)
                     return
 
         self.ring_counter += 1
         self.get_logger().info(f"Zaznan nov obroč z ID-jem {self.ring_counter}.")
         new_ring = Ring(self.ring_counter, transformed_position, current_time, self.robot_position, color=color)
+        new_ring.color_strength = strength
         self.rings[self.ring_counter] = new_ring
-        self.publish_ring_marker(transformed_position, self.ring_counter)
+        # self.publish_ring_marker(transformed_position, self.ring_counter)
 
     def ring2rgb(self, ring):
         color = ring.color
@@ -232,10 +242,15 @@ class RingMarkerSubscriber(Node):
 
     def get_ring_pose_callback(self, request, response):
         self.get_logger().info("Processing request for ring poses")
+        self.get_logger().info(f"Received {len(self.rings)} rings")
         response.poses = []
         response.colors = []
 
         for ring in self.rings.values():
+            if ring.count < 2:
+                self.get_logger().warn(f"Skipping ring {ring.id} with count {ring.count}")
+                continue
+
             center_x = ring.center[0]
             center_y = ring.center[1]
 

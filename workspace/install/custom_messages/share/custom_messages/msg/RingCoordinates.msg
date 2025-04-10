@@ -1,2 +1,0 @@
-visualization_msgs/Marker center
-string color

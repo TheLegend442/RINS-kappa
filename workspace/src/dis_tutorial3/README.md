@@ -1,33 +1,5 @@
-# Homework 3:
-
-glej da imas instaliran pip install pyttsx3
-```
-pip install pyttsx3
-```
-
-Na mapi označimo pot, po kateri robot raziskuje. Robot gre po določeni poti in detektira obraze.
-
-TODO: Po tem, ko gre po celi poti, obiskuje obraze.
-
-zagon:
-```
-ros2 launch dis_tutorial3 sim_turtlebot_nav.launch.py world:=demo1
-```
-```
-ros2 run dis_tutorial3 save_faces.py
-```
-```
-ros2 run dis_tutorial3 detect_people.py
-```
-```
-ros2 run dis_tutorial3 robot_commander.py
-```
-
-po zagonu se pojavi mapa, kjer lahko z drag-om načrtujemo pot
 
 # Tutorial 3: The Turtlebot 4
-
-
 
 #### Development of Intelligent Systems, 2024
 
