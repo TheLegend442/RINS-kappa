@@ -41,7 +41,8 @@ import os
 import numpy as np
 
 from custom_messages.msg import FaceCoordinates
-from custom_messages.srv import PosesInFrontOfFaces
+from custom_messages.srv import PosesInFrontOfFaces, PosesInFrontOfRings
+from custom_messages.msg import RingCoordinates
 from std_msgs.msg import String
 from visualization_msgs.msg import Marker
 
@@ -96,9 +97,15 @@ class RobotCommander(Node):
 
         # client that receives poses in front of detected faces
         self.pose_client = self.create_client(PosesInFrontOfFaces, 'get_face_pose')
+
+        # client that receives poses in front of detected rings
+        self.ring_client = self.create_client(PosesInFrontOfRings, 'get_ring_pose')
         
         # publisher for publishing markers of spots in front of faces
         self.spots_in_front_of_faces_pub = self.create_publisher(Marker, '/spots_in_front_of_faces', 10)
+
+        # publisher for publishing markers of spots near rings
+        self.ring_spots_pub = self.create_publisher(Marker, '/spots_in_front_of_rings', 10)
         
         # ROS2 Action clients
         self.nav_to_pose_client = ActionClient(self, NavigateToPose, 'navigate_to_pose')
@@ -389,6 +396,7 @@ class RobotCommander(Node):
         world_y = origin[1] + (height - pixel_y) * resolution  # Obrnemo os Y
 
         return world_x, world_y
+    
     def say_something(self, text):
         """Send a message to the speech node"""
         msg = String()
@@ -396,6 +404,7 @@ class RobotCommander(Node):
         self.speech_pub.publish(msg)
         self.get_logger().info(f"Sending speech command: {text}")
         return
+    
 def main(args=None):
     
     rclpy.init(args=args)
@@ -444,6 +453,48 @@ def main(args=None):
         while not rc.isTaskComplete():
             rc.info("Waiting for the task to complete...")
             time.sleep(0.1)
+
+
+    # go to all detected rings
+    request_rings = PosesInFrontOfRings.Request()
+    future_rings = rc.ring_client.call_async(request_rings)
+    rclpy.spin_until_future_complete(rc, future_rings)
+    response_rings = future_rings.result()
+    rc.info(f"{len(response_rings.poses)} detected rings")
+
+    for i, pose in enumerate(response_rings.poses):
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = rc.get_clock().now().to_msg()
+        marker.ns = "spots_in_front_of_rings"
+        marker.id = i
+        marker.type = Marker.ARROW
+        marker.action = Marker.ADD
+        marker.pose.position = pose.position
+        marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
+        marker.scale.x = 0.4
+        marker.scale.y = 0.1
+        marker.scale.z = 0.1
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0
+        marker.lifetime = Duration(sec=0)
+        rc.ring_spots_pub.publish(marker)
+
+    for pose in response_rings.poses:
+        goal_msg = PoseStamped()
+        goal_msg.header.frame_id = "map"
+        goal_msg.header.stamp = rc.get_clock().now().to_msg()
+        goal_msg.pose = pose
+
+        rc.goToPose(goal_msg)
+        while not rc.isTaskComplete():
+            rc.info("Waiting for the task to complete...")
+            time.sleep(0.1)
+        rc.say_something("Hello, I am robot Kappa!")
+        time.sleep(2.0)
+
 
     # go to all detected faces
     request = PosesInFrontOfFaces.Request()

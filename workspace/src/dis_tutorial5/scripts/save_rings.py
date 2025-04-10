@@ -10,8 +10,16 @@ from nav_msgs.msg import OccupancyGrid
 
 import numpy as np
 import time
+import cv2
+import yaml
 import tf2_ros
 import tf2_geometry_msgs  # Za uporabo transformacij med sporočili
+
+
+class Point:
+    def __init__(self, x=0, y=0):
+        self.x = x
+        self.y = y
 
 class Ring():
     def __init__(self, id, center, current_time=None, robot_position=None, count=1, color=None):
@@ -40,7 +48,7 @@ class RingMarkerSubscriber(Node):
             PoseWithCovarianceStamped, '/amcl_pose', self.robot_position_callback, 10
         )
 
-        self.map_subscriber = self.create_subscription(OccupancyGrid, '/map', self.map_callback, 10)
+        # self.map_subscriber = self.create_subscription(OccupancyGrid, '/map', self.map_callback, 10)
 
         # Service that returns poses in front of detected rings
         self.service = self.create_service(PosesInFrontOfRings, 'get_ring_pose', self.get_ring_pose_callback)
@@ -51,11 +59,29 @@ class RingMarkerSubscriber(Node):
         self.time_threshold = 5  # Sekunde preden obroč ponovno upoštevamo
         self.ring_counter = 0  # Števec za unikatne ID-je obročev
 
+        def load_map(self, pgm_path, yaml_path):
+            """Naloži PGM sliko in YAML metapodatke zemljevida"""
+            with open(yaml_path, 'r') as yaml_file:
+                map_metadata = yaml.safe_load(yaml_file)
+
+            map_image = cv2.imread(pgm_path, cv2.IMREAD_GRAYSCALE)
+            if map_image is None:
+                self.get_logger().error("Napaka pri nalaganju map.pgm!")
+                exit(1)
+
+            # Obrni sliko, če je potrebno (PGM zemljevidi so pogosto obrnjeni)
+            #map_image = cv2.flip(map_image, 0)
+
+            return map_image, map_metadata
+        
+        #Load the map
+        self.map_image, self.map_metadata = load_map('src/dis_tutorial3/maps/map.pgm', 'src/dis_tutorial3/maps/map.yaml')
+
         self.map_data = None
-        self.map_width = None
-        self.map_height = None
-        self.map_resolution = None
-        self.map_origin = None
+        self.map_height, self.map_width = self.map_image.shape
+        self.map_resolution = self.map_metadata['resolution']
+        origin = self.map_metadata['origin']
+        self.map_origin = Point(x=origin[0], y=origin[1], z=0.0)
 
     def robot_position_callback(self, msg):
         # Shrani pozicijo robota iz AMCL topica
