@@ -1,0 +1,16 @@
+// generated from rosidl_adapter/resource/srv.idl.em
+// with input from custom_messages/srv/PosesInFrontOfFaces.srv
+// generated code does not contain a copyright notice
+
+#include "geometry_msgs/msg/Pose.idl"
+
+module custom_messages {
+  module srv {
+    struct PosesInFrontOfFaces_Request {
+      uint8 structure_needs_at_least_one_member;
+    };
+    struct PosesInFrontOfFaces_Response {
+      sequence<geometry_msgs::msg::Pose> poses;
+    };
+  };
+};

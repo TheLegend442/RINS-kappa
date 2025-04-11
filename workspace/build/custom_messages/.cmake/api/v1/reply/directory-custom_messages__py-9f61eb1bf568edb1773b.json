@@ -1,0 +1,14 @@
+{
+	"backtraceGraph" : 
+	{
+		"commands" : [],
+		"files" : [],
+		"nodes" : []
+	},
+	"installers" : [],
+	"paths" : 
+	{
+		"build" : "custom_messages__py",
+		"source" : "/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages/custom_messages__py"
+	}
+}
