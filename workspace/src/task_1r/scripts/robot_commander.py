@@ -352,7 +352,7 @@ class RobotCommander(Node):
             self.get_logger().info(f"Started dragging from: {x}, {y}")
         elif event == cv2.EVENT_MOUSEMOVE and self.is_dragging:
             # Clear the image and redraw previous points
-            self.map_image, self.map_metadata = self.load_map('src/dis_tutorial3/maps/map.pgm', 'src/dis_tutorial3/maps/map.yaml')
+            self.map_image, self.map_metadata = self.load_map('src/task_1r/maps/t1r_map.pgm', 'src/task_1r/maps/t1r_map.yaml')
             self.draw_previous_markers()  # Re-draw any previously stored points
             # Draw the current arrow
             self.draw_arrow(self.start_point, (x, y))
@@ -434,24 +434,24 @@ def main(args=None):
 
     rc.waitUntilNav2Active()
 
-    while rc.is_docked is None:
-        rclpy.spin_once(rc, timeout_sec=0.5)
+    # while rc.is_docked is None:
+    #     rclpy.spin_once(rc, timeout_sec=0.5)
 
-    if rc.is_docked:
-        rc.undock()
+    # if rc.is_docked:
+    #     rc.undock()
 
     rc.map_image, rc.map_metadata = rc.load_map('src/task_1r/maps/t1r_map.pgm', 'src/task_1r/maps/t1r_map.yaml')
-
+    print("ready")
     # Točke obhoda
-    if not os.path.exists('src/dis_tutorial3/data/obhod3.npy'):
+    if not os.path.exists('src/task_1r/data/obhod3.npy'):
         cv2.imshow("Map", rc.map_image)
         cv2.setMouseCallback("Map", rc.mouse_callback)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
-        np.save('src/dis_tutorial3/data/obhod.npy', rc.clicked_points)
+        np.save('src/task_1r/data/obhod.npy', rc.clicked_points)
     else:
         print("Obhod že obstaja")
-        rc.clicked_points = np.load('src/dis_tutorial3/data/obhod3.npy')
+        rc.clicked_points = np.load('src/task_1r/data/obhod3.npy')
     
     
     for i, (px, py, orientation) in enumerate(rc.clicked_points):
@@ -469,6 +469,7 @@ def main(args=None):
         while not rc.isTaskComplete():
             #rc.info("Waiting for the task to complete...")
             time.sleep(0.1)
+        time.sleep(1.0)
 
     for i  in range(10):
         rc.info("KOČAL Z OBHODOM")

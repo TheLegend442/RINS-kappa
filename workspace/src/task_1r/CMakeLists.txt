@@ -31,6 +31,8 @@ install(PROGRAMS
   scripts/robot_commander.py
   scripts/save_faces.py
   scripts/talker_node.py
+  scripts/detect_rings_final.py
+  scripts/save_rings.py
   DESTINATION lib/${PROJECT_NAME})
 
 ament_package()

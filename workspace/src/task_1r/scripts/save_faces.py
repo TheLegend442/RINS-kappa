@@ -50,14 +50,15 @@ class PeopleMarkerSubscriber(Node):
         self.robot_position = None  # Shranjena pozicija robota
         self.faces = {}  # Slovar {face_id: (position, timestamp, robot_position, count)}
         self.threshold = 0.7  # Razdalja za zaznavanje istega obraza
-        self.time_threshold = 5  # Sekunde preden obraz ponovno upoštevamo
+        self.time_threshold = 0.1  # Sekunde preden obraz ponovno upoštevamo
         self.face_counter = 0  # Števec za unikatne ID-je obrazov
+        self.minimum_count = 1
 
     def get_face_pose_callback(self, request, response):
         response.poses = []
 
         for face in self.faces.values():
-            if face.count < 2:
+            if face.count < self.minimum_count:
                 self.get_logger().info(f"Obraz {face.id} ima premalo zaznav, da bi izračunali pozicijo.")
                 continue
             
@@ -145,7 +146,8 @@ class PeopleMarkerSubscriber(Node):
                     self.faces[face_id] = Face(face_id, new_position, new_bottom_right_position, new_upper_left_position, current_time, self.robot_position, count + 1)
 
                     # **Objavimo nov marker**
-                    self.publish_face_marker(new_position, face_id)
+                    if face.count >= self.minimum_count:
+                        self.publish_face_marker(new_position, face_id)
                     return
 
         # **Če obraz ni bil zaznan, ga dodamo v slovar**
