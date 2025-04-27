@@ -1,8 +1,0 @@
-{
-  "package_name": "dis_tutorial1",
-  "non_idl_tuples": [
-    "/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial1:msg/CustomMessage.msg",
-    "/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial1:srv/AddTwoInts.srv",
-    "/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial1:srv/AddArray.srv"
-  ]
-}

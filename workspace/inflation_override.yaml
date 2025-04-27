@@ -1,0 +1,9 @@
+global_costmap:
+  inflation_layer:
+    ros__parameters:
+      inflation_radius: 0.2
+
+local_costmap:
+  inflation_layer:
+    ros__parameters:
+      inflation_radius: 0.2
