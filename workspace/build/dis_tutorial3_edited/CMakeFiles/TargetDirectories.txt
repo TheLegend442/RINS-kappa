@@ -1,9 +1,0 @@
-/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited/CMakeFiles/uninstall.dir
-/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited/CMakeFiles/dis_tutorial3_edited_uninstall.dir
-/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited/CMakeFiles/test.dir
-/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited/CMakeFiles/edit_cache.dir
-/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited/CMakeFiles/rebuild_cache.dir
-/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited/CMakeFiles/list_install_components.dir
-/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited/CMakeFiles/install.dir
-/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited/CMakeFiles/install/local.dir
-/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited/CMakeFiles/install/strip.dir
