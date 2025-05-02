@@ -29,8 +29,6 @@ install(DIRECTORY
 install(PROGRAMS
   scripts/detect_people.py
   scripts/robot_commander.py
-  scripts/save_faces.py
-  scripts/talker_node.py
   DESTINATION lib/${PROJECT_NAME})
 
 ament_package()

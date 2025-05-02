@@ -1,0 +1,262 @@
+[0.179s] Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial3_edited -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited
+[0.249s] -- The C compiler identification is GNU 11.4.0
+[0.335s] -- The CXX compiler identification is GNU 11.4.0
+[0.345s] -- Detecting C compiler ABI info
+[0.443s] -- Detecting C compiler ABI info - done
+[0.455s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.455s] -- Detecting C compile features
+[0.455s] -- Detecting C compile features - done
+[0.455s] -- Detecting CXX compiler ABI info
+[0.597s] -- Detecting CXX compiler ABI info - done
+[0.615s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.615s] -- Detecting CXX compile features
+[0.616s] -- Detecting CXX compile features - done
+[0.619s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[1.190s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.347s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[1.396s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.401s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.409s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.422s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.439s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.484s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.487s] -- Found rmw_cyclonedds_cpp: 1.3.4 (/opt/ros/humble/share/rmw_cyclonedds_cpp/cmake)
+[1.509s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[1.519s] -- Looking for pthread.h
+[1.616s] -- Looking for pthread.h - found
+[1.616s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.767s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.767s] -- Found Threads: TRUE  
+[1.838s] -- Found rclpy: 3.3.16 (/opt/ros/humble/share/rclpy/cmake)
+[1.840s] -- Found std_srvs: 4.8.0 (/opt/ros/humble/share/std_srvs/cmake)
+[1.966s] -- Configuring done
+[1.972s] -- Generating done
+[1.977s] -- Build files have been written to: /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited
+[1.990s] Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial3_edited -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited
+[1.995s] Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited -- -j16 -l16
+[2.056s] Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited -- -j16 -l16
+[2.060s] Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited
+[2.070s] -- Install configuration: ""
+[2.070s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//launch
+[2.070s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//launch/dis_sim.launch.py
+[2.071s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//launch/nav2.launch.py
+[2.072s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//launch/sim_turtlebot_slam.launch.py
+[2.072s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//launch/slam.launch.py
+[2.072s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//launch/detect.py
+[2.072s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//launch/create3_nodes.launch.py
+[2.072s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//launch/ignition.launch.py
+[2.072s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//launch/turtlebot4_spawn.launch.py
+[2.072s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//launch/sim_turtlebot_nav.launch.py
+[2.072s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//launch/turtlebot4_spawn_nav.launch.py
+[2.072s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//launch/localization.launch.py
+[2.072s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//config
+[2.072s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//config/laser_filter_chain.yaml
+[2.073s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//config/nav2.yaml
+[2.073s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//config/slam.yaml
+[2.073s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//config/localization.yaml
+[2.074s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds
+[2.074s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4.sdf
+[2.074s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes
+[2.074s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/map_colliders.dae
+[2.074s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/fakering1.jpg
+[2.075s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/parking_space.jpg
+[2.075s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/person15.png
+[2.075s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/green.jpg
+[2.075s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/qr1.jpg
+[2.075s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/person17.png
+[2.077s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/objects.jpg
+[2.077s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/fakering2.jpg
+[2.077s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/qr2.jpg
+[2.077s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/ground.jpg
+[2.077s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/blue.jpg
+[2.077s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/fakering3.jpg
+[2.077s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/person21.png
+[2.078s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/person24.png
+[2.078s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/map.dae
+[2.080s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/person22.png
+[2.080s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/red.jpg
+[2.081s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/yellow.jpg
+[2.081s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3_meshes/black.jpg
+[2.081s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1.sdf
+[2.081s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024
+[2.081s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo1.sdf
+[2.081s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes
+[2.081s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/map_colliders.dae
+[2.082s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/fakering1.jpg
+[2.082s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/parking_space.jpg
+[2.082s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/villager4.png
+[2.082s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/qr_cheat.png
+[2.082s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/anomona_4.png
+[2.082s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/mona.png
+[2.083s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/villager1.png
+[2.083s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/objects.jpg
+[2.083s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/fakering2.jpg
+[2.083s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/easy_anomona_0.png
+[2.084s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/villager3.png
+[2.085s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/qr_url.png
+[2.085s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/ground.jpg
+[2.085s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/villager5.png
+[2.087s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/fakering3.jpg
+[2.087s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/cylinders.jpg
+[2.087s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/easy_anomona_1.png
+[2.087s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/anomona_3.png
+[2.091s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/easy_anomona_3.png
+[2.091s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/anomona_1.png
+[2.091s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/map.dae
+[2.092s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/villager2.png
+[2.092s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/anomona_0.png
+[2.092s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/anomona_2.png
+[2.092s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/easy_anomona_2.png
+[2.093s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/easy_anomona_4.png
+[2.093s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3_meshes/qr_wrong.png
+[2.093s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task3.sdf
+[2.093s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo2_meshes
+[2.094s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo2_meshes/map_colliders.dae
+[2.094s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo2_meshes/fakering1.jpg
+[2.094s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo2_meshes/parking_space.jpg
+[2.094s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo2_meshes/objects.jpg
+[2.094s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo2_meshes/fakering2.jpg
+[2.094s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo2_meshes/ground.jpg
+[2.095s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo2_meshes/fakering3.jpg
+[2.095s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo2_meshes/cylinders.jpg
+[2.095s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo2_meshes/map.dae
+[2.095s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo1_meshes
+[2.095s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo1_meshes/map_colliders.dae
+[2.096s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo1_meshes/fakering1.jpg
+[2.096s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo1_meshes/parking_space.jpg
+[2.096s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo1_meshes/objects.jpg
+[2.096s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo1_meshes/fakering2.jpg
+[2.096s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo1_meshes/ground.jpg
+[2.096s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo1_meshes/fakering3.jpg
+[2.096s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo1_meshes/cylinders.jpg
+[2.097s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo1_meshes/map.dae
+[2.097s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/2024/task2_demo2.sdf
+[2.097s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2.sdf
+[2.097s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes
+[2.097s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/map_colliders.dae
+[2.098s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/fakering1.jpg
+[2.098s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/parking_space.jpg
+[2.098s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/davinci.jpg
+[2.098s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/qr1.jpg
+[2.099s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/person5.jpg
+[2.099s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/objects.jpg
+[2.099s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/fakering2.jpg
+[2.099s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/wood.jpg
+[2.100s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/person4.jpg
+[2.101s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/person2.jpg
+[2.101s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/qr2.jpg
+[2.101s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/person1.jpg
+[2.102s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/ground.jpg
+[2.102s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/fakering3.jpg
+[2.103s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/cylinders.jpg
+[2.103s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/map.dae
+[2.103s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/person3.jpg
+[2.103s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis_meshes/mona1.jpg
+[2.104s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/empty.sdf
+[2.105s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo3.sdf
+[2.105s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes
+[2.105s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/map_colliders.dae
+[2.105s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/fakering1.jpg
+[2.105s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/parking_space.jpg
+[2.105s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/qr1.jpg
+[2.105s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/person18.png
+[2.106s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/objects.jpg
+[2.106s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/fakering2.jpg
+[2.106s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/qr2.jpg
+[2.107s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/ground.jpg
+[2.107s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/person7.png
+[2.107s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/fakering3.jpg
+[2.107s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/cylinders.jpg
+[2.107s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/person9.png
+[2.108s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/person20.png
+[2.109s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/person8.png
+[2.111s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/map.dae
+[2.112s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo2_meshes/person6.png
+[2.112s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1.sdf
+[2.112s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes
+[2.112s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/map_colliders.dae
+[2.113s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/person3.png
+[2.113s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/fakering1.jpg
+[2.114s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/person5.png
+[2.115s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/parking_space.jpg
+[2.115s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/qr1.jpg
+[2.115s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/person2.png
+[2.116s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/objects.jpg
+[2.116s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/fakering2.jpg
+[2.116s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/qr2.jpg
+[2.116s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/ground.jpg
+[2.116s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/fakering3.jpg
+[2.116s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/cylinders.jpg
+[2.117s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/person4.png
+[2.117s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/map.dae
+[2.118s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/person11.png
+[2.118s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo1_meshes/person1.png
+[2.121s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/dis.sdf
+[2.121s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes
+[2.121s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/map_colliders.dae
+[2.121s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/fakering1.jpg
+[2.122s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/parking_space.jpg
+[2.122s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/green.jpg
+[2.122s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/qr1.jpg
+[2.122s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/objects.jpg
+[2.122s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/fakering2.jpg
+[2.123s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/person3.png.001.png
+[2.123s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/qr2.jpg
+[2.123s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/ground.jpg
+[2.123s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/blue.jpg
+[2.123s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/fakering3.jpg
+[2.123s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/person13.png
+[2.124s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/person4.png.001.png
+[2.129s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/person2.png.001.png
+[2.129s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/map.dae
+[2.129s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/person5.png.001.png
+[2.131s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/red.jpg
+[2.131s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/person6.png
+[2.131s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/yellow.jpg
+[2.131s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/demo4_meshes/black.jpg
+[2.133s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes
+[2.133s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/map_colliders.dae
+[2.134s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/fakering1.jpg
+[2.134s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/parking_space.jpg
+[2.134s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/green.jpg
+[2.134s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/qr1.jpg
+[2.135s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/objects.jpg
+[2.135s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/fakering2.jpg
+[2.135s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/person3.png.001.png
+[2.138s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/qr2.jpg
+[2.138s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/ground.jpg
+[2.139s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/blue.jpg
+[2.139s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/fakering3.jpg
+[2.139s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/person13.png
+[2.139s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/person8.png
+[2.139s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/person2.png.001.png
+[2.139s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/map.dae
+[2.139s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/person5.png.001.png
+[2.140s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/red.jpg
+[2.140s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/person6.png
+[2.140s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/yellow.jpg
+[2.141s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//worlds/task1_meshes/black.jpg
+[2.141s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//maps
+[2.141s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//maps/t1r_map.pgm
+[2.141s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//maps/map.pgm
+[2.141s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited//maps/map.yaml
+[2.141s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/lib/dis_tutorial3_edited/detect_people.py
+[2.142s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/lib/dis_tutorial3_edited/robot_commander.py
+[2.142s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/lib/dis_tutorial3_edited/save_faces.py
+[2.142s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/lib/dis_tutorial3_edited/talker_node.py
+[2.142s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/ament_index/resource_index/package_run_dependencies/dis_tutorial3_edited
+[2.142s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/ament_index/resource_index/parent_prefix_path/dis_tutorial3_edited
+[2.142s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/environment/ament_prefix_path.sh
+[2.143s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/environment/ament_prefix_path.dsv
+[2.143s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/environment/path.sh
+[2.143s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/environment/path.dsv
+[2.143s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/local_setup.bash
+[2.143s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/local_setup.sh
+[2.143s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/local_setup.zsh
+[2.143s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/local_setup.dsv
+[2.143s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/package.dsv
+[2.144s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/ament_index/resource_index/packages/dis_tutorial3_edited
+[2.144s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/cmake/dis_tutorial3_editedConfig.cmake
+[2.144s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/cmake/dis_tutorial3_editedConfig-version.cmake
+[2.145s] -- Installing: /home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/package.xml
+[2.152s] Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited

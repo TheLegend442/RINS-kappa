@@ -1,0 +1,9 @@
+/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s/CMakeFiles/uninstall.dir
+/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s/CMakeFiles/task_2s_uninstall.dir
+/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s/CMakeFiles/test.dir
+/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s/CMakeFiles/edit_cache.dir
+/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s/CMakeFiles/rebuild_cache.dir
+/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s/CMakeFiles/list_install_components.dir
+/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s/CMakeFiles/install.dir
+/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s/CMakeFiles/install/local.dir
+/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s/CMakeFiles/install/strip.dir
