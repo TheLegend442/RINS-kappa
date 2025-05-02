@@ -1,0 +1,269 @@
+[0.211s] Invoking command in '/home/thelegend442/faxic/RINS-kappa/build/task_2s': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/task_2s -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/install/task_2s
+[0.251s] -- The C compiler identification is GNU 11.4.0
+[0.307s] -- The CXX compiler identification is GNU 11.4.0
+[0.315s] -- Detecting C compiler ABI info
+[0.387s] -- Detecting C compiler ABI info - done
+[0.393s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.393s] -- Detecting C compile features
+[0.393s] -- Detecting C compile features - done
+[0.396s] -- Detecting CXX compiler ABI info
+[0.477s] -- Detecting CXX compiler ABI info - done
+[0.483s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.483s] -- Detecting CXX compile features
+[0.483s] -- Detecting CXX compile features - done
+[0.487s] -- Found ament_cmake: 1.3.11 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.893s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter 
+[1.006s] -- Found rclcpp: 16.0.12 (/opt/ros/humble/share/rclcpp/cmake)
+[1.056s] -- Found rosidl_generator_c: 3.1.6 (/opt/ros/humble/share/rosidl_generator_c/cmake)
+[1.063s] -- Found rosidl_adapter: 3.1.6 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[1.073s] -- Found rosidl_generator_cpp: 3.1.6 (/opt/ros/humble/share/rosidl_generator_cpp/cmake)
+[1.086s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.105s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.154s] -- Found rmw_implementation_cmake: 6.1.2 (/opt/ros/humble/share/rmw_implementation_cmake/cmake)
+[1.158s] -- Found rmw_cyclonedds_cpp: 1.3.4 (/opt/ros/humble/share/rmw_cyclonedds_cpp/cmake)
+[1.182s] -- Using RMW implementation 'rmw_cyclonedds_cpp' as default
+[1.193s] -- Looking for pthread.h
+[1.274s] -- Looking for pthread.h - found
+[1.274s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+[1.350s] -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+[1.351s] -- Found Threads: TRUE  
+[1.408s] -- Found rclpy: 3.3.16 (/opt/ros/humble/share/rclpy/cmake)
+[1.411s] -- Found std_srvs: 4.8.0 (/opt/ros/humble/share/std_srvs/cmake)
+[1.489s] -- Configuring done
+[1.493s] -- Generating done
+[1.495s] -- Build files have been written to: /home/thelegend442/faxic/RINS-kappa/build/task_2s
+[1.508s] Invoked command in '/home/thelegend442/faxic/RINS-kappa/build/task_2s' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/task_2s -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/install/task_2s
+[1.510s] Invoking command in '/home/thelegend442/faxic/RINS-kappa/build/task_2s': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/build/task_2s -- -j16 -l16
+[1.567s] Invoked command in '/home/thelegend442/faxic/RINS-kappa/build/task_2s' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/build/task_2s -- -j16 -l16
+[1.569s] Invoking command in '/home/thelegend442/faxic/RINS-kappa/build/task_2s': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/build/task_2s
+[1.579s] -- Install configuration: ""
+[1.580s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//launch
+[1.580s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//launch/dis_sim.launch.py
+[1.580s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//launch/nav2.launch.py
+[1.581s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//launch/sim_turtlebot_slam.launch.py
+[1.581s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//launch/slam.launch.py
+[1.581s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//launch/detect.py
+[1.581s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//launch/rviz_gazebo.launch.py
+[1.581s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//launch/create3_nodes.launch.py
+[1.581s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//launch/ignition.launch.py
+[1.582s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//launch/turtlebot4_spawn.launch.py
+[1.582s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//launch/sim_turtlebot_nav.launch.py
+[1.582s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//launch/turtlebot4_spawn_nav.launch.py
+[1.582s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//launch/localization.launch.py
+[1.583s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//config
+[1.583s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//config/laser_filter_chain.yaml
+[1.583s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//config/nav2.yaml
+[1.583s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//config/slam.yaml
+[1.583s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//config/localization.yaml
+[1.583s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds
+[1.583s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4.sdf
+[1.584s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes
+[1.584s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/map_colliders.dae
+[1.585s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/fakering1.jpg
+[1.585s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/parking_space.jpg
+[1.585s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/person15.png
+[1.586s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/green.jpg
+[1.586s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/qr1.jpg
+[1.587s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/person17.png
+[1.587s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/objects.jpg
+[1.588s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/fakering2.jpg
+[1.588s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/qr2.jpg
+[1.588s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/ground.jpg
+[1.589s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/blue.jpg
+[1.589s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/fakering3.jpg
+[1.589s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/person21.png
+[1.590s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/person24.png
+[1.590s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/map.dae
+[1.590s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/person22.png
+[1.590s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/red.jpg
+[1.590s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/yellow.jpg
+[1.590s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3_meshes/black.jpg
+[1.590s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1.sdf
+[1.590s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024
+[1.591s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo1.sdf
+[1.592s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes
+[1.592s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/map_colliders.dae
+[1.592s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/fakering1.jpg
+[1.594s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/parking_space.jpg
+[1.594s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/villager4.png
+[1.594s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/qr_cheat.png
+[1.594s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/anomona_4.png
+[1.595s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/mona.png
+[1.595s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/villager1.png
+[1.596s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/objects.jpg
+[1.596s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/fakering2.jpg
+[1.596s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/easy_anomona_0.png
+[1.596s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/villager3.png
+[1.596s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/qr_url.png
+[1.596s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/ground.jpg
+[1.596s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/villager5.png
+[1.596s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/fakering3.jpg
+[1.597s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/cylinders.jpg
+[1.597s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/easy_anomona_1.png
+[1.597s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/anomona_3.png
+[1.597s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/easy_anomona_3.png
+[1.598s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/anomona_1.png
+[1.598s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/map.dae
+[1.599s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/villager2.png
+[1.599s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/anomona_0.png
+[1.600s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/anomona_2.png
+[1.601s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/easy_anomona_2.png
+[1.601s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/easy_anomona_4.png
+[1.601s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3_meshes/qr_wrong.png
+[1.601s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task3.sdf
+[1.601s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo2_meshes
+[1.601s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo2_meshes/map_colliders.dae
+[1.602s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo2_meshes/fakering1.jpg
+[1.602s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo2_meshes/parking_space.jpg
+[1.602s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo2_meshes/objects.jpg
+[1.602s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo2_meshes/fakering2.jpg
+[1.602s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo2_meshes/ground.jpg
+[1.603s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo2_meshes/fakering3.jpg
+[1.603s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo2_meshes/cylinders.jpg
+[1.603s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo2_meshes/map.dae
+[1.603s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo1_meshes
+[1.604s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo1_meshes/map_colliders.dae
+[1.604s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo1_meshes/fakering1.jpg
+[1.604s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo1_meshes/parking_space.jpg
+[1.604s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo1_meshes/objects.jpg
+[1.604s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo1_meshes/fakering2.jpg
+[1.604s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo1_meshes/ground.jpg
+[1.604s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo1_meshes/fakering3.jpg
+[1.604s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo1_meshes/cylinders.jpg
+[1.604s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo1_meshes/map.dae
+[1.605s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/2024/task2_demo2.sdf
+[1.605s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2.sdf
+[1.605s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes
+[1.606s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/map_colliders.dae
+[1.606s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/fakering1.jpg
+[1.606s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/parking_space.jpg
+[1.606s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/davinci.jpg
+[1.606s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/qr1.jpg
+[1.606s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/person5.jpg
+[1.607s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/objects.jpg
+[1.607s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/fakering2.jpg
+[1.607s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/wood.jpg
+[1.607s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/person4.jpg
+[1.607s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/person2.jpg
+[1.607s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/qr2.jpg
+[1.607s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/person1.jpg
+[1.607s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/ground.jpg
+[1.608s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/fakering3.jpg
+[1.608s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/cylinders.jpg
+[1.608s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/map.dae
+[1.609s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/person3.jpg
+[1.609s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis_meshes/mona1.jpg
+[1.609s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/empty.sdf
+[1.609s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo3.sdf
+[1.609s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes
+[1.609s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/map_colliders.dae
+[1.610s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/fakering1.jpg
+[1.610s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/parking_space.jpg
+[1.610s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/qr1.jpg
+[1.610s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/person18.png
+[1.611s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/objects.jpg
+[1.611s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/fakering2.jpg
+[1.611s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/qr2.jpg
+[1.612s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/ground.jpg
+[1.612s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/person7.png
+[1.613s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/fakering3.jpg
+[1.613s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/cylinders.jpg
+[1.614s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/person9.png
+[1.615s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/person20.png
+[1.615s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/person8.png
+[1.615s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/map.dae
+[1.616s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo2_meshes/person6.png
+[1.616s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1.sdf
+[1.616s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes
+[1.616s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/map_colliders.dae
+[1.616s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/person3.png
+[1.616s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/fakering1.jpg
+[1.617s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/person5.png
+[1.617s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/parking_space.jpg
+[1.618s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/qr1.jpg
+[1.618s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/person2.png
+[1.618s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/objects.jpg
+[1.618s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/fakering2.jpg
+[1.618s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/qr2.jpg
+[1.619s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/ground.jpg
+[1.619s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/fakering3.jpg
+[1.619s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/cylinders.jpg
+[1.619s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/person4.png
+[1.620s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/map.dae
+[1.620s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/person11.png
+[1.621s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo1_meshes/person1.png
+[1.621s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/dis.sdf
+[1.621s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes
+[1.622s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/map_colliders.dae
+[1.623s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/fakering1.jpg
+[1.623s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/parking_space.jpg
+[1.623s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/green.jpg
+[1.623s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/qr1.jpg
+[1.623s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/objects.jpg
+[1.623s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/fakering2.jpg
+[1.623s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/person3.png.001.png
+[1.624s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/qr2.jpg
+[1.625s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/ground.jpg
+[1.625s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/blue.jpg
+[1.625s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/fakering3.jpg
+[1.625s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/person13.png
+[1.625s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/person4.png.001.png
+[1.625s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/person2.png.001.png
+[1.626s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/map.dae
+[1.626s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/person5.png.001.png
+[1.626s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/red.jpg
+[1.626s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/person6.png
+[1.627s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/yellow.jpg
+[1.627s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/demo4_meshes/black.jpg
+[1.627s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes
+[1.627s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/map_colliders.dae
+[1.627s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/fakering1.jpg
+[1.628s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/parking_space.jpg
+[1.628s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/green.jpg
+[1.628s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/qr1.jpg
+[1.628s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/objects.jpg
+[1.629s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/fakering2.jpg
+[1.629s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/person3.png.001.png
+[1.629s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/qr2.jpg
+[1.629s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/ground.jpg
+[1.629s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/blue.jpg
+[1.630s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/fakering3.jpg
+[1.630s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/person13.png
+[1.630s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/person8.png
+[1.630s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/person2.png.001.png
+[1.631s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/map.dae
+[1.631s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/person5.png.001.png
+[1.632s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/red.jpg
+[1.632s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/person6.png
+[1.633s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/yellow.jpg
+[1.633s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//worlds/task1_meshes/black.jpg
+[1.633s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//maps
+[1.633s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//maps/t1r_map.pgm
+[1.633s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//maps/bird_map.yaml
+[1.633s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//maps/bird_map.pgm
+[1.633s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//maps/t1r_map.yaml
+[1.634s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//maps/map.pgm
+[1.635s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s//maps/map.yaml
+[1.635s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/lib/task_2s/detect_people.py
+[1.635s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/lib/task_2s/robot_commander.py
+[1.635s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/lib/task_2s/save_faces.py
+[1.635s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/lib/task_2s/talker_node.py
+[1.635s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/lib/task_2s/detect_rings_final.py
+[1.635s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/lib/task_2s/save_rings.py
+[1.635s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/lib/task_2s/bridge_follower.py
+[1.635s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/ament_index/resource_index/package_run_dependencies/task_2s
+[1.635s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/ament_index/resource_index/parent_prefix_path/task_2s
+[1.635s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s/environment/ament_prefix_path.sh
+[1.636s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s/environment/ament_prefix_path.dsv
+[1.636s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s/environment/path.sh
+[1.636s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s/environment/path.dsv
+[1.636s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s/local_setup.bash
+[1.636s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s/local_setup.sh
+[1.636s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s/local_setup.zsh
+[1.637s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s/local_setup.dsv
+[1.637s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s/package.dsv
+[1.637s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/ament_index/resource_index/packages/task_2s
+[1.637s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s/cmake/task_2sConfig.cmake
+[1.637s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s/cmake/task_2sConfig-version.cmake
+[1.637s] -- Installing: /home/thelegend442/faxic/RINS-kappa/install/task_2s/share/task_2s/package.xml
+[1.640s] Invoked command in '/home/thelegend442/faxic/RINS-kappa/build/task_2s' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/build/task_2s
