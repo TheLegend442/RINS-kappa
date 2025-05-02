@@ -1,0 +1,756 @@
+[0.072s] DEBUG:colcon:Command line arguments: ['/usr/bin/colcon', 'build']
+[0.072s] DEBUG:colcon:Parsed command line arguments: Namespace(log_base=None, log_level=None, verb_name='build', build_base='build', install_base='install', merge_install=False, symlink_install=False, test_result_base=None, continue_on_error=False, executor='parallel', parallel_workers=16, event_handlers=None, ignore_user_meta=False, metas=['./colcon.meta'], base_paths=['.'], packages_ignore=None, packages_ignore_regex=None, paths=None, packages_up_to=None, packages_up_to_regex=None, packages_above=None, packages_above_and_dependencies=None, packages_above_depth=None, packages_select_by_dep=None, packages_skip_by_dep=None, packages_skip_up_to=None, packages_select_build_failed=False, packages_skip_build_finished=False, packages_select_test_failures=False, packages_skip_test_passed=False, packages_select=None, packages_skip=None, packages_select_regex=None, packages_skip_regex=None, packages_start=None, packages_end=None, allow_overriding=[], cmake_args=None, cmake_target=None, cmake_target_skip_unavailable=False, cmake_clean_cache=False, cmake_clean_first=False, cmake_force_configure=False, ament_cmake_args=None, catkin_cmake_args=None, catkin_skip_building_tests=False, verb_parser=<colcon_defaults.argument_parser.defaults.DefaultArgumentsDecorator object at 0x70c712574070>, verb_extension=<colcon_core.verb.build.BuildVerb object at 0x70c712533bb0>, main=<bound method BuildVerb.main of <colcon_core.verb.build.BuildVerb object at 0x70c712533bb0>>)
+[0.099s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) check parameters
+[0.099s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) check parameters
+[0.099s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) check parameters
+[0.099s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) check parameters
+[0.099s] Level 1:colcon.colcon_core.package_discovery:discover_packages(colcon_meta) discover
+[0.099s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) discover
+[0.099s] INFO:colcon.colcon_core.package_discovery:Crawling recursively for packages in '/home/thelegend442/faxic/RINS-kappa/workspace'
+[0.099s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ignore', 'ignore_ament_install']
+[0.099s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore'
+[0.099s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ignore_ament_install'
+[0.099s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_pkg']
+[0.100s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_pkg'
+[0.100s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['colcon_meta']
+[0.100s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'colcon_meta'
+[0.100s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['ros']
+[0.100s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'ros'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['cmake', 'python']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'cmake'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extensions ['python_setup_py']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(.) by extension 'python_setup_py'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extensions ['ignore', 'ignore_ament_install']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(build) by extension 'ignore'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(build) ignored
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extensions ['ignore', 'ignore_ament_install']
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(install) by extension 'ignore'
+[0.110s] Level 1:colcon.colcon_core.package_identification:_identify(install) ignored
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extensions ['ignore', 'ignore_ament_install']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(log) by extension 'ignore'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(log) ignored
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ignore', 'ignore_ament_install']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ignore_ament_install'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_pkg']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_pkg'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['colcon_meta']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'colcon_meta'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['ros']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'ros'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['cmake', 'python']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'cmake'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extensions ['python_setup_py']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src) by extension 'python_setup_py'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extensions ['ignore', 'ignore_ament_install']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extension 'ignore'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extension 'ignore_ament_install'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extensions ['colcon_pkg']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extension 'colcon_pkg'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extensions ['colcon_meta']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extension 'colcon_meta'
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extensions ['ros']
+[0.111s] Level 1:colcon.colcon_core.package_identification:_identify(src/custom_messages) by extension 'ros'
+[0.113s] DEBUG:colcon.colcon_core.package_identification:Package 'src/custom_messages' with type 'ros.ament_cmake' and name 'custom_messages'
+[0.113s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extensions ['ignore', 'ignore_ament_install']
+[0.113s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extension 'ignore'
+[0.113s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extension 'ignore_ament_install'
+[0.113s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extensions ['colcon_pkg']
+[0.113s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extension 'colcon_pkg'
+[0.113s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extensions ['colcon_meta']
+[0.113s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extension 'colcon_meta'
+[0.113s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extensions ['ros']
+[0.113s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial1) by extension 'ros'
+[0.114s] DEBUG:colcon.colcon_core.package_identification:Package 'src/dis_tutorial1' with type 'ros.ament_cmake' and name 'dis_tutorial1'
+[0.114s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extensions ['ignore', 'ignore_ament_install']
+[0.114s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extension 'ignore'
+[0.114s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extension 'ignore_ament_install'
+[0.114s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extensions ['colcon_pkg']
+[0.114s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extension 'colcon_pkg'
+[0.114s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extensions ['colcon_meta']
+[0.114s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extension 'colcon_meta'
+[0.114s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extensions ['ros']
+[0.114s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial2) by extension 'ros'
+[0.115s] DEBUG:colcon.colcon_core.package_identification:Package 'src/dis_tutorial2' with type 'ros.ament_python' and name 'dis_tutorial2'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extensions ['ignore', 'ignore_ament_install']
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extension 'ignore'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extension 'ignore_ament_install'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extensions ['colcon_pkg']
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extension 'colcon_pkg'
+[0.115s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extensions ['colcon_meta']
+[0.116s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extension 'colcon_meta'
+[0.116s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extensions ['ros']
+[0.116s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3) by extension 'ros'
+[0.116s] DEBUG:colcon.colcon_core.package_identification:Package 'src/dis_tutorial3' with type 'ros.ament_cmake' and name 'dis_tutorial3'
+[0.116s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3_edited) by extensions ['ignore', 'ignore_ament_install']
+[0.116s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3_edited) by extension 'ignore'
+[0.116s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3_edited) by extension 'ignore_ament_install'
+[0.116s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3_edited) by extensions ['colcon_pkg']
+[0.116s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3_edited) by extension 'colcon_pkg'
+[0.116s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3_edited) by extensions ['colcon_meta']
+[0.116s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3_edited) by extension 'colcon_meta'
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3_edited) by extensions ['ros']
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial3_edited) by extension 'ros'
+[0.117s] DEBUG:colcon.colcon_core.package_identification:Package 'src/dis_tutorial3_edited' with type 'ros.ament_cmake' and name 'dis_tutorial3_edited'
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extensions ['ignore', 'ignore_ament_install']
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extension 'ignore'
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extension 'ignore_ament_install'
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extensions ['colcon_pkg']
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extension 'colcon_pkg'
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extensions ['colcon_meta']
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extension 'colcon_meta'
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extensions ['ros']
+[0.117s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial4) by extension 'ros'
+[0.118s] DEBUG:colcon.colcon_core.package_identification:Package 'src/dis_tutorial4' with type 'ros.ament_cmake' and name 'dis_tutorial4'
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial5) by extensions ['ignore', 'ignore_ament_install']
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial5) by extension 'ignore'
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial5) by extension 'ignore_ament_install'
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial5) by extensions ['colcon_pkg']
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial5) by extension 'colcon_pkg'
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial5) by extensions ['colcon_meta']
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial5) by extension 'colcon_meta'
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial5) by extensions ['ros']
+[0.118s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial5) by extension 'ros'
+[0.119s] DEBUG:colcon.colcon_core.package_identification:Package 'src/dis_tutorial5' with type 'ros.ament_cmake' and name 'dis_tutorial5'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial7) by extensions ['ignore', 'ignore_ament_install']
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial7) by extension 'ignore'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial7) by extension 'ignore_ament_install'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial7) by extensions ['colcon_pkg']
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial7) by extension 'colcon_pkg'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial7) by extensions ['colcon_meta']
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial7) by extension 'colcon_meta'
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial7) by extensions ['ros']
+[0.119s] Level 1:colcon.colcon_core.package_identification:_identify(src/dis_tutorial7) by extension 'ros'
+[0.120s] DEBUG:colcon.colcon_core.package_identification:Package 'src/dis_tutorial7' with type 'ros.ament_cmake' and name 'dis_tutorial7'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_1r) by extensions ['ignore', 'ignore_ament_install']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_1r) by extension 'ignore'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_1r) by extension 'ignore_ament_install'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_1r) by extensions ['colcon_pkg']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_1r) by extension 'colcon_pkg'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_1r) by extensions ['colcon_meta']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_1r) by extension 'colcon_meta'
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_1r) by extensions ['ros']
+[0.120s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_1r) by extension 'ros'
+[0.121s] DEBUG:colcon.colcon_core.package_identification:Package 'src/task_1r' with type 'ros.ament_cmake' and name 'task_1r'
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_2s) by extensions ['ignore', 'ignore_ament_install']
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_2s) by extension 'ignore'
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_2s) by extension 'ignore_ament_install'
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_2s) by extensions ['colcon_pkg']
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_2s) by extension 'colcon_pkg'
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_2s) by extensions ['colcon_meta']
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_2s) by extension 'colcon_meta'
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_2s) by extensions ['ros']
+[0.121s] Level 1:colcon.colcon_core.package_identification:_identify(src/task_2s) by extension 'ros'
+[0.122s] DEBUG:colcon.colcon_core.package_identification:Package 'src/task_2s' with type 'ros.ament_cmake' and name 'task_2s'
+[0.122s] Level 1:colcon.colcon_core.package_discovery:discover_packages(recursive) using defaults
+[0.122s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) discover
+[0.122s] Level 1:colcon.colcon_core.package_discovery:discover_packages(ignore) using defaults
+[0.122s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) discover
+[0.122s] Level 1:colcon.colcon_core.package_discovery:discover_packages(path) using defaults
+[0.136s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) check parameters
+[0.136s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) discover
+[0.137s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.137s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.137s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.137s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.137s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.137s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.137s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.137s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.137s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.137s] WARNING:colcon.colcon_ros.prefix_path.ament:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages' in the environment variable AMENT_PREFIX_PATH doesn't exist
+[0.137s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.137s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.138s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.138s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.138s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.138s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.138s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.138s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.138s] WARNING:colcon.colcon_ros.prefix_path.catkin:The path '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages' in the environment variable CMAKE_PREFIX_PATH doesn't exist
+[0.138s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 0 installed packages in /home/thelegend442/faxic/RINS-kappa/workspace/install
+[0.139s] DEBUG:colcon.colcon_installed_package_information.package_discovery:Found 340 installed packages in /opt/ros/humble
+[0.141s] Level 1:colcon.colcon_core.package_discovery:discover_packages(prefix_path) using defaults
+[0.168s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'cmake_args' from command line to 'None'
+[0.168s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'cmake_target' from command line to 'None'
+[0.168s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.168s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'cmake_clean_cache' from command line to 'False'
+[0.168s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'cmake_clean_first' from command line to 'False'
+[0.168s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'cmake_force_configure' from command line to 'False'
+[0.168s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'ament_cmake_args' from command line to 'None'
+[0.168s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'catkin_cmake_args' from command line to 'None'
+[0.168s] Level 5:colcon.colcon_core.verb:set package 'custom_messages' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.168s] DEBUG:colcon.colcon_core.verb:Building package 'custom_messages' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages', 'merge_install': False, 'path': '/home/thelegend442/faxic/RINS-kappa/workspace/src/custom_messages', 'symlink_install': False, 'test_result_base': None}
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'cmake_args' from command line to 'None'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'cmake_target' from command line to 'None'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'cmake_clean_cache' from command line to 'False'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'cmake_clean_first' from command line to 'False'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'cmake_force_configure' from command line to 'False'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'ament_cmake_args' from command line to 'None'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'catkin_cmake_args' from command line to 'None'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial1' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.169s] DEBUG:colcon.colcon_core.verb:Building package 'dis_tutorial1' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1', 'merge_install': False, 'path': '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial1', 'symlink_install': False, 'test_result_base': None}
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'cmake_args' from command line to 'None'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'cmake_target' from command line to 'None'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'cmake_clean_cache' from command line to 'False'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'cmake_clean_first' from command line to 'False'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'cmake_force_configure' from command line to 'False'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'ament_cmake_args' from command line to 'None'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'catkin_cmake_args' from command line to 'None'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial2' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.169s] DEBUG:colcon.colcon_core.verb:Building package 'dis_tutorial2' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial2', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2', 'merge_install': False, 'path': '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial2', 'symlink_install': False, 'test_result_base': None}
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'cmake_args' from command line to 'None'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'cmake_target' from command line to 'None'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'cmake_clean_cache' from command line to 'False'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'cmake_clean_first' from command line to 'False'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'cmake_force_configure' from command line to 'False'
+[0.169s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'ament_cmake_args' from command line to 'None'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'catkin_cmake_args' from command line to 'None'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.170s] DEBUG:colcon.colcon_core.verb:Building package 'dis_tutorial3' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3', 'merge_install': False, 'path': '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial3', 'symlink_install': False, 'test_result_base': None}
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3_edited' build argument 'cmake_args' from command line to 'None'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3_edited' build argument 'cmake_target' from command line to 'None'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3_edited' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3_edited' build argument 'cmake_clean_cache' from command line to 'False'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3_edited' build argument 'cmake_clean_first' from command line to 'False'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3_edited' build argument 'cmake_force_configure' from command line to 'False'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3_edited' build argument 'ament_cmake_args' from command line to 'None'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3_edited' build argument 'catkin_cmake_args' from command line to 'None'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial3_edited' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.170s] DEBUG:colcon.colcon_core.verb:Building package 'dis_tutorial3_edited' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited', 'merge_install': False, 'path': '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial3_edited', 'symlink_install': False, 'test_result_base': None}
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'cmake_args' from command line to 'None'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'cmake_target' from command line to 'None'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'cmake_clean_cache' from command line to 'False'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'cmake_clean_first' from command line to 'False'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'cmake_force_configure' from command line to 'False'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'ament_cmake_args' from command line to 'None'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'catkin_cmake_args' from command line to 'None'
+[0.170s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial4' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.170s] DEBUG:colcon.colcon_core.verb:Building package 'dis_tutorial4' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial4', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4', 'merge_install': False, 'path': '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial4', 'symlink_install': False, 'test_result_base': None}
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial5' build argument 'cmake_args' from command line to 'None'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial5' build argument 'cmake_target' from command line to 'None'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial5' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial5' build argument 'cmake_clean_cache' from command line to 'False'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial5' build argument 'cmake_clean_first' from command line to 'False'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial5' build argument 'cmake_force_configure' from command line to 'False'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial5' build argument 'ament_cmake_args' from command line to 'None'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial5' build argument 'catkin_cmake_args' from command line to 'None'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial5' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.171s] DEBUG:colcon.colcon_core.verb:Building package 'dis_tutorial5' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5', 'merge_install': False, 'path': '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial5', 'symlink_install': False, 'test_result_base': None}
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial7' build argument 'cmake_args' from command line to 'None'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial7' build argument 'cmake_target' from command line to 'None'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial7' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial7' build argument 'cmake_clean_cache' from command line to 'False'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial7' build argument 'cmake_clean_first' from command line to 'False'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial7' build argument 'cmake_force_configure' from command line to 'False'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial7' build argument 'ament_cmake_args' from command line to 'None'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial7' build argument 'catkin_cmake_args' from command line to 'None'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'dis_tutorial7' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.171s] DEBUG:colcon.colcon_core.verb:Building package 'dis_tutorial7' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial7', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7', 'merge_install': False, 'path': '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial7', 'symlink_install': False, 'test_result_base': None}
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'task_1r' build argument 'cmake_args' from command line to 'None'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'task_1r' build argument 'cmake_target' from command line to 'None'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'task_1r' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'task_1r' build argument 'cmake_clean_cache' from command line to 'False'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'task_1r' build argument 'cmake_clean_first' from command line to 'False'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'task_1r' build argument 'cmake_force_configure' from command line to 'False'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'task_1r' build argument 'ament_cmake_args' from command line to 'None'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'task_1r' build argument 'catkin_cmake_args' from command line to 'None'
+[0.171s] Level 5:colcon.colcon_core.verb:set package 'task_1r' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.172s] DEBUG:colcon.colcon_core.verb:Building package 'task_1r' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/thelegend442/faxic/RINS-kappa/workspace/build/task_1r', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r', 'merge_install': False, 'path': '/home/thelegend442/faxic/RINS-kappa/workspace/src/task_1r', 'symlink_install': False, 'test_result_base': None}
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'task_2s' build argument 'cmake_args' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'task_2s' build argument 'cmake_target' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'task_2s' build argument 'cmake_target_skip_unavailable' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'task_2s' build argument 'cmake_clean_cache' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'task_2s' build argument 'cmake_clean_first' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'task_2s' build argument 'cmake_force_configure' from command line to 'False'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'task_2s' build argument 'ament_cmake_args' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'task_2s' build argument 'catkin_cmake_args' from command line to 'None'
+[0.172s] Level 5:colcon.colcon_core.verb:set package 'task_2s' build argument 'catkin_skip_building_tests' from command line to 'False'
+[0.172s] DEBUG:colcon.colcon_core.verb:Building package 'task_2s' with the following arguments: {'ament_cmake_args': None, 'build_base': '/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s', 'catkin_cmake_args': None, 'catkin_skip_building_tests': False, 'cmake_args': None, 'cmake_clean_cache': False, 'cmake_clean_first': False, 'cmake_force_configure': False, 'cmake_target': None, 'cmake_target_skip_unavailable': False, 'install_base': '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s', 'merge_install': False, 'path': '/home/thelegend442/faxic/RINS-kappa/workspace/src/task_2s', 'symlink_install': False, 'test_result_base': None}
+[0.172s] INFO:colcon.colcon_core.executor:Executing jobs using 'parallel' executor
+[0.173s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete
+[0.173s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/custom_messages' with build type 'ament_cmake'
+[0.173s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/custom_messages'
+[0.175s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_core.shell.bat': Not used on non-Windows systems
+[0.175s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.175s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.178s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial1' with build type 'ament_cmake'
+[0.178s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial1'
+[0.178s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.178s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.180s] INFO:colcon.colcon_ros.task.ament_python.build:Building ROS package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial2' with build type 'ament_python'
+[0.180s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial2', 'ament_prefix_path')
+[0.181s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/hook/ament_prefix_path.ps1'
+[0.181s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/hook/ament_prefix_path.dsv'
+[0.181s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/hook/ament_prefix_path.sh'
+[0.182s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.182s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.184s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial3' with build type 'ament_cmake'
+[0.184s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial3'
+[0.184s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.184s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.187s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial3_edited' with build type 'ament_cmake'
+[0.187s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial3_edited'
+[0.187s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.187s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.189s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial4' with build type 'ament_cmake'
+[0.189s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial4'
+[0.189s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.189s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.192s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial5' with build type 'ament_cmake'
+[0.192s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial5'
+[0.192s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.192s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.194s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial7' with build type 'ament_cmake'
+[0.194s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial7'
+[0.194s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.194s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.197s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/task_1r' with build type 'ament_cmake'
+[0.197s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/task_1r'
+[0.197s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.197s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.199s] INFO:colcon.colcon_ros.task.ament_cmake.build:Building ROS package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/task_2s' with build type 'ament_cmake'
+[0.199s] INFO:colcon.colcon_cmake.task.cmake.build:Building CMake package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/task_2s'
+[0.200s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.200s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.206s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/custom_messages -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages
+[0.208s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial1 -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1
+[0.358s] INFO:colcon.colcon_core.task.python.build:Building Python package in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial2'
+[0.358s] INFO:colcon.colcon_core.shell:Skip shell extension 'powershell' for command environment: Not usable outside of PowerShell
+[0.358s] DEBUG:colcon.colcon_core.shell:Skip shell extension 'dsv' for command environment
+[0.363s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial3 -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3
+[0.364s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial3_edited -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited
+[0.366s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial4': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial4 -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4
+[0.368s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial5 -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5
+[0.370s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial7': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial7 -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7
+[0.374s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/task_1r': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/task_1r -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r
+[0.415s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/task_2s -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s
+[1.148s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial2': PYTHONPATH=/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial2/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/dis_tutorial2 build --build-base /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial2/build install --record /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial2/install.log --single-version-externally-managed install_data
+[1.721s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial2' returned '0': PYTHONPATH=/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial2/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/dis_tutorial2 build --build-base /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial2/build install --record /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial2/install.log --single-version-externally-managed install_data
+[1.725s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2' for CMake module files
+[1.726s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2' for CMake config files
+[1.727s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/lib'
+[1.727s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/bin'
+[1.727s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/lib/pkgconfig/dis_tutorial2.pc'
+[1.727s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/lib/python3.10/site-packages'
+[1.727s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial2', 'pythonpath')
+[1.728s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/hook/pythonpath.ps1'
+[1.728s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/hook/pythonpath.dsv'
+[1.729s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/hook/pythonpath.sh'
+[1.729s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/bin'
+[1.730s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial2)
+[1.730s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/package.ps1'
+[1.731s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/package.dsv'
+[1.732s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/package.sh'
+[1.732s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/package.bash'
+[1.733s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/share/dis_tutorial2/package.zsh'
+[1.734s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2/share/colcon-core/packages/dis_tutorial2)
+[1.954s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/task_1r' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/task_1r -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r
+[1.957s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/task_1r': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/task_1r -- -j16 -l16
+[1.982s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial3_edited -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited
+[1.984s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited -- -j16 -l16
+[1.994s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial3 -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3
+[1.996s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3 -- -j16 -l16
+[2.012s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/task_1r' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/task_1r -- -j16 -l16
+[2.026s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/task_1r': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/task_1r
+[2.028s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial7' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial7 -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7
+[2.030s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial7': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial7 -- -j16 -l16
+[2.031s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/task_2s -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s
+[2.034s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s -- -j16 -l16
+[2.039s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited -- -j16 -l16
+[2.043s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited
+[2.049s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3 -- -j16 -l16
+[2.051s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3
+[2.073s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial4' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial4 -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4
+[2.076s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial4': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial4 -- -j16 -l16
+[2.101s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s -- -j16 -l16
+[2.107s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(task_1r)
+[2.107s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r' for CMake module files
+[2.110s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s
+[2.111s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial7' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial7 -- -j16 -l16
+[2.114s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r' for CMake config files
+[2.122s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial7': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial7
+[2.123s] Level 1:colcon.colcon_core.shell:create_environment_hook('task_1r', 'cmake_prefix_path')
+[2.124s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/hook/cmake_prefix_path.ps1'
+[2.125s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/task_1r' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/task_1r
+[2.129s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/hook/cmake_prefix_path.dsv'
+[2.133s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/hook/cmake_prefix_path.sh'
+[2.135s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/lib'
+[2.136s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/bin'
+[2.136s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/lib/pkgconfig/task_1r.pc'
+[2.136s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/lib/python3.10/site-packages'
+[2.136s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/bin'
+[2.137s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/package.ps1'
+[2.139s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/package.dsv'
+[2.141s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/package.sh'
+[2.143s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/package.bash'
+[2.145s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/package.zsh'
+[2.147s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/colcon-core/packages/task_1r)
+[2.153s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(task_1r)
+[2.153s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r' for CMake module files
+[2.159s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r' for CMake config files
+[2.171s] Level 1:colcon.colcon_core.shell:create_environment_hook('task_1r', 'cmake_prefix_path')
+[2.172s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/hook/cmake_prefix_path.ps1'
+[2.175s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/hook/cmake_prefix_path.dsv'
+[2.177s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/hook/cmake_prefix_path.sh'
+[2.178s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/lib'
+[2.178s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/bin'
+[2.178s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/lib/pkgconfig/task_1r.pc'
+[2.178s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/lib/python3.10/site-packages'
+[2.179s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/bin'
+[2.179s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/package.ps1'
+[2.180s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/package.dsv'
+[2.180s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/package.sh'
+[2.181s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/package.bash'
+[2.181s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/task_1r/package.zsh'
+[2.181s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/task_1r/share/colcon-core/packages/task_1r)
+[2.183s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial4' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial4 -- -j16 -l16
+[2.185s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial3)
+[2.186s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3' for CMake module files
+[2.186s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial4': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial4
+[2.186s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3
+[2.187s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3' for CMake config files
+[2.187s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial3', 'cmake_prefix_path')
+[2.187s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/hook/cmake_prefix_path.ps1'
+[2.188s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/hook/cmake_prefix_path.dsv'
+[2.188s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/hook/cmake_prefix_path.sh'
+[2.189s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/lib'
+[2.189s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/bin'
+[2.189s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/lib/pkgconfig/dis_tutorial3.pc'
+[2.189s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/lib/python3.10/site-packages'
+[2.190s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/bin'
+[2.190s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.ps1'
+[2.190s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.dsv'
+[2.191s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.sh'
+[2.191s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.bash'
+[2.192s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.zsh'
+[2.192s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/colcon-core/packages/dis_tutorial3)
+[2.193s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial3)
+[2.193s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3' for CMake module files
+[2.193s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3' for CMake config files
+[2.194s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial3', 'cmake_prefix_path')
+[2.194s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/hook/cmake_prefix_path.ps1'
+[2.194s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/hook/cmake_prefix_path.dsv'
+[2.195s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/hook/cmake_prefix_path.sh'
+[2.195s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/lib'
+[2.196s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/bin'
+[2.196s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/lib/pkgconfig/dis_tutorial3.pc'
+[2.196s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/lib/python3.10/site-packages'
+[2.196s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/bin'
+[2.196s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.ps1'
+[2.197s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.dsv'
+[2.198s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.sh'
+[2.198s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.bash'
+[2.198s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/dis_tutorial3/package.zsh'
+[2.199s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3/share/colcon-core/packages/dis_tutorial3)
+[2.199s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial3_edited)
+[2.199s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited' for CMake module files
+[2.200s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial3_edited
+[2.201s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited' for CMake config files
+[2.201s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial3_edited', 'cmake_prefix_path')
+[2.201s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/hook/cmake_prefix_path.ps1'
+[2.202s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/hook/cmake_prefix_path.dsv'
+[2.202s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/hook/cmake_prefix_path.sh'
+[2.202s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/lib'
+[2.202s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/bin'
+[2.202s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/lib/pkgconfig/dis_tutorial3_edited.pc'
+[2.203s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/lib/python3.10/site-packages'
+[2.203s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/bin'
+[2.203s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/package.ps1'
+[2.203s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/package.dsv'
+[2.204s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/package.sh'
+[2.204s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/package.bash'
+[2.205s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/package.zsh'
+[2.205s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/colcon-core/packages/dis_tutorial3_edited)
+[2.205s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial3_edited)
+[2.206s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited' for CMake module files
+[2.206s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited' for CMake config files
+[2.206s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial3_edited', 'cmake_prefix_path')
+[2.206s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/hook/cmake_prefix_path.ps1'
+[2.207s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/hook/cmake_prefix_path.dsv'
+[2.207s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/hook/cmake_prefix_path.sh'
+[2.207s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/lib'
+[2.207s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/bin'
+[2.207s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/lib/pkgconfig/dis_tutorial3_edited.pc'
+[2.208s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/lib/python3.10/site-packages'
+[2.208s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/bin'
+[2.208s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/package.ps1'
+[2.209s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/package.dsv'
+[2.209s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/package.sh'
+[2.209s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/package.bash'
+[2.210s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/dis_tutorial3_edited/package.zsh'
+[2.210s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial3_edited/share/colcon-core/packages/dis_tutorial3_edited)
+[2.211s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial7)
+[2.211s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7' for CMake module files
+[2.212s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial7' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial7
+[2.213s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7' for CMake config files
+[2.215s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial7', 'cmake_prefix_path')
+[2.215s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/hook/cmake_prefix_path.ps1'
+[2.216s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/hook/cmake_prefix_path.dsv'
+[2.216s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/hook/cmake_prefix_path.sh'
+[2.216s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/lib'
+[2.217s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/bin'
+[2.217s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/lib/pkgconfig/dis_tutorial7.pc'
+[2.217s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/lib/python3.10/site-packages'
+[2.217s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/bin'
+[2.217s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/package.ps1'
+[2.218s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/package.dsv'
+[2.218s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/package.sh'
+[2.218s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/package.bash'
+[2.218s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/package.zsh'
+[2.219s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/colcon-core/packages/dis_tutorial7)
+[2.219s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial7)
+[2.219s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7' for CMake module files
+[2.220s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7' for CMake config files
+[2.220s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial7', 'cmake_prefix_path')
+[2.220s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/hook/cmake_prefix_path.ps1'
+[2.220s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/hook/cmake_prefix_path.dsv'
+[2.221s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/hook/cmake_prefix_path.sh'
+[2.221s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/lib'
+[2.221s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/bin'
+[2.221s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/lib/pkgconfig/dis_tutorial7.pc'
+[2.221s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/lib/python3.10/site-packages'
+[2.222s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/bin'
+[2.222s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/package.ps1'
+[2.222s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/package.dsv'
+[2.223s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/package.sh'
+[2.223s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/package.bash'
+[2.223s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/dis_tutorial7/package.zsh'
+[2.224s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial7/share/colcon-core/packages/dis_tutorial7)
+[2.224s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(task_2s)
+[2.224s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s' for CMake module files
+[2.225s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/task_2s
+[2.225s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s' for CMake config files
+[2.226s] Level 1:colcon.colcon_core.shell:create_environment_hook('task_2s', 'cmake_prefix_path')
+[2.226s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/hook/cmake_prefix_path.ps1'
+[2.226s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/hook/cmake_prefix_path.dsv'
+[2.226s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/hook/cmake_prefix_path.sh'
+[2.227s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/lib'
+[2.227s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/bin'
+[2.227s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/lib/pkgconfig/task_2s.pc'
+[2.227s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/lib/python3.10/site-packages'
+[2.227s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/bin'
+[2.228s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/package.ps1'
+[2.228s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/package.dsv'
+[2.228s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/package.sh'
+[2.228s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/package.bash'
+[2.229s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/package.zsh'
+[2.229s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/colcon-core/packages/task_2s)
+[2.230s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(task_2s)
+[2.230s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s' for CMake module files
+[2.230s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s' for CMake config files
+[2.231s] Level 1:colcon.colcon_core.shell:create_environment_hook('task_2s', 'cmake_prefix_path')
+[2.231s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/hook/cmake_prefix_path.ps1'
+[2.231s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/hook/cmake_prefix_path.dsv'
+[2.231s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/hook/cmake_prefix_path.sh'
+[2.232s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/lib'
+[2.232s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/bin'
+[2.232s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/lib/pkgconfig/task_2s.pc'
+[2.232s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/lib/python3.10/site-packages'
+[2.232s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/bin'
+[2.232s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/package.ps1'
+[2.233s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/package.dsv'
+[2.233s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/package.sh'
+[2.234s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/package.bash'
+[2.234s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/task_2s/package.zsh'
+[2.234s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/task_2s/share/colcon-core/packages/task_2s)
+[2.235s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial4)
+[2.236s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4' for CMake module files
+[2.236s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial4' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial4
+[2.236s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4' for CMake config files
+[2.236s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial4', 'cmake_prefix_path')
+[2.237s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/hook/cmake_prefix_path.ps1'
+[2.237s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/hook/cmake_prefix_path.dsv'
+[2.237s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/hook/cmake_prefix_path.sh'
+[2.238s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/lib'
+[2.238s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/bin'
+[2.238s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/lib/pkgconfig/dis_tutorial4.pc'
+[2.238s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/lib/python3.10/site-packages'
+[2.239s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/bin'
+[2.239s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.ps1'
+[2.239s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.dsv'
+[2.240s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.sh'
+[2.240s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.bash'
+[2.240s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.zsh'
+[2.241s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/colcon-core/packages/dis_tutorial4)
+[2.241s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial4)
+[2.242s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4' for CMake module files
+[2.242s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4' for CMake config files
+[2.242s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial4', 'cmake_prefix_path')
+[2.243s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/hook/cmake_prefix_path.ps1'
+[2.243s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/hook/cmake_prefix_path.dsv'
+[2.244s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/hook/cmake_prefix_path.sh'
+[2.244s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/lib'
+[2.244s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/bin'
+[2.244s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/lib/pkgconfig/dis_tutorial4.pc'
+[2.244s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/lib/python3.10/site-packages'
+[2.245s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/bin'
+[2.245s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.ps1'
+[2.245s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.dsv'
+[2.246s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.sh'
+[2.246s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.bash'
+[2.247s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/dis_tutorial4/package.zsh'
+[2.247s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial4/share/colcon-core/packages/dis_tutorial4)
+[2.678s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/custom_messages -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages
+[2.680s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages -- -j16 -l16
+[2.791s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial1 -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1
+[2.793s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1 -- -j16 -l16
+[6.546s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake /home/thelegend442/faxic/RINS-kappa/workspace/src/dis_tutorial5 -DCMAKE_INSTALL_PREFIX=/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5
+[6.549s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5 -- -j16 -l16
+[7.959s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages -- -j16 -l16
+[7.961s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages
+[8.109s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(custom_messages)
+[8.111s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages' for CMake module files
+[8.112s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages' for CMake config files
+[8.113s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_messages', 'cmake_prefix_path')
+[8.113s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/cmake_prefix_path.ps1'
+[8.114s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/cmake_prefix_path.dsv'
+[8.110s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages
+[8.115s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/cmake_prefix_path.sh'
+[8.116s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib'
+[8.116s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_messages', 'ld_library_path_lib')
+[8.116s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/ld_library_path_lib.ps1'
+[8.117s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/ld_library_path_lib.dsv'
+[8.117s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/ld_library_path_lib.sh'
+[8.118s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/bin'
+[8.118s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/pkgconfig/custom_messages.pc'
+[8.118s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/python3.10/site-packages'
+[8.118s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/bin'
+[8.119s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.ps1'
+[8.120s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.dsv'
+[8.121s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.sh'
+[8.122s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.bash'
+[8.123s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.zsh'
+[8.123s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/colcon-core/packages/custom_messages)
+[8.126s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(custom_messages)
+[8.126s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages' for CMake module files
+[8.127s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages' for CMake config files
+[8.128s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_messages', 'cmake_prefix_path')
+[8.128s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/cmake_prefix_path.ps1'
+[8.129s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/cmake_prefix_path.dsv'
+[8.130s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/cmake_prefix_path.sh'
+[8.131s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib'
+[8.131s] Level 1:colcon.colcon_core.shell:create_environment_hook('custom_messages', 'ld_library_path_lib')
+[8.131s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/ld_library_path_lib.ps1'
+[8.132s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/ld_library_path_lib.dsv'
+[8.132s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/hook/ld_library_path_lib.sh'
+[8.133s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/bin'
+[8.133s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/pkgconfig/custom_messages.pc'
+[8.133s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/lib/python3.10/site-packages'
+[8.133s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/bin'
+[8.134s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.ps1'
+[8.135s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.dsv'
+[8.135s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.sh'
+[8.136s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.bash'
+[8.137s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/custom_messages/package.zsh'
+[8.137s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/custom_messages/share/colcon-core/packages/custom_messages)
+[15.876s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1 -- -j16 -l16
+[15.878s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1
+[15.962s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial1)
+[15.963s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1' for CMake module files
+[15.963s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial1
+[15.964s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1' for CMake config files
+[15.964s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial1', 'cmake_prefix_path')
+[15.964s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/cmake_prefix_path.ps1'
+[15.965s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/cmake_prefix_path.dsv'
+[15.965s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/cmake_prefix_path.sh'
+[15.965s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib'
+[15.965s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial1', 'ld_library_path_lib')
+[15.966s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/ld_library_path_lib.ps1'
+[15.966s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/ld_library_path_lib.dsv'
+[15.966s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/ld_library_path_lib.sh'
+[15.966s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/bin'
+[15.966s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/pkgconfig/dis_tutorial1.pc'
+[15.967s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/python3.10/site-packages'
+[15.967s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/bin'
+[15.967s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.ps1'
+[15.967s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.dsv'
+[15.968s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.sh'
+[15.968s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.bash'
+[15.968s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.zsh'
+[15.969s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/colcon-core/packages/dis_tutorial1)
+[15.969s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial1)
+[15.969s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1' for CMake module files
+[15.970s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1' for CMake config files
+[15.970s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial1', 'cmake_prefix_path')
+[15.970s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/cmake_prefix_path.ps1'
+[15.970s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/cmake_prefix_path.dsv'
+[15.971s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/cmake_prefix_path.sh'
+[15.971s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib'
+[15.971s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial1', 'ld_library_path_lib')
+[15.971s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/ld_library_path_lib.ps1'
+[15.972s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/ld_library_path_lib.dsv'
+[15.972s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/hook/ld_library_path_lib.sh'
+[15.972s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/bin'
+[15.972s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/pkgconfig/dis_tutorial1.pc'
+[15.972s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/lib/python3.10/site-packages'
+[15.973s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/bin'
+[15.973s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.ps1'
+[15.973s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.dsv'
+[15.974s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.sh'
+[15.974s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.bash'
+[15.974s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/dis_tutorial1/package.zsh'
+[15.974s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial1/share/colcon-core/packages/dis_tutorial1)
+[22.543s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --build /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5 -- -j16 -l16
+[22.544s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoking command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5
+[22.566s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial5)
+[22.566s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5' for CMake module files
+[22.566s] DEBUG:colcon.colcon_core.event_handler.log_command:Invoked command in '/home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial2:/opt/ros/humble /usr/bin/cmake --install /home/thelegend442/faxic/RINS-kappa/workspace/build/dis_tutorial5
+[22.567s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5' for CMake config files
+[22.567s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial5', 'cmake_prefix_path')
+[22.567s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/hook/cmake_prefix_path.ps1'
+[22.567s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/hook/cmake_prefix_path.dsv'
+[22.567s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/hook/cmake_prefix_path.sh'
+[22.568s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/lib'
+[22.568s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/bin'
+[22.568s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/lib/pkgconfig/dis_tutorial5.pc'
+[22.568s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/lib/python3.10/site-packages'
+[22.568s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/bin'
+[22.568s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/package.ps1'
+[22.569s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/package.dsv'
+[22.569s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/package.sh'
+[22.569s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/package.bash'
+[22.570s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/package.zsh'
+[22.570s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/colcon-core/packages/dis_tutorial5)
+[22.570s] Level 1:colcon.colcon_core.environment:create_environment_scripts_only(dis_tutorial5)
+[22.570s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5' for CMake module files
+[22.571s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5' for CMake config files
+[22.571s] Level 1:colcon.colcon_core.shell:create_environment_hook('dis_tutorial5', 'cmake_prefix_path')
+[22.571s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/hook/cmake_prefix_path.ps1'
+[22.571s] INFO:colcon.colcon_core.shell:Creating environment descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/hook/cmake_prefix_path.dsv'
+[22.572s] INFO:colcon.colcon_core.shell:Creating environment hook '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/hook/cmake_prefix_path.sh'
+[22.572s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/lib'
+[22.572s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/bin'
+[22.572s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/lib/pkgconfig/dis_tutorial5.pc'
+[22.572s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/lib/python3.10/site-packages'
+[22.572s] Level 1:colcon.colcon_core.environment:checking '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/bin'
+[22.572s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/package.ps1'
+[22.573s] INFO:colcon.colcon_core.shell:Creating package descriptor '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/package.dsv'
+[22.573s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/package.sh'
+[22.574s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/package.bash'
+[22.574s] INFO:colcon.colcon_core.shell:Creating package script '/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/dis_tutorial5/package.zsh'
+[22.574s] Level 1:colcon.colcon_core.environment:create_file_with_runtime_dependencies(/home/thelegend442/faxic/RINS-kappa/workspace/install/dis_tutorial5/share/colcon-core/packages/dis_tutorial5)
+[22.575s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:closing loop
+[22.575s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:loop closed
+[22.575s] DEBUG:colcon.colcon_parallel_executor.executor.parallel:run_until_complete finished with '0'
+[22.575s] DEBUG:colcon.colcon_core.event_reactor:joining thread
+[22.579s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.terminal_notifier': Not used on non-Darwin systems
+[22.579s] INFO:colcon.colcon_core.plugin_system:Skipping extension 'colcon_notification.desktop_notification.win32': Not used on non-Windows systems
+[22.579s] INFO:colcon.colcon_notification.desktop_notification:Sending desktop notification using 'notify2'
+[22.588s] DEBUG:colcon.colcon_core.event_reactor:joined thread
+[22.588s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/thelegend442/faxic/RINS-kappa/workspace/install/local_setup.ps1'
+[22.589s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/thelegend442/faxic/RINS-kappa/workspace/install/_local_setup_util_ps1.py'
+[22.590s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/thelegend442/faxic/RINS-kappa/workspace/install/setup.ps1'
+[22.591s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/thelegend442/faxic/RINS-kappa/workspace/install/local_setup.sh'
+[22.591s] INFO:colcon.colcon_core.shell:Creating prefix util module '/home/thelegend442/faxic/RINS-kappa/workspace/install/_local_setup_util_sh.py'
+[22.592s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/thelegend442/faxic/RINS-kappa/workspace/install/setup.sh'
+[22.592s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/thelegend442/faxic/RINS-kappa/workspace/install/local_setup.bash'
+[22.593s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/thelegend442/faxic/RINS-kappa/workspace/install/setup.bash'
+[22.594s] INFO:colcon.colcon_core.shell:Creating prefix script '/home/thelegend442/faxic/RINS-kappa/workspace/install/local_setup.zsh'
+[22.594s] INFO:colcon.colcon_core.shell:Creating prefix chain script '/home/thelegend442/faxic/RINS-kappa/workspace/install/setup.zsh'

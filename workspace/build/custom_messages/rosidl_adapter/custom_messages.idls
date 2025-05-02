@@ -1,0 +1,5 @@
+/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:msg/FaceCoordinates.idl
+/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:msg/RingCoordinates.idl
+/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:srv/Shape.idl
+/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:srv/PosesInFrontOfFaces.idl
+/home/thelegend442/faxic/RINS-kappa/workspace/build/custom_messages/rosidl_adapter/custom_messages:srv/PosesInFrontOfRings.idl
