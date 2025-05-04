@@ -437,7 +437,7 @@ def main(args=None):
     rc.map_image, rc.map_metadata = rc.load_map('src/task_2s/maps/bird_map.pgm', 'src/task_2s/maps/bird_map.yaml')
 
     # Točke obhoda
-    if not os.path.exists('src/task_2s/data/obhod_test.npy'):
+    if not os.path.exists('src/task_2s/data/bridge_start.npy'):
         cv2.imshow("Map", rc.map_image)
         cv2.setMouseCallback("Map", rc.mouse_callback)
         cv2.waitKey(0)
@@ -445,7 +445,7 @@ def main(args=None):
         np.save('src/task_2s/data/obhod.npy', rc.clicked_points)
     else:
         print("Obhod že obstaja")
-        rc.clicked_points = np.load('src/task_2s/data/obhod.npy')
+        rc.clicked_points = np.load('src/task_2s/data/bridge_start.npy')
     
     
     for i, (px, py, orientation) in enumerate(rc.clicked_points):
