@@ -34,6 +34,7 @@ install(PROGRAMS
   scripts/detect_rings_final.py
   scripts/save_rings.py
   scripts/bridge_follower.py
+  scripts/detect_birds.py
   DESTINATION lib/${PROJECT_NAME})
 
 ament_package()
