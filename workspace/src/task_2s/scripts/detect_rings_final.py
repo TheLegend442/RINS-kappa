@@ -3,8 +3,12 @@
 import rclpy
 from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data, QoSReliabilityPolicy
+from rclpy.qos import qos_profile_sensor_data, QoSReliabilityPolicy
+from rclpy.qos import QoSDurabilityPolicy, QoSHistoryPolicy
+from rclpy.qos import QoSReliabilityPolicy, QoSProfile
 
 from sensor_msgs.msg import Image, PointCloud2
+from std_msgs.msg import String
 from visualization_msgs.msg import Marker
 from custom_messages.msg import RingCoordinates
 
@@ -15,6 +19,13 @@ from enum import Enum
 
 from ultralytics import YOLO
 
+import time
+
+qos_profile = QoSProfile(
+		  durability=QoSDurabilityPolicy.TRANSIENT_LOCAL,
+		  reliability=QoSReliabilityPolicy.RELIABLE,
+		  history=QoSHistoryPolicy.KEEP_LAST,
+		  depth=1)
 
 class RingColor(Enum):
     BLACK = 1
@@ -69,7 +80,7 @@ class detect_rings(Node):
         self.bridge = CvBridge() # An object we use for converting images between ROS format and OpenCV format
 
         self.depth_sub = self.create_subscription(Image, "/oakd/rgb/preview/depth", self.depth_callback, 1)
-        self.image_sub = self.create_subscription(Image, "/oakd/rgb/preview/image_raw", self.image_callback, 1)
+        self.image_sub = self.create_subscription(Image, "top_camera/rgb/preview/image_raw", self.image_callback, 1)
         self.pointcloud_sub = self.create_subscription(PointCloud2, "/oakd/rgb/preview/depth/points", self.pointcloud_callback, qos_profile_sensor_data)
 
         self.marker_pub = self.create_publisher(RingCoordinates, marker_topic, QoSReliabilityPolicy.BEST_EFFORT)
@@ -134,8 +145,8 @@ class detect_rings(Node):
         ## ____VIZUALIZATION (dashed line at y=90)____
 
         cv_dashed = cv_image.copy()
-        start_point = (0, 90)
-        end_point = (cv_image.shape[1], 90)
+        start_point = (0, 60)
+        end_point = (cv_image.shape[1], 60)
 
         dash_length, gap_length = 10, 5
         line_length = int(np.linalg.norm(np.array(start_point) - np.array(end_point)))
@@ -148,6 +159,7 @@ class detect_rings(Node):
             y2 = int(start_point[1] + (i + dash_length) * (end_point[1] - start_point[1]) / line_length)
      
             cv2.line(cv_dashed, (x1, y1), (x2, y2), (0, 0, 0), 1)
+            cv2.line(cv_dashed, (x1, y1+150-60), (x2, y2+150-60), (0, 0, 0), 1)
 
         cv2.imshow("Live camera feed", cv_dashed)
         cv2.waitKey(1)
@@ -160,7 +172,7 @@ class detect_rings(Node):
         self.flat_rings = []
 
         def ellipse_detection(image, canny_threshold1=50, canny_threshold2=150, min_major_axis=10, max_major_axis=50):
-            cut_image = image[0:90,0:320]
+            cut_image = image[60:150,0:320]
             image_blured = cv2.GaussianBlur(cut_image, (3, 3), 0)
             
             ellipses = []
@@ -201,7 +213,7 @@ class detect_rings(Node):
                     continue
 
                 # The center of the elipses should be above the line
-                if e1[0][1] > 90 or e2[0][1] > 90: 
+                if 60 < e1[0][1] < 150 or 60 < e2[0][1] < 150: 
                     continue
 
                 e1_minor_axis = e1[1][0]
@@ -268,7 +280,6 @@ class detect_rings(Node):
                 ## Conversion to HSV
                 if ring_colors.size > 0:
                     hsv_colors = cv2.cvtColor(ring_colors.reshape(-1, 1, 3).astype(np.uint8), cv2.COLOR_BGR2HSV).reshape(-1, 3)
-                    np.save(f"./src/dis_tutorial5/colors/ring_colors_blue{self.save_counter}.npy", hsv_colors)  # Save the HSV colors for debugging
                     self.save_counter += 1
 
                     hue = hsv_colors[:, 0]

@@ -64,6 +64,7 @@ class Detect_birds(Node):
 		self.pointcloud_sub = self.create_subscription(PointCloud2, "/top_camera/rgb/preview/depth/points", self.pointcloud_callback, qos_profile_sensor_data)
 
 		self.marker_pub = self.create_publisher(Marker, marker_topic, QoSReliabilityPolicy.BEST_EFFORT) # Publish face markers (center, bottom right, upper left)
+		self.text_pub = self.create_publisher(Marker, "/text", QoSReliabilityPolicy.BEST_EFFORT) # Publish text markers (Bird)
 
 		self.model = YOLO("yolov8n.pt")
 
@@ -121,7 +122,7 @@ class Detect_birds(Node):
 		marker.id = 0
 
 		# Set the scale of the marker
-		scale = 0.5
+		scale = 0.3
 		marker.scale.x = scale
 		marker.scale.y = scale
 		marker.scale.z = scale
@@ -137,12 +138,25 @@ class Detect_birds(Node):
 		marker.pose.position.y = float(d[1])
 		marker.pose.position.z = float(d[2])
 
-		# self.get_logger().info(f"Marker created at {d[0]}, {d[1]}, {d[2]}")
+		text_marker = Marker()
+		text_marker.header.frame_id = "/base_link"
+		text_marker.header.stamp = data.header.stamp
+		text_marker.type = Marker.TEXT_VIEW_FACING
+		text_marker.id = 1  # Important: unique ID per marker in same namespace
 
-		return marker
+		text_marker.scale.z = 0.2  # Only scale.z matters for text
+		text_marker.color.r = 1.0
+		text_marker.color.g = 1.0
+		text_marker.color.b = 1.0
+		text_marker.color.a = 1.0
 
+		text_marker.pose.position.x = float(d[0])
+		text_marker.pose.position.y = float(d[1])
+		text_marker.pose.position.z = float(d[2]) + 0.4  # Offset upward to float above sphere
 
-		return face_coordinates
+		text_marker.text = "Bird"
+
+		return [marker, text_marker]
 
 	def pointcloud_callback(self, data):
 
@@ -161,12 +175,13 @@ class Detect_birds(Node):
 			a = a.reshape((height,width,3))
 			d = a[y, x, :]
 
-			marker = self.create_marker(d, data)
-			self.marker_pub.publish(marker)
+			sphere_marker, text_marker = self.create_marker(d, data)
+			self.marker_pub.publish(sphere_marker)
+			self.text_pub.publish(text_marker)
 
 
 def main():
-	print('Face detection node starting.')
+	print('Bird recognition node starting.')
 
 	rclpy.init(args=None)
 	node = Detect_birds()
