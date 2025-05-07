@@ -3,9 +3,12 @@
 import rclpy
 from rclpy.node import Node
 from rclpy.qos import qos_profile_sensor_data, QoSReliabilityPolicy
+from rclpy.qos import QoSDurabilityPolicy, QoSHistoryPolicy
+from rclpy.qos import QoSReliabilityPolicy, QoSProfile
 
 from sensor_msgs.msg import Image, PointCloud2
 from sensor_msgs_py import point_cloud2 as pc2
+from std_msgs.msg import String
 
 from visualization_msgs.msg import Marker
 from custom_messages.msg import FaceCoordinates
@@ -16,8 +19,16 @@ import numpy as np
 
 from ultralytics import YOLO
 
+import time
+
 # from rclpy.parameter import Parameter
 # from rcl_interfaces.msg import SetParametersResult
+
+qos_profile = QoSProfile(
+		  durability=QoSDurabilityPolicy.TRANSIENT_LOCAL,
+		  reliability=QoSReliabilityPolicy.RELIABLE,
+		  history=QoSHistoryPolicy.KEEP_LAST,
+		  depth=1)
 
 class Bird():
 	def __init__(self, center, detection_time):
@@ -25,10 +36,15 @@ class Bird():
 		self.detection_time = detection_time
 
 
-class detect_faces(Node):
+class Detect_birds(Node):
 
 	def __init__(self):
-		super().__init__('detect_faces')
+		super().__init__('detect_birds')
+
+		self.arm_pub = self.create_publisher(String, '/arm_command', qos_profile)
+		self.arm_pub.publish(String(data='manual:[0.,0.,0.6,1.0]'))
+		time.sleep(3) # Wait for the robot arm to reach the starting position
+
 
 		self.declare_parameters(
 			namespace='',
@@ -44,8 +60,8 @@ class detect_faces(Node):
 		self.bridge = CvBridge()
 		self.scan = None
 
-		self.rgb_image_sub = self.create_subscription(Image, "/oakd/rgb/preview/image_raw", self.rgb_callback, qos_profile_sensor_data)
-		self.pointcloud_sub = self.create_subscription(PointCloud2, "/oakd/rgb/preview/depth/points", self.pointcloud_callback, qos_profile_sensor_data)
+		self.rgb_image_sub = self.create_subscription(Image, "top_camera/rgb/preview/image_raw", self.rgb_callback, qos_profile_sensor_data)
+		self.pointcloud_sub = self.create_subscription(PointCloud2, "/top_camera/rgb/preview/depth/points", self.pointcloud_callback, qos_profile_sensor_data)
 
 		self.marker_pub = self.create_publisher(Marker, marker_topic, QoSReliabilityPolicy.BEST_EFFORT) # Publish face markers (center, bottom right, upper left)
 
@@ -153,7 +169,7 @@ def main():
 	print('Face detection node starting.')
 
 	rclpy.init(args=None)
-	node = detect_faces()
+	node = Detect_birds()
 	rclpy.spin(node)
 	node.destroy_node()
 	rclpy.shutdown()
