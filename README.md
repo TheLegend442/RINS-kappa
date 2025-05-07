@@ -10,3 +10,16 @@ Our RINS repository -> for all labs and our own robot :)
 <pre lang="markdown">ros2 run dis_tutorial7 arm_mover_actions.py</pre>
 <pre lang="markdown">ros2 run task_2s robot_commander.py</pre>
 <pre lang="markdown">ros2 run task_2s bridge_follower.py</pre>
+
+
+face detection:
+<pre lang="markdown">ros2 run task_2s detect_faces.py</pre>
+<pre lang="markdown">ros2 run task_2s save_faces.py</pre>
+
+ring detection:
+
+<pre lang="markdown">ros2 run task_2s detect_rings_final.py</pre>
+<pre lang="markdown">ros2 run task_2s save_rings.py</pre>
+
+bird detection:
+<pre lang="markdown">ros2 run task_2s detect_birds.py</pre>
