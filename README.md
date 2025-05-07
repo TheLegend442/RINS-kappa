@@ -11,4 +11,8 @@ Our RINS repository -> for all labs and our own robot :)
 <li> (ros2 run task_2s robot_commander.py)
 <li>ros2 run task_2s bridge_follower.py
 
-<pre lang="markdown"> ### How to Run ```bash ros2 launch task_2s rviz_gazebo.launch.py ``` ```bash ros2 run dis_tutorial7 arm_mover_actions.py ``` ```bash ros2 run task_2s robot_commander.py ``` ```bash ros2 run task_2s bridge_follower.py ``` </pre>
+### How to Run
+<pre lang="markdown">```bash ros2 launch task_2s rviz_gazebo.launch.py ``` </pre>
+<pre lang="markdown">```bash ros2 run dis_tutorial7 arm_mover_actions.py ``` </pre>
+<pre lang="markdown">```bash ros2 run task_2s robot_commander.py ``` </pre>
+<pre lang="markdown">```bash ros2 run task_2s bridge_follower.py ```</pre>
