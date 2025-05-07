@@ -74,14 +74,17 @@ class detect_rings(Node):
 
         marker_topic = '/ring_marker'
         self.detection_color = (255,0,0) # blue
+
+        self.arm_pub = self.create_publisher(String, '/arm_command', qos_profile)
+        self.arm_pub.publish(String(data='manual:[0.,0.,0.6,1.0]'))
         
         self.device = self.get_parameter('device').get_parameter_value().string_value
 
         self.bridge = CvBridge() # An object we use for converting images between ROS format and OpenCV format
 
-        self.depth_sub = self.create_subscription(Image, "/oakd/rgb/preview/depth", self.depth_callback, 1)
-        self.image_sub = self.create_subscription(Image, "top_camera/rgb/preview/image_raw", self.image_callback, 1)
-        self.pointcloud_sub = self.create_subscription(PointCloud2, "/oakd/rgb/preview/depth/points", self.pointcloud_callback, qos_profile_sensor_data)
+        self.depth_sub = self.create_subscription(Image, "/top_camera/rgb/preview/depth", self.depth_callback, 1)
+        self.image_sub = self.create_subscription(Image, "/top_camera/rgb/preview/image_raw", self.image_callback, 1)
+        self.pointcloud_sub = self.create_subscription(PointCloud2, "/top_camera/rgb/preview/depth/points", self.pointcloud_callback, qos_profile_sensor_data)
 
         self.marker_pub = self.create_publisher(RingCoordinates, marker_topic, QoSReliabilityPolicy.BEST_EFFORT)
 
@@ -91,6 +94,9 @@ class detect_rings(Node):
         self.depth_img = None
         self.rings = []
         self.flat_rings = []
+
+        self.min_threshold = 70
+        self.max_threshold = 160
 
         self.save_counter = 0
 
@@ -145,8 +151,8 @@ class detect_rings(Node):
         ## ____VIZUALIZATION (dashed line at y=90)____
 
         cv_dashed = cv_image.copy()
-        start_point = (0, 60)
-        end_point = (cv_image.shape[1], 60)
+        start_point = (0, self.min_threshold)
+        end_point = (cv_image.shape[1], self.min_threshold)
 
         dash_length, gap_length = 10, 5
         line_length = int(np.linalg.norm(np.array(start_point) - np.array(end_point)))
@@ -159,7 +165,7 @@ class detect_rings(Node):
             y2 = int(start_point[1] + (i + dash_length) * (end_point[1] - start_point[1]) / line_length)
      
             cv2.line(cv_dashed, (x1, y1), (x2, y2), (0, 0, 0), 1)
-            cv2.line(cv_dashed, (x1, y1+150-60), (x2, y2+150-60), (0, 0, 0), 1)
+            cv2.line(cv_dashed, (x1, y1+self.max_threshold-self.min_threshold), (x2, y2+self.max_threshold-self.min_threshold), (0, 0, 0), 1)
 
         cv2.imshow("Live camera feed", cv_dashed)
         cv2.waitKey(1)
@@ -171,8 +177,8 @@ class detect_rings(Node):
         self.rings = []
         self.flat_rings = []
 
-        def ellipse_detection(image, canny_threshold1=50, canny_threshold2=150, min_major_axis=10, max_major_axis=50):
-            cut_image = image[60:150,0:320]
+        def ellipse_detection(image, canny_threshold1=50, canny_threshold2=150, min_major_axis=20, max_major_axis=100):
+            cut_image = image[self.min_threshold:self.max_threshold,0:320]
             image_blured = cv2.GaussianBlur(cut_image, (3, 3), 0)
             
             ellipses = []
@@ -185,6 +191,9 @@ class detect_rings(Node):
                 if len(contour) >= 5:  # Fit ellipse requires at least 5 points
                     ellipse = cv2.fitEllipse(contour)
                     (center, axes, angle) = ellipse
+                    # increase center y by self.min_threshold
+                    center = (int(center[0]), int(center[1] + self.min_threshold))
+                    ellipse = (center, axes, angle)
                     major_axis = max(axes)
                     minor_axis = min(axes)
                     if major_axis == 0 or minor_axis == 0:
@@ -212,8 +221,8 @@ class detect_rings(Node):
                 if dist >= 5:
                     continue
 
-                # The center of the elipses should be above the line
-                if 60 < e1[0][1] < 150 or 60 < e2[0][1] < 150: 
+                # The center of the elipses should be above between the lines
+                if not (self.min_threshold < e1[0][1] < self.max_threshold and self.min_threshold < e2[0][1] < self.max_threshold): 
                     continue
 
                 e1_minor_axis = e1[1][0]
