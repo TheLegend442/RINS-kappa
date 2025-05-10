@@ -19,6 +19,14 @@ import numpy as np
 
 from ultralytics import YOLO
 
+import torch
+import torchvision.models as models  # or your custom model
+import torch.nn as nn
+from PIL import Image as PILImage
+from torchvision import transforms
+import joblib
+from sklearn.preprocessing import LabelEncoder
+
 import time
 
 # from rclpy.parameter import Parameter
@@ -31,9 +39,10 @@ qos_profile = QoSProfile(
 		  depth=1)
 
 class Bird():
-	def __init__(self, center, detection_time):
+	def __init__(self, center, detection_time, species):
 		self.center = center
 		self.detection_time = detection_time
+		self.species = species
 
 
 class Detect_birds(Node):
@@ -49,13 +58,25 @@ class Detect_birds(Node):
 		self.declare_parameters(
 			namespace='',
 			parameters=[
-				('device', ''),
+				('device', 'cuda' if torch.cuda.is_available() else 'cpu'),
+		])
+
+		self.detection_color = (0,0,255)
+		self.device = self.get_parameter('device').get_parameter_value().string_value
+
+		self.bird_classification_model = torch.load('./src/task_2s/models/bird_species_model.pth')
+		self.bird_classification_model = self.bird_classification_model.to(self.device)
+		self.bird_classification_model.eval()
+
+		self.label_encoder = joblib.load('./src/task_2s/models/label_encoder.pkl')
+
+		self.bird_image_transform = transforms.Compose([
+			transforms.Resize((224, 224)),
+			transforms.ToTensor(),
 		])
 
 		marker_topic = "/bird_marker"
 
-		self.detection_color = (0,0,255)
-		self.device = self.get_parameter('device').get_parameter_value().string_value
 
 		self.bridge = CvBridge()
 		self.scan = None
@@ -97,8 +118,22 @@ class Detect_birds(Node):
 					x_center = int((xyxy[0] + xyxy[2]) / 2)
 					y_center = int((xyxy[1] + xyxy[3]) / 2)
 
+					# classify bird species
+					bird_image_cropped = cv_image[int(xyxy[1]):int(xyxy[3]), int(xyxy[0]):int(xyxy[2])]
+					bird_image = cv2.cvtColor(bird_image_cropped, cv2.COLOR_BGR2RGB)
+					bird_image = PILImage.fromarray(bird_image)
+					bird_image = self.bird_image_transform(bird_image)
+					bird_image = bird_image.unsqueeze(0).to(self.device)
+					with torch.no_grad():
+						outputs = self.bird_classification_model(bird_image)
+						_, predicted = torch.max(outputs, 1)
+						predicted_label = self.label_encoder.inverse_transform(predicted.cpu().numpy())[0]
+						self.get_logger().info(f"Predicted bird species: {predicted_label}")
+
+
+					cv2.imshow(f"cropped bird", bird_image_cropped)
 					# Save bird center pixel coordinates (we'll map to 3D in pointcloud_callback)
-					self.birds.append(Bird(center=(x_center, y_center), detection_time=detection_time))
+					self.birds.append(Bird(center=(x_center, y_center), detection_time=detection_time, species=predicted_label))
 
 					# Optionally, draw detection on image
 					cv2.rectangle(cv_image, (int(xyxy[0]), int(xyxy[1])), (int(xyxy[2]), int(xyxy[3])), self.detection_color, 2)

@@ -109,7 +109,7 @@ class PeopleMarkerSubscriber(Node):
         stamp = msg.center.header.stamp
 
         try:
-            transform = self.tf_buffer.lookup_transform('map', 'base_link', stamp,timeout=rclpy.duration.Duration(seconds=0.3))
+            transform = self.tf_buffer.lookup_transform('map', 'base_link', stamp,timeout=rclpy.duration.Duration(seconds=0.1))
             transformed_pose = tf2_geometry_msgs.do_transform_pose(msg.center.pose, transform)
             transformed_position = np.array([transformed_pose.position.x, transformed_pose.position.y, transformed_pose.position.z])
             
