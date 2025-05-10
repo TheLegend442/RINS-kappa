@@ -13,7 +13,7 @@ Our RINS repository -> for all labs and our own robot :)
 
 
 face detection:
-<pre lang="markdown">ros2 run task_2s detect_faces.py</pre>
+<pre lang="markdown">ros2 run task_2s detect_people.py</pre>
 <pre lang="markdown">ros2 run task_2s save_faces.py</pre>
 
 ring detection:
