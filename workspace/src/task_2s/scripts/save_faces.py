@@ -48,14 +48,17 @@ class PeopleMarkerSubscriber(Node):
         self.robot_position = None  # Shranjena pozicija robota
         self.faces = {}  # Slovar {face_id: (position, timestamp, robot_position, count)}
         self.threshold = 0.7  # Razdalja za zaznavanje istega obraza
-        self.time_threshold = 5  # Sekunde preden obraz ponovno upoštevamo
+        self.time_threshold = 0.4  # Sekunde preden obraz ponovno upoštevamo
+        self.detections_needed = 5
         self.face_counter = 0  # Števec za unikatne ID-je obrazov
+
+        self.marker_queue = []  # Čakalna vrsta za markerje
 
     def get_face_pose_callback(self, request, response):
         response.poses = []
 
         for face in self.faces.values():
-            if face.count < 2:
+            if face.count < self.detections_needed:
                 self.get_logger().info(f"Obraz {face.id} ima premalo zaznav, da bi izračunali pozicijo.")
                 continue
             
@@ -103,11 +106,15 @@ class PeopleMarkerSubscriber(Node):
         if self.robot_position is None:
             self.get_logger().info("Pozicija robota ni bila prejeta, ignoriram zaznane obraze.")
             return
-        
+
+        self.marker_queue.append(msg)
+        self.process_markers()
+
+    def process_marker(self, msg):
+        """ returns True, if marker was processed, False if not """
         current_position = np.array([msg.center.pose.position.x, msg.center.pose.position.y, msg.center.pose.position.z])
         current_time = time.time()
         stamp = msg.center.header.stamp
-
         try:
             transform = self.tf_buffer.lookup_transform('map', 'base_link', stamp,timeout=rclpy.duration.Duration(seconds=0.1))
             transformed_pose = tf2_geometry_msgs.do_transform_pose(msg.center.pose, transform)
@@ -121,10 +128,9 @@ class PeopleMarkerSubscriber(Node):
             transformed_upper_left_pose = tf2_geometry_msgs.do_transform_pose(msg.upper_left.pose, transform)
             transformed_upper_left_position = np.array([transformed_upper_left_pose.position.x, transformed_upper_left_pose.position.y, transformed_upper_left_pose.position.z])
 
-
         except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
             self.get_logger().error(f"Napaka pri transformaciji: {e}")
-            return
+            return False
 
         # Preveri, ali je obraz že bil zaznan
         for face_id, face in self.faces.items():
@@ -138,7 +144,7 @@ class PeopleMarkerSubscriber(Node):
             
             if distance < self.threshold:
                 if current_time - timestamp < self.time_threshold:
-                    return
+                    return True
                 else:
                     # **Izbrišemo prejšnji marker**
                     self.delete_marker(face_id)
@@ -149,10 +155,11 @@ class PeopleMarkerSubscriber(Node):
                     new_upper_left_position = (count / (count + 1)) * upper_left_point + (1 / (count + 1)) * transformed_upper_left_position
 
                     self.faces[face_id] = Face(face_id, new_position, new_bottom_right_position, new_upper_left_position, current_time, self.robot_position, count + 1)
-
-                    # **Objavimo nov marker**
-                    self.publish_face_marker(new_position, face_id)
-                    return
+                    
+                    if count + 1 >= self.detections_needed:
+                        # **Objavimo nov marker**
+                        self.publish_face_marker(new_position, face_id)
+                    return True
 
         # **Če obraz ni bil zaznan, ga dodamo v slovar**
         self.face_counter += 1
@@ -160,6 +167,19 @@ class PeopleMarkerSubscriber(Node):
         #transformed_bottom_right_position = None; transformed_upper_left_position = None
         self.faces[self.face_counter] = Face(self.face_counter, transformed_position, transformed_bottom_right_position, transformed_upper_left_position, current_time, self.robot_position)
         # self.publish_face_marker(transformed_position, self.face_counter)
+        return True
+
+        
+    def process_markers(self):
+        self.get_logger().info(f"Obdelujem {len(self.marker_queue)} markerjev.")
+        new_queue = []
+        for msg in self.marker_queue:
+            was_proccessed = self.process_marker(msg)
+            if not was_proccessed:
+                new_queue.append(msg)
+        
+        # copy new queue into marker queue
+        self.marker_queue = new_queue.copy()
 
     def publish_face_marker(self, position, face_id):
         """Objavi marker za zaznan obraz."""

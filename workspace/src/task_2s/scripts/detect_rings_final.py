@@ -192,6 +192,9 @@ class detect_rings(Node):
                     ellipse = cv2.fitEllipse(contour)
                     (center, axes, angle) = ellipse
                     # increase center y by self.min_threshold
+                    # check for nan
+                    if np.isnan(center[0]) or np.isnan(center[1]):
+                        continue
                     center = (int(center[0]), int(center[1] + self.min_threshold))
                     ellipse = (center, axes, angle)
                     major_axis = max(axes)

@@ -73,6 +73,8 @@ class RingMarkerSubscriber(Node):
         self.load_and_process_map('src/task_2s/maps/bird_map.pgm', 'src/task_2s/maps/bird_map.yaml')
         self.map_data = (self.map_image.flatten() / 255 * 100).astype(int).tolist()
 
+        self.marker_queue = []
+
     
     def load_and_process_map(self, pgm_path, yaml_path):
         """Loads map, metadata, and computes the distance transform."""
@@ -141,7 +143,21 @@ class RingMarkerSubscriber(Node):
         if self.robot_position is None:
             self.get_logger().info("Pozicija robota ni bila prejeta, ignoriram zaznane obroče.")
             return
+        
+        self.marker_queue.append(msg)
+        self.proccess_markers()
 
+    def proccess_markers(self):
+        new_queue = []
+        self.get_logger().info(f"Processing {len(self.marker_queue)} markers")
+        for msg in self.marker_queue:
+            was_proccessed = self.proccess_marker(msg)
+            if not was_proccessed:
+                new_queue.append(msg)
+        self.marker_queue = new_queue.copy()
+    
+    def proccess_marker(self, msg):
+        """ returns True if marker was proccessed, False if not"""
         current_position = np.array([msg.center.pose.position.x, msg.center.pose.position.y, msg.center.pose.position.z])
         color = msg.color
         strength = msg.strength
@@ -156,7 +172,7 @@ class RingMarkerSubscriber(Node):
                                              transformed_pose.position.z])
         except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
             self.get_logger().error(f"Napaka pri transformaciji: {e}")
-            return
+            return False
 
         for ring_id, ring in self.rings.items():
             count = ring.count
@@ -167,7 +183,7 @@ class RingMarkerSubscriber(Node):
 
             if distance < self.threshold:
                 if current_time - timestamp < self.time_threshold:
-                    return
+                    return True
                 else:
                     self.delete_marker(ring_id)
 
@@ -181,15 +197,13 @@ class RingMarkerSubscriber(Node):
 
                     self.rings[ring_id] = ring
                     if ring.num_detections >= 5: self.publish_ring_marker(new_position, ring_id)
-                    return
+                    return True
 
         self.ring_counter += 1
         self.get_logger().info(f"Zaznan nov obroč z ID-jem {self.ring_counter}.")
         new_ring = Ring(self.ring_counter, transformed_position, current_time, self.robot_position, color=color)
         new_ring.color_strength = strength
         self.rings[self.ring_counter] = new_ring
-    
-        # self.publish_ring_marker(transformed_position, self.ring_counter)
 
     def ring2rgb(self, ring):
         color = ring.color
