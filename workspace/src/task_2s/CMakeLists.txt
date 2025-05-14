@@ -16,7 +16,10 @@ find_package(rclcpp REQUIRED)
 find_package(rclpy REQUIRED)
 
 find_package(std_msgs REQUIRED)
+find_package(sensor_msgs REQUIRED)
 find_package(std_srvs REQUIRED)
+
+find_package(rosidl_default_generators REQUIRED)
 
 install(DIRECTORY
   launch
@@ -35,6 +38,16 @@ install(PROGRAMS
   scripts/save_rings.py
   scripts/bridge_follower.py
   scripts/detect_birds.py
+  scripts/bird_catalogue_server.py
+  scripts/bird_client_example.py
   DESTINATION lib/${PROJECT_NAME})
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  "msg/Bird.msg"
+  "srv/BirdCollection.srv"
+  DEPENDENCIES sensor_msgs
+)
+
+ament_export_dependencies(rosidl_default_runtime)
 
 ament_package()
