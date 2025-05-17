@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
-from visualization_msgs.msg import Marker
+from visualization_msgs.msg import Marker, MarkerArray
 from custom_messages.msg import FaceCoordinates
 from custom_messages.srv import PosesInFrontOfFaces
 from geometry_msgs.msg import PoseWithCovarianceStamped, Pose
@@ -9,6 +9,7 @@ import numpy as np
 import time
 import tf2_ros
 import tf2_geometry_msgs  # Za uporabo transformacij med sporočili
+from task_2s.srv import MarkerArrayService
 
 class Bird():
 
@@ -38,6 +39,8 @@ class BirdMarkerSubscriber(Node):
         self.robot_position_subscription = self.create_subscription(
             PoseWithCovarianceStamped, '/amcl_pose', self.robot_position_callback, 10
         )
+
+        self.service = self.create_service(MarkerArrayService, 'get_birds', self.get_birds_callback)
         
         self.robot_position = None  # Shranjena pozicija robota
         self.birds = {}  # Slovar {face_id: (position, timestamp, robot_position, count)}
@@ -47,6 +50,34 @@ class BirdMarkerSubscriber(Node):
         self.bird_counter = 0  # Števec za unikatne ID-je obrazov
 
         self.marker_queue = []  # Čakalna vrsta za markerje
+
+    def get_birds_callback(self, request, response):
+        # Obdelaj vse markerje v čakalni vrsti
+        self.process_markers()
+
+        # Pripravi odgovor
+        response.marker_array = MarkerArray()
+        for bird in self.birds.values():
+            marker = Marker()
+            marker.header.frame_id = "map"
+            marker.header.stamp = self.get_clock().now().to_msg()
+            marker.ns = "birds"
+            marker.id = bird.id
+            marker.type = Marker.CUBE
+            marker.action = Marker.ADD
+            marker.pose.position.x = bird.center_point[0]
+            marker.pose.position.y = bird.center_point[1]
+            marker.pose.position.z = bird.center_point[2]
+            marker.scale.x = 0.2
+            marker.scale.y = 0.2
+            marker.scale.z = 0.2
+            marker.color.r = 0.0
+            marker.color.g = 0.0
+            marker.color.b = 1.0
+            marker.color.a = 1.0
+            response.marker_array.markers.append(marker)
+
+        return response
 
     def robot_position_callback(self, msg):
         # Shrani pozicijo robota iz AMCL topica

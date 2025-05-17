@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
-from visualization_msgs.msg import Marker
+from visualization_msgs.msg import Marker, MarkerArray
 from custom_messages.msg import RingCoordinates
 from builtin_interfaces.msg import Time
 from custom_messages.srv import PosesInFrontOfRings
@@ -17,6 +17,7 @@ from collections import deque
 import matplotlib.pyplot as plt
 from turtle_tf2_py.turtle_tf2_broadcaster import quaternion_from_euler
 import math
+from task_2s.srv import MarkerArrayService
 
 class Point:
     def __init__(self, x=0.0, y=0.0):
@@ -63,6 +64,7 @@ class RingMarkerSubscriber(Node):
         )
 
         self.service = self.create_service(PosesInFrontOfRings, 'get_ring_pose', self.get_ring_pose_callback)
+        self.get_rings_service = self.create_service(MarkerArrayService, 'get_rings', self.get_rings_callback)
 
         self.robot_position = None
         self.rings = {}
@@ -255,6 +257,42 @@ class RingMarkerSubscriber(Node):
         marker.action = Marker.DELETE
 
         self.marker_pub.publish(marker)
+
+    def get_rings_callback(self, request, response):
+        response.marker_array = MarkerArray()  # ✅ This matches your .srv definition
+
+        for ring in self.rings.values():
+            if ring.count < 5:
+                self.get_logger().warn(f"Skipping ring {ring.id} with count {ring.count}")
+                continue
+
+            marker = Marker()
+            marker.header.frame_id = "map"
+            marker.header.stamp = self.get_clock().now().to_msg()
+            marker.ns = "rings"
+            marker.id = ring.id
+            marker.type = Marker.SPHERE
+            marker.action = Marker.ADD
+            marker.pose.position.x = float(ring.center[0])
+            marker.pose.position.y = float(ring.center[1])
+            marker.pose.position.z = float(ring.center[2])
+            marker.scale.x = 0.2
+            marker.scale.y = 0.2
+            marker.scale.z = 0.2
+            marker.color.r = 1.0
+            marker.color.g = 0.0
+            marker.color.b = 0.0
+            marker.color.a = 1.0
+
+            # Do not set marker.text unless marker.type == TEXT_VIEW_FACING
+            # marker.text = ring.color  # Optional: use only if type is TEXT_VIEW_FACING
+
+            response.marker_array.markers.append(marker)  # ✅ Access `.markers` list
+
+        return response
+
+
+
 
     def get_ring_pose_callback(self, request, response):
         self.get_logger().info("Processing request for ring poses")

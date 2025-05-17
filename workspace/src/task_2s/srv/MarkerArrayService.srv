@@ -1,0 +1,3 @@
+# MarkerArrayService.srv
+---
+visualization_msgs/MarkerArray marker_array

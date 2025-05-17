@@ -19,7 +19,8 @@ import time
 
 from action_msgs.msg import GoalStatus
 from builtin_interfaces.msg import Duration
-from geometry_msgs.msg import Quaternion, PoseStamped, PoseWithCovarianceStamped
+from geometry_msgs.msg import Quaternion, PoseStamped, PoseWithCovarianceStamped, Pose
+from visualization_msgs.msg import Marker, MarkerArray
 from lifecycle_msgs.srv import GetState
 from nav2_msgs.action import Spin, NavigateToPose
 from turtle_tf2_py.turtle_tf2_broadcaster import quaternion_from_euler
@@ -46,6 +47,7 @@ from custom_messages.srv import PosesInFrontOfFaces, PosesInFrontOfRings
 from custom_messages.msg import RingCoordinates
 from std_msgs.msg import String
 from visualization_msgs.msg import Marker
+from task_2s.srv import MarkerArrayService
 
 
 class TaskResult(Enum):
@@ -101,12 +103,18 @@ class RobotCommander(Node):
 
         # client that receives poses in front of detected rings
         self.ring_client = self.create_client(PosesInFrontOfRings, 'get_ring_pose')
+
+        self.rings_client = self.create_client(MarkerArrayService, 'get_rings')
+
+        self.birds_client = self.create_client(MarkerArrayService, 'get_birds')
         
         # publisher for publishing markers of spots in front of faces
         self.spots_in_front_of_faces_pub = self.create_publisher(Marker, '/spots_in_front_of_faces', 10)
 
         # publisher for publishing markers of spots near rings
         self.ring_spots_pub = self.create_publisher(Marker, '/spots_in_front_of_rings', 10)
+
+        self.birds_spots_pub = self.create_publisher(Marker, '/spots_in_front_of_birds', 10)
         
         # ROS2 Action clients
         self.nav_to_pose_client = ActionClient(self, NavigateToPose, 'navigate_to_pose')
@@ -466,6 +474,64 @@ def main(args=None):
 
     for i  in range(10):
         rc.info("KOČAL Z OBHODOM")
+
+
+    # match rings and birds
+    request_rings = MarkerArrayService.Request()
+    future_rings = rc.rings_client.call_async(request_rings)
+    rclpy.spin_until_future_complete(rc, future_rings)
+    response_rings = future_rings.result()
+
+    request_birds = MarkerArrayService.Request()
+    future_birds = rc.birds_client.call_async(request_birds)
+    rclpy.spin_until_future_complete(rc, future_birds)
+    response_birds = future_birds.result()
+
+    ring_bird_pairs = []
+    for ring_marker in response_rings.marker_array.markers:
+        for bird_marker in response_birds.marker_array.markers:
+            # Get the distance between the two markers
+            distance = math.sqrt((ring_marker.pose.position.x - bird_marker.pose.position.x) ** 2 +
+                                 (ring_marker.pose.position.y - bird_marker.pose.position.y) ** 2)
+            if distance < 0.5:
+                ring_bird_pairs.append((ring_marker, bird_marker))
+
+    print(len(ring_bird_pairs), "pairs of rings and birds found")
+    for ring_marker, bird_marker in ring_bird_pairs:
+        # calculate normal to the vector between centers
+        dx = bird_marker.pose.position.x - ring_marker.pose.position.x
+        dy = bird_marker.pose.position.y - ring_marker.pose.position.y
+        normal = np.array([-dy, dx])
+        normal = -normal / np.linalg.norm(normal)  # Normalize the vector
+        orientation = np.arctan2(normal[1], normal[0])
+
+        # create arrow marker
+        pose_in_front_of_bird = Pose()
+        pose_in_front_of_bird.position.x = bird_marker.pose.position.x + normal[0] * 1.0
+        pose_in_front_of_bird.position.y = bird_marker.pose.position.y + normal[1] * 1.0
+        pose_in_front_of_bird.position.z = bird_marker.pose.position.z
+        pose_in_front_of_bird.orientation = rc.YawToQuaternion(orientation)
+        pose_in_front_of_bird.orientation.w = 1.0
+
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = rc.get_clock().now().to_msg()
+        marker.ns = "spots_in_front_of_birds"
+        marker.id = i
+        marker.type = Marker.ARROW
+        marker.action = Marker.ADD
+        marker.pose = pose_in_front_of_bird
+        marker.scale.x = 0.4
+        marker.scale.y = 0.1
+        marker.scale.z = 0.1
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0
+        marker.lifetime = Duration(sec=0)
+        rc.birds_spots_pub.publish(marker)
+        rc.info(f"Published marker for bird {i} in front of ring {i}")
+        
 
     # Dobimo obroče
     request_rings = PosesInFrontOfRings.Request()
