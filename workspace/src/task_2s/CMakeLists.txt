@@ -40,6 +40,7 @@ install(PROGRAMS
   scripts/detect_birds.py
   scripts/bird_catalogue_server.py
   scripts/bird_client_example.py
+  scripts/save_birds.py
   DESTINATION lib/${PROJECT_NAME})
 
 rosidl_generate_interfaces(${PROJECT_NAME}
