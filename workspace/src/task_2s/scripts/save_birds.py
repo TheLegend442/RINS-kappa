@@ -16,10 +16,11 @@ class Bird():
         self.id = id
         self.center_point = center_point
         self.count = count
+        self.current_time = time.time()
 
 class BirdMarkerSubscriber(Node):
     def __init__(self):
-        super().__init__('people_marker_subscriber')
+        super().__init__('bird_marker_subscriber')
         
         # Inicializacija TF2 listenerja
         self.tf_buffer = tf2_ros.Buffer()
@@ -30,7 +31,7 @@ class BirdMarkerSubscriber(Node):
 
         # Subscription za Marker (Obrazi)
         self.subscription = self.create_subscription(
-            FaceCoordinates, '/bird_marker', self.marker_callback, 10
+            Marker, '/bird_marker', self.marker_callback, 10
         )
         
         # Subscription za pozicijo robota (AMCL)
@@ -61,12 +62,12 @@ class BirdMarkerSubscriber(Node):
 
     def process_marker(self, msg):
         """ returns True, if marker was processed, False if not """
-        current_position = np.array([msg.center.pose.position.x, msg.center.pose.position.y, msg.center.pose.position.z])
+        current_position = np.array([msg.pose.position.x, msg.pose.position.y, msg.pose.position.z])
         current_time = time.time()
-        stamp = msg.center.header.stamp
+        stamp = msg.header.stamp
         try:
             transform = self.tf_buffer.lookup_transform('map', 'base_link', stamp,timeout=rclpy.duration.Duration(seconds=0.1))
-            transformed_pose = tf2_geometry_msgs.do_transform_pose(msg.center.pose, transform)
+            transformed_pose = tf2_geometry_msgs.do_transform_pose(msg.pose, transform)
             transformed_position = np.array([transformed_pose.position.x, transformed_pose.position.y, transformed_pose.position.z])
 
         except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
@@ -98,11 +99,11 @@ class BirdMarkerSubscriber(Node):
                     return True
 
         # **Če obraz ni bil zaznan, ga dodamo v slovar**
-        self.face_counter += 1
-        self.get_logger().info(f"Zaznan nov obraz z ID-jem {self.face_counter}.")
+        self.bird_counter += 1
+        self.get_logger().info(f"Zaznan nov ptič z ID-jem {self.bird_counter}.")
         #transformed_bottom_right_position = None; transformed_upper_left_position = None
-        self.birds[self.face_counter] = Bird(self.face_counter, transformed_position)
-        # self.publish_face_marker(transformed_position, self.face_counter)
+        self.birds[self.bird_counter] = Bird(self.bird_counter, transformed_position)
+        # self.publish_face_marker(transformed_position, self.bird_counter)
         return True
 
         
@@ -157,10 +158,10 @@ def main(args=None):
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
-        pass
+        print("KeyboardInterrupt received, shutting down.")
     finally:
-        node.destroy_node()
-        rclpy.shutdown()
+        if rclpy.ok():  # ✅ only shut down if still running
+            rclpy.shutdown()
 
 if __name__ == '__main__':
     main()
