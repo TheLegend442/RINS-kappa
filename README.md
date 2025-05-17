@@ -24,6 +24,7 @@ Our RINS repository -> for all labs and our own robot :)
 
 #### Bird detection:
 <pre lang="markdown">ros2 run task_2s detect_birds.py</pre>
+<pre lang="markdown">ros2 run task_2s save_birds.py</pre>
 
 <h2>Task_2s - Bird Catalogue</h2>
 <p><i>'bird_catalogue_server.py'</i> is a service server that takes <i>'BirdCollection.srv'</i> as an input which is a list of <i>'Bird.msg'</i> messages, and forms a PDF catalogue 'RINS-KAPPA/bird_catalogue.pdf'. As a example of it's work there is service client <i>bird_client_example.py</i></p>
