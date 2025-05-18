@@ -9,7 +9,7 @@ import numpy as np
 import time
 import tf2_ros
 import tf2_geometry_msgs  # Za uporabo transformacij med sporočili
-from task_2s.srv import MarkerArrayService
+from task_2s.srv import MarkerArrayService, GetImage
 
 class Bird():
 

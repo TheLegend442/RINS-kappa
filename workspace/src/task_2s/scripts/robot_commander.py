@@ -47,7 +47,8 @@ from custom_messages.srv import PosesInFrontOfFaces, PosesInFrontOfRings
 from custom_messages.msg import RingCoordinates
 from std_msgs.msg import String
 from visualization_msgs.msg import Marker
-from task_2s.srv import MarkerArrayService
+from task_2s.srv import MarkerArrayService, GetImage, BirdCollection
+from task_2s.msg import Bird
 
 
 class TaskResult(Enum):
@@ -116,6 +117,10 @@ class RobotCommander(Node):
 
         self.birds_spots_pub = self.create_publisher(MarkerArray, '/spots_in_front_of_birds', 10)
         
+        self.get_bird_image_client = self.create_client(GetImage, '/bird_image')
+
+        self.bird_catalogue_client = self.create_client(BirdCollection, 'bird_catalogue')
+
         # ROS2 Action clients
         self.nav_to_pose_client = ActionClient(self, NavigateToPose, 'navigate_to_pose')
         self.spin_client = ActionClient(self, Spin, 'spin')
@@ -435,6 +440,78 @@ def best_round(robot_position, all_targets):
         else:
             all_targets[k], all_targets[m] = all_targets[m], all_targets[k]
     return all_targets
+
+def get_poses_in_front_of_birds(rc):
+    # match rings and birds
+    request_rings = MarkerArrayService.Request()
+    future_rings = rc.rings_client.call_async(request_rings)
+    print("čakam")
+    rclpy.spin_until_future_complete(rc, future_rings)
+    print("Waiting for rings")
+    response_rings = future_rings.result()
+
+    request_birds = MarkerArrayService.Request()
+    future_birds = rc.birds_client.call_async(request_birds)
+    rclpy.spin_until_future_complete(rc, future_birds)
+    response_birds = future_birds.result()
+
+    ring_bird_pairs = []
+    for ring_marker, ring_color in zip(response_rings.marker_array.markers, response_rings.colors):
+        print(ring_color)
+        for bird_marker, robot_position_marker in zip(response_birds.marker_array.markers, response_birds.robot_positions.markers):
+            # Get the distance between the two markers
+            distance = math.sqrt((ring_marker.pose.position.x - bird_marker.pose.position.x) ** 2 +
+                                 (ring_marker.pose.position.y - bird_marker.pose.position.y) ** 2)
+            if distance < 0.5:
+                ring_bird_pairs.append((ring_marker, bird_marker, robot_position_marker, ring_color))
+
+    print(len(ring_bird_pairs), "pairs of rings and birds found")
+    marker_array = MarkerArray()
+    i = 0
+    ring_colors = []
+    for ring_marker, bird_marker, robot_position_marker, ring_color in ring_bird_pairs:
+        ring_colors.append(ring_color)
+        # calculate normal to the vector between centers
+        dx = bird_marker.pose.position.x - ring_marker.pose.position.x
+        dy = bird_marker.pose.position.y - ring_marker.pose.position.y
+        normal = np.array([-dy, dx])
+        normal = normal / np.linalg.norm(normal)  # Normalize the vector
+        numpy_robot_position = np.array([robot_position_marker.pose.position.x, robot_position_marker.pose.position.y])
+        if np.dot(normal, numpy_robot_position - np.array([bird_marker.pose.position.x, bird_marker.pose.position.y])) < 0:
+            normal = -normal
+
+        # normala gleda ven iz ptiča, hočemo pa, da robot gleda v ptiča, se pravi -normala
+        orientation = np.arctan2(-normal[1], -normal[0])
+
+        # create arrow marker
+        pose_in_front_of_bird = Pose()
+        pose_in_front_of_bird.position.x = bird_marker.pose.position.x + normal[0] * 0.3
+        pose_in_front_of_bird.position.y = bird_marker.pose.position.y + normal[1] * 0.3
+        pose_in_front_of_bird.position.z = bird_marker.pose.position.z
+        pose_in_front_of_bird.orientation.z = orientation
+        pose_in_front_of_bird.orientation.w = 1.0
+
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = rc.get_clock().now().to_msg()
+        marker.ns = "spots_in_front_of_birds"
+        marker.id = i
+        marker.type = Marker.ARROW
+        marker.action = Marker.ADD
+        marker.pose = pose_in_front_of_bird
+        marker.scale.x = 0.7
+        marker.scale.y = 0.1
+        marker.scale.z = 0.1
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0
+        marker.lifetime = Duration(sec=0)
+        marker_array.markers.append(marker)
+        i += 1
+    rc.birds_spots_pub.publish(marker_array)
+    return marker_array, ring_colors
+
         
 def main(args=None):
     rclpy.init(args=args)
@@ -475,72 +552,49 @@ def main(args=None):
     for i  in range(10):
         rc.info("KOČAL Z OBHODOM")
 
+    # obhod po detektiranih parih ptič-obroč
+    marker_array, ring_colors = get_poses_in_front_of_birds(rc)
+    birds = []
+    
+    for marker, ring_color in zip(marker_array.markers, ring_colors):
+        print(ring_color, type(ring_color))
+        pose = marker.pose
+        goal_msg = PoseStamped()
+        goal_msg.header.frame_id = "map"
+        goal_msg.header.stamp = rc.get_clock().now().to_msg()
+        goal_msg.pose = pose
+        rc.info(f"Going to pose: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
+        rc.goToPose(goal_msg)
+        while not rc.isTaskComplete():
+            #rc.info("Waiting for the task to complete...")
+            time.sleep(0.1)
+        
+        # get a picture and classify bird
+        request = GetImage.Request()
+        future = rc.get_bird_image_client.call_async(request)
+        rclpy.spin_until_future_complete(rc, future)
+        response = future.result()
+        if response is None:
+            rc.error("Error while getting image")
+        else:
+            bird = Bird()
+            bird.species = response.species_name
+            bird.image = response.image
+            bird.location = "TODO"
+            bird.ring_color = ring_color
+            bird.detection_time = "TODO"
+            birds.append(bird)
+            rc.info(f"Bird species: {bird.species}")
+            rc.info(f"Ring color: {bird.ring_color}")
 
-    # match rings and birds
-    request_rings = MarkerArrayService.Request()
-    future_rings = rc.rings_client.call_async(request_rings)
-    print("čakam")
-    rclpy.spin_until_future_complete(rc, future_rings)
-    print("Waiting for rings")
-    response_rings = future_rings.result()
+    # generate bird catalogue
+    request = BirdCollection.Request()
+    request.birds = birds
+    future = rc.bird_catalogue_client.call_async(request)
+    rclpy.spin_until_future_complete(rc, future)
+    response = future.result()
 
-    request_birds = MarkerArrayService.Request()
-    future_birds = rc.birds_client.call_async(request_birds)
-    rclpy.spin_until_future_complete(rc, future_birds)
-    response_birds = future_birds.result()
 
-    ring_bird_pairs = []
-    for ring_marker in response_rings.marker_array.markers:
-        for bird_marker, robot_position_marker in zip(response_birds.marker_array.markers, response_birds.robot_positions.markers):
-            # Get the distance between the two markers
-            distance = math.sqrt((ring_marker.pose.position.x - bird_marker.pose.position.x) ** 2 +
-                                 (ring_marker.pose.position.y - bird_marker.pose.position.y) ** 2)
-            if distance < 0.5:
-                ring_bird_pairs.append((ring_marker, bird_marker, robot_position_marker))
-
-    print(len(ring_bird_pairs), "pairs of rings and birds found")
-    marker_array = MarkerArray()
-    i = 0
-    for ring_marker, bird_marker, robot_position_marker in ring_bird_pairs:
-        # calculate normal to the vector between centers
-        dx = bird_marker.pose.position.x - ring_marker.pose.position.x
-        dy = bird_marker.pose.position.y - ring_marker.pose.position.y
-        normal = np.array([-dy, dx])
-        normal = normal / np.linalg.norm(normal)  # Normalize the vector
-        numpy_robot_position = np.array([robot_position_marker.pose.position.x, robot_position_marker.pose.position.y])
-        if np.dot(normal, numpy_robot_position - np.array([bird_marker.pose.position.x, bird_marker.pose.position.y])) < 0:
-            normal = -normal
-
-        # normala gleda ven iz ptiča, hočemo pa, da robot gleda v ptiča, se pravi -normala
-        orientation = np.arctan2(-normal[1], -normal[0])
-
-        # create arrow marker
-        pose_in_front_of_bird = Pose()
-        pose_in_front_of_bird.position.x = bird_marker.pose.position.x + normal[0] * 1.0
-        pose_in_front_of_bird.position.y = bird_marker.pose.position.y + normal[1] * 1.0
-        pose_in_front_of_bird.position.z = bird_marker.pose.position.z
-        pose_in_front_of_bird.orientation.z = orientation
-        pose_in_front_of_bird.orientation.w = 1.0
-
-        marker = Marker()
-        marker.header.frame_id = "map"
-        marker.header.stamp = rc.get_clock().now().to_msg()
-        marker.ns = "spots_in_front_of_birds"
-        marker.id = i
-        marker.type = Marker.ARROW
-        marker.action = Marker.ADD
-        marker.pose = pose_in_front_of_bird
-        marker.scale.x = 0.7
-        marker.scale.y = 0.1
-        marker.scale.z = 0.1
-        marker.color.r = 0.0
-        marker.color.g = 1.0
-        marker.color.b = 0.0
-        marker.color.a = 1.0
-        marker.lifetime = Duration(sec=0)
-        marker_array.markers.append(marker)
-        i += 1
-    rc.birds_spots_pub.publish(marker_array)
         
 
     # Dobimo obroče

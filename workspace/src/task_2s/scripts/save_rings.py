@@ -305,6 +305,7 @@ class RingMarkerSubscriber(Node):
 
             response.marker_array.markers.append(marker)  # ✅ Access `.markers` list
             response.robot_positions.markers.append(robot_position_marker)  # ✅ Access `.markers` list
+            response.colors.append(ring.color)  # Add color to the response
 
         return response
 

@@ -48,6 +48,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Bird.msg"
   "srv/BirdCollection.srv"
   "srv/MarkerArrayService.srv"
+  "srv/GetImage.srv"
   DEPENDENCIES sensor_msgs visualization_msgs
 )
 
