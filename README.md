@@ -1,6 +1,9 @@
 # RINS-kappa
 Our RINS repository -> for all labs and our own robot :)
 
+#### Requaments:
+
+<pre lang="markdown">pip install scikit-image</pre>
 
 <h2><i>Task_2s - 'bridge_follower.py'</i></h2> 
 <br>Python node that follows the bridge from starting point <i>'workspace/src/task_2s/data/bridge_start.npy'</i> to the red cross at the end of the world.
