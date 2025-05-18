@@ -715,9 +715,7 @@ def get_poses_in_front_of_birds(rc):
     # match rings and birds
     request_rings = MarkerArrayService.Request()
     future_rings = rc.rings_client.call_async(request_rings)
-    print("čakam")
     rclpy.spin_until_future_complete(rc, future_rings)
-    print("Waiting for rings")
     response_rings = future_rings.result()
 
     request_birds = MarkerArrayService.Request()

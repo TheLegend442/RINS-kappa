@@ -48,8 +48,8 @@ class PeopleMarkerSubscriber(Node):
         self.robot_position = None  # Shranjena pozicija robota
         self.faces = {}  # Slovar {face_id: (position, timestamp, robot_position, count)}
         self.threshold = 0.7  # Razdalja za zaznavanje istega obraza
-        self.time_threshold = 0.4  # Sekunde preden obraz ponovno upoštevamo
-        self.detections_needed = 5
+        self.time_threshold = 0.2  # Sekunde preden obraz ponovno upoštevamo
+        self.detections_needed = 10
         self.face_counter = 0  # Števec za unikatne ID-je obrazov
 
         self.marker_queue = []  # Čakalna vrsta za markerje
@@ -63,6 +63,10 @@ class PeopleMarkerSubscriber(Node):
                 continue
             
             center = face.center_point
+            # if height is higher than 1m, ignore
+            if center[2] > 1.0:
+                continue
+
             bottom_right = face.bottom_right_point
             upper_left = face.upper_left_point
             bottom_left = np.array([upper_left[0], upper_left[1], bottom_right[2]])
@@ -129,7 +133,13 @@ class PeopleMarkerSubscriber(Node):
             transformed_upper_left_position = np.array([transformed_upper_left_pose.position.x, transformed_upper_left_pose.position.y, transformed_upper_left_pose.position.z])
 
         except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
-            self.get_logger().error(f"Napaka pri transformaciji: {e}")
+            msg = str(e)
+            self.get_logger().error(f"Napaka pri transformaciji: {msg}")
+
+            if "extrapolation into the past" in msg.lower():
+                # Transform requested in the past
+                return True
+
             return False
 
         # Preveri, ali je obraz že bil zaznan

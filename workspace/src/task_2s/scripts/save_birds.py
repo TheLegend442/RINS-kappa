@@ -125,10 +125,10 @@ class BirdMarkerSubscriber(Node):
             return False
 
         # Preveri, ali je obraz že bil zaznan
-        for face_id, face in self.birds.items():
-            count = face.count
-            timestamp = face.current_time
-            center_point = face.center_point
+        for bird_id, bird in self.birds.items():
+            count = bird.count
+            timestamp = bird.current_time
+            center_point = bird.center_point
 
             distance = np.linalg.norm(center_point - transformed_position)
             
@@ -137,15 +137,15 @@ class BirdMarkerSubscriber(Node):
                     return True
                 else:
                     # **Izbrišemo prejšnji marker**
-                    self.delete_marker(face_id)
+                    self.delete_marker(bird_id)
 
                     # **Posodobimo obraz s povprečjem**
                     new_position = (count / (count + 1)) * center_point + (1 / (count + 1)) * transformed_position
-                    self.birds[face_id] = Bird(face_id, new_position, robot_position=self.robot_position, count=count + 1)
+                    self.birds[bird_id] = Bird(bird_id, new_position, robot_position=self.robot_position, count=count + 1)
                     
                     if count + 1 >= self.detections_needed:
                         # **Objavimo nov marker**
-                        self.publish_bird_marker(new_position, face_id)
+                        self.publish_bird_marker(new_position, bird_id)
                     return True
 
         # **Če obraz ni bil zaznan, ga dodamo v slovar**
