@@ -114,7 +114,7 @@ class RobotCommander(Node):
         # publisher for publishing markers of spots near rings
         self.ring_spots_pub = self.create_publisher(Marker, '/spots_in_front_of_rings', 10)
 
-        self.birds_spots_pub = self.create_publisher(Marker, '/spots_in_front_of_birds', 10)
+        self.birds_spots_pub = self.create_publisher(MarkerArray, '/spots_in_front_of_birds', 10)
         
         # ROS2 Action clients
         self.nav_to_pose_client = ActionClient(self, NavigateToPose, 'navigate_to_pose')
@@ -479,7 +479,9 @@ def main(args=None):
     # match rings and birds
     request_rings = MarkerArrayService.Request()
     future_rings = rc.rings_client.call_async(request_rings)
+    print("čakam")
     rclpy.spin_until_future_complete(rc, future_rings)
+    print("Waiting for rings")
     response_rings = future_rings.result()
 
     request_birds = MarkerArrayService.Request()
@@ -489,28 +491,35 @@ def main(args=None):
 
     ring_bird_pairs = []
     for ring_marker in response_rings.marker_array.markers:
-        for bird_marker in response_birds.marker_array.markers:
+        for bird_marker, robot_position_marker in zip(response_birds.marker_array.markers, response_birds.robot_positions.markers):
             # Get the distance between the two markers
             distance = math.sqrt((ring_marker.pose.position.x - bird_marker.pose.position.x) ** 2 +
                                  (ring_marker.pose.position.y - bird_marker.pose.position.y) ** 2)
             if distance < 0.5:
-                ring_bird_pairs.append((ring_marker, bird_marker))
+                ring_bird_pairs.append((ring_marker, bird_marker, robot_position_marker))
 
     print(len(ring_bird_pairs), "pairs of rings and birds found")
-    for ring_marker, bird_marker in ring_bird_pairs:
+    marker_array = MarkerArray()
+    i = 0
+    for ring_marker, bird_marker, robot_position_marker in ring_bird_pairs:
         # calculate normal to the vector between centers
         dx = bird_marker.pose.position.x - ring_marker.pose.position.x
         dy = bird_marker.pose.position.y - ring_marker.pose.position.y
         normal = np.array([-dy, dx])
-        normal = -normal / np.linalg.norm(normal)  # Normalize the vector
-        orientation = np.arctan2(normal[1], normal[0])
+        normal = normal / np.linalg.norm(normal)  # Normalize the vector
+        numpy_robot_position = np.array([robot_position_marker.pose.position.x, robot_position_marker.pose.position.y])
+        if np.dot(normal, numpy_robot_position - np.array([bird_marker.pose.position.x, bird_marker.pose.position.y])) < 0:
+            normal = -normal
+
+        # normala gleda ven iz ptiča, hočemo pa, da robot gleda v ptiča, se pravi -normala
+        orientation = np.arctan2(-normal[1], -normal[0])
 
         # create arrow marker
         pose_in_front_of_bird = Pose()
         pose_in_front_of_bird.position.x = bird_marker.pose.position.x + normal[0] * 1.0
         pose_in_front_of_bird.position.y = bird_marker.pose.position.y + normal[1] * 1.0
         pose_in_front_of_bird.position.z = bird_marker.pose.position.z
-        pose_in_front_of_bird.orientation = rc.YawToQuaternion(orientation)
+        pose_in_front_of_bird.orientation.z = orientation
         pose_in_front_of_bird.orientation.w = 1.0
 
         marker = Marker()
@@ -521,7 +530,7 @@ def main(args=None):
         marker.type = Marker.ARROW
         marker.action = Marker.ADD
         marker.pose = pose_in_front_of_bird
-        marker.scale.x = 0.4
+        marker.scale.x = 0.7
         marker.scale.y = 0.1
         marker.scale.z = 0.1
         marker.color.r = 0.0
@@ -529,8 +538,9 @@ def main(args=None):
         marker.color.b = 0.0
         marker.color.a = 1.0
         marker.lifetime = Duration(sec=0)
-        rc.birds_spots_pub.publish(marker)
-        rc.info(f"Published marker for bird {i} in front of ring {i}")
+        marker_array.markers.append(marker)
+        i += 1
+    rc.birds_spots_pub.publish(marker_array)
         
 
     # Dobimo obroče

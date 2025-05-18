@@ -1,3 +1,4 @@
 # MarkerArrayService.srv
 ---
 visualization_msgs/MarkerArray marker_array
+visualization_msgs/MarkerArray robot_positions

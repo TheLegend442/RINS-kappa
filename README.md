@@ -18,7 +18,7 @@ Our RINS repository -> for all labs and our own robot :)
 <pre lang="markdown">ros2 run task_2s save_faces.py</pre>
 
 #### Ring detection:
-
+<pre lang="markdown">ros2 topic pub --once /arm_command std_msgs/msg/String "{data: 'manual:[0.,0.0,0.6,1.0]'}"</pre>
 <pre lang="markdown">ros2 run task_2s detect_rings_final.py</pre>
 <pre lang="markdown">ros2 run task_2s save_rings.py</pre>
 
