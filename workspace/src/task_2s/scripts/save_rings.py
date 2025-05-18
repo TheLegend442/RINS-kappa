@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 import rclpy
 from rclpy.node import Node
-from visualization_msgs.msg import Marker
+from visualization_msgs.msg import Marker, MarkerArray
 from custom_messages.msg import RingCoordinates
 from builtin_interfaces.msg import Time
 from custom_messages.srv import PosesInFrontOfRings
@@ -17,6 +17,7 @@ from collections import deque
 import matplotlib.pyplot as plt
 from turtle_tf2_py.turtle_tf2_broadcaster import quaternion_from_euler
 import math
+from task_2s.srv import MarkerArrayService
 
 class Point:
     def __init__(self, x=0.0, y=0.0):
@@ -63,13 +64,15 @@ class RingMarkerSubscriber(Node):
         )
 
         self.service = self.create_service(PosesInFrontOfRings, 'get_ring_pose', self.get_ring_pose_callback)
+        self.get_rings_service = self.create_service(MarkerArrayService, 'get_rings', self.get_rings_callback)
 
         self.robot_position = None
         self.rings = {}
         self.threshold = 0.7
-        self.time_threshold = 0.5
+        self.time_threshold = 0.2
         self.ring_counter = 0
         self.min_wall_distance_m = 0.7
+        self.ring_count_threshold = 4
         self.load_and_process_map('src/task_2s/maps/bird_map.pgm', 'src/task_2s/maps/bird_map.yaml')
         self.map_data = (self.map_image.flatten() / 255 * 100).astype(int).tolist()
 
@@ -171,7 +174,13 @@ class RingMarkerSubscriber(Node):
                                              transformed_pose.position.y, 
                                              transformed_pose.position.z])
         except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
-            self.get_logger().error(f"Napaka pri transformaciji: {e}")
+            msg = str(e)
+            self.get_logger().error(f"Napaka pri transformaciji: {msg}")
+
+            if "extrapolation into the past" in msg.lower():
+                # Transform requested in the past
+                return True
+
             return False
 
         for ring_id, ring in self.rings.items():
@@ -256,6 +265,53 @@ class RingMarkerSubscriber(Node):
 
         self.marker_pub.publish(marker)
 
+    def get_rings_callback(self, request, response):
+        response.marker_array = MarkerArray()  # ✅ This matches your .srv definition
+
+        for ring in self.rings.values():
+            if ring.count < self.ring_count_threshold:
+                self.get_logger().warn(f"Skipping ring {ring.id} with count {ring.count}")
+                continue
+
+            marker = Marker()
+            marker.header.frame_id = "map"
+            marker.header.stamp = self.get_clock().now().to_msg()
+            marker.ns = "rings"
+            marker.id = ring.id
+            marker.type = Marker.SPHERE
+            marker.action = Marker.ADD
+            marker.pose.position.x = float(ring.center[0])
+            marker.pose.position.y = float(ring.center[1])
+            marker.pose.position.z = float(ring.center[2])
+            marker.scale.x = 0.2
+            marker.scale.y = 0.2
+            marker.scale.z = 0.2
+            marker.color.r = 1.0
+            marker.color.g = 0.0
+            marker.color.b = 0.0
+            marker.color.a = 1.0
+
+            robot_position_marker = Marker()
+            robot_position_marker.header.frame_id = "map"
+            robot_position_marker.header.stamp = self.get_clock().now().to_msg()
+            robot_position_marker.ns = "robot_position"
+            robot_position_marker.id = ring.id + 1000
+            robot_position_marker.type = Marker.SPHERE
+            robot_position_marker.action = Marker.ADD
+            robot_position_marker.pose.position.x = float(ring.robot_position[0])
+            robot_position_marker.pose.position.y = float(ring.robot_position[1])
+            robot_position_marker.pose.position.z = float(ring.robot_position[2])
+
+
+            response.marker_array.markers.append(marker)  # ✅ Access `.markers` list
+            response.robot_positions.markers.append(robot_position_marker)  # ✅ Access `.markers` list
+            response.colors.append(ring.color)  # Add color to the response
+
+        return response
+
+
+
+
     def get_ring_pose_callback(self, request, response):
         self.get_logger().info("Processing request for ring poses")
         self.get_logger().info(f"Received {len(self.rings)} rings")
@@ -263,7 +319,7 @@ class RingMarkerSubscriber(Node):
         response.colors = []
 
         for ring in self.rings.values():
-            if ring.count < 5:
+            if ring.count < self.ring_count_threshold:
                 self.get_logger().warn(f"Skipping ring {ring.id} with count {ring.count}")
                 continue
 

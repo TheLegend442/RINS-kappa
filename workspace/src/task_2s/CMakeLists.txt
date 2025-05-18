@@ -17,6 +17,7 @@ find_package(rclpy REQUIRED)
 
 find_package(std_msgs REQUIRED)
 find_package(sensor_msgs REQUIRED)
+find_package(visualization_msgs REQUIRED)
 find_package(std_srvs REQUIRED)
 
 find_package(rosidl_default_generators REQUIRED)
@@ -46,7 +47,9 @@ install(PROGRAMS
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/Bird.msg"
   "srv/BirdCollection.srv"
-  DEPENDENCIES sensor_msgs
+  "srv/MarkerArrayService.srv"
+  "srv/GetImage.srv"
+  DEPENDENCIES sensor_msgs visualization_msgs
 )
 
 ament_export_dependencies(rosidl_default_runtime)

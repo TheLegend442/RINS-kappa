@@ -26,6 +26,7 @@ from PIL import Image as PILImage
 from torchvision import transforms
 import joblib
 from sklearn.preprocessing import LabelEncoder
+from task_2s.srv import MarkerArrayService, GetImage
 
 import time
 
@@ -39,10 +40,11 @@ qos_profile = QoSProfile(
 		  depth=1)
 
 class Bird():
-	def __init__(self, center, detection_time, species):
+	def __init__(self, center, detection_time, species, image):
 		self.center = center
 		self.detection_time = detection_time
 		self.species = species
+		self.image = image
 
 
 class Detect_birds(Node):
@@ -87,11 +89,27 @@ class Detect_birds(Node):
 		self.marker_pub = self.create_publisher(Marker, marker_topic, QoSReliabilityPolicy.BEST_EFFORT) # Publish face markers (center, bottom right, upper left)
 		self.text_pub = self.create_publisher(Marker, "/text", QoSReliabilityPolicy.BEST_EFFORT) # Publish text markers (Bird)
 
+		self.bird_image_service = self.create_service(GetImage, "/bird_image", self.get_bird_image_callback)
+
 		self.model = YOLO("yolov8n.pt")
 
 		self.birds = []
 
 		self.get_logger().info(f"Node has been initialized! Will publish face markers to {marker_topic}.")
+
+	def get_bird_image_callback(self, request, response):
+		response = GetImage.Response()
+		if len(self.birds) == 0:
+			self.get_logger().info("No birds detected.")
+			return response
+
+		# Get the first bird's image
+		bird = self.birds[0]
+		response.image = self.bridge.cv2_to_imgmsg(bird.image, encoding="bgr8")
+		response.species_name = bird.species
+
+		self.get_logger().info(f"Bird species: {bird.species}")
+		return response
 
 	def rgb_callback(self, data):
 		try:
@@ -133,7 +151,7 @@ class Detect_birds(Node):
 
 					cv2.imshow(f"cropped bird", bird_image_cropped)
 					# Save bird center pixel coordinates (we'll map to 3D in pointcloud_callback)
-					self.birds.append(Bird(center=(x_center, y_center), detection_time=detection_time, species=predicted_label))
+					self.birds.append(Bird(center=(x_center, y_center), detection_time=detection_time, species=predicted_label, image=bird_image_cropped))
 
 					# Optionally, draw detection on image
 					cv2.rectangle(cv_image, (int(xyxy[0]), int(xyxy[1])), (int(xyxy[2]), int(xyxy[3])), self.detection_color, 2)

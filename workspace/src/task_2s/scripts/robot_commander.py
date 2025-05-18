@@ -19,7 +19,8 @@ import time
 
 from action_msgs.msg import GoalStatus
 from builtin_interfaces.msg import Duration
-from geometry_msgs.msg import Quaternion, PoseStamped, PoseWithCovarianceStamped
+from geometry_msgs.msg import Quaternion, PoseStamped, PoseWithCovarianceStamped, Pose
+from visualization_msgs.msg import Marker, MarkerArray
 from lifecycle_msgs.srv import GetState
 from nav2_msgs.action import Spin, NavigateToPose
 from turtle_tf2_py.turtle_tf2_broadcaster import quaternion_from_euler
@@ -55,7 +56,9 @@ from custom_messages.msg import FaceCoordinates
 from custom_messages.srv import PosesInFrontOfFaces, PosesInFrontOfRings
 from custom_messages.msg import RingCoordinates
 from std_msgs.msg import String
-from visualization_msgs.msg import Marker, MarkerArray
+from visualization_msgs.msg import Marker
+from task_2s.srv import MarkerArrayService, GetImage, BirdCollection
+from task_2s.msg import Bird
 
 
 class TaskResult(Enum):
@@ -121,15 +124,24 @@ class RobotCommander(Node):
         self.bird_catalogue_client = self.create_client(BirdCollection, 'bird_catalogue')
         # client that receives poses in front of detected rings
         self.ring_client = self.create_client(PosesInFrontOfRings, 'get_ring_pose')
+
+        self.rings_client = self.create_client(MarkerArrayService, 'get_rings')
+
+        self.birds_client = self.create_client(MarkerArrayService, 'get_birds')
         
         # publisher for publishing markers of spots in front of faces
         self.spots_in_front_of_faces_pub = self.create_publisher(Marker, '/spots_in_front_of_faces', 10)
 
         # publisher for publishing markers of spots near rings
         self.ring_spots_pub = self.create_publisher(Marker, '/spots_in_front_of_rings', 10)
-
-        self.sweep_spots_pub = self.create_publisher(Marker, '/sweep_spots', 10)
         
+        self.sweep_spots_pub = self.create_publisher(Marker, '/sweep_spots', 10)
+
+        self.birds_spots_pub = self.create_publisher(MarkerArray, '/spots_in_front_of_birds', 10)
+        
+        self.get_bird_image_client = self.create_client(GetImage, '/bird_image')
+
+        self.bird_catalogue_client = self.create_client(BirdCollection, 'bird_catalogue')
         # ROS2 Action clients
         self.nav_to_pose_client = ActionClient(self, NavigateToPose, 'navigate_to_pose')
         self.spin_client = ActionClient(self, Spin, 'spin')
@@ -770,6 +782,7 @@ def get_poses_in_front_of_birds(rc):
     rc.birds_spots_pub.publish(marker_array)
     return marker_array, ring_colors
 
+        
 def main(args=None):
     rclpy.init(args=args)
     rc = RobotCommander()
@@ -890,6 +903,40 @@ def main(args=None):
     future = rc.bird_catalogue_client.call_async(request)
     rclpy.spin_until_future_complete(rc, future)
     response = future.result()
+
+
+        
+
+    # Dobimo obroče
+    request_rings = PosesInFrontOfRings.Request()
+    future_rings = rc.ring_client.call_async(request_rings)
+    rclpy.spin_until_future_complete(rc, future_rings)
+    response_rings = future_rings.result()
+    rc.info(f"{len(response_rings.poses)} detected rings")
+
+    # Simulirano: dodajamo 'color' atribut (tu bi moral biti del dejanskega odziva)
+    rings_with_meta = [{"pose": pose, "type": "ring", "color": color} for pose, color in zip(response_rings.poses, response_rings.colors)]
+
+    for i, item in enumerate(rings_with_meta):
+        pose = item["pose"]
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = rc.get_clock().now().to_msg()
+        marker.ns = "spots_in_front_of_rings"
+        marker.id = i
+        marker.type = Marker.ARROW
+        marker.action = Marker.ADD
+        marker.pose = pose
+        marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
+        marker.scale.x = 0.4
+        marker.scale.y = 0.1
+        marker.scale.z = 0.1
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0
+        marker.lifetime = Duration(sec=0)
+        rc.ring_spots_pub.publish(marker)
 
     # Dobimo obraze
     request_faces = PosesInFrontOfFaces.Request()
