@@ -26,6 +26,15 @@ from turtle_tf2_py.turtle_tf2_broadcaster import quaternion_from_euler
 
 from irobot_create_msgs.action import Dock, Undock
 from irobot_create_msgs.msg import DockStatus
+from skimage.morphology import skeletonize
+import matplotlib.pyplot as plt
+import random
+from tqdm import tqdm
+from sklearn.cluster import KMeans
+from geometry_msgs.msg import Quaternion, PoseStamped, PoseWithCovarianceStamped, Pose
+from task_2s.srv import MarkerArrayService, GetImage, BirdCollection
+from task_2s.msg import Bird
+
 
 import rclpy
 from rclpy.action import ActionClient
@@ -40,12 +49,13 @@ import math
 import os
 import numpy as np
 from random import randrange
+from collections import deque
 
 from custom_messages.msg import FaceCoordinates
 from custom_messages.srv import PosesInFrontOfFaces, PosesInFrontOfRings
 from custom_messages.msg import RingCoordinates
 from std_msgs.msg import String
-from visualization_msgs.msg import Marker
+from visualization_msgs.msg import Marker, MarkerArray
 
 
 class TaskResult(Enum):
@@ -64,6 +74,11 @@ class RobotCommander(Node):
 
     def __init__(self, node_name='robot_commander', namespace=''):
         super().__init__(node_name=node_name, namespace=namespace)
+        
+        #Parameters
+        self.min_wall_distance_m = 0.5
+        
+        #Parameters
         
         self.pose_frame_id = 'map'
         
@@ -99,6 +114,11 @@ class RobotCommander(Node):
         # client that receives poses in front of detected faces
         self.pose_client = self.create_client(PosesInFrontOfFaces, 'get_face_pose')
 
+        self.birds_spots_pub = self.create_publisher(MarkerArray, '/spots_in_front_of_birds', 10)
+        
+        self.get_bird_image_client = self.create_client(GetImage, '/bird_image')
+
+        self.bird_catalogue_client = self.create_client(BirdCollection, 'bird_catalogue')
         # client that receives poses in front of detected rings
         self.ring_client = self.create_client(PosesInFrontOfRings, 'get_ring_pose')
         
@@ -107,6 +127,8 @@ class RobotCommander(Node):
 
         # publisher for publishing markers of spots near rings
         self.ring_spots_pub = self.create_publisher(Marker, '/spots_in_front_of_rings', 10)
+
+        self.sweep_spots_pub = self.create_publisher(Marker, '/sweep_spots', 10)
         
         # ROS2 Action clients
         self.nav_to_pose_client = ActionClient(self, NavigateToPose, 'navigate_to_pose')
@@ -325,21 +347,57 @@ class RobotCommander(Node):
     def debug(self, msg):
         self.get_logger().debug(msg)
         return
-    def load_map(self, pgm_path, yaml_path):
-        """Naloži PGM sliko in YAML metapodatke zemljevida"""
-        with open(yaml_path, 'r') as yaml_file:
-            map_metadata = yaml.safe_load(yaml_file)
+    def load_and_process_map(self, pgm_path, yaml_path):
+        """Loads map, metadata, and computes the distance transform."""
+        self.get_logger().info(f"Loading map from {yaml_path} and {pgm_path}")
+        
+        try:
+            with open(yaml_path, 'r') as yaml_file:
+                self.map_metadata = yaml.safe_load(yaml_file)
 
-        map_image = cv2.imread(pgm_path, cv2.IMREAD_GRAYSCALE)
-        if map_image is None:
-            self.get_logger().error("Napaka pri nalaganju map.pgm!")
-            exit(1)
+            self.map_image = cv2.imread(pgm_path, cv2.IMREAD_GRAYSCALE)
+            if self.map_image is None:
+                raise IOError(f"Failed to load map image: {pgm_path}")
 
-        # Obrni sliko, če je potrebno (PGM zemljevidi so pogosto obrnjeni)
-        #map_image = cv2.flip(map_image, 0)
+            self.map_height, self.map_width = self.map_image.shape
+            self.get_logger().info(f"Map size: {self.map_width} x {self.map_height}")
+            self.get_logger().info(f"Map resolution: {self.map_metadata['resolution']} m/pixel")
+            self.map_resolution = self.map_metadata['resolution']
+            origin = self.map_metadata['origin']
 
-        return map_image, map_metadata
-    
+            self.map_matrix_np = np.zeros_like(self.map_image, dtype=np.uint8)
+            self.map_matrix_np[self.map_image >= 3] = 255
+            self.map_matrix_np[self.map_image < 3] = 0
+
+            num_free = np.sum(self.map_matrix_np == 255)
+            num_occupied = np.sum(self.map_matrix_np == 0)
+            self.get_logger().info("Calculating distance transform...")
+            binary_map_for_dist = np.zeros_like(self.map_matrix_np, dtype=np.uint8)
+            binary_map_for_dist[self.map_matrix_np == 255] = 255
+            self.distance_map = cv2.distanceTransform(binary_map_for_dist, cv2.DIST_L2, cv2.DIST_MASK_PRECISE)
+            self.get_logger().info("Distance transform calculated.")
+
+            self.min_wall_distance_cells = int(self.min_wall_distance_m / self.map_resolution)
+            self.get_logger().info(f"Minimum wall distance set to {self.min_wall_distance_m} m ({self.min_wall_distance_cells} cells)")
+            self.map_image[self.map_image == 3] = 255
+            self.map_image[self.map_image == 2] = 100
+            self.map_image[self.map_image == 0] = 0
+            # # Uporabimo Matplotlib za prikaz z legendo
+            # fig, ax = plt.subplots(figsize=(8, 6))
+            # im = ax.imshow(self.map_matrix_np, cmap='jet')
+            # cbar = plt.colorbar(im, ax=ax)
+            # cbar.set_label('Razdalja do zida (v pikslijih)')
+
+            # ax.set_title('Razdalja do zidov (distance map)')
+            # ax.axis('off')  # skrij osi (če želiš jih lahko pustiš)
+            # plt.show()
+
+        except FileNotFoundError as e:
+            self.get_logger().error(f"Map file not found: {e}. Shutting down.")
+            rclpy.shutdown()
+        except Exception as e:
+            self.get_logger().error(f"Error loading or processing map: {e}")
+            rclpy.shutdown()
     def draw_arrow(self, start, end):
         """Draw an arrow from start to end point."""
         cv2.arrowedLine(self.map_image, start, end, (0, 255, 0), 2)
@@ -397,7 +455,16 @@ class RobotCommander(Node):
         world_y = origin[1] + (height - pixel_y) * resolution  # Obrnemo os Y
 
         return world_x, world_y
-    
+    def world_to_pixel(self, world_x, world_y):
+        """Pretvori svetovne koordinate v slikovne glede na YAML podatke"""
+        origin = self.map_metadata['origin']
+        resolution = self.map_metadata['resolution']
+
+        pixel_x = int((world_x - origin[0]) / resolution)
+        pixel_y = int((world_y - origin[1]) / resolution)
+        height, _ = self.map_image.shape
+        pixel_y = height - pixel_y  # Obrnemo os Y
+        return pixel_x, pixel_y
     def say_something(self, text):
         """Send a message to the speech node"""
         msg = String()
@@ -405,7 +472,211 @@ class RobotCommander(Node):
         self.speech_pub.publish(msg)
         self.get_logger().info(f"Sending speech command: {text}")
         return
+    def automatic_Sweeping(self):
+
+        def select_evenly_distributed(points, percentage=0.1):
+            num_clusters = max(1, int(len(points) * percentage))
+            kmeans = KMeans(n_clusters=num_clusters, random_state=0).fit(points)
+            centers = kmeans.cluster_centers_
+            return centers 
+        def check_if_close_to_wall(point, map_image):
+            x = int(round(point[0]))
+            y = int(round(point[1]))
+            if self.distance_map[x][y] < self.min_wall_distance_cells:
+                return False
+            else:
+                # Draw a circle around the point
+                cv2.circle(map_image, (point[1], point[0]), 1, (255), -1)
+                return True
+        def find_best_points(points, map_image):
+            def normalize_angle_rad(angle):
+                return (angle + 2 * math.pi) % (2 * math.pi)
+
+            def je_notri(i, j, x, y, angle_rad):
+                dx = x - i
+                dy = y - j
+                if math.hypot(dx, dy) > 50:
+                    return False
+
+                theta = math.atan2(dy, dx)
+                delta = normalize_angle_rad(min(theta - angle_rad,2* math.pi + angle_rad - theta))
+
+                return abs(delta) <= math.radians(50)
+
+            best_point = None
+            best_points = []
+
+            for point in tqdm(points):
+                map_points = [
+                    (i, j)
+                    for i in range(map_image.shape[0])
+                    for j in range(map_image.shape[1])
+                    if map_image[i][j] == 255
+                ]
+                pokrije = 0
+                for angle_rad in [a * math.pi / 180 for a in range(0, 370, 10)]:
+                    t_pokrije = 0
+                    for x, y in map_points:
+                        if je_notri(point[0], point[1], x, y, angle_rad):
+                            t_pokrije += 1
+                    if t_pokrije >= pokrije:
+                        pokrije = t_pokrije
+                        best_point = (point[0], point[1], angle_rad)
+                best_points.append(best_point)
+                for x, y in map_points:
+                    if je_notri(point[0], point[1], x, y, best_point[2]):
+                        map_image[x][y] = 0
+
+
+
+
+            return best_points
+        # 1. Naredi binarno sliko za skeletonize (npr. vse vrednosti >= 3 naj bodo 1)
+        binary_map = (self.map_image >= 255).astype(np.uint8)
+        walls_map = cv2.cvtColor(self.map_image,cv2.COLOR_GRAY2BGR)
+        walls_map[self.map_image == 0] = (255,0,0) 
+        bin_map_walls = np.zeros_like(self.map_image, dtype=np.uint8)
+        bin_map_walls[self.map_image == 0] = 255
+
+        # 2. Skeletonize pričakuje bool tip
+        skeleton = skeletonize(binary_map.astype(bool))
+
+        prepareed_map = self.map_image.copy()
+        points_cor = [(i, j) for i in range(skeleton.shape[0]) for j in range(skeleton.shape[1]) if skeleton[i][j]]
+        points_cor = np.array(points_cor)
+        random_points = select_evenly_distributed(points_cor, 0.02)
+        random_points = list(random_points)
+        random_points = [(int(point[0]), int(point[1])) for point in random_points]
+        self.info(f"Found {len(random_points)} random points")
+        #print(random_points)
+        good_points = []
+        for point in random_points:
+            if check_if_close_to_wall(point, prepareed_map):
+                good_points.append((point[1], point[0], 0.0))
+        self.info(f"Found {len(good_points)} good points")
+        
+
+        best_points = []
+        best_points = find_best_points(good_points, bin_map_walls)
+        
+        print(best_points)
+
+        best_points_map = np.zeros_like(self.map_image, dtype=np.uint8)
+        for point in best_points:
+            cv2.circle(best_points_map, (point[0], point[1]), 1, (255), -1)
+        
+        map_points = np.zeros_like(self.map_image, dtype=np.uint8)
+        for point in good_points:
+            cv2.circle(map_points, (point[0], point[1]), 1, (255), -1)
+        
+        fig, axes = plt.subplots(nrows=1, ncols=7, figsize=(8, 4), sharex=True, sharey=True)
+
+
+        ax = axes.ravel()
+
+        ax[0].imshow(prepareed_map, cmap=plt.cm.gray)
+        ax[0].axis('off')
+        ax[0].set_title('original', fontsize=20)
+
+        ax[1].imshow(skeleton, cmap=plt.cm.gray)
+        ax[1].axis('off')
+        ax[1].set_title('skeleton', fontsize=20)
+
+        ax[2].imshow(self.distance_map, cmap=plt.cm.gray)
+        ax[2].axis('off')
+        ax[2].set_title('distance_map', fontsize=20)
+
+        ax[3].imshow(map_points, cmap=plt.cm.gray)
+        ax[3].axis('off')
+        ax[3].set_title('points', fontsize=20)
+
+        ax[4].imshow(best_points_map, cmap=plt.cm.gray)
+        ax[4].axis('off')
+        ax[4].set_title('best_points', fontsize=20)
+
+        ax[5].imshow(walls_map)
+        ax[5].axis('off')
+        ax[5].set_title('walls', fontsize=20)
+
+        ax[6].imshow(bin_map_walls)
+        ax[6].axis('off')
+        ax[6].set_title('bin_map_walls', fontsize=20)
+
+        fig.tight_layout()
+        plt.show()
+
+        self.info(f"Trying to find best points")
+
+        return best_points
     
+    def najboljsi_obhod(self,clicked_points):
+        def distance_between_points(self, start_x, start_y, end_x, end_y):
+            """
+            Performs BFS starting from (start_x, start_y) to find the nearest cell
+            that is free space and at least `self.min_wall_distance_cells` away
+            from the nearest obstacle, using the precomputed distance map.
+            """
+            if not (0 <= start_x < self.map_width and 0 <= start_y < self.map_height):
+                self.get_logger().warn(f"Start position ({start_x}, {start_y}) is outside map bounds ({self.map_width}x{self.map_height}).")
+                return None
+
+            q = deque([(start_x, start_y, 0)])
+            visited = set([(start_x, start_y)])
+
+            while q:
+                x, y, d = q.popleft()
+                # Check map bounds just in case (should be handled by neighbor check)
+                if not (0 <= x < self.map_width and 0 <= y < self.map_height):
+                    continue
+                if self.map_matrix_np[y][x] == 0:
+                    continue
+
+                if x == end_x and y == end_y:
+                    return d
+
+                for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+                    nx, ny = x + dx, y + dy
+
+                    if (0 <= nx < self.map_width and 0 <= ny < self.map_height and (nx, ny) not in visited):
+                        visited.add((nx, ny))
+                        q.append((nx, ny, d + 1))
+
+            self.get_logger().warn(f"BFS completed without finding a valid cell starting from ({start_x}, {start_y}) with min distance {self.min_wall_distance_cells}.")
+            return None
+        
+        def trenutna_dolzina_poti(robot_position, permutation, distance_matrix):
+            # Dobimo trenutno pot robota
+            current_position = 0
+            distance = 0
+            for target in permutation:
+                distance += distance_matrix[current_position][target]
+                current_position = target
+            return distance
+        
+        distance_matrix = np.zeros((len(clicked_points), len(clicked_points)))
+        for i in tqdm(range(len(clicked_points))):
+            for j in range(len(clicked_points)):
+                if i <= j:
+                    distance_matrix[i][j] = distance_between_points(self, clicked_points[i][0], clicked_points[i][1], clicked_points[j][0], clicked_points[j][1])
+                    distance_matrix[j][i] = distance_matrix[i][j]
+        permutation = []
+        for i in range(len(clicked_points)):
+            permutation.append(i)
+        best_score = trenutna_dolzina_poti(0, permutation, distance_matrix)
+        for i in range(10000):
+            k,m = randrange(1, len(clicked_points)), randrange(1, len(clicked_points))
+            permutation[k], permutation[m] = permutation[m], permutation[k]
+            new_score = trenutna_dolzina_poti(0, permutation, distance_matrix)
+            if new_score < best_score:
+                best_score = new_score
+            else:
+                permutation[k], permutation[m] = permutation[m], permutation[k]
+        best_permutation = []
+        for i in range(len(clicked_points)):
+            best_permutation.append(clicked_points[permutation[i]])
+        return best_permutation
+
+
 def best_round(robot_position, all_targets):
     def trenutna_dolžina_poti(robot_position, all_targets):
         # Dobimo trenutno pot robota
@@ -427,27 +698,138 @@ def best_round(robot_position, all_targets):
         else:
             all_targets[k], all_targets[m] = all_targets[m], all_targets[k]
     return all_targets
-        
+
+def get_poses_in_front_of_birds(rc):
+    # match rings and birds
+    request_rings = MarkerArrayService.Request()
+    future_rings = rc.rings_client.call_async(request_rings)
+    print("čakam")
+    rclpy.spin_until_future_complete(rc, future_rings)
+    print("Waiting for rings")
+    response_rings = future_rings.result()
+
+    request_birds = MarkerArrayService.Request()
+    future_birds = rc.birds_client.call_async(request_birds)
+    rclpy.spin_until_future_complete(rc, future_birds)
+    response_birds = future_birds.result()
+
+    ring_bird_pairs = []
+    for ring_marker, ring_color in zip(response_rings.marker_array.markers, response_rings.colors):
+        print(ring_color)
+        for bird_marker, robot_position_marker in zip(response_birds.marker_array.markers, response_birds.robot_positions.markers):
+            # Get the distance between the two markers
+            distance = math.sqrt((ring_marker.pose.position.x - bird_marker.pose.position.x) ** 2 +
+                                 (ring_marker.pose.position.y - bird_marker.pose.position.y) ** 2)
+            if distance < 0.5:
+                ring_bird_pairs.append((ring_marker, bird_marker, robot_position_marker, ring_color))
+
+    print(len(ring_bird_pairs), "pairs of rings and birds found")
+    marker_array = MarkerArray()
+    i = 0
+    ring_colors = []
+    for ring_marker, bird_marker, robot_position_marker, ring_color in ring_bird_pairs:
+        ring_colors.append(ring_color)
+        # calculate normal to the vector between centers
+        dx = bird_marker.pose.position.x - ring_marker.pose.position.x
+        dy = bird_marker.pose.position.y - ring_marker.pose.position.y
+        normal = np.array([-dy, dx])
+        normal = normal / np.linalg.norm(normal)  # Normalize the vector
+        numpy_robot_position = np.array([robot_position_marker.pose.position.x, robot_position_marker.pose.position.y])
+        if np.dot(normal, numpy_robot_position - np.array([bird_marker.pose.position.x, bird_marker.pose.position.y])) < 0:
+            normal = -normal
+
+        # normala gleda ven iz ptiča, hočemo pa, da robot gleda v ptiča, se pravi -normala
+        orientation = np.arctan2(-normal[1], -normal[0])
+
+        # create arrow marker
+        pose_in_front_of_bird = Pose()
+        pose_in_front_of_bird.position.x = bird_marker.pose.position.x + normal[0] * 0.3
+        pose_in_front_of_bird.position.y = bird_marker.pose.position.y + normal[1] * 0.3
+        pose_in_front_of_bird.position.z = bird_marker.pose.position.z
+        pose_in_front_of_bird.orientation.z = orientation
+        pose_in_front_of_bird.orientation.w = 1.0
+
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = rc.get_clock().now().to_msg()
+        marker.ns = "spots_in_front_of_birds"
+        marker.id = i
+        marker.type = Marker.ARROW
+        marker.action = Marker.ADD
+        marker.pose = pose_in_front_of_bird
+        marker.scale.x = 0.7
+        marker.scale.y = 0.1
+        marker.scale.z = 0.1
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0
+        marker.lifetime = Duration(sec=0)
+        marker_array.markers.append(marker)
+        i += 1
+    rc.birds_spots_pub.publish(marker_array)
+    return marker_array, ring_colors
+
 def main(args=None):
     rclpy.init(args=args)
     rc = RobotCommander()
 
     rc.waitUntilNav2Active()
 
-    rc.map_image, rc.map_metadata = rc.load_map('src/task_2s/maps/bird_map.pgm', 'src/task_2s/maps/bird_map.yaml')
+    rc.load_and_process_map('src/task_2s/maps/bird_map.pgm', 'src/task_2s/maps/bird_map.yaml')
+    rc.get_logger().info("Map loaded and processed.")
 
-    # Točke obhoda
-    if not os.path.exists('src/task_2s/data/bridge_start.npy'):
-        cv2.imshow("Map", rc.map_image)
-        cv2.setMouseCallback("Map", rc.mouse_callback)
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
+    current_pose = rc.world_to_pixel(rc.current_pose.pose.position.x, rc.current_pose.pose.position.y)
+    current_pose = (int(current_pose[0]), int(current_pose[1]), rc.current_pose.pose.orientation.z)
+
+
+
+    if not os.path.exists('src/task_2s/data/obhod.npy'):
+        rc.clicked_points = rc.automatic_Sweeping()
+        rc.clicked_points = [current_pose] + rc.clicked_points
+        rc.clicked_points = rc.najboljsi_obhod(rc.clicked_points)
         np.save('src/task_2s/data/obhod.npy', rc.clicked_points)
     else:
         print("Obhod že obstaja")
-        rc.clicked_points = np.load('src/task_2s/data/bridge_start.npy')
+        rc.clicked_points = np.load('src/task_2s/data/obhod.npy')
+
+    # show_points = np.zeros_like(rc.map_image)
+    # for (px, py, orientation) in rc.clicked_points:
+    #     world_x, world_y = rc.pixel_to_world(px, py)
+    #     cv2.circle(show_points, (int(px), int(py)), 3, (255), -1)
+    # cv2.imshow("Map", show_points)
+ 
+
+    ## POSTAVI MARKERJE ZA OBHOD
+    for i, (px, py, orientation) in enumerate(rc.clicked_points):
+        world_x, world_y = rc.pixel_to_world(px, py)
+        pose = PoseStamped()
+        pose.header.frame_id = "map"
+        pose.header.stamp = rc.get_clock().now().to_msg()
+        pose.pose.position.x = world_x
+        pose.pose.position.y = world_y
+        pose.pose.orientation = rc.YawToQuaternion(orientation)
+
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = rc.get_clock().now().to_msg()
+        marker.ns = "spots_in_front_of_rings"
+        marker.id = i
+        marker.type = Marker.ARROW
+        marker.action = Marker.ADD
+        marker.pose = pose.pose
+        marker.scale.x = 0.4
+        marker.scale.y = 0.1
+        marker.scale.z = 0.1
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0
+        marker.lifetime = Duration(sec=0)
+        rc.sweep_spots_pub.publish(marker)
+        time.sleep(0.1)
     
-    
+
     for i, (px, py, orientation) in enumerate(rc.clicked_points):
         world_x, world_y = rc.pixel_to_world(px, py)
         rc.get_logger().info(f"Točka {i+1}: ({world_x}, {world_y})")
@@ -467,36 +849,47 @@ def main(args=None):
     for i  in range(10):
         rc.info("KOČAL Z OBHODOM")
 
-    # Dobimo obroče
-    request_rings = PosesInFrontOfRings.Request()
-    future_rings = rc.ring_client.call_async(request_rings)
-    rclpy.spin_until_future_complete(rc, future_rings)
-    response_rings = future_rings.result()
-    rc.info(f"{len(response_rings.poses)} detected rings")
+    # obhod po detektiranih parih ptič-obroč
+    marker_array, ring_colors = get_poses_in_front_of_birds(rc)
+    birds = []
+    
+    for marker, ring_color in zip(marker_array.markers, ring_colors):
+        print(ring_color, type(ring_color))
+        pose = marker.pose
+        goal_msg = PoseStamped()
+        goal_msg.header.frame_id = "map"
+        goal_msg.header.stamp = rc.get_clock().now().to_msg()
+        goal_msg.pose = pose
+        rc.info(f"Going to pose: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
+        rc.goToPose(goal_msg)
+        while not rc.isTaskComplete():
+            #rc.info("Waiting for the task to complete...")
+            time.sleep(0.1)
+        
+        # get a picture and classify bird
+        request = GetImage.Request()
+        future = rc.get_bird_image_client.call_async(request)
+        rclpy.spin_until_future_complete(rc, future)
+        response = future.result()
+        if response is None:
+            rc.error("Error while getting image")
+        else:
+            bird = Bird()
+            bird.species = response.species_name
+            bird.image = response.image
+            bird.location = "TODO"
+            bird.ring_color = ring_color
+            bird.detection_time = "TODO"
+            birds.append(bird)
+            rc.info(f"Bird species: {bird.species}")
+            rc.info(f"Ring color: {bird.ring_color}")
 
-    # Simulirano: dodajamo 'color' atribut (tu bi moral biti del dejanskega odziva)
-    rings_with_meta = [{"pose": pose, "type": "ring", "color": color} for pose, color in zip(response_rings.poses, response_rings.colors)]
-
-    for i, item in enumerate(rings_with_meta):
-        pose = item["pose"]
-        marker = Marker()
-        marker.header.frame_id = "map"
-        marker.header.stamp = rc.get_clock().now().to_msg()
-        marker.ns = "spots_in_front_of_rings"
-        marker.id = i
-        marker.type = Marker.ARROW
-        marker.action = Marker.ADD
-        marker.pose = pose
-        marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
-        marker.scale.x = 0.4
-        marker.scale.y = 0.1
-        marker.scale.z = 0.1
-        marker.color.r = 0.0
-        marker.color.g = 1.0
-        marker.color.b = 0.0
-        marker.color.a = 1.0
-        marker.lifetime = Duration(sec=0)
-        rc.ring_spots_pub.publish(marker)
+    # generate bird catalogue
+    request = BirdCollection.Request()
+    request.birds = birds
+    future = rc.bird_catalogue_client.call_async(request)
+    rclpy.spin_until_future_complete(rc, future)
+    response = future.result()
 
     # Dobimo obraze
     request_faces = PosesInFrontOfFaces.Request()

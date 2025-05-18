@@ -360,6 +360,20 @@ class RingMarkerSubscriber(Node):
 def main(args=None):
     rclpy.init(args=args)
     node = RingMarkerSubscriber()
+
+    fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(8, 4), sharex=True, sharey=True)
+    ax = axes.ravel()
+
+    ax[0].imshow(node.map_image, cmap=plt.cm.gray)
+    ax[0].axis('off')
+    ax[0].set_title('original', fontsize=20)
+
+    ax[1].imshow(node.distance_map, cmap=plt.cm.gray)
+    ax[1].axis('off')
+    ax[1].set_title('skeleton', fontsize=20)
+    fig.tight_layout()
+    plt.show()
+    
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:
