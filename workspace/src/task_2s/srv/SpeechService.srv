@@ -1,0 +1,5 @@
+# SpeechService.srv
+task_2s/Bird[] birds
+string gender
+---
+string favourite_bird

@@ -42,6 +42,8 @@ install(PROGRAMS
   scripts/bird_catalogue_server.py
   scripts/bird_client_example.py
   scripts/save_birds.py
+  scripts/speech_server.py
+  scripts/speech_client_example.py
   DESTINATION lib/${PROJECT_NAME})
 
 rosidl_generate_interfaces(${PROJECT_NAME}
@@ -49,6 +51,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/BirdCollection.srv"
   "srv/MarkerArrayService.srv"
   "srv/GetImage.srv"
+  "srv/SpeechService.srv"
   DEPENDENCIES sensor_msgs visualization_msgs
 )
 

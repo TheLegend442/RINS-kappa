@@ -1,3 +1,10 @@
+#!/usr/bin/env python3
+
+from task_2s.srv import SpeechService
+# from task_2s.msg import Bird
+import rclpy
+from rclpy.node import Node
+
 import whisper
 import sounddevice as sd
 import numpy as np
@@ -10,8 +17,8 @@ from rapidfuzz import process, fuzz
 import pyttsx3
 import time
 
-
 def snap_birds(text, birds, threshold=85):
+    birds = list(birds.keys())
     words = text.split()
     fixed = []
     i = 0
@@ -87,13 +94,15 @@ def talk_to_female(model, engine, list_of_birds):
     engine.runAndWait()
     time.sleep(2)
     _, bird = get_bird_name(model, engine, list_of_birds)
-    location = "center"
-    color = "red"
+    location = list_of_birds[bird].location
+    color = list_of_birds[bird].ring_color
     engine.say(f"Thank you for letting me know.")
     engine.runAndWait()
     engine.say(f'The {bird} is sitting on a {color} ring in the {location} part of the park.')
     engine.runAndWait()
     time.sleep(2)
+
+    return bird
 
 
 def talk_to_male(model, engine, list_of_birds):
@@ -126,50 +135,95 @@ def talk_to_male(model, engine, list_of_birds):
             time.sleep(2)
 
 
-    location = "center"
-    color = "red"
+    location = list_of_birds[pending_bird].location
+    color = list_of_birds[pending_bird].ring_color
     engine.say(f'The {pending_bird} is sitting on a {color} ring in the {location} part of the park  .')
     engine.runAndWait()
     time.sleep(1)
 
-def main():
-
-    model = whisper.load_model("medium.en")
-    print("Whisper ASR model loaded.")
-
-    str = "002.Laysan_Albatross 012.Yellow_headed_Blackbird 014.Indigo_Bunting 025.Pelagic_Cormorant 029.American_Crow 033.Yellow_billed_Cuckoo 035.Purple_Finch 042.Vermilion_Flycatcher 048.European_Goldfinch 050.Eared_Grebe 059.California_Gull 068.Ruby_throated_Hummingbird 073.Blue_Jay 081.Pied_Kingfisher 095.Baltimore_Oriole 101.White_Pelican 106.Horned_Puffin 108.White_necked_Raven 112.Great_Grey_Shrike 118.House_Sparrow 134.Cape_Glossy_Starling 138.Tree_Swallow 144.Common_Tern 191.Red_headed_Woodpecker"
-    l = str.split(" ")
-    l = [i.split(".")[1] for i in l]
-    l = [i.replace("_", " ").lower() for i in l]
-    list_of_birds = l
-
-    # gender = 'F'
-
-    engine = pyttsx3.init()
-    engine.setProperty('rate', 140)         # words per minute
-    engine.setProperty('volume', 1)       # 0.0–1.0
-    voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[19].id)
-
-    # Save original stderr fd
-    stderr_fileno = sys.stderr.fileno()
-
-    # Open /dev/null for writing
-    devnull = os.open(os.devnull, os.O_WRONLY)
-
-    # Duplicate /dev/null fd to stderr fd (2)
-    os.dup2(devnull, stderr_fileno)
+    return pending_bird
 
 
-    talk_to_male(model, engine, list_of_birds)
+class Bird():
+    def __init__(self, species, image, location, ring_color, detection_time, description):
+        self.species = species
+        self.image = image
+        self.location = location
+        self.ring_color = ring_color
+        self.detection_time = detection_time
+        self.description = description
 
-    # text, bird = get_user_input(model, 4, playback=True, birds=list_of_birds)
-    # print("You said: ", text)
-    # print("Bird species: ", bird)
+class SpeechServer(Node):
+    def __init__(self):
+        super().__init__('speech_server')
+        self.srv = self.create_service(SpeechService, 'speech_service', self.speech_callback)
+        self.model = whisper.load_model("medium.en")
+        self.birds = {}
 
-    # When done, restore stderr
-    os.dup2(stderr_fileno, stderr_fileno)
-    os.close(devnull)
+        self.engine = pyttsx3.init()
+        self.engine.setProperty('rate', 140)         # words per minute
+        self.engine.setProperty('volume', 1)       # 0.0–1.0
+        voices = self.engine.getProperty('voices')
+        self.engine.setProperty('voice', voices[19].id)
 
-if __name__ == "__main__":
+        self.get_logger().info("Speech server ready to receive requests.")
+
+    def speech_callback(self, request, response):
+        self.get_logger().info("\nReceived request to talk to the person in front of me.\n")
+
+        for bird in request.birds:
+
+            bird_species = bird.species
+            if "." in bird_species:
+                bird_species = bird_species.split(".")[1]
+            bird_species = bird_species.replace("_", " ")
+            bird_species = bird_species.lower()
+
+            bird_obj = Bird(
+                species=bird_species,
+                image=None,
+                location=bird.location,
+                ring_color=bird.ring_color,
+                detection_time=bird.detection_time,
+                description=None
+            )
+
+            self.birds[bird_species] = bird_obj
+
+        gender = request.gender
+
+        ## HIDE C ERROR MESSAGES - REDIRECT STDERR TO /dev/null
+        # Save original stderr fd
+        stderr_fileno = sys.stderr.fileno()
+
+        # Open /dev/null for writing
+        devnull = os.open(os.devnull, os.O_WRONLY)
+
+        # Duplicate /dev/null fd to stderr fd (2)
+        os.dup2(devnull, stderr_fileno)
+
+        fav_bird = None
+        if gender == "M":
+            fav_bird = talk_to_male(self.model, self.engine, self.birds)
+        elif gender == "F":
+            fav_bird = talk_to_female(self.model, self.engine, self.birds)
+        else:
+            self.get_logger(f"Gender {gender} not supported.").error
+
+        # When done, restore stderr
+        os.dup2(stderr_fileno, stderr_fileno)
+        os.close(devnull)
+
+        # Prepare the response
+        response.favourite_bird = fav_bird
+        return response
+
+
+def main(args=None):
+    rclpy.init(args=args)
+    node = SpeechServer()
+    rclpy.spin(node)
+    rclpy.shutdown()
+
+if __name__ == '__main__':
     main()

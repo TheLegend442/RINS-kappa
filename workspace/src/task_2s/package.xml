@@ -3,7 +3,7 @@
 <package format="3">
   <name>task_2s</name>
   <version>0.0.1</version>
-  <description>DIS tutorial 3 packages - Simulation of Turtlebot4 in a custom obstacle course.</description>
+  <description>KAPPA's package for RINS task_2s</description>
   <maintainer email="matej.dobrevski@fri.uni-lj.si">Matej</maintainer>
   <maintainer email="vid.rijavec@fri.uni-lj.si">Vid</maintainer>
   <maintainer email="jon.muhovic@fe.uni-lj.si">Jon</maintainer>
