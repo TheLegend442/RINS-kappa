@@ -188,7 +188,7 @@ class BirdCatalogueServer(Node):
 
             cv_image = self.bridge.imgmsg_to_cv2(bird.image, desired_encoding='rgb8')
             new_bird = Bird(
-                species=bird_species,
+                species=bird_species.title(),
                 image=cv_image,
                 location=bird.location,
                 ring_color=bird.ring_color,
