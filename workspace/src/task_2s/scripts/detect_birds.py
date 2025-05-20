@@ -137,7 +137,14 @@ class Detect_birds(Node):
 					y_center = int((xyxy[1] + xyxy[3]) / 2)
 
 					# classify bird species
-					bird_image_cropped = cv_image[int(xyxy[1]):int(xyxy[3]), int(xyxy[0]):int(xyxy[2])]
+					border = 10
+					x_min = max(0, int(xyxy[0]) - border)
+					x_max = min(cv_image.shape[1], int(xyxy[2]) + border)
+					y_min = max(0, int(xyxy[1]) - border)
+					y_max = min(cv_image.shape[0], int(xyxy[3]) + border)
+
+					bird_image_cropped = cv_image[y_min:y_max, x_min:x_max]
+					image_copy = bird_image_cropped.copy()
 					bird_image = cv2.cvtColor(bird_image_cropped, cv2.COLOR_BGR2RGB)
 					bird_image = PILImage.fromarray(bird_image)
 					bird_image = self.bird_image_transform(bird_image)
@@ -151,7 +158,7 @@ class Detect_birds(Node):
 
 					cv2.imshow(f"cropped bird", bird_image_cropped)
 					# Save bird center pixel coordinates (we'll map to 3D in pointcloud_callback)
-					self.birds.append(Bird(center=(x_center, y_center), detection_time=detection_time, species=predicted_label, image=bird_image_cropped))
+					self.birds.append(Bird(center=(x_center, y_center), detection_time=detection_time, species=predicted_label, image=image_copy))
 
 					# Optionally, draw detection on image
 					cv2.rectangle(cv_image, (int(xyxy[0]), int(xyxy[1])), (int(xyxy[2]), int(xyxy[3])), self.detection_color, 2)

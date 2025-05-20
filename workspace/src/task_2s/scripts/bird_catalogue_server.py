@@ -182,13 +182,13 @@ class BirdCatalogueServer(Node):
             bird_species = bird.species
             if "." in bird_species:
                 bird_species = bird_species.split(".")[1]
-            bird_species = bird_species.replace(" ", "_")
+            bird_species = bird_species.replace("_", " ")
             bird_species = bird_species.lower()
 
 
             cv_image = self.bridge.imgmsg_to_cv2(bird.image, desired_encoding='rgb8')
             new_bird = Bird(
-                species=bird_species.title(),
+                species=bird_species,
                 image=cv_image,
                 location=bird.location,
                 ring_color=bird.ring_color,
