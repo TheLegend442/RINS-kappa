@@ -23,9 +23,7 @@ import numpy as np
 import cv2
 from cv_bridge import CvBridge
 
-from bird_descriptions import bird_descriptions # Bird descriptions dictionary
-
-
+bird_descriptions = {'laysan albatross': 'A large seabird known for long-distance flights, white with dark wingtips, breeding on remote Pacific islands.', 'yellow headed blackbird': 'A striking bird with bright yellow head and chest, black body, found in North American wetlands.', 'indigo bunting': 'Small songbird with vibrant blue plumage, common in woodlands and fields across eastern North America.', 'pelagic cormorant': 'A slender, dark seabird with a hooked bill, often found along rocky coasts and open ocean.', 'american crow': 'Common black bird, intelligent and adaptable, found throughout North America in diverse habitats.', 'yellow billed cuckoo': 'Medium-sized bird with slender body and yellow bill, inhabits woodlands and thickets in North America.', 'purple finch': 'Small finch with rosy-red plumage in males, commonly found in forests and suburban areas.', 'vermilion flycatcher': 'Bright red flycatcher with dark wings and tail, found in open habitats of the Americas.', 'european goldfinch': 'Small bird with red face, black and yellow wings, common in Europe and western Asia.', 'eared grebe': 'Diving waterbird with distinctive tufts near ears during breeding, found on freshwater lakes.', 'california gull': 'Medium gull with white and gray plumage, common along western North America coasts and inland lakes.', 'ruby throated hummingbird': 'Tiny hummingbird with iridescent green back and bright red throat in males, found in eastern North America.', 'blue jay': 'Vibrant blue bird with crest and loud calls, common in forests and suburban areas across eastern US.', 'pied kingfisher': 'Black and white kingfisher that hovers over water before diving for fish, found in Africa and Asia.', 'baltimore oriole': 'Bright orange and black songbird, common in eastern North America, known for hanging woven nests.', 'white pelican': 'Large white waterbird with long bill and throat pouch, found in inland lakes and marshes.', 'horned puffin': 'Seabird with colorful beak and small yellow “horns” above eyes, breeds on North Pacific cliffs.', 'white necked raven': 'Large raven with white neck feathers, inhabiting mountainous and forested regions in Africa.', 'great grey shrike': 'Predatory songbird with gray body and black mask, known for impaling prey on thorns.', 'house sparrow': 'Small, adaptable bird with brown and gray plumage, common worldwide in urban and rural areas.', 'cape glossy starling': 'Iridescent black starling with greenish and purplish sheen, native to southern Africa.', 'tree swallow': 'Small blue-green swallow with white belly, agile flyer, nests in tree cavities across North America.', 'common tern': 'Elegant seabird with slender body and forked tail, nests along coasts and inland waters worldwide.', 'red headed woodpecker': 'Striking woodpecker with bright red head and black-and-white body, found in open woodlands in North America.'}
 
 def generate_catalogue(birds, filename="../bird_catalogue.pdf"):
     
@@ -195,7 +193,7 @@ class BirdCatalogueServer(Node):
                 location=bird.location,
                 ring_color=bird.ring_color,
                 detection_time=bird.detection_time,
-                description=bird_descriptions[bird_species] # TODO generate dictionary with descriptions
+                description=bird_descriptions[bird_species]
             )
             self.bird_list.append(new_bird)
         self.get_logger().info(f'Added {len(request.birds)} birds to the catalogue')

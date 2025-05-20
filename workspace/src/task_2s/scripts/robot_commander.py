@@ -858,7 +858,7 @@ def main(args=None):
             time.sleep(0.1)
 
     for i  in range(10):
-        rc.info("KOČAL Z OBHODOM")
+        rc.info("KONČAL Z OBHODOM")
 
     # obhod po detektiranih parih ptič-obroč
     marker_array, ring_colors = get_poses_in_front_of_birds(rc)
@@ -901,9 +901,6 @@ def main(args=None):
     future = rc.bird_catalogue_client.call_async(request)
     rclpy.spin_until_future_complete(rc, future)
     response = future.result()
-
-
-        
 
     # Dobimo obroče
     request_rings = PosesInFrontOfRings.Request()
