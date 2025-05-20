@@ -63,7 +63,6 @@ def generate_catalogue(birds, filename="../bird_catalogue.pdf"):
     styles = getSampleStyleSheet()
     flowables = []
     
-    pdfmetrics.registerFont(TTFont("Lobster", "../bird_catalogue/fonts/ImperialScript-Regular.ttf"))
     pdfmetrics.registerFont(TTFont("Molle", "../bird_catalogue/fonts/Molle-Italic.ttf"))
     
     outline_style = ParagraphStyle(
