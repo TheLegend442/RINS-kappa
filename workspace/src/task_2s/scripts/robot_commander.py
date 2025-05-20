@@ -60,6 +60,7 @@ from visualization_msgs.msg import Marker
 from task_2s.srv import MarkerArrayService, GetImage, BirdCollection
 from task_2s.msg import Bird
 
+from turtle_tf2_py.turtle_tf2_broadcaster import quaternion_from_euler
 
 class TaskResult(Enum):
     UNKNOWN = 0
@@ -753,11 +754,16 @@ def get_poses_in_front_of_birds(rc):
 
         # create arrow marker
         pose_in_front_of_bird = Pose()
-        pose_in_front_of_bird.position.x = bird_marker.pose.position.x + normal[0] * 0.3
-        pose_in_front_of_bird.position.y = bird_marker.pose.position.y + normal[1] * 0.3
-        pose_in_front_of_bird.position.z = bird_marker.pose.position.z
-        pose_in_front_of_bird.orientation.z = orientation
-        pose_in_front_of_bird.orientation.w = 1.0
+        pose_in_front_of_bird.position.x = bird_marker.pose.position.x + normal[0] * 0.5
+        pose_in_front_of_bird.position.y = bird_marker.pose.position.y + normal[1] * 0.5
+        # Compute quaternion from yaw (orientation)
+        q = quaternion_from_euler(0, 0, orientation)
+
+        # Set quaternion to pose
+        pose_in_front_of_bird.orientation.x = q[0]
+        pose_in_front_of_bird.orientation.y = q[1]
+        pose_in_front_of_bird.orientation.z = q[2]
+        pose_in_front_of_bird.orientation.w = q[3]
 
         marker = Marker()
         marker.header.frame_id = "map"
@@ -779,6 +785,31 @@ def get_poses_in_front_of_birds(rc):
         i += 1
     rc.birds_spots_pub.publish(marker_array)
     return marker_array, ring_colors
+
+def get_location(marker):
+    x = marker.pose.position.x
+    y = marker.pose.position.y
+    # zgoraj
+    # x: -4.4358811378479
+    # y: 3.3039188385009766
+    # spodaj
+    # x: 1.9387037754058838
+    # y: 3.322540283203125
+
+    # loči, na kateri strani premice je marker
+    zgoraj = np.array([-4.4358811378479, 3.3039188385009766])
+    spodaj = np.array([1.9387037754058838, 3.322540283203125])
+    # ločilna premica
+    # y = kx + b
+    k = (zgoraj[1] - spodaj[1]) / (zgoraj[0] - spodaj[0])
+    if zgoraj[0] < spodaj[0]:
+        k = -k
+    b = zgoraj[1] - k * zgoraj[0]
+
+    if y > k*x + b:
+        return "EAST"
+    else:
+        return "CENTER"
 
         
 def main(args=None):
@@ -888,7 +919,7 @@ def main(args=None):
             bird = Bird()
             bird.species = response.species_name
             bird.image = response.image
-            bird.location = "TODO"
+            bird.location = get_location(marker)
             bird.ring_color = ring_color
             bird.detection_time = "TODO"
             birds.append(bird)

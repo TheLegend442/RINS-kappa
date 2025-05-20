@@ -182,7 +182,7 @@ class BirdCatalogueServer(Node):
             bird_species = bird.species
             if "." in bird_species:
                 bird_species = bird_species.split(".")[1]
-            bird_species = bird_species.replace(" ", "_")
+            bird_species = bird_species.replace("_", " ")
             bird_species = bird_species.lower()
 
 
