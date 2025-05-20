@@ -23,6 +23,8 @@ import numpy as np
 import cv2
 from cv_bridge import CvBridge
 
+from bird_descriptions import bird_descriptions # Bird descriptions dictionary
+
 
 
 def generate_catalogue(birds, filename="../bird_catalogue.pdf"):
@@ -179,14 +181,21 @@ class BirdCatalogueServer(Node):
     def bird_catalogue_callback(self, request, response):
         self.get_logger().info('Received request for bird catalogue')
         for bird in request.birds:
+            bird_species = bird.species
+            if "." in bird_species:
+                bird_species = bird_species.split(".")[1]
+            bird_species = bird_species.replace(" ", "_")
+            bird_species = bird_species.lower()
+
+
             cv_image = self.bridge.imgmsg_to_cv2(bird.image, desired_encoding='rgb8')
             new_bird = Bird(
-                species=bird.species,
+                species=bird_species,
                 image=cv_image,
                 location=bird.location,
                 ring_color=bird.ring_color,
                 detection_time=bird.detection_time,
-                description="lalalalala" # TODO generate dictionary with descriptions
+                description=bird_descriptions[bird_species] # TODO generate dictionary with descriptions
             )
             self.bird_list.append(new_bird)
         self.get_logger().info(f'Added {len(request.birds)} birds to the catalogue')

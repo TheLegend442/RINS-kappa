@@ -35,3 +35,10 @@ Our RINS repository -> for all labs and our own robot :)
 #### Running the example
 <pre lang="markdown">ros2 run task_2s bird_catalogue_server.py</pre>
 <pre lang="markdown">ros2 run task_2s bird_client_example.py</pre>
+
+<h2>Task_2s - Dialogue</h2>
+
+#### Requirements
+<pre lang="markdown">sudo apt update
+sudo apt install libportaudio2 portaudio19-dev ffmpeg</pre>
+<pre lang="markdown">pip install sounddevice pynput openai-whisper speechrecognition vosk</pre>

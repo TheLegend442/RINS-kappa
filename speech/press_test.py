@@ -1,18 +1,56 @@
-import time
-import keyboard   # pip install keyboard
+from pynput import keyboard
+import sounddevice as sd
+import numpy as np
+from scipy.io.wavfile import write
+import whisper
+import threading
 
-print("→  Hold SPACE to record; press Esc to quit.")
+model = whisper.load_model("small")
 
-try:
-    while True:
-        keyboard.wait("space")          # blocks until Space pressed
-        print("Recording...")
-        # ---- your recording code here ----
-        while keyboard.is_pressed("space"):
-            time.sleep(0.01)            # keep looping while held
-        # ---- stop / process audio here ----
-        print("Stopped.")
-        if keyboard.is_pressed("esc"):
-            break
-except KeyboardInterrupt:
-    pass
+recording = False
+frames = []
+lock = threading.Lock()
+
+def audio_callback(indata, frames_count, time, status):
+    global recording
+    with lock:
+        if recording:
+            frames.append(indata.copy())
+
+def on_press(key):
+    global recording, frames
+
+    if key == keyboard.Key.space and not recording:
+        print("⏺️  Recording… hold Space")
+        with lock:
+            recording = True
+            frames = []
+
+def on_release(key):
+    global recording
+
+    if key == keyboard.Key.space and recording:
+        with lock:
+            recording = False
+        print("⏹️  Stopped recording, processing...")
+        # Save recording to file
+        audio = np.concatenate(frames, axis=0)
+        write("temp.wav", 16000, audio)
+        # Transcribe
+        result = model.transcribe("temp.wav", language="en")
+        print("📝 Transcription:", result["text"])
+
+    if key == keyboard.Key.esc:
+        # Stop listener
+        return False
+
+# Start audio input stream
+stream = sd.InputStream(samplerate=16000, channels=1, callback=audio_callback)
+stream.start()
+
+with keyboard.Listener(on_press=on_press, on_release=on_release) as listener:
+    listener.join()
+
+stream.stop()
+stream.close()
+print("🛑 Exiting...")
