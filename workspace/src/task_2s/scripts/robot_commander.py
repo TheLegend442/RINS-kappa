@@ -807,9 +807,9 @@ def get_location(marker):
     b = zgoraj[1] - k * zgoraj[0]
 
     if y > k*x + b:
-        return "EAST"
-    else:
         return "CENTER"
+    else:
+        return "EAST"
 
         
 def main(args=None):
