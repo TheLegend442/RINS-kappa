@@ -120,7 +120,7 @@ def generate_catalogue(birds, filename="../bird_catalogue.pdf"):
         info_text = (
             f"<b>Location:</b> {bird.location}<br/>"
             f"<b>Ring Color:</b> {bird.ring_color}<br/>"
-            f"<b>Detected:</b> {bird.detection_time}<br/>"
+            # f"<b>Detected:</b> {bird.detection_time}<br/>"
             f"<b>Description:</b> {bird.description}"
         )
         # styles['BodyText'].textColor = colors.HexColor("#082b07")
