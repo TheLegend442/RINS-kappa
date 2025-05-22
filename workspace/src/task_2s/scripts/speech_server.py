@@ -86,6 +86,7 @@ def get_bird_name(model, engine, birds):
             return text, bird
         else:
             engine.say("Sorry, I couldn't identify the bird. Please try again.")
+            print(f"Possible: {birds}")
             engine.runAndWait()
             time.sleep(4)
 

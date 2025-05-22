@@ -58,7 +58,7 @@ from custom_messages.srv import PosesInFrontOfFaces, PosesInFrontOfRings
 from custom_messages.msg import RingCoordinates
 from std_msgs.msg import String
 from visualization_msgs.msg import Marker
-from task_2s.srv import MarkerArrayService, GetImage, BirdCollection
+from task_2s.srv import MarkerArrayService, GetImage, BirdCollection, SpeechService
 from task_2s.msg import Bird
 
 
@@ -143,6 +143,8 @@ class RobotCommander(Node):
         self.get_bird_image_client = self.create_client(GetImage, '/bird_image')
 
         self.bird_catalogue_client = self.create_client(BirdCollection, 'bird_catalogue')
+
+        self.speech_client = self.create_client(SpeechService, 'speech_service')
         # ROS2 Action clients
         self.nav_to_pose_client = ActionClient(self, NavigateToPose, 'navigate_to_pose')
         self.spin_client = ActionClient(self, Spin, 'spin')
@@ -841,6 +843,10 @@ def main(args=None):
     current_pose = rc.world_to_pixel(rc.current_pose.pose.position.x, rc.current_pose.pose.position.y)
     current_pose = (int(current_pose[0]), int(current_pose[1]), rc.current_pose.pose.orientation.z)
 
+    rc.get_logger().info(f"Moving arm to starting position")
+    process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String","{data: 'manual:[0.,0.,0.6,1.0]'}"])
+    time.sleep(5) # Wait for the robot arm to reach the starting position
+    process.terminate()
 
 
     if not os.path.exists('src/task_2s/data/obhod.npy'):
@@ -852,11 +858,11 @@ def main(args=None):
         print("Obhod že obstaja")
         rc.clicked_points = np.load('src/task_2s/data/obhod.npy')
 
-    show_points = np.zeros_like(rc.map_image)
-    for (px, py, orientation) in rc.clicked_points:
-        world_x, world_y = rc.pixel_to_world(px, py)
-        cv2.circle(show_points, (int(px), int(py)), 3, (255), -1)
-    cv2.imshow("Map", show_points)
+    # show_points = np.zeros_like(rc.map_image)
+    # for (px, py, orientation) in rc.clicked_points:
+    #     world_x, world_y = rc.pixel_to_world(px, py)
+    #     cv2.circle(show_points, (int(px), int(py)), 3, (255), -1)
+    # cv2.imshow("Map", show_points)
  
 
     # POSTAVI MARKERJE ZA OBHOD
@@ -942,49 +948,51 @@ def main(args=None):
             birds.append(bird)
             rc.info(f"Bird species: {bird.species}")
             rc.info(f"Ring color: {bird.ring_color}")
+            rc.say_something(f"Detected {bird.species} with {bird.ring_color} ring")
 
     # generate bird catalogue
     request = BirdCollection.Request()
     request.birds = birds
     future = rc.bird_catalogue_client.call_async(request)
-    rclpy.spin_until_future_complete(rc, future)
-    response = future.result()
+    #rclpy.spin_until_future_complete(rc, future) NEKI KATALOG NE DELA
+    #response = future.result()                   NEKI KATALOG NE DELA
 
 
         
 
-    # Dobimo obroče
-    request_rings = PosesInFrontOfRings.Request()
-    future_rings = rc.ring_client.call_async(request_rings)
-    rclpy.spin_until_future_complete(rc, future_rings)
-    response_rings = future_rings.result()
-    rc.info(f"{len(response_rings.poses)} detected rings")
+    # # Dobimo obroče
+    # request_rings = PosesInFrontOfRings.Request()
+    # future_rings = rc.ring_client.call_async(request_rings)
+    # rclpy.spin_until_future_complete(rc, future_rings)
+    # response_rings = future_rings.result()
+    # rc.info(f"{len(response_rings.poses)} detected rings")
 
-    # Simulirano: dodajamo 'color' atribut (tu bi moral biti del dejanskega odziva)
-    rings_with_meta = [{"pose": pose, "type": "ring", "color": color} for pose, color in zip(response_rings.poses, response_rings.colors)]
+    # # Simulirano: dodajamo 'color' atribut (tu bi moral biti del dejanskega odziva)
+    # rings_with_meta = [{"pose": pose, "type": "ring", "color": color} for pose, color in zip(response_rings.poses, response_rings.colors)]
 
-    for i, item in enumerate(rings_with_meta):
-        pose = item["pose"]
-        marker = Marker()
-        marker.header.frame_id = "map"
-        marker.header.stamp = rc.get_clock().now().to_msg()
-        marker.ns = "spots_in_front_of_rings"
-        marker.id = i
-        marker.type = Marker.ARROW
-        marker.action = Marker.ADD
-        marker.pose = pose
-        marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
-        marker.scale.x = 0.4
-        marker.scale.y = 0.1
-        marker.scale.z = 0.1
-        marker.color.r = 0.0
-        marker.color.g = 1.0
-        marker.color.b = 0.0
-        marker.color.a = 1.0
-        marker.lifetime = Duration(sec=0)
-        rc.ring_spots_pub.publish(marker)
+    # for i, item in enumerate(rings_with_meta):
+    #     pose = item["pose"]
+    #     marker = Marker()
+    #     marker.header.frame_id = "map"
+    #     marker.header.stamp = rc.get_clock().now().to_msg()
+    #     marker.ns = "spots_in_front_of_rings"
+    #     marker.id = i
+    #     marker.type = Marker.ARROW
+    #     marker.action = Marker.ADD
+    #     marker.pose = pose
+    #     marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
+    #     marker.scale.x = 0.4
+    #     marker.scale.y = 0.1
+    #     marker.scale.z = 0.1
+    #     marker.color.r = 0.0
+    #     marker.color.g = 1.0
+    #     marker.color.b = 0.0
+    #     marker.color.a = 1.0
+    #     marker.lifetime = Duration(sec=0)
+    #     rc.ring_spots_pub.publish(marker)
 
     #Dobimo obraze
+    rc.info("Getting faces")
     request_faces = PosesInFrontOfFaces.Request()
     future_faces = rc.pose_client.call_async(request_faces)
     rclpy.spin_until_future_complete(rc, future_faces)
@@ -1044,15 +1052,24 @@ def main(args=None):
         if item["type"] == "face":
             # strings = ["Hello how are you?", "Nice to meet you!", "Hi there friend!"]
             # random_string = strings[randrange(len(strings))]
-            rc.say_something("Hello how are you?")
+            spol = item["gender"]
+            request = SpeechService.Request()
+            request.gender = spol
+            request.birds = birds
+            future = rc.speech_client.call_async(request)
+            rclpy.spin_until_future_complete(rc, future)
+            response = future.result()
             # rc.say_something("Hello how are you?")
         elif item["type"] == "ring":
             barva = item["color"]
             rc.say_something(f"This is {barva.lower()} ring.")
 
         time.sleep(2.0)
+    
     pojdi_na_nejcovo_tocko(rc)
-
+    process = subprocess.Popen(["ros2", "run", "task_2s", "bridge_follower.py"])
+    time.sleep(30)
+    process.terminate()
     rc.destroyNode()
 
     # And a simple example

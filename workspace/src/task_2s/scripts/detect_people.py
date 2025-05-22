@@ -9,7 +9,7 @@ from sensor_msgs_py import point_cloud2 as pc2
 
 from visualization_msgs.msg import Marker
 from custom_messages.msg import FaceCoordinates
-from deepface import DeepFace
+#from deepface import DeepFace
 
 from cv_bridge import CvBridge, CvBridgeError
 import cv2
@@ -86,8 +86,8 @@ class detect_faces(Node):
 
 				bbox = bbox[0]
 				small_image = cv_image[int(bbox[1]):int(bbox[3]), int(bbox[0]):int(bbox[2])]
-				result = DeepFace.analyze(small_image, actions=['gender'], enforce_detection=True)
-				#result = [{'gender': 'Man' if random.random() < 0.5 else	"Woman"}] # Sim
+				#result = DeepFace.analyze(small_image, actions=['gender'], enforce_detection=True)
+				result = [{'gender': 'Man' if random.random() < 0.5 else	"Woman"}] # Sim
 				spol = result[0]['gender']
 				if spol == 'Man':
 					self.detection_color = (255, 0, 0)
