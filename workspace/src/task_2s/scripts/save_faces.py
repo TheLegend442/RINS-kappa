@@ -12,7 +12,7 @@ import tf2_geometry_msgs  # Za uporabo transformacij med sporočili
 
 class Face():
 
-    def __init__(self, id, center_point, bottom_right_point=None, upper_left_point=None, current_time=None, robot_position=None, count=1):
+    def __init__(self, id, center_point, bottom_right_point=None, upper_left_point=None, current_time=None, robot_position=None, count=1, gender_count=0):
         self.id = id
         self.center_point = center_point
         self.bottom_right_point = bottom_right_point
@@ -20,6 +20,7 @@ class Face():
         self.current_time = current_time
         self.robot_position = robot_position
         self.count = count
+        self.gender_count = gender_count#positve for men, negative for women
 
 class PeopleMarkerSubscriber(Node):
     def __init__(self):
@@ -99,7 +100,9 @@ class PeopleMarkerSubscriber(Node):
             # self.get_logger().info(f"Face {face.id} detected at {center}, robot at {robot_position_when_detected}, pose in front of face: {pose}")
             # print(pose)
             response.poses.append(pose)
-
+            spol = "M" if face.gender_count > 0 else "Ž"
+            response.genders.append(spol)
+            
         return response
 
     def robot_position_callback(self, msg):
@@ -141,10 +144,13 @@ class PeopleMarkerSubscriber(Node):
                 return True
 
             return False
+        
+        men = 1 if msg.center.color.b > 0.9 else -1
 
         # Preveri, ali je obraz že bil zaznan
         for face_id, face in self.faces.items():
             count = face.count
+            gender_count = face.gender_count
             timestamp = face.current_time
             center_point = face.center_point
             bottom_right_point = face.bottom_right_point
@@ -164,11 +170,12 @@ class PeopleMarkerSubscriber(Node):
                     new_bottom_right_position = (count / (count + 1)) * bottom_right_point + (1 / (count + 1)) * transformed_bottom_right_position
                     new_upper_left_position = (count / (count + 1)) * upper_left_point + (1 / (count + 1)) * transformed_upper_left_position
 
-                    self.faces[face_id] = Face(face_id, new_position, new_bottom_right_position, new_upper_left_position, current_time, self.robot_position, count + 1)
+
+                    self.faces[face_id] = Face(face_id, new_position, new_bottom_right_position, new_upper_left_position, current_time, self.robot_position, count + 1, gender_count + men )
                     
                     if count + 1 >= self.detections_needed:
                         # **Objavimo nov marker**
-                        self.publish_face_marker(new_position, face_id)
+                        self.publish_face_marker(new_position, face_id, gender_count + men)
                     return True
 
         # **Če obraz ni bil zaznan, ga dodamo v slovar**
@@ -191,7 +198,7 @@ class PeopleMarkerSubscriber(Node):
         # copy new queue into marker queue
         self.marker_queue = new_queue.copy()
 
-    def publish_face_marker(self, position, face_id):
+    def publish_face_marker(self, position, face_id, gender):
         """Objavi marker za zaznan obraz."""
         marker = Marker()
         marker.header.frame_id = "map"
@@ -206,9 +213,18 @@ class PeopleMarkerSubscriber(Node):
         marker.scale.x = 0.2
         marker.scale.y = 0.2
         marker.scale.z = 0.2
-        marker.color.r = 1.0
-        marker.color.g = 0.0
-        marker.color.b = 0.0
+        if gender > 0:
+            marker.color.r = 0.0
+            marker.color.g = 0.0
+            marker.color.b = 1.0
+        elif gender < 0:
+            marker.color.r = 1.0
+            marker.color.g = 0.0
+            marker.color.b = 0.0
+        else:
+            marker.color.r = 0.0
+            marker.color.g = 1.0
+            marker.color.b = 1.0
         marker.color.a = 1.0  # Polna vidljivost
         marker.lifetime.sec = 0  # Ne izgine avtomatsko
 

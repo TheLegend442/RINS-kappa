@@ -9,9 +9,11 @@ from sensor_msgs_py import point_cloud2 as pc2
 
 from visualization_msgs.msg import Marker
 from custom_messages.msg import FaceCoordinates
+from deepface import DeepFace
 
 from cv_bridge import CvBridge, CvBridgeError
 import cv2
+import random
 import numpy as np
 
 from ultralytics import YOLO
@@ -26,10 +28,11 @@ class Point():
 
 class Face():
 
-	def __init__(self, center_point, bottom_right_point, upper_left_point):
+	def __init__(self, center_point, bottom_right_point, upper_left_point,spol):
 		self.center_point = center_point
 		self.bottom_right_point = bottom_right_point
 		self.upper_left_point = upper_left_point
+		self.spol = spol
 
 
 class detect_faces(Node):
@@ -73,7 +76,6 @@ class detect_faces(Node):
 
 			# run inference
 			res = self.model.predict(cv_image, imgsz=(256, 320), show=False, verbose=False, classes=[0], device=self.device)
-
 			# iterate over results
 			for x in res:
 				bbox = x.boxes.xyxy
@@ -83,7 +85,14 @@ class detect_faces(Node):
 				# self.get_logger().info(f"Person has been detected!")
 
 				bbox = bbox[0]
-
+				small_image = cv_image[int(bbox[1]):int(bbox[3]), int(bbox[0]):int(bbox[2])]
+				result = DeepFace.analyze(small_image, actions=['gender'], enforce_detection=True)
+				#result = [{'gender': 'Man' if random.random() < 0.5 else	"Woman"}] # Sim
+				spol = result[0]['gender']
+				if spol == 'Man':
+					self.detection_color = (255, 0, 0)
+				else:
+					self.detection_color = (0, 0, 255)
 				# draw rectangle
 				cv_image = cv2.rectangle(cv_image, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), self.detection_color, 3)
 
@@ -104,7 +113,7 @@ class detect_faces(Node):
 				cv_image = cv2.circle(cv_image, (bottom_right_x, bottom_right_y), 5, self.detection_color, -1)
 				cv_image = cv2.circle(cv_image, (upper_left_x, upper_left_y), 5, self.detection_color, -1)
 
-				self.faces.append(Face(center_point, bottom_right_point, upper_left_point))
+				self.faces.append(Face(center_point, bottom_right_point, upper_left_point,spol))
 
 			cv2.imshow("image", cv_image)
 			key = cv2.waitKey(1)
@@ -115,7 +124,7 @@ class detect_faces(Node):
 		except CvBridgeError as e:
 			print(e)
 
-	def create_marker(self, d, data):
+	def create_marker(self, d,color, data):
 		marker = Marker()
 
 		marker.header.frame_id = "/base_link"
@@ -131,9 +140,9 @@ class detect_faces(Node):
 		marker.scale.z = scale
 
 		# Set the color
-		marker.color.r = 1.0
-		marker.color.g = 0.0
-		marker.color.b = 0.0
+		marker.color.r = color[0] / 255.0
+		marker.color.g = color[1] / 255.0
+		marker.color.b = color[2] / 255.0
 		marker.color.a = 1.0
 
 		# Set the pose of the marker
@@ -158,23 +167,31 @@ class detect_faces(Node):
 		a = pc2.read_points_numpy(data, field_names= ("x", "y", "z"))
 		a = a.reshape((height,width,3))
 
+		# gender
+		spol = face.spol
+		if spol == 'Man':
+			color = (0, 0, 255)
+		else:
+			color = (255, 0, 0)
+		
+
 		# read center coordinates d = [x,y,z] v koordinatah sveta
 		x = face.center_point.x
 		y = face.center_point.y
 		d = a[y,x,:]
-		center_marker = self.create_marker(d, data)
+		center_marker = self.create_marker(d, color, data)
 
 		# read bottom right coordinates d = [x,y,z] v koordinatah sveta
 		x = face.bottom_right_point.x
 		y = face.bottom_right_point.y
 		d = a[y,x,:]
-		bottom_right_marker = self.create_marker(d, data)
-
+		bottom_right_marker = self.create_marker(d, color,  data)
+		
 		# read upper left coordinates d = [x,y,z] v koordinatah sveta
 		x = face.upper_left_point.x
 		y = face.upper_left_point.y
 		d = a[y,x,:]
-		upper_left_marker = self.create_marker(d, data)
+		upper_left_marker = self.create_marker(d, color, data)
 
 		face_coordinates.center = center_marker
 		face_coordinates.bottom_right = bottom_right_marker
@@ -199,7 +216,6 @@ class detect_faces(Node):
 
 def main():
 	print('Face detection node starting.')
-
 	rclpy.init(args=None)
 	node = detect_faces()
 	rclpy.spin(node)

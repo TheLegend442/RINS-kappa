@@ -22,6 +22,7 @@ from cv_bridge import CvBridge, CvBridgeError
 import cv2
 import numpy as np
 import time
+import subprocess
 
 
 qos_profile = QoSProfile(
@@ -35,9 +36,9 @@ class BridgeFollower(Node):
         super().__init__('bridge_follower')
 
         self.arm_pub = self.create_publisher(String, '/arm_command', qos_profile)
-        self.arm_pub.publish(String(data='manual:[0.,0.,0.4,2.19]'))
+        process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String","{data: 'manual:[0.,0.,0.4,2.19]'}"])
         time.sleep(3) # Wait for the robot arm to reach the starting position
-
+        process.terminate()
         self.bridge = CvBridge()
 
         self.depth_sub = self.create_subscription(Image, "/oakd/rgb/preview/depth", self.depth_callback, 1)
@@ -103,6 +104,8 @@ class BridgeFollower(Node):
             print(e)
 
         self.oakd_img = oakd_image
+
+        cv2.imshow("Live camera feed", oakd_image)
 
     def depth_callback(self,data):
 
