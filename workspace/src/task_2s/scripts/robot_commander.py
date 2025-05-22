@@ -690,7 +690,39 @@ class RobotCommander(Node):
         for i in range(len(clicked_points)):
             best_permutation.append(clicked_points[permutation[i]])
         return best_permutation
+    def find_valid_position_optimized(self, start_x, start_y):
+        """
+        Performs BFS starting from (start_x, start_y) to find the nearest cell
+        that is free space and at least `self.min_wall_distance_cells` away
+        from the nearest obstacle, using the precomputed distance map.
+        """
+        if not (0 <= start_x < self.map_width and 0 <= start_y < self.map_height):
+            self.get_logger().warn(f"Start position ({start_x}, {start_y}) is outside map bounds ({self.map_width}x{self.map_height}).")
+            return None
 
+        q = deque([(start_x, start_y)])
+        visited = set([(start_x, start_y)])
+
+        while q:
+            x, y = q.popleft()
+
+            # Check map bounds just in case (should be handled by neighbor check)
+            if not (0 <= x < self.map_width and 0 <= y < self.map_height):
+                continue
+
+            if self.distance_map[y, x] >= self.min_wall_distance_cells:
+                self.get_logger().info(f"Found valid cell ({x}, {y}) with distance {self.distance_map[y, x]:.2f} >= {self.min_wall_distance_cells}")
+                return x, y 
+
+            for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+                nx, ny = x + dx, y + dy
+
+                if (0 <= nx < self.map_width and 0 <= ny < self.map_height and (nx, ny) not in visited):
+                    visited.add((nx, ny))
+                    q.append((nx, ny))
+
+        self.get_logger().warn(f"BFS completed without finding a valid cell starting from ({start_x}, {start_y}) with min distance {self.min_wall_distance_cells}.")
+        return None
 
 def best_round(robot_position, all_targets):
     def trenutna_dolžina_poti(robot_position, all_targets):
@@ -713,9 +745,40 @@ def best_round(robot_position, all_targets):
         else:
             all_targets[k], all_targets[m] = all_targets[m], all_targets[k]
     return all_targets
+def find_valid_position_optimized(self, start_x, start_y):
+    """
+    Performs BFS starting from (start_x, start_y) to find the nearest cell
+    that is free space and at least `self.min_wall_distance_cells` away
+    from the nearest obstacle, using the precomputed distance map.
+    """
+    if not (0 <= start_x < self.map_width and 0 <= start_y < self.map_height):
+        self.get_logger().warn(f"Start position ({start_x}, {start_y}) is outside map bounds ({self.map_width}x{self.map_height}).")
+        return None
 
+    q = deque([(start_x, start_y)])
+    visited = set([(start_x, start_y)])
+
+    while q:
+        x, y = q.popleft()
+
+        # Check map bounds just in case (should be handled by neighbor check)
+        if not (0 <= x < self.map_width and 0 <= y < self.map_height):
+            continue
+
+        if self.distance_map[y, x] >= self.min_wall_distance_cells:
+            self.get_logger().info(f"Found valid cell ({x}, {y}) with distance {self.distance_map[y, x]:.2f} >= {self.min_wall_distance_cells}")
+            return x, y 
+
+        for dx, dy in [(0, 1), (0, -1), (1, 0), (-1, 0)]:
+            nx, ny = x + dx, y + dy
+
+            if (0 <= nx < self.map_width and 0 <= ny < self.map_height and (nx, ny) not in visited):
+                visited.add((nx, ny))
+                q.append((nx, ny))
+
+    self.get_logger().warn(f"BFS completed without finding a valid cell starting from ({start_x}, {start_y}) with min distance {self.min_wall_distance_cells}.")
+    return None
 def get_poses_in_front_of_birds(rc):
-    # match rings and birds
     request_rings = MarkerArrayService.Request()
     future_rings = rc.rings_client.call_async(request_rings)
     rclpy.spin_until_future_complete(rc, future_rings)
@@ -728,9 +791,7 @@ def get_poses_in_front_of_birds(rc):
 
     ring_bird_pairs = []
     for ring_marker, ring_color in zip(response_rings.marker_array.markers, response_rings.colors):
-        print(ring_color)
         for bird_marker, robot_position_marker in zip(response_birds.marker_array.markers, response_birds.robot_positions.markers):
-            # Get the distance between the two markers
             distance = math.sqrt((ring_marker.pose.position.x - bird_marker.pose.position.x) ** 2 +
                                  (ring_marker.pose.position.y - bird_marker.pose.position.y) ** 2)
             if distance < 0.5:
@@ -740,31 +801,58 @@ def get_poses_in_front_of_birds(rc):
     marker_array = MarkerArray()
     i = 0
     ring_colors = []
+
     for ring_marker, bird_marker, robot_position_marker, ring_color in ring_bird_pairs:
         ring_colors.append(ring_color)
-        # calculate normal to the vector between centers
+
         dx = bird_marker.pose.position.x - ring_marker.pose.position.x
         dy = bird_marker.pose.position.y - ring_marker.pose.position.y
-        normal = np.array([-dy, dx])
-        normal = normal / np.linalg.norm(normal)  # Normalize the vector
-        numpy_robot_position = np.array([robot_position_marker.pose.position.x, robot_position_marker.pose.position.y])
-        if np.dot(normal, numpy_robot_position - np.array([bird_marker.pose.position.x, bird_marker.pose.position.y])) < 0:
-            normal = -normal
 
-        # normala gleda ven iz ptiča, hočemo pa, da robot gleda v ptiča, se pravi -normala
-        orientation = np.arctan2(-normal[1], -normal[0])
+        bird_px, bird_py = rc.world_to_pixel(bird_marker.pose.position.x, bird_marker.pose.position.y)
 
-        # create arrow marker
-        pose_in_front_of_bird = Pose()
-        pose_in_front_of_bird.position.x = bird_marker.pose.position.x + normal[0] * 0.5
-        pose_in_front_of_bird.position.y = bird_marker.pose.position.y + normal[1] * 0.5
-        pose_in_front_of_bird.position.z = bird_marker.pose.position.z
-        print(orientation)
-        q = quaternion_from_euler(0, 0, orientation)
-        pose_in_front_of_bird.orientation.x = q[0]
-        pose_in_front_of_bird.orientation.y = q[1]
-        pose_in_front_of_bird.orientation.z = q[2]
-        pose_in_front_of_bird.orientation.w = q[3]
+        # Določimo pravokotno smer samo po x ali y
+        if abs(dx) > abs(dy):
+            # smer bolj horizontalna => pravokotno po y osi
+            candidates = [(0, 1), (0, -1)]
+        else:
+            # smer bolj vertikalna => pravokotno po x osi
+            candidates = [(1, 0), (-1, 0)]
+
+        found = False
+        for step in range(1, 30):  # do 30 pixlov v vsako stran
+            for offset_x, offset_y in candidates:
+                nx = int(bird_px + step * offset_x)
+                ny = int(bird_py + step * offset_y)
+
+                if not (0 <= nx < rc.map_width and 0 <= ny < rc.map_height):
+                    continue
+
+                if rc.distance_map[ny, nx] >= rc.min_wall_distance_cells:
+                    found = True
+                    break
+            if found:
+                break
+
+        if not found:
+            rc.get_logger().warn("Could not find valid position in front of bird.")
+            continue
+
+        # Svetovne koordinate
+        world_x, world_y = rc.pixel_to_world(nx, ny)
+
+        # Orientacija proti ptiču
+        angle_to_bird = math.atan2(bird_marker.pose.position.y - world_y,
+                                   bird_marker.pose.position.x - world_x)
+        q = quaternion_from_euler(0, 0, angle_to_bird)
+
+        pose = Pose()
+        pose.position.x = world_x
+        pose.position.y = world_y
+        pose.position.z = bird_marker.pose.position.z
+        pose.orientation.x = q[0]
+        pose.orientation.y = q[1]
+        pose.orientation.z = q[2]
+        pose.orientation.w = q[3]
 
         marker = Marker()
         marker.header.frame_id = "map"
@@ -773,7 +861,7 @@ def get_poses_in_front_of_birds(rc):
         marker.id = i
         marker.type = Marker.ARROW
         marker.action = Marker.ADD
-        marker.pose = pose_in_front_of_bird
+        marker.pose = pose
         marker.scale.x = 0.4
         marker.scale.y = 0.1
         marker.scale.z = 0.1
@@ -784,9 +872,9 @@ def get_poses_in_front_of_birds(rc):
         marker.lifetime = Duration(sec=0)
         marker_array.markers.append(marker)
         i += 1
+
     rc.birds_spots_pub.publish(marker_array)
     return marker_array, ring_colors
-
 
 
 def get_location(marker):
@@ -949,6 +1037,7 @@ def main(args=None):
             rc.info(f"Bird species: {bird.species}")
             rc.info(f"Ring color: {bird.ring_color}")
             rc.say_something(f"Detected {bird.species} with {bird.ring_color} ring")
+        time.sleep(1)
 
     # generate bird catalogue
     request = BirdCollection.Request()
