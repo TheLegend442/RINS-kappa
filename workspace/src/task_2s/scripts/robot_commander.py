@@ -814,36 +814,6 @@ def get_location(marker):
         return "EAST"
 
 
-
-
-
-
-def get_location(marker):
-    x = marker.pose.position.x
-    y = marker.pose.position.y
-    # zgoraj
-    # x: -4.4358811378479
-    # y: 3.3039188385009766
-    # spodaj
-    # x: 1.9387037754058838
-    # y: 3.322540283203125
-    # loči, na kateri strani premice je marker
-
-    zgoraj = np.array([-4.4358811378479, 3.3039188385009766])
-    spodaj = np.array([1.9387037754058838, 3.322540283203125])
-    # ločilna premica
-    # y = kx + b
-    k = (zgoraj[1] - spodaj[1]) / (zgoraj[0] - spodaj[0])
-    if zgoraj[0] < spodaj[0]:
-        k = -k
-    b = zgoraj[1] - k * zgoraj[0]
-    if y > k*x + b:
-        return "CENTER"
-    else:
-        return "EAST"
-
-
-
 def pojdi_na_nejcovo_tocko(rc):
     nejc_point = [90,168]
     world_x, world_y = rc.pixel_to_world(nejc_point[0], nejc_point[1])
