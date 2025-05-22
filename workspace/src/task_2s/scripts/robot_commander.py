@@ -754,11 +754,15 @@ def get_poses_in_front_of_birds(rc):
 
         # create arrow marker
         pose_in_front_of_bird = Pose()
-        pose_in_front_of_bird.position.x = bird_marker.pose.position.x + normal[0] * 0.3
-        pose_in_front_of_bird.position.y = bird_marker.pose.position.y + normal[1] * 0.3
+        pose_in_front_of_bird.position.x = bird_marker.pose.position.x + normal[0] * 0.5
+        pose_in_front_of_bird.position.y = bird_marker.pose.position.y + normal[1] * 0.5
         pose_in_front_of_bird.position.z = bird_marker.pose.position.z
-        pose_in_front_of_bird.orientation.z = orientation
-        pose_in_front_of_bird.orientation.w = 1.0
+        print(orientation)
+        q = quaternion_from_euler(0, 0, orientation)
+        pose_in_front_of_bird.orientation.x = q[0]
+        pose_in_front_of_bird.orientation.y = q[1]
+        pose_in_front_of_bird.orientation.z = q[2]
+        pose_in_front_of_bird.orientation.w = q[3]
 
         marker = Marker()
         marker.header.frame_id = "map"
@@ -768,7 +772,7 @@ def get_poses_in_front_of_birds(rc):
         marker.type = Marker.ARROW
         marker.action = Marker.ADD
         marker.pose = pose_in_front_of_bird
-        marker.scale.x = 0.7
+        marker.scale.x = 0.4
         marker.scale.y = 0.1
         marker.scale.z = 0.1
         marker.color.r = 0.0
@@ -780,6 +784,64 @@ def get_poses_in_front_of_birds(rc):
         i += 1
     rc.birds_spots_pub.publish(marker_array)
     return marker_array, ring_colors
+
+
+
+
+
+def get_location(marker):
+    x = marker.pose.position.x
+    y = marker.pose.position.y
+    # zgoraj
+    # x: -4.4358811378479
+    # y: 3.3039188385009766
+    # spodaj
+    # x: 1.9387037754058838
+    # y: 3.322540283203125
+    # loči, na kateri strani premice je marker
+
+    zgoraj = np.array([-4.4358811378479, 3.3039188385009766])
+    spodaj = np.array([1.9387037754058838, 3.322540283203125])
+    # ločilna premica
+    # y = kx + b
+    k = (zgoraj[1] - spodaj[1]) / (zgoraj[0] - spodaj[0])
+    if zgoraj[0] < spodaj[0]:
+        k = -k
+    b = zgoraj[1] - k * zgoraj[0]
+    if y > k*x + b:
+        return "CENTER"
+    else:
+        return "EAST"
+
+
+
+
+
+
+def get_location(marker):
+    x = marker.pose.position.x
+    y = marker.pose.position.y
+    # zgoraj
+    # x: -4.4358811378479
+    # y: 3.3039188385009766
+    # spodaj
+    # x: 1.9387037754058838
+    # y: 3.322540283203125
+    # loči, na kateri strani premice je marker
+
+    zgoraj = np.array([-4.4358811378479, 3.3039188385009766])
+    spodaj = np.array([1.9387037754058838, 3.322540283203125])
+    # ločilna premica
+    # y = kx + b
+    k = (zgoraj[1] - spodaj[1]) / (zgoraj[0] - spodaj[0])
+    if zgoraj[0] < spodaj[0]:
+        k = -k
+    b = zgoraj[1] - k * zgoraj[0]
+    if y > k*x + b:
+        return "CENTER"
+    else:
+        return "EAST"
+
 
 
 def pojdi_na_nejcovo_tocko(rc):
@@ -905,7 +967,7 @@ def main(args=None):
             bird = Bird()
             bird.species = response.species_name
             bird.image = response.image
-            bird.location = "TODO"
+            bird.location = get_location(marker)
             bird.ring_color = ring_color
             bird.detection_time = "TODO"
             birds.append(bird)
