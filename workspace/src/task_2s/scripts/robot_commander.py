@@ -821,205 +821,205 @@ def main(args=None):
         print("Obhod že obstaja")
         rc.clicked_points = np.load('src/task_2s/data/obhod.npy')
 
-    # show_points = np.zeros_like(rc.map_image)
-    # for (px, py, orientation) in rc.clicked_points:
-    #     world_x, world_y = rc.pixel_to_world(px, py)
-    #     cv2.circle(show_points, (int(px), int(py)), 3, (255), -1)
-    # cv2.imshow("Map", show_points)
+    show_points = np.zeros_like(rc.map_image)
+    for (px, py, orientation) in rc.clicked_points:
+        world_x, world_y = rc.pixel_to_world(px, py)
+        cv2.circle(show_points, (int(px), int(py)), 3, (255), -1)
+    cv2.imshow("Map", show_points)
  
 
-    ## POSTAVI MARKERJE ZA OBHOD
-    # for i, (px, py, orientation) in enumerate(rc.clicked_points):
-    #     world_x, world_y = rc.pixel_to_world(px, py)
-    #     pose = PoseStamped()
-    #     pose.header.frame_id = "map"
-    #     pose.header.stamp = rc.get_clock().now().to_msg()
-    #     pose.pose.position.x = world_x
-    #     pose.pose.position.y = world_y
-    #     pose.pose.orientation = rc.YawToQuaternion(orientation)
+    # POSTAVI MARKERJE ZA OBHOD
+    for i, (px, py, orientation) in enumerate(rc.clicked_points):
+        world_x, world_y = rc.pixel_to_world(px, py)
+        pose = PoseStamped()
+        pose.header.frame_id = "map"
+        pose.header.stamp = rc.get_clock().now().to_msg()
+        pose.pose.position.x = world_x
+        pose.pose.position.y = world_y
+        pose.pose.orientation = rc.YawToQuaternion(orientation)
 
-    #     marker = Marker()
-    #     marker.header.frame_id = "map"
-    #     marker.header.stamp = rc.get_clock().now().to_msg()
-    #     marker.ns = "spots_in_front_of_rings"
-    #     marker.id = i
-    #     marker.type = Marker.ARROW
-    #     marker.action = Marker.ADD
-    #     marker.pose = pose.pose
-    #     marker.scale.x = 0.4
-    #     marker.scale.y = 0.1
-    #     marker.scale.z = 0.1
-    #     marker.color.r = 0.0
-    #     marker.color.g = 1.0
-    #     marker.color.b = 0.0
-    #     marker.color.a = 1.0
-    #     marker.lifetime = Duration(sec=0)
-    #     rc.sweep_spots_pub.publish(marker)
-    #     time.sleep(0.1)
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = rc.get_clock().now().to_msg()
+        marker.ns = "spots_in_front_of_rings"
+        marker.id = i
+        marker.type = Marker.ARROW
+        marker.action = Marker.ADD
+        marker.pose = pose.pose
+        marker.scale.x = 0.4
+        marker.scale.y = 0.1
+        marker.scale.z = 0.1
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0
+        marker.lifetime = Duration(sec=0)
+        rc.sweep_spots_pub.publish(marker)
+        time.sleep(0.1)
     
 
-    # for i, (px, py, orientation) in enumerate(rc.clicked_points):
-    #     world_x, world_y = rc.pixel_to_world(px, py)
-    #     rc.get_logger().info(f"Točka {i+1}: ({world_x}, {world_y})")
+    for i, (px, py, orientation) in enumerate(rc.clicked_points):
+        world_x, world_y = rc.pixel_to_world(px, py)
+        rc.get_logger().info(f"Točka {i+1}: ({world_x}, {world_y})")
 
-    #     goal_msg = PoseStamped()
-    #     goal_msg.header.frame_id = "map"
-    #     goal_msg.header.stamp = rc.get_clock().now().to_msg()
-    #     goal_msg.pose.position.x = world_x
-    #     goal_msg.pose.position.y = world_y
-    #     goal_msg.pose.orientation = rc.YawToQuaternion(orientation)  
-    #     rc.info(f"Going to pose: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
-    #     rc.goToPose(goal_msg)
-    #     while not rc.isTaskComplete():
-    #         #rc.info("Waiting for the task to complete...")
-    #         time.sleep(0.1)
+        goal_msg = PoseStamped()
+        goal_msg.header.frame_id = "map"
+        goal_msg.header.stamp = rc.get_clock().now().to_msg()
+        goal_msg.pose.position.x = world_x
+        goal_msg.pose.position.y = world_y
+        goal_msg.pose.orientation = rc.YawToQuaternion(orientation)  
+        rc.info(f"Going to pose: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
+        rc.goToPose(goal_msg)
+        while not rc.isTaskComplete():
+            #rc.info("Waiting for the task to complete...")
+            time.sleep(0.1)
 
-    # for i  in range(10):
-    #     rc.info("KOČAL Z OBHODOM")
+    for i  in range(10):
+        rc.info("KOČAL Z OBHODOM")
 
-    # # obhod po detektiranih parih ptič-obroč
-    # marker_array, ring_colors = get_poses_in_front_of_birds(rc)
-    # birds = []
+    # obhod po detektiranih parih ptič-obroč
+    marker_array, ring_colors = get_poses_in_front_of_birds(rc)
+    birds = []
     
-    # for marker, ring_color in zip(marker_array.markers, ring_colors):
-    #     print(ring_color, type(ring_color))
-    #     pose = marker.pose
-    #     goal_msg = PoseStamped()
-    #     goal_msg.header.frame_id = "map"
-    #     goal_msg.header.stamp = rc.get_clock().now().to_msg()
-    #     goal_msg.pose = pose
-    #     rc.info(f"Going to pose: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
-    #     rc.goToPose(goal_msg)
-    #     while not rc.isTaskComplete():
-    #         #rc.info("Waiting for the task to complete...")
-    #         time.sleep(0.1)
+    for marker, ring_color in zip(marker_array.markers, ring_colors):
+        print(ring_color, type(ring_color))
+        pose = marker.pose
+        goal_msg = PoseStamped()
+        goal_msg.header.frame_id = "map"
+        goal_msg.header.stamp = rc.get_clock().now().to_msg()
+        goal_msg.pose = pose
+        rc.info(f"Going to pose: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
+        rc.goToPose(goal_msg)
+        while not rc.isTaskComplete():
+            #rc.info("Waiting for the task to complete...")
+            time.sleep(0.1)
         
-    #     # get a picture and classify bird
-    #     request = GetImage.Request()
-    #     future = rc.get_bird_image_client.call_async(request)
-    #     rclpy.spin_until_future_complete(rc, future)
-    #     response = future.result()
-    #     if response is None:
-    #         rc.error("Error while getting image")
-    #     else:
-    #         bird = Bird()
-    #         bird.species = response.species_name
-    #         bird.image = response.image
-    #         bird.location = "TODO"
-    #         bird.ring_color = ring_color
-    #         bird.detection_time = "TODO"
-    #         birds.append(bird)
-    #         rc.info(f"Bird species: {bird.species}")
-    #         rc.info(f"Ring color: {bird.ring_color}")
+        # get a picture and classify bird
+        request = GetImage.Request()
+        future = rc.get_bird_image_client.call_async(request)
+        rclpy.spin_until_future_complete(rc, future)
+        response = future.result()
+        if response is None:
+            rc.error("Error while getting image")
+        else:
+            bird = Bird()
+            bird.species = response.species_name
+            bird.image = response.image
+            bird.location = "TODO"
+            bird.ring_color = ring_color
+            bird.detection_time = "TODO"
+            birds.append(bird)
+            rc.info(f"Bird species: {bird.species}")
+            rc.info(f"Ring color: {bird.ring_color}")
 
-    # # generate bird catalogue
-    # request = BirdCollection.Request()
-    # request.birds = birds
-    # future = rc.bird_catalogue_client.call_async(request)
-    # rclpy.spin_until_future_complete(rc, future)
-    # response = future.result()
+    # generate bird catalogue
+    request = BirdCollection.Request()
+    request.birds = birds
+    future = rc.bird_catalogue_client.call_async(request)
+    rclpy.spin_until_future_complete(rc, future)
+    response = future.result()
 
 
         
 
-    # # Dobimo obroče
-    # request_rings = PosesInFrontOfRings.Request()
-    # future_rings = rc.ring_client.call_async(request_rings)
-    # rclpy.spin_until_future_complete(rc, future_rings)
-    # response_rings = future_rings.result()
-    # rc.info(f"{len(response_rings.poses)} detected rings")
+    # Dobimo obroče
+    request_rings = PosesInFrontOfRings.Request()
+    future_rings = rc.ring_client.call_async(request_rings)
+    rclpy.spin_until_future_complete(rc, future_rings)
+    response_rings = future_rings.result()
+    rc.info(f"{len(response_rings.poses)} detected rings")
 
-    # # Simulirano: dodajamo 'color' atribut (tu bi moral biti del dejanskega odziva)
-    # rings_with_meta = [{"pose": pose, "type": "ring", "color": color} for pose, color in zip(response_rings.poses, response_rings.colors)]
+    # Simulirano: dodajamo 'color' atribut (tu bi moral biti del dejanskega odziva)
+    rings_with_meta = [{"pose": pose, "type": "ring", "color": color} for pose, color in zip(response_rings.poses, response_rings.colors)]
 
-    # for i, item in enumerate(rings_with_meta):
-    #     pose = item["pose"]
-    #     marker = Marker()
-    #     marker.header.frame_id = "map"
-    #     marker.header.stamp = rc.get_clock().now().to_msg()
-    #     marker.ns = "spots_in_front_of_rings"
-    #     marker.id = i
-    #     marker.type = Marker.ARROW
-    #     marker.action = Marker.ADD
-    #     marker.pose = pose
-    #     marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
-    #     marker.scale.x = 0.4
-    #     marker.scale.y = 0.1
-    #     marker.scale.z = 0.1
-    #     marker.color.r = 0.0
-    #     marker.color.g = 1.0
-    #     marker.color.b = 0.0
-    #     marker.color.a = 1.0
-    #     marker.lifetime = Duration(sec=0)
-    #     rc.ring_spots_pub.publish(marker)
+    for i, item in enumerate(rings_with_meta):
+        pose = item["pose"]
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = rc.get_clock().now().to_msg()
+        marker.ns = "spots_in_front_of_rings"
+        marker.id = i
+        marker.type = Marker.ARROW
+        marker.action = Marker.ADD
+        marker.pose = pose
+        marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
+        marker.scale.x = 0.4
+        marker.scale.y = 0.1
+        marker.scale.z = 0.1
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0
+        marker.lifetime = Duration(sec=0)
+        rc.ring_spots_pub.publish(marker)
 
-    # Dobimo obraze
-    # request_faces = PosesInFrontOfFaces.Request()
-    # future_faces = rc.pose_client.call_async(request_faces)
-    # rclpy.spin_until_future_complete(rc, future_faces)
-    # response_faces = future_faces.result()
-    # rc.info(f"{len(response_faces.poses)} detected faces")
+    #Dobimo obraze
+    request_faces = PosesInFrontOfFaces.Request()
+    future_faces = rc.pose_client.call_async(request_faces)
+    rclpy.spin_until_future_complete(rc, future_faces)
+    response_faces = future_faces.result()
+    rc.info(f"{len(response_faces.poses)} detected faces")
 
-    # faces_with_meta = [{"pose": pose, "type": "face", "gender": gender} for pose,gender in zip(response_faces.poses, response_faces.genders)]
+    faces_with_meta = [{"pose": pose, "type": "face", "gender": gender} for pose,gender in zip(response_faces.poses, response_faces.genders)]
 
-    # for i, item in enumerate(faces_with_meta):
-    #     pose = item["pose"]
-    #     marker = Marker()
-    #     marker.header.frame_id = "map"
-    #     marker.header.stamp = rc.get_clock().now().to_msg()
-    #     marker.ns = "spots_in_front_of_faces"
-    #     marker.id = i
-    #     marker.type = Marker.ARROW
-    #     marker.action = Marker.ADD
-    #     marker.pose = pose
-    #     marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
-    #     gender = item["gender"]
-    #     if gender == "M":
-    #         marker.color.r = 0.0
-    #         marker.color.g = 0.0
-    #         marker.color.b = 1.0
-    #     else:
-    #         marker.color.r = 1.0
-    #         marker.color.g = 0.0
-    #         marker.color.b = 0.0
-    #     marker.color.a = 1.0
+    for i, item in enumerate(faces_with_meta):
+        pose = item["pose"]
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = rc.get_clock().now().to_msg()
+        marker.ns = "spots_in_front_of_faces"
+        marker.id = i
+        marker.type = Marker.ARROW
+        marker.action = Marker.ADD
+        marker.pose = pose
+        marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
+        gender = item["gender"]
+        if gender == "M":
+            marker.color.r = 0.0
+            marker.color.g = 0.0
+            marker.color.b = 1.0
+        else:
+            marker.color.r = 1.0
+            marker.color.g = 0.0
+            marker.color.b = 0.0
+        marker.color.a = 1.0
 
-    #     marker.scale.x = 0.4
-    #     marker.scale.y = 0.1
-    #     marker.scale.z = 0.1
-    #     marker.lifetime = Duration(sec=0)
-    #     rc.spots_in_front_of_faces_pub.publish(marker)
+        marker.scale.x = 0.4
+        marker.scale.y = 0.1
+        marker.scale.z = 0.1
+        marker.lifetime = Duration(sec=0)
+        rc.spots_in_front_of_faces_pub.publish(marker)
 
-    # # Združimo v eno zaporedje
-    # all_targets =  faces_with_meta #+ rings_with_meta
-    # all_targets = best_round((rc.current_pose.pose.position.x, rc.current_pose.pose.position.y), all_targets)
-    # rc.info(f"Going to {len(all_targets)} targets")
+    # Združimo v eno zaporedje
+    all_targets =  faces_with_meta #+ rings_with_meta
+    all_targets = best_round((rc.current_pose.pose.position.x, rc.current_pose.pose.position.y), all_targets)
+    rc.info(f"Going to {len(all_targets)} targets")
 
-    # for i, item in enumerate(all_targets):
-    #     pose = item["pose"]
-    #     goal_msg = PoseStamped()
-    #     goal_msg.header.frame_id = "map"
-    #     goal_msg.header.stamp = rc.get_clock().now().to_msg()
-    #     goal_msg.pose = pose
-    #     if math.isnan(goal_msg.pose.position.x) or math.isnan(goal_msg.pose.position.y):
-    #         rc.info("NaN detected, skipping this target")
-    #         continue
-    #     rc.info(f"Going to pose {i+1}: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
-    #     rc.goToPose(goal_msg)
+    for i, item in enumerate(all_targets):
+        pose = item["pose"]
+        goal_msg = PoseStamped()
+        goal_msg.header.frame_id = "map"
+        goal_msg.header.stamp = rc.get_clock().now().to_msg()
+        goal_msg.pose = pose
+        if math.isnan(goal_msg.pose.position.x) or math.isnan(goal_msg.pose.position.y):
+            rc.info("NaN detected, skipping this target")
+            continue
+        rc.info(f"Going to pose {i+1}: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
+        rc.goToPose(goal_msg)
 
-    #     while not rc.isTaskComplete():
-    #         time.sleep(0.1)
+        while not rc.isTaskComplete():
+            time.sleep(0.1)
 
-    #     if item["type"] == "face":
-    #         # strings = ["Hello how are you?", "Nice to meet you!", "Hi there friend!"]
-    #         # random_string = strings[randrange(len(strings))]
-    #         rc.say_something("Hello how are you?")
-    #         # rc.say_something("Hello how are you?")
-    #     elif item["type"] == "ring":
-    #         barva = item["color"]
-    #         rc.say_something(f"This is {barva.lower()} ring.")
+        if item["type"] == "face":
+            # strings = ["Hello how are you?", "Nice to meet you!", "Hi there friend!"]
+            # random_string = strings[randrange(len(strings))]
+            rc.say_something("Hello how are you?")
+            # rc.say_something("Hello how are you?")
+        elif item["type"] == "ring":
+            barva = item["color"]
+            rc.say_something(f"This is {barva.lower()} ring.")
 
-    #     time.sleep(2.0)
+        time.sleep(2.0)
     pojdi_na_nejcovo_tocko(rc)
 
     rc.destroyNode()
