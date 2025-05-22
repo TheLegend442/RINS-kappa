@@ -787,8 +787,6 @@ def get_poses_in_front_of_birds(rc):
 
 
 
-
-
 def get_location(marker):
     x = marker.pose.position.x
     y = marker.pose.position.y
@@ -812,6 +810,7 @@ def get_location(marker):
         return "CENTER"
     else:
         return "EAST"
+
 
 
 def pojdi_na_nejcovo_tocko(rc):
