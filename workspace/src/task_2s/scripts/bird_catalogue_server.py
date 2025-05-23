@@ -120,7 +120,7 @@ def generate_catalogue(birds, filename="../bird_catalogue.pdf"):
         info_text = (
             f"<b>Location:</b> {bird.location}<br/>"
             f"<b>Ring Color:</b> {bird.ring_color}<br/>"
-            f"<b>Detected:</b> {bird.detection_time}<br/>"
+            # f"<b>Detected:</b> {bird.detection_time}<br/>"
             f"<b>Description:</b> {bird.description}"
         )
         # styles['BodyText'].textColor = colors.HexColor("#082b07")
@@ -187,12 +187,12 @@ class BirdCatalogueServer(Node):
 
             cv_image = self.bridge.imgmsg_to_cv2(bird.image, desired_encoding='rgb8')
             new_bird = Bird(
-                species=bird_species,
+                species=bird_species if bird_species in bird_descriptions else "Unknown",
                 image=cv_image,
                 location=bird.location,
                 ring_color=bird.ring_color,
                 detection_time=bird.detection_time,
-                description=bird_descriptions[bird_species]
+                description=bird_descriptions[bird_species] if bird_species in bird_descriptions else "No description available"
             )
             self.bird_list.append(new_bird)
         self.get_logger().info(f'Added {len(request.birds)} birds to the catalogue')

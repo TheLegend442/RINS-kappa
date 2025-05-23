@@ -1,10 +1,17 @@
 # RINS-kappa
 Our RINS repository -> for all labs and our own robot :)
 
-#### Requaments:
 
-<pre lang="markdown">pip install scikit-image</pre>
-<pre lang="markdown">pip install deepface</pre>
+
+#### Requirements:
+
+<pre lang="markdown">pip install sounddevice pynput openai-whisper speechrecognition vosk deepface scikit-image</pre>
+
+<h2><i>Task_2s - all together</i></h2>
+
+<pre lang="markdown">ros2 launch task_2s task_2s_launch.py</pre>
+<pre lang="markdown">ros2 run task_2s robot_commander.py</pre>
+<pre lang="markdown">ros2 run task_2s speech_server.py</pre>
 
 <h2><i>Task_2s - 'bridge_follower.py'</i></h2> 
 <br>Python node that follows the bridge from starting point <i>'workspace/src/task_2s/data/bridge_start.npy'</i> to the red cross at the end of the world.
