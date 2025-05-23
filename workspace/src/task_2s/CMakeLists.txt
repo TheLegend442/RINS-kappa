@@ -52,6 +52,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/MarkerArrayService.srv"
   "srv/GetImage.srv"
   "srv/SpeechService.srv"
+  "srv/GoBridgeFollower.srv"
   DEPENDENCIES sensor_msgs visualization_msgs
 )
 

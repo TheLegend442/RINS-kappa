@@ -17,6 +17,7 @@ from sensor_msgs.msg import Image, PointCloud2
 from visualization_msgs.msg import Marker
 from custom_messages.msg import RingCoordinates
 from geometry_msgs.msg import Twist
+from task_2s.srv import GoBridgeFollower
 
 from cv_bridge import CvBridge, CvBridgeError
 import cv2
@@ -34,11 +35,10 @@ qos_profile = QoSProfile(
 class BridgeFollower(Node):
     def __init__(self):
         super().__init__('bridge_follower')
+        self.active_service = self.create_service(GoBridgeFollower, '/active_service', self.make_active_callback)
+        self.active = False
 
         self.arm_pub = self.create_publisher(String, '/arm_command', qos_profile)
-        process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String","{data: 'manual:[0.,0.,0.4,2.19]'}"])
-        time.sleep(3) # Wait for the robot arm to reach the starting position
-        process.terminate()
         self.bridge = CvBridge()
 
         self.depth_sub = self.create_subscription(Image, "/oakd/rgb/preview/depth", self.depth_callback, 1)
@@ -62,6 +62,14 @@ class BridgeFollower(Node):
         cv2.namedWindow("Directions", cv2.WINDOW_NORMAL)
         # cv2.namedWindow("Depth window", cv2.WINDOW_NORMAL)
 
+    def make_active_callback(self, request, response):
+        process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String","{data: 'manual:[0.,0.,0.4,2.19]'}"])
+        time.sleep(3) # Wait for the robot arm to reach the starting position
+        process.terminate()
+        self.active = True
+        response.success = True
+        self.get_logger().info("Bridge follower is active!")
+        return response
 
     def send_cmd_vel(self):
         self.amcl_pub.publish(self.cmd)
@@ -95,7 +103,7 @@ class BridgeFollower(Node):
 
     def oakd_image_callback(self,data):
 
-        if self.parked: # Check if depth image is present
+        if self.parked or not self.active: # Check if depth image is present
             return
         
         try:
@@ -109,7 +117,7 @@ class BridgeFollower(Node):
 
     def depth_callback(self,data):
 
-        if self.parked: # Check if depth image is present
+        if self.parked or not self.active: # Check if depth image is present
             return
         
         try:
@@ -131,7 +139,7 @@ class BridgeFollower(Node):
 
     def image_callback(self,data):
 
-        if self.parked: # Check if depth image is present
+        if self.parked or not self.active: # Check if depth image is present
             return
 
         if self.depth_img is None: # Check if depth image is present

@@ -72,5 +72,11 @@ def generate_launch_description():
             executable='bird_catalogue_server.py',
             name='bird_catalogue_server_node',
             output='screen'
+        ),
+        Node(
+            package='task_2s',
+            executable='bridge_follower.py',
+            name='bridge_follower_node',
+            output='screen'
         )
     ])

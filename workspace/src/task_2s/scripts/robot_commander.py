@@ -33,7 +33,7 @@ import random
 from tqdm import tqdm
 from sklearn.cluster import KMeans
 from geometry_msgs.msg import Quaternion, PoseStamped, PoseWithCovarianceStamped, Pose
-from task_2s.srv import MarkerArrayService, GetImage, BirdCollection
+from task_2s.srv import MarkerArrayService, GetImage, BirdCollection, GoBridgeFollower
 from task_2s.msg import Bird
 
 
@@ -145,6 +145,8 @@ class RobotCommander(Node):
         self.bird_catalogue_client = self.create_client(BirdCollection, 'bird_catalogue')
 
         self.speech_client = self.create_client(SpeechService, 'speech_service')
+
+        self.bridge_follower_client = self.create_client(GoBridgeFollower, 'active_service')
         # ROS2 Action clients
         self.nav_to_pose_client = ActionClient(self, NavigateToPose, 'navigate_to_pose')
         self.spin_client = ActionClient(self, Spin, 'spin')
@@ -1065,11 +1067,12 @@ def main(args=None):
             rc.say_something(f"This is {barva.lower()} ring.")
 
         time.sleep(2.0)
-    
+    rc.info("Going to Nejc's point")
     pojdi_na_nejcovo_tocko(rc)
-    process = subprocess.Popen(["ros2", "run", "task_2s", "bridge_follower.py"])
-    time.sleep(30)
-    process.terminate()
+    rc.info("Sending request to bridge follower")
+    request = GoBridgeFollower.Request()
+    request.active = True
+    future = rc.bridge_follower_client.call_async(request)
     rc.destroyNode()
 
     # And a simple example
