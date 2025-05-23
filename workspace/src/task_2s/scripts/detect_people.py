@@ -12,12 +12,16 @@ from custom_messages.msg import FaceCoordinates
 from deepface import DeepFace
 
 from cv_bridge import CvBridge, CvBridgeError
+import cvlib as cv
+from cvlib.object_detection import draw_bbox
 import cv2
 import random
 import numpy as np
 
 from ultralytics import YOLO
-
+# from transformers import AutoImageProcessor, AutoModelForImageClassification
+# import torch
+# from PIL import Image
 # from rclpy.parameter import Parameter
 # from rcl_interfaces.msg import SetParametersResult
 
@@ -61,6 +65,8 @@ class detect_faces(Node):
 
 		self.model = YOLO("yolov8n.pt")
 
+		# self.gender_processor = AutoImageProcessor.from_pretrained("nateraw/image-classify-gender")
+		# self.gender_model = AutoModelForImageClassification.from_pretrained("nateraw/image-classify-gender")
 		self.faces = []
 
 		self.get_logger().info(f"Node has been initialized! Will publish face markers to {marker_topic}.")
@@ -86,9 +92,8 @@ class detect_faces(Node):
 
 				bbox = bbox[0]
 				small_image = cv_image[int(bbox[1]):int(bbox[3]), int(bbox[0]):int(bbox[2])]
-				result = DeepFace.analyze(small_image, actions=['gender'], enforce_detection=True)
-				#result = [{'gender': 'Man' if random.random() < 0.5 else	"Woman"}] # Sim
-				spol = result[0]['gender']
+				label, confidence = cv.detect_gender(small_image)
+				spol = label[0] 
 				if spol == 'Man':
 					self.detection_color = (255, 0, 0)
 				else:

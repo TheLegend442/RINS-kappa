@@ -4,3 +4,4 @@
 # Response
 sensor_msgs/Image image
 string species_name
+bool isok

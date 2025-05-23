@@ -1,0 +1,2 @@
+from transformers import AutoImageProcessor, AutoModelForImageClassification
+import torch

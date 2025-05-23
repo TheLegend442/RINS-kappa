@@ -6,6 +6,7 @@ from rclpy.qos import qos_profile_sensor_data, QoSReliabilityPolicy
 from rclpy.qos import QoSDurabilityPolicy, QoSHistoryPolicy
 from rclpy.qos import QoSReliabilityPolicy, QoSProfile
 
+import rclpy.time
 from sensor_msgs.msg import Image, PointCloud2
 from sensor_msgs_py import point_cloud2 as pc2
 from std_msgs.msg import String
@@ -40,11 +41,12 @@ qos_profile = QoSProfile(
 		  depth=1)
 
 class Bird():
-	def __init__(self, center, detection_time, species, image):
+	def __init__(self, center, detection_time, species, image,image_procent=None):
 		self.center = center
 		self.detection_time = detection_time
 		self.species = species
 		self.image = image
+		self.image_procent = image_procent
 
 
 class Detect_birds(Node):
@@ -80,6 +82,8 @@ class Detect_birds(Node):
 		marker_topic = "/bird_marker"
 
 
+		self.last_bird_image = None
+		self.is_bird_image = False
 		self.bridge = CvBridge()
 		self.scan = None
 
@@ -104,10 +108,30 @@ class Detect_birds(Node):
 			return response
 
 		# Get the first bird's image
-		bird = self.birds[0]
+		bird = self.birds[-1]
 		response.image = self.bridge.cv2_to_imgmsg(bird.image, encoding="bgr8")
 		response.species_name = bird.species
+		current_time = self.get_clock().now()
+		print(f"Current time: {current_time}")
+		print(f"Bird detection time: {bird.detection_time}")
+		time_diff = (current_time - bird.detection_time).nanoseconds / 1e9  # Convert to seconds
+		self.get_logger().info(f"Bird detection difference: {time_diff} seconds")
 
+		if time_diff > 2.0:
+			self.get_logger().info("Bird detection time is too old.")
+			response.isok = False
+			return response
+		print(f"Bird procent : {bird.image_procent}")
+		if bird.image_procent < 0.03:
+			self.get_logger().info("Bird image is too small.")
+			response.isok = False
+			return response
+		if bird.image.shape[0]/bird.image.shape[1] > 2:
+			self.get_logger().info("Bird image is too tall.")
+			response.isok = False
+			return response
+		
+		response.isok = True
 		self.get_logger().info(f"Bird species: {bird.species}")
 		return response
 
@@ -120,10 +144,8 @@ class Detect_birds(Node):
 
 		# Run YOLO detection on the image
 		results = self.model(cv_image, verbose=False, device=self.device)
-		detection_time = data.header.stamp
-
+		detection_time  = self.get_clock().now()
 		self.birds = []  # clear previous detections
-
 
 		for r in results:
 			for box in r.boxes:
@@ -142,7 +164,7 @@ class Detect_birds(Node):
 					x_max = min(cv_image.shape[1], int(xyxy[2]) + border)
 					y_min = max(0, int(xyxy[1]) - border)
 					y_max = min(cv_image.shape[0], int(xyxy[3]) + border)
-
+					bird_proportion = (x_max - x_min) * (y_max - y_min) / (cv_image.shape[0] * cv_image.shape[1])
 					bird_image_cropped = cv_image[y_min:y_max, x_min:x_max]
 					image_copy = bird_image_cropped.copy()
 					bird_image = cv2.cvtColor(bird_image_cropped, cv2.COLOR_BGR2RGB)
@@ -158,7 +180,7 @@ class Detect_birds(Node):
 
 					cv2.imshow(f"cropped bird", bird_image_cropped)
 					# Save bird center pixel coordinates (we'll map to 3D in pointcloud_callback)
-					self.birds.append(Bird(center=(x_center, y_center), detection_time=detection_time, species=predicted_label, image=image_copy))
+					self.birds.append(Bird(center=(x_center, y_center), detection_time=detection_time, species=predicted_label, image=image_copy, image_procent=bird_proportion))
 
 					# Optionally, draw detection on image
 					cv2.rectangle(cv_image, (int(xyxy[0]), int(xyxy[1])), (int(xyxy[2]), int(xyxy[3])), self.detection_color, 2)

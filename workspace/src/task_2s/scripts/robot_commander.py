@@ -33,7 +33,7 @@ import random
 from tqdm import tqdm
 from sklearn.cluster import KMeans
 from geometry_msgs.msg import Quaternion, PoseStamped, PoseWithCovarianceStamped, Pose
-from task_2s.srv import MarkerArrayService, GetImage, BirdCollection, GoBridgeFollower
+from task_2s.srv import MarkerArrayService, GetImage, BirdCollection, GoBridgeFollower, SpeechService
 from task_2s.msg import Bird
 
 
@@ -58,7 +58,6 @@ from custom_messages.srv import PosesInFrontOfFaces, PosesInFrontOfRings
 from custom_messages.msg import RingCoordinates
 from std_msgs.msg import String
 from visualization_msgs.msg import Marker
-from task_2s.srv import MarkerArrayService, GetImage, BirdCollection, SpeechService
 from task_2s.msg import Bird
 
 
@@ -80,7 +79,7 @@ class RobotCommander(Node):
         super().__init__(node_name=node_name, namespace=namespace)
         
         #Parameters
-        self.min_wall_distance_m = 0.5
+        self.min_wall_distance_m = 0.4
         
         #Parameters
         
@@ -139,8 +138,6 @@ class RobotCommander(Node):
         self.sweep_spots_pub = self.create_publisher(Marker, '/sweep_spots', 10)
 
         self.birds_spots_pub = self.create_publisher(MarkerArray, '/spots_in_front_of_birds', 10)
-        
-        self.get_bird_image_client = self.create_client(GetImage, '/bird_image')
 
         self.bird_catalogue_client = self.create_client(BirdCollection, 'bird_catalogue')
 
@@ -717,7 +714,6 @@ def best_round(robot_position, all_targets):
     return all_targets
 
 def get_poses_in_front_of_birds(rc):
-    # match rings and birds
     request_rings = MarkerArrayService.Request()
     future_rings = rc.rings_client.call_async(request_rings)
     rclpy.spin_until_future_complete(rc, future_rings)
@@ -727,14 +723,14 @@ def get_poses_in_front_of_birds(rc):
     future_birds = rc.birds_client.call_async(request_birds)
     rclpy.spin_until_future_complete(rc, future_birds)
     response_birds = future_birds.result()
-
+ 
     ring_bird_pairs = []
     for ring_marker, ring_color in zip(response_rings.marker_array.markers, response_rings.colors):
-        print(ring_color)
         for bird_marker, robot_position_marker in zip(response_birds.marker_array.markers, response_birds.robot_positions.markers):
-            # Get the distance between the two markers
-            distance = math.sqrt((ring_marker.pose.position.x - bird_marker.pose.position.x) ** 2 +
-                                 (ring_marker.pose.position.y - bird_marker.pose.position.y) ** 2)
+            distance = math.sqrt(
+                (ring_marker.pose.position.x - bird_marker.pose.position.x) ** 2 +
+                (ring_marker.pose.position.y - bird_marker.pose.position.y) ** 2
+            )
             if distance < 0.5:
                 ring_bird_pairs.append((ring_marker, bird_marker, robot_position_marker, ring_color))
 
@@ -742,53 +738,96 @@ def get_poses_in_front_of_birds(rc):
     marker_array = MarkerArray()
     i = 0
     ring_colors = []
+    valid_poses = []
+
     for ring_marker, bird_marker, robot_position_marker, ring_color in ring_bird_pairs:
         ring_colors.append(ring_color)
-        # calculate normal to the vector between centers
-        dx = bird_marker.pose.position.x - ring_marker.pose.position.x
+        bird_px, bird_py = rc.world_to_pixel(bird_marker.pose.position.x, bird_marker.pose.position.y)
+
+        # sredina med ptičem in obročem
+        mid_x = (ring_marker.pose.position.x + bird_marker.pose.position.x) / 2
+        mid_y = (ring_marker.pose.position.y + bird_marker.pose.position.y) / 2
         dy = bird_marker.pose.position.y - ring_marker.pose.position.y
-        normal = np.array([-dy, dx])
-        normal = normal / np.linalg.norm(normal)  # Normalize the vector
-        numpy_robot_position = np.array([robot_position_marker.pose.position.x, robot_position_marker.pose.position.y])
-        if np.dot(normal, numpy_robot_position - np.array([bird_marker.pose.position.x, bird_marker.pose.position.y])) < 0:
-            normal = -normal
+        dx = bird_marker.pose.position.x - ring_marker.pose.position.x
+        if dy < dx:
+            directions = {
+                'x': [(1, 0), (-1, 0)],
+                'y': [(0, 1), (0, -1)]
+            }
+        else:
+            directions = {
+                'x': [(0, 1), (0, -1)],
+                'y': [(1, 0), (-1, 0)]
+            }
 
-        # normala gleda ven iz ptiča, hočemo pa, da robot gleda v ptiča, se pravi -normala
-        orientation = np.arctan2(-normal[1], -normal[0])
+        found_poses = []
 
-        # create arrow marker
-        pose_in_front_of_bird = Pose()
-        pose_in_front_of_bird.position.x = bird_marker.pose.position.x + normal[0] * 0.5
-        pose_in_front_of_bird.position.y = bird_marker.pose.position.y + normal[1] * 0.5
-        pose_in_front_of_bird.position.z = bird_marker.pose.position.z
-        print(orientation)
-        q = quaternion_from_euler(0, 0, orientation)
-        pose_in_front_of_bird.orientation.x = q[0]
-        pose_in_front_of_bird.orientation.y = q[1]
-        pose_in_front_of_bird.orientation.z = q[2]
-        pose_in_front_of_bird.orientation.w = q[3]
+        for axis, candidates in directions.items():
+            found = False
+            steps = [i * sign for i in range(1, 31) for sign in (1, -1)]
+            for step in steps:
+                for dx, dy in candidates:
+                    nx = int(bird_px + step * dx)
+                    ny = int(bird_py + step * dy)
 
-        marker = Marker()
-        marker.header.frame_id = "map"
-        marker.header.stamp = rc.get_clock().now().to_msg()
-        marker.ns = "spots_in_front_of_birds"
-        marker.id = i
-        marker.type = Marker.ARROW
-        marker.action = Marker.ADD
-        marker.pose = pose_in_front_of_bird
-        marker.scale.x = 0.4
-        marker.scale.y = 0.1
-        marker.scale.z = 0.1
-        marker.color.r = 0.0
-        marker.color.g = 1.0
-        marker.color.b = 0.0
-        marker.color.a = 1.0
-        marker.lifetime = Duration(sec=0)
-        marker_array.markers.append(marker)
-        i += 1
+                    if not (0 <= nx < rc.map_width and 0 <= ny < rc.map_height):
+                        continue
+
+                    if rc.distance_map[ny, nx] >= rc.min_wall_distance_cells:
+                        world_x, world_y = rc.pixel_to_world(nx, ny)
+
+                        # preveri razdaljo do sredine para (obroč-ptič)
+                        dist_to_mid = math.sqrt((world_x - mid_x) ** 2 + (world_y - mid_y) ** 2)
+                        if dist_to_mid < 0.5:
+                            continue  # preskoči, ker je preblizu
+
+                        angle_to_bird = math.atan2(
+                            bird_marker.pose.position.y - world_y,
+                            bird_marker.pose.position.x - world_x
+                        )
+                        q = quaternion_from_euler(0, 0, angle_to_bird)
+
+                        pose = Pose()
+                        pose.position.x = world_x
+                        pose.position.y = world_y
+                        pose.position.z = bird_marker.pose.position.z
+                        pose.orientation.x = q[0]
+                        pose.orientation.y = q[1]
+                        pose.orientation.z = q[2]
+                        pose.orientation.w = q[3]
+
+                        marker = Marker()
+                        marker.header.frame_id = "map"
+                        marker.header.stamp = rc.get_clock().now().to_msg()
+                        marker.ns = f"spots_in_front_of_birds_{axis}"
+                        marker.id = i
+                        marker.type = Marker.ARROW
+                        marker.action = Marker.ADD
+                        marker.pose = pose
+                        marker.scale.x = 0.4
+                        marker.scale.y = 0.1
+                        marker.scale.z = 0.1
+                        marker.color.r = 0.0
+                        marker.color.g = 1.0
+                        marker.color.b = 0.0
+                        marker.color.a = 1.0
+                        marker.lifetime = Duration(sec=0)
+
+                        marker_array.markers.append(marker)
+                        found_poses.append(pose)
+                        i += 1
+                        found = True
+                        break
+                if found:
+                    break
+
+            if not found:
+                rc.get_logger().warn(f"Could not find valid position in {axis}-direction for bird.")
+
+        valid_poses.append((ring_marker, bird_marker, found_poses))
+
     rc.birds_spots_pub.publish(marker_array)
-    return marker_array, ring_colors
-
+    return valid_poses, ring_colors
 
 
 def get_location(marker):
@@ -811,9 +850,9 @@ def get_location(marker):
         k = -k
     b = zgoraj[1] - k * zgoraj[0]
     if y > k*x + b:
-        return "CENTER"
-    else:
         return "EAST"
+    else:
+        return "CENTER"
 
 
 
@@ -917,42 +956,56 @@ def main(args=None):
         rc.info("KOČAL Z OBHODOM")
 
     # obhod po detektiranih parih ptič-obroč
-    marker_array, ring_colors = get_poses_in_front_of_birds(rc)
+    pair_poses, ring_colors = get_poses_in_front_of_birds(rc)
     birds = []
-    
-    for marker, ring_color in zip(marker_array.markers, ring_colors):
-        print(ring_color, type(ring_color))
-        pose = marker.pose
-        goal_msg = PoseStamped()
-        goal_msg.header.frame_id = "map"
-        goal_msg.header.stamp = rc.get_clock().now().to_msg()
-        goal_msg.pose = pose
-        rc.info(f"Going to pose: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
-        rc.goToPose(goal_msg)
-        while not rc.isTaskComplete():
-            #rc.info("Waiting for the task to complete...")
-            time.sleep(0.1)
-        
-        # get a picture and classify bird
-        request = GetImage.Request()
-        future = rc.get_bird_image_client.call_async(request)
-        rclpy.spin_until_future_complete(rc, future)
-        response = future.result()
-        if response is None:
-            rc.error("Error while getting image")
-        else:
-            bird = Bird()
-            bird.species = response.species_name
-            bird.image = response.image
-            bird.location = get_location(marker)
-            bird.ring_color = ring_color
-            bird.detection_time = "TODO"
-            birds.append(bird)
-            rc.info(f"Bird species: {bird.species}")
-            rc.info(f"Ring color: {bird.ring_color}")
-            rc.say_something(f"Detected {bird.species} with {bird.ring_color} ring")
 
-    # generate bird catalogue
+    for (ring_marker, bird_marker, poses), ring_color in zip(pair_poses, ring_colors):
+        rc.info(f"Checking poses for ring color: {ring_color}")
+        found_valid = False
+
+        for pose in poses:
+            goal_msg = PoseStamped()
+            goal_msg.header.frame_id = "map"
+            goal_msg.header.stamp = rc.get_clock().now().to_msg()
+            goal_msg.pose = pose
+
+            rc.info(f"Trying pose at: x={pose.position.x}, y={pose.position.y}")
+            rc.goToPose(goal_msg)
+
+            while not rc.isTaskComplete():
+                time.sleep(0.1)
+
+            # Poskusi pridobiti sliko in jo analizirati
+            request = GetImage.Request()
+            future = rc.get_bird_image_client.call_async(request)
+            rclpy.spin_until_future_complete(rc, future)
+            response = future.result()
+            time.sleep(2)
+            if response is None:
+                rc.error("Error while getting image")
+                continue
+
+            if response.isok:
+                bird = Bird()
+                bird.species = response.species_name
+                bird.image = response.image
+                bird.location = get_location(ring_marker)  # ali uporabi `get_location(marker)`
+                bird.ring_color = ring_color
+                bird.detection_time = "TODO"
+                birds.append(bird)
+
+                rc.info(f"Bird species: {bird.species}")
+                rc.info(f"Ring color: {bird.ring_color}")
+                rc.say_something(f"Detected {bird.species} with {bird.ring_color} ring")
+
+                found_valid = True
+                break  # pojdi na naslednji par
+            else:
+                rc.warn("Image received, but detection not successful.")
+
+        if not found_valid:
+            rc.warn(f"No successful detection for bird with ring color {ring_color}")
+        # generate bird catalogue
     request = BirdCollection.Request()
     request.birds = birds
     future = rc.bird_catalogue_client.call_async(request)
