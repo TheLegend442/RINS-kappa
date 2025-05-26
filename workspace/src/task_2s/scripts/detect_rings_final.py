@@ -95,8 +95,8 @@ class detect_rings(Node):
         self.rings = []
         self.flat_rings = []
 
-        self.min_threshold = 70
-        self.max_threshold = 160
+        self.min_threshold = 200
+        self.max_threshold = 400
 
         self.save_counter = 0
 
@@ -177,8 +177,8 @@ class detect_rings(Node):
         self.rings = []
         self.flat_rings = []
 
-        def ellipse_detection(image, canny_threshold1=50, canny_threshold2=150, min_major_axis=20, max_major_axis=100):
-            cut_image = image[self.min_threshold:self.max_threshold,0:320]
+        def ellipse_detection(image, canny_threshold1=50, canny_threshold2=150, min_major_axis=20, max_major_axis=200):
+            cut_image = image[self.min_threshold:self.max_threshold,:]
             image_blured = cv2.GaussianBlur(cut_image, (3, 3), 0)
             
             ellipses = []
