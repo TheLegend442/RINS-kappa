@@ -726,14 +726,15 @@ def get_poses_in_front_of_birds(rc):
     response_birds = future_birds.result()
  
     ring_bird_pairs = []
-    for ring_marker, ring_color in zip(response_rings.marker_array.markers, response_rings.colors):
-        for bird_marker, robot_position_marker in zip(response_birds.marker_array.markers, response_birds.robot_positions.markers):
+    for bird_marker, robot_position_marker in zip(response_birds.marker_array.markers, response_birds.robot_positions.markers):
+        for ring_marker, ring_color in zip(response_rings.marker_array.markers, response_rings.colors):
             distance = math.sqrt(
                 (ring_marker.pose.position.x - bird_marker.pose.position.x) ** 2 +
                 (ring_marker.pose.position.y - bird_marker.pose.position.y) ** 2
             )
             if distance < 0.5:
                 ring_bird_pairs.append((ring_marker, bird_marker, robot_position_marker, ring_color))
+                break
 
     print(len(ring_bird_pairs), "pairs of rings and birds found")
     marker_array = MarkerArray()
@@ -779,7 +780,7 @@ def get_poses_in_front_of_birds(rc):
 
                         # preveri razdaljo do sredine para (obroč-ptič)
                         dist_to_mid = math.sqrt((world_x - mid_x) ** 2 + (world_y - mid_y) ** 2)
-                        if dist_to_mid < 0.5:
+                        if dist_to_mid < 0.6:
                             continue  # preskoči, ker je preblizu
 
                         angle_to_bird = math.atan2(
@@ -872,7 +873,30 @@ def pojdi_na_nejcovo_tocko(rc):
     while not rc.isTaskComplete():
         #rc.info("Waiting for the task to complete...")
         time.sleep(0.1)
-        
+def publish_markers(rc,ns, poses,scale, color, shape):
+    """Publish markers for the given poses."""
+    marker_array = MarkerArray()
+    for i, pose in enumerate(poses):
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = rc.get_clock().now().to_msg()
+        marker.ns = ns
+        marker.id = i
+        marker.type = shape
+        marker.action = Marker.ADD
+        marker.pose = pose
+        marker.scale.x = scale[0]
+        marker.scale.y = scale[1]
+        marker.scale.z = scale[2]
+        marker.color.r = color[0]
+        marker.color.g = color[1]
+        marker.color.b = color[2]
+        marker.color.a = color[3]
+        marker.lifetime = Duration(sec=0)
+        rc.sweep_spots_pub.publish(marker)
+        time.sleep(0.1)  # Allow some time for the marker to be processed
+    time.sleep(0.1)
+
 def main(args=None):
     rclpy.init(args=args)
     rc = RobotCommander()
@@ -907,35 +931,19 @@ def main(args=None):
     # cv2.imshow("Map", show_points)
  
 
-    #POSTAVI MARKERJE ZA OBHOD
-    for i, (px, py, orientation) in enumerate(rc.clicked_points):
+    poses_za_obhod = []
+    for (px, py, orientation) in rc.clicked_points:
         world_x, world_y = rc.pixel_to_world(px, py)
-        pose = PoseStamped()
-        pose.header.frame_id = "map"
-        pose.header.stamp = rc.get_clock().now().to_msg()
-        pose.pose.position.x = world_x
-        pose.pose.position.y = world_y
-        pose.pose.orientation = rc.YawToQuaternion(orientation)
+        pose = Pose()
+        pose.position.x = world_x
+        pose.position.y = world_y
+        pose.position.z = 0.0
+        pose.orientation = rc.YawToQuaternion(orientation)
 
-        marker = Marker()
-        marker.header.frame_id = "map"
-        marker.header.stamp = rc.get_clock().now().to_msg()
-        marker.ns = "spots_in_front_of_rings"
-        marker.id = i
-        marker.type = Marker.ARROW
-        marker.action = Marker.ADD
-        marker.pose = pose.pose
-        marker.scale.x = 0.4
-        marker.scale.y = 0.1
-        marker.scale.z = 0.1
-        marker.color.r = 0.0
-        marker.color.g = 1.0
-        marker.color.b = 0.0
-        marker.color.a = 1.0
-        marker.lifetime = Duration(sec=0)
-        rc.sweep_spots_pub.publish(marker)
-        time.sleep(0.1)
+        poses_za_obhod.append(pose)
     
+    publish_markers(rc,"/sweep_spots", poses_za_obhod, scale=(0.4, 0.1, 0.1), color=(0.0, 1.0, 0.0, 1.0), shape=Marker.ARROW)
+    #POSTAVI MARKERJE ZA OBHOD
 
     for i, (px, py, orientation) in enumerate(rc.clicked_points):
         world_x, world_y = rc.pixel_to_world(px, py)
@@ -976,7 +984,6 @@ def main(args=None):
 
             while not rc.isTaskComplete():
                 time.sleep(0.1)
-
             # Poskusi pridobiti sliko in jo analizirati
             request = GetImage.Request()
             future = rc.get_bird_image_client.call_async(request)
@@ -1024,29 +1031,6 @@ def main(args=None):
     rc.info(f"{len(response_faces.poses)} detected faces")
 
     faces_with_meta = [{"pose": pose, "type": "face"} for pose,gender in zip(response_faces.poses, response_faces.genders)]
-
-    for i, item in enumerate(faces_with_meta):
-        pose = item["pose"]
-        marker = Marker()
-        marker.header.frame_id = "map"
-        marker.header.stamp = rc.get_clock().now().to_msg()
-        marker.ns = "spots_in_front_of_faces"
-        marker.id = i
-        marker.type = Marker.ARROW
-        marker.action = Marker.ADD
-        marker.pose = pose
-        marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
-        marker.color.r = 0.0
-        marker.color.g = 0.0
-        marker.color.b = 1.0
-        marker.color.a = 1.0
-
-        marker.scale.x = 0.4
-        marker.scale.y = 0.1
-        marker.scale.z = 0.1
-        marker.lifetime = Duration(sec=0)
-        rc.spots_in_front_of_faces_pub.publish(marker)
-        time.sleep(0.1)
 
     # Združimo v eno zaporedje
     all_targets =  faces_with_meta #+ rings_with_meta
