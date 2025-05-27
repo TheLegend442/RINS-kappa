@@ -9,8 +9,8 @@ Our RINS repository -> for all labs and our own robot :)
 
 <h2><i>Task_2s - all together</i></h2>
 
-<pre lang="markdown">ros2 launch task_2s task_2s_launch.py</pre>
 <pre lang="markdown">ros2 topic hz /oakd/rgb/preview/depth/points</pre>
+<pre lang="markdown">ros2 launch task_2s task_2s_launch.py</pre>
 <pre lang="markdown">ros2 run task_2s robot_commander.py</pre>
 <pre lang="markdown">ros2 run task_2s speech_server.py</pre>
 
