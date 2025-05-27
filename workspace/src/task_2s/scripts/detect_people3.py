@@ -20,8 +20,8 @@ from task_2s.srv import GetGenderService
 from ultralytics import YOLO
 from collections import deque
 
-from transformers import AutoImageProcessor, AutoModelForImageClassification
-import torch
+# from transformers import AutoImageProcessor, AutoModelForImageClassification
+# import torch
 # from PIL import Image
 # from rclpy.parameter import Parameter
 # from rcl_interfaces.msg import SetParametersResult
@@ -71,14 +71,13 @@ class detect_faces(Node):
 		self.gender_service = self.create_service(GetGenderService,"/get_gender_service", self.get_gender_callback)	
 
 		self.model = YOLO("yolov8n.pt")
-		self.faces = []
-		self.last_face = None
+		self.faces = deque(maxlen=5)
 
 		self.get_logger().info(f"Node has been initialized! Will publish face markers to {marker_topic}.")
 
-		model_name = "prithivMLmods/Realistic-Gender-Classification"
-		self.processor = AutoImageProcessor.from_pretrained(model_name, use_fast=True)
-		self.model_gender = AutoModelForImageClassification.from_pretrained(model_name)
+		# model_name = "prithivMLmods/Realistic-Gender-Classification"
+		# self.processor = AutoImageProcessor.from_pretrained(model_name, use_fast=True)
+		# self.model_gender = AutoModelForImageClassification.from_pretrained(model_name)
 
 	def get_gender_callback(self, request, response):
 		response = GetGenderService.Response()
@@ -87,7 +86,7 @@ class detect_faces(Node):
 			return response
 
 		# Get the first bird's image
-		face = self.last_face
+		face = self.faces[-1]
 		current_time = self.get_clock().now()
 		print(f"Current time: {current_time}")
 		print(f"Face detection time: {face.detection_time}")
@@ -99,11 +98,11 @@ class detect_faces(Node):
 			response.isok = False
 			return response
 		spol = self.predict_gender(face.image)
-		if(spol == "male portrait" or spol == "Man"):
+		if(spol == "male predict"):
 			response.gender = "M"
 		else:
 			response.gender = "F"
-		self.get_logger().info(f"Face species: {spol}")
+		self.get_logger().info(f"Face species: {face.spol}")
 		return response
 	
 	def predict_gender(self, image):
@@ -116,7 +115,6 @@ class detect_faces(Node):
 		return label
 	
 	def rgb_callback(self, data):
-		self.faces = []
 		try:
 			cv_image = self.bridge.imgmsg_to_cv2(data, "bgr8")
 			#self.get_logger().info(f"Received RGB image with size: {cv_image.shape[0]}x{cv_image.shape[1]}")
@@ -134,11 +132,11 @@ class detect_faces(Node):
 
 				bbox = bbox[0]
 				small_image = cv_image[int(bbox[1]):int(bbox[3]), int(bbox[0]):int(bbox[2])]
-				spol = "Female"
+				spol = "Man"
 				if spol == 'Man':
 					self.detection_color = (255, 0, 0)
 				else:
-					self.detection_color = (255, 0, 255)
+					self.detection_color = (0, 0, 255)
 				# draw rectangle
 				cv_image = cv2.rectangle(cv_image, (int(bbox[0]), int(bbox[1])), (int(bbox[2]), int(bbox[3])), self.detection_color, 3)
 
@@ -160,7 +158,7 @@ class detect_faces(Node):
 				cv_image = cv2.circle(cv_image, (upper_left_x, upper_left_y), 5, self.detection_color, -1)
 
 				self.faces.append(Face(center_point, bottom_right_point, upper_left_point,detection_time, spol, small_image))
-				self.last_face = self.faces[-1]
+
 			cv2.imshow("image", cv_image)
 			key = cv2.waitKey(1)
 			if key==27:
@@ -205,13 +203,13 @@ class detect_faces(Node):
 		height = data.height
 		width = data.width
 		point_step = data.point_step
-		row_step = data.row_step    
+		row_step = data.row_step	
 
 		face_coordinates = FaceCoordinates()
-
+		
 		# get 3-channel representation of the point cloud in numpy format
-		a = pc2.read_points_numpy(data, field_names=("x", "y", "z"))
-		a = a.reshape((height, width, 3))
+		a = pc2.read_points_numpy(data, field_names= ("x", "y", "z"))
+		a = a.reshape((height,width,3))
 
 		# gender
 		spol = face.spol
@@ -219,51 +217,46 @@ class detect_faces(Node):
 			color = (0, 0, 255)
 		else:
 			color = (255, 0, 0)
+		
 
-		# read center coordinates
+		# read center coordinates d = [x,y,z] v koordinatah sveta
 		x = face.center_point.x
 		y = face.center_point.y
-		center_point = a[y, x, :]
-		center_marker = self.create_marker(center_point, color, data)
+		d = a[y,x,:]
+		center_marker = self.create_marker(d, color, data)
 
-		# read bottom right coordinates
+		# read bottom right coordinates d = [x,y,z] v koordinatah sveta
 		x = face.bottom_right_point.x
 		y = face.bottom_right_point.y
-		bottom_right_point = a[y, x, :]
-		bottom_right_marker = self.create_marker(bottom_right_point, color, data)
-
-		# read upper left coordinates
+		d = a[y,x,:]
+		bottom_right_marker = self.create_marker(d, color,  data)
+		
+		# read upper left coordinates d = [x,y,z] v koordinatah sveta
 		x = face.upper_left_point.x
 		y = face.upper_left_point.y
-		upper_left_point = a[y, x, :]
-		upper_left_marker = self.create_marker(upper_left_point, color, data)
+		d = a[y,x,:]
+		upper_left_marker = self.create_marker(d, color, data)
 
-		# Pogoj: objavi samo, če so vsi markerji pod 0.5 m višine (Z koordinata)
-		if (
-			center_point[2] < 0.5 and
-			bottom_right_point[2] < 0.5 and
-			upper_left_point[2] < 0.5
-		):
-			face_coordinates.center = center_marker
-			face_coordinates.bottom_right = bottom_right_marker
-			face_coordinates.upper_left = upper_left_marker
-			return face_coordinates
-		else:
-			return None
+		face_coordinates.center = center_marker
+		face_coordinates.bottom_right = bottom_right_marker
+		face_coordinates.upper_left = upper_left_marker
+
+		return face_coordinates
 
 	def pointcloud_callback(self, data):
+
 		# get point cloud attributes
 		height = data.height
 		width = data.width
 		point_step = data.point_step
-		row_step = data.row_step
-		self.get_logger().info(f"Publishing face markers for {len(self.faces)} detected faces.")
-		# get 3-channel representation of the point cloud in numpy format
+		row_step = data.row_step		
+		self.get_logger().info(f"Point cloud received with height: {height}, width: {width}, point_step: {point_step}, row_step: {row_step}")
 		# iterate over face coordinates
 		for face in self.faces:
+
 			face_coordinates_msg = self.create_face_coordinates_message(face, data)
-			if face_coordinates_msg is not None:
-				self.marker_pub.publish(face_coordinates_msg)
+			#self.get_logger().info(f"Publishing face coordinates:")
+			self.marker_pub.publish(face_coordinates_msg)
 
 def main():
 	print('Face detection node starting.')

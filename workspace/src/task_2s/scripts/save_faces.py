@@ -49,8 +49,8 @@ class PeopleMarkerSubscriber(Node):
         self.robot_position = None  # Shranjena pozicija robota
         self.faces = {}  # Slovar {face_id: (position, timestamp, robot_position, count)}
         self.threshold = 0.7  # Razdalja za zaznavanje istega obraza
-        self.time_threshold = 0.2  # Sekunde preden obraz ponovno upoštevamo
-        self.detections_needed = 10
+        self.time_threshold = 0.02  # Sekunde preden obraz ponovno upoštevamo
+        self.detections_needed = 30
         self.face_counter = 0  # Števec za unikatne ID-je obrazov
 
         self.marker_queue = []  # Čakalna vrsta za markerje
@@ -123,7 +123,8 @@ class PeopleMarkerSubscriber(Node):
         current_time = time.time()
         stamp = msg.center.header.stamp
         try:
-            transform = self.tf_buffer.lookup_transform('map', 'base_link', stamp,timeout=rclpy.duration.Duration(seconds=0.1))
+            transform = self.tf_buffer.lookup_transform('map', 'base_link', stamp ,timeout=rclpy.duration.Duration(seconds=0.1))
+            
             transformed_pose = tf2_geometry_msgs.do_transform_pose(msg.center.pose, transform)
             transformed_position = np.array([transformed_pose.position.x, transformed_pose.position.y, transformed_pose.position.z])
             
@@ -146,8 +147,7 @@ class PeopleMarkerSubscriber(Node):
             return False
         
         men = 1 if msg.center.color.b > 0.9 else -1
-
-        # Preveri, ali je obraz že bil zaznan
+        self.get_logger().info(f"Zaznan obraz z barvo: {msg.center.color.r}, {msg.center.color.g}, {msg.center.color.b}")
         for face_id, face in self.faces.items():
             count = face.count
             gender_count = face.gender_count
@@ -170,7 +170,9 @@ class PeopleMarkerSubscriber(Node):
                     new_bottom_right_position = (count / (count + 1)) * bottom_right_point + (1 / (count + 1)) * transformed_bottom_right_position
                     new_upper_left_position = (count / (count + 1)) * upper_left_point + (1 / (count + 1)) * transformed_upper_left_position
 
-
+                    if not( center_point[2] > -0.1 and center_point[2] < 0):
+                        self.get_logger().info(f"Obraz {face_id} je bil zaznan na višini {center_point[2]}, ki ni prava.")
+                        return True
                     self.faces[face_id] = Face(face_id, new_position, new_bottom_right_position, new_upper_left_position, current_time, self.robot_position, count + 1, gender_count + men )
                     
                     if count + 1 >= self.detections_needed:
@@ -213,18 +215,9 @@ class PeopleMarkerSubscriber(Node):
         marker.scale.x = 0.2
         marker.scale.y = 0.2
         marker.scale.z = 0.2
-        if gender > 0:
-            marker.color.r = 0.0
-            marker.color.g = 0.0
-            marker.color.b = 1.0
-        elif gender < 0:
-            marker.color.r = 1.0
-            marker.color.g = 0.0
-            marker.color.b = 0.0
-        else:
-            marker.color.r = 0.0
-            marker.color.g = 1.0
-            marker.color.b = 1.0
+        marker.color.r = 1.0
+        marker.color.g = 0.0
+        marker.color.b = 1.0
         marker.color.a = 1.0  # Polna vidljivost
         marker.lifetime.sec = 0  # Ne izgine avtomatsko
 
@@ -244,6 +237,7 @@ class PeopleMarkerSubscriber(Node):
 def main(args=None):
     rclpy.init(args=args)
     node = PeopleMarkerSubscriber()
+    node.get_logger().info("People Marker Subscriber is running...")
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:

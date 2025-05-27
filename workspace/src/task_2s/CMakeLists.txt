@@ -44,6 +44,7 @@ install(PROGRAMS
   scripts/save_birds.py
   scripts/speech_server.py
   scripts/speech_client_example.py
+  scripts/detect_people3.py
   DESTINATION lib/${PROJECT_NAME})
 
 rosidl_generate_interfaces(${PROJECT_NAME}
@@ -53,6 +54,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   "srv/GetImage.srv"
   "srv/SpeechService.srv"
   "srv/GoBridgeFollower.srv"
+  "srv/GetGenderService.srv"
   DEPENDENCIES sensor_msgs visualization_msgs
 )
 

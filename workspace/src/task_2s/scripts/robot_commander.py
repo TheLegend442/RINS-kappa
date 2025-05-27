@@ -33,7 +33,7 @@ import random
 from tqdm import tqdm
 from sklearn.cluster import KMeans
 from geometry_msgs.msg import Quaternion, PoseStamped, PoseWithCovarianceStamped, Pose
-from task_2s.srv import MarkerArrayService, GetImage, BirdCollection, GoBridgeFollower, SpeechService
+from task_2s.srv import MarkerArrayService, GetImage, BirdCollection, GoBridgeFollower, SpeechService, GetGenderService
 from task_2s.msg import Bird
 
 
@@ -129,6 +129,7 @@ class RobotCommander(Node):
 
         self.birds_client = self.create_client(MarkerArrayService, 'get_birds')
         
+        self.gender_client = self.create_client(GetGenderService, "get_gender_service")
         # publisher for publishing markers of spots in front of faces
         self.spots_in_front_of_faces_pub = self.create_publisher(Marker, '/spots_in_front_of_faces', 10)
 
@@ -558,7 +559,7 @@ class RobotCommander(Node):
         prepareed_map = self.map_image.copy()
         points_cor = [(i, j) for i in range(skeleton.shape[0]) for j in range(skeleton.shape[1]) if skeleton[i][j]]
         points_cor = np.array(points_cor)
-        random_points = select_evenly_distributed(points_cor, 0.02)
+        random_points = select_evenly_distributed(points_cor, 0.03)
         random_points = list(random_points)
         random_points = [(int(point[0]), int(point[1])) for point in random_points]
         self.info(f"Found {len(random_points)} random points")
@@ -906,7 +907,7 @@ def main(args=None):
     # cv2.imshow("Map", show_points)
  
 
-    # POSTAVI MARKERJE ZA OBHOD
+    #POSTAVI MARKERJE ZA OBHOD
     for i, (px, py, orientation) in enumerate(rc.clicked_points):
         world_x, world_y = rc.pixel_to_world(px, py)
         pose = PoseStamped()
@@ -1009,42 +1010,42 @@ def main(args=None):
     request = BirdCollection.Request()
     request.birds = birds
     future = rc.bird_catalogue_client.call_async(request)
-    #rclpy.spin_until_future_complete(rc, future) NEKI KATALOG NE DELA
-    #response = future.result()                   NEKI KATALOG NE DELA
+    # rclpy.spin_until_future_complete(rc, future) NEKI KATALOG NE DELA
+    # response = future.result()                   NEKI KATALOG NE DELA
 
 
         
 
-    # # Dobimo obroče
-    # request_rings = PosesInFrontOfRings.Request()
-    # future_rings = rc.ring_client.call_async(request_rings)
-    # rclpy.spin_until_future_complete(rc, future_rings)
-    # response_rings = future_rings.result()
-    # rc.info(f"{len(response_rings.poses)} detected rings")
+    # Dobimo obroče
+    request_rings = PosesInFrontOfRings.Request()
+    future_rings = rc.ring_client.call_async(request_rings)
+    rclpy.spin_until_future_complete(rc, future_rings)
+    response_rings = future_rings.result()
+    rc.info(f"{len(response_rings.poses)} detected rings")
 
-    # # Simulirano: dodajamo 'color' atribut (tu bi moral biti del dejanskega odziva)
-    # rings_with_meta = [{"pose": pose, "type": "ring", "color": color} for pose, color in zip(response_rings.poses, response_rings.colors)]
+    # Simulirano: dodajamo 'color' atribut (tu bi moral biti del dejanskega odziva)
+    rings_with_meta = [{"pose": pose, "type": "ring", "color": color} for pose, color in zip(response_rings.poses, response_rings.colors)]
 
-    # for i, item in enumerate(rings_with_meta):
-    #     pose = item["pose"]
-    #     marker = Marker()
-    #     marker.header.frame_id = "map"
-    #     marker.header.stamp = rc.get_clock().now().to_msg()
-    #     marker.ns = "spots_in_front_of_rings"
-    #     marker.id = i
-    #     marker.type = Marker.ARROW
-    #     marker.action = Marker.ADD
-    #     marker.pose = pose
-    #     marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
-    #     marker.scale.x = 0.4
-    #     marker.scale.y = 0.1
-    #     marker.scale.z = 0.1
-    #     marker.color.r = 0.0
-    #     marker.color.g = 1.0
-    #     marker.color.b = 0.0
-    #     marker.color.a = 1.0
-    #     marker.lifetime = Duration(sec=0)
-    #     rc.ring_spots_pub.publish(marker)
+    for i, item in enumerate(rings_with_meta):
+        pose = item["pose"]
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = rc.get_clock().now().to_msg()
+        marker.ns = "spots_in_front_of_rings"
+        marker.id = i
+        marker.type = Marker.ARROW
+        marker.action = Marker.ADD
+        marker.pose = pose
+        marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
+        marker.scale.x = 0.4
+        marker.scale.y = 0.1
+        marker.scale.z = 0.1
+        marker.color.r = 0.0
+        marker.color.g = 1.0
+        marker.color.b = 0.0
+        marker.color.a = 1.0
+        marker.lifetime = Duration(sec=0)
+        rc.ring_spots_pub.publish(marker)
 
     #Dobimo obraze
     rc.info("Getting faces")
@@ -1054,7 +1055,7 @@ def main(args=None):
     response_faces = future_faces.result()
     rc.info(f"{len(response_faces.poses)} detected faces")
 
-    faces_with_meta = [{"pose": pose, "type": "face", "gender": gender} for pose,gender in zip(response_faces.poses, response_faces.genders)]
+    faces_with_meta = [{"pose": pose, "type": "face"} for pose,gender in zip(response_faces.poses, response_faces.genders)]
 
     for i, item in enumerate(faces_with_meta):
         pose = item["pose"]
@@ -1067,15 +1068,9 @@ def main(args=None):
         marker.action = Marker.ADD
         marker.pose = pose
         marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
-        gender = item["gender"]
-        if gender == "M":
-            marker.color.r = 0.0
-            marker.color.g = 0.0
-            marker.color.b = 1.0
-        else:
-            marker.color.r = 1.0
-            marker.color.g = 0.0
-            marker.color.b = 0.0
+        marker.color.r = 0.0
+        marker.color.g = 0.0
+        marker.color.b = 1.0
         marker.color.a = 1.0
 
         marker.scale.x = 0.4
@@ -1083,6 +1078,7 @@ def main(args=None):
         marker.scale.z = 0.1
         marker.lifetime = Duration(sec=0)
         rc.spots_in_front_of_faces_pub.publish(marker)
+        time.sleep(0.1)
 
     # Združimo v eno zaporedje
     all_targets =  faces_with_meta #+ rings_with_meta
@@ -1107,17 +1103,21 @@ def main(args=None):
         if item["type"] == "face":
             # strings = ["Hello how are you?", "Nice to meet you!", "Hi there friend!"]
             # random_string = strings[randrange(len(strings))]
-            spol = item["gender"]
-            request = SpeechService.Request()
-            request.gender = spol
-            request.birds = birds
-            future = rc.speech_client.call_async(request)
+            rc.info("Getting gender from a face")
+            request = GetGenderService.Request()
+            future = rc.gender_client.call_async(request)
             rclpy.spin_until_future_complete(rc, future)
             response = future.result()
+            spol = response.gender
+            rc.info(f"Detected gender: {spol}")
+
+            # request = SpeechService.Request()
+            # request.gender = spol
+            # request.birds = birds
+            # future = rc.speech_client.call_async(request)
+            # rclpy.spin_until_future_complete(rc, future)
+            # response = future.result()
             # rc.say_something("Hello how are you?")
-        elif item["type"] == "ring":
-            barva = item["color"]
-            rc.say_something(f"This is {barva.lower()} ring.")
 
         time.sleep(2.0)
     rc.info("Going to Nejc's point")

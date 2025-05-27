@@ -24,7 +24,7 @@ from launch.launch_description_sources import PythonLaunchDescriptionSource
 from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 
 from launch_ros.actions import Node, PushRosNamespace
-
+import os
 
 ARGUMENTS = [
     DeclareLaunchArgument(
@@ -54,9 +54,11 @@ def generate_launch_description():
 
     pkg_turtlebot4_viz = get_package_share_directory('turtlebot4_viz')
     pkg_turtlebot4_description = get_package_share_directory('turtlebot4_description')
-
+    pkg_task_2s = get_package_share_directory('task_2s')
     rviz2_config = PathJoinSubstitution(
-        [pkg_turtlebot4_viz, 'rviz', 'robot.rviz'])
+        [pkg_task_2s,"..","workspace","src","task_2s","data","rviz_setup.rviz"])
+    currnet_dir = os.getcwd()
+    rviz2_config_dir = os.path.join(currnet_dir,"src", "task_2s" ,'data', 'rviz_setup.rviz')
     description_launch = PathJoinSubstitution(
         [pkg_turtlebot4_description, 'launch', 'robot_description.launch.py']
     )
@@ -69,7 +71,7 @@ def generate_launch_description():
         Node(package='rviz2',
              executable='rviz2',
              name='rviz2',
-             arguments=['-d', rviz2_config],
+             arguments=['-d', rviz2_config_dir],
              parameters=[{'use_sim_time': LaunchConfiguration('use_sim_time')}],
              remappings=[
                 ('/tf', 'tf'),
