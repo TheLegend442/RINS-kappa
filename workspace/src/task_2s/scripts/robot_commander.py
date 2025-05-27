@@ -956,6 +956,7 @@ def main(args=None):
     for i  in range(10):
         rc.info("KOČAL Z OBHODOM")
 
+
     # obhod po detektiranih parih ptič-obroč
     pair_poses, ring_colors = get_poses_in_front_of_birds(rc)
     birds = []
@@ -1013,39 +1014,6 @@ def main(args=None):
     # rclpy.spin_until_future_complete(rc, future) NEKI KATALOG NE DELA
     # response = future.result()                   NEKI KATALOG NE DELA
 
-
-        
-
-    # Dobimo obroče
-    request_rings = PosesInFrontOfRings.Request()
-    future_rings = rc.ring_client.call_async(request_rings)
-    rclpy.spin_until_future_complete(rc, future_rings)
-    response_rings = future_rings.result()
-    rc.info(f"{len(response_rings.poses)} detected rings")
-
-    # Simulirano: dodajamo 'color' atribut (tu bi moral biti del dejanskega odziva)
-    rings_with_meta = [{"pose": pose, "type": "ring", "color": color} for pose, color in zip(response_rings.poses, response_rings.colors)]
-
-    for i, item in enumerate(rings_with_meta):
-        pose = item["pose"]
-        marker = Marker()
-        marker.header.frame_id = "map"
-        marker.header.stamp = rc.get_clock().now().to_msg()
-        marker.ns = "spots_in_front_of_rings"
-        marker.id = i
-        marker.type = Marker.ARROW
-        marker.action = Marker.ADD
-        marker.pose = pose
-        marker.pose.orientation = rc.YawToQuaternion(pose.orientation.z)
-        marker.scale.x = 0.4
-        marker.scale.y = 0.1
-        marker.scale.z = 0.1
-        marker.color.r = 0.0
-        marker.color.g = 1.0
-        marker.color.b = 0.0
-        marker.color.a = 1.0
-        marker.lifetime = Duration(sec=0)
-        rc.ring_spots_pub.publish(marker)
 
     #Dobimo obraze
     rc.info("Getting faces")
@@ -1111,13 +1079,12 @@ def main(args=None):
             spol = response.gender
             rc.info(f"Detected gender: {spol}")
 
-            # request = SpeechService.Request()
-            # request.gender = spol
-            # request.birds = birds
-            # future = rc.speech_client.call_async(request)
-            # rclpy.spin_until_future_complete(rc, future)
-            # response = future.result()
-            # rc.say_something("Hello how are you?")
+            request = SpeechService.Request()
+            request.gender = spol
+            request.birds = birds
+            future = rc.speech_client.call_async(request)
+            rclpy.spin_until_future_complete(rc, future)
+            response = future.result()
 
         time.sleep(2.0)
     rc.info("Going to Nejc's point")

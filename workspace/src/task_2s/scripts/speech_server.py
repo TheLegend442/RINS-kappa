@@ -16,6 +16,7 @@ import string
 from rapidfuzz import process, fuzz
 import pyttsx3
 import time
+import keyboard
 
 def snap_birds(text, birds, threshold=85):
     birds = list(birds.keys())
@@ -51,28 +52,83 @@ def snap_birds(text, birds, threshold=85):
     return best_best
 
 
-def get_user_input(model, duration, playback=False, birds=None, sample_rate=16000):
-    print("🎤 Recording... Speak now.")
-    audio = sd.rec(int(duration * sample_rate), samplerate=sample_rate, channels=1, dtype='int16')
-    sd.wait()
-    print("📦 Recording finished. Transcribing...")
-    if playback: sd.play(audio, sample_rate)
+def get_user_input(model, duration=10, playback=False, birds=None, sample_rate=44100):
+    import queue
+    import threading
+    import sounddevice as sd
+    import numpy as np
+    import tempfile
+    import scipy.io.wavfile as wav
+    import os
 
-    # Save to temporary WAV file
+    stop_signal = queue.Queue()
+    audio_queue = queue.Queue()
+
+    print("🔴 Pritisni ENTER za začetek snemanja...")
+    input()
+    print("🎤 Snemanje... Pritisni ENTER ponovno za ustavitev.")
+
+    def record_audio():
+        audio = []
+        try:
+            stream = sd.InputStream(samplerate=sample_rate, channels=1, dtype='int16')
+            with stream:
+                while stop_signal.empty():
+                    data, overflowed = stream.read(1024)
+                    if isinstance(data, np.ndarray):
+                        audio.append(data.copy())
+                    else:
+                        print("⚠️ Podatki niso numpy array!")
+            audio_queue.put(audio)
+        except Exception as e:
+            print(f"⚠️ Napaka pri snemanju: {e}")
+            audio_queue.put(None)
+
+    threading.Thread(target=record_audio, daemon=True).start()
+
+    input()  # drugi ENTER za ustavitev
+    stop_signal.put(True)
+
+    recorded = audio_queue.get()
+    if recorded is None:
+        print("❌ Snemanje ni uspelo.")
+        return "", None
+
+    try:
+        audio_data = np.concatenate(recorded, axis=0)
+        if audio_data.ndim > 1 and audio_data.shape[1] > 1:
+            audio_data = audio_data[:, 0]
+    except Exception as e:
+        print(f"⚠️ Napaka pri združevanju zvočnih podatkov: {e}")
+        return "", None
+
+    print("📦 Snemanje končano. Transkripcija v teku...")
+    if playback:
+        sd.play(audio_data, sample_rate)
+
     with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmpfile:
-        wav.write(tmpfile.name, sample_rate, audio)
+        wav.write(tmpfile.name, sample_rate, audio_data)
         tmp_path = tmpfile.name
 
-    # Transcribe using Whisper
-    result = model.transcribe(tmp_path)
-    if birds:
-        # Find the best matching bird name
-        bird_name = snap_birds(result['text'].lower(), birds, threshold=70)
+    try:
+        result = model.transcribe(tmp_path)
+    except Exception as e:
+        print(f"⚠️ Napaka pri Whisper transkripciji: {e}")
+        os.remove(tmp_path)
+        return "", None
 
-    # Clean up
     os.remove(tmp_path)
 
-    return result['text'], bird_name if birds else None
+    bird_name = None
+    if birds:
+        try:
+            bird_name = snap_birds(result['text'].lower(), birds, threshold=70)
+        except Exception as e:
+            print(f"⚠️ Napaka pri iskanju ptice: {e}")
+
+    return result['text'], bird_name
+
+
 
 def get_bird_name(model, engine, birds):
     bird_recongized = False
