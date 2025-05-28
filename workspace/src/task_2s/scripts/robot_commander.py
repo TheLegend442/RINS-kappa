@@ -79,7 +79,7 @@ class RobotCommander(Node):
         super().__init__(node_name=node_name, namespace=namespace)
         
         #Parameters
-        self.min_wall_distance_m = 0.4
+        self.min_wall_distance_m = 0.35
         
         #Parameters
         
@@ -931,38 +931,38 @@ def main(args=None):
     # cv2.imshow("Map", show_points)
  
 
-    poses_za_obhod = []
-    for (px, py, orientation) in rc.clicked_points:
-        world_x, world_y = rc.pixel_to_world(px, py)
-        pose = Pose()
-        pose.position.x = world_x
-        pose.position.y = world_y
-        pose.position.z = 0.0
-        pose.orientation = rc.YawToQuaternion(orientation)
+    # poses_za_obhod = []
+    # for (px, py, orientation) in rc.clicked_points:
+    #     world_x, world_y = rc.pixel_to_world(px, py)
+    #     pose = Pose()
+    #     pose.position.x = world_x
+    #     pose.position.y = world_y
+    #     pose.position.z = 0.0
+    #     pose.orientation = rc.YawToQuaternion(orientation)
 
-        poses_za_obhod.append(pose)
+    #     poses_za_obhod.append(pose)
     
-    publish_markers(rc,"/sweep_spots", poses_za_obhod, scale=(0.4, 0.1, 0.1), color=(0.0, 1.0, 0.0, 1.0), shape=Marker.ARROW)
-    #POSTAVI MARKERJE ZA OBHOD
+    # publish_markers(rc,"/sweep_spots", poses_za_obhod, scale=(0.4, 0.1, 0.1), color=(0.0, 1.0, 0.0, 1.0), shape=Marker.ARROW)
+    # #POSTAVI MARKERJE ZA OBHOD
 
-    for i, (px, py, orientation) in enumerate(rc.clicked_points):
-        world_x, world_y = rc.pixel_to_world(px, py)
-        rc.get_logger().info(f"Točka {i+1}: ({world_x}, {world_y})")
+    # for i, (px, py, orientation) in enumerate(rc.clicked_points):
+    #     world_x, world_y = rc.pixel_to_world(px, py)
+    #     rc.get_logger().info(f"Točka {i+1}: ({world_x}, {world_y})")
 
-        goal_msg = PoseStamped()
-        goal_msg.header.frame_id = "map"
-        goal_msg.header.stamp = rc.get_clock().now().to_msg()
-        goal_msg.pose.position.x = world_x
-        goal_msg.pose.position.y = world_y
-        goal_msg.pose.orientation = rc.YawToQuaternion(orientation)  
-        rc.info(f"Going to pose: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
-        rc.goToPose(goal_msg)
-        while not rc.isTaskComplete():
-            #rc.info("Waiting for the task to complete...")
-            time.sleep(0.1)
+    #     goal_msg = PoseStamped()
+    #     goal_msg.header.frame_id = "map"
+    #     goal_msg.header.stamp = rc.get_clock().now().to_msg()
+    #     goal_msg.pose.position.x = world_x
+    #     goal_msg.pose.position.y = world_y
+    #     goal_msg.pose.orientation = rc.YawToQuaternion(orientation)  
+    #     rc.info(f"Going to pose: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
+    #     rc.goToPose(goal_msg)
+    #     while not rc.isTaskComplete():
+    #         #rc.info("Waiting for the task to complete...")
+    #         time.sleep(0.1)
 
-    for i  in range(10):
-        rc.info("KOČAL Z OBHODOM")
+    # for i  in range(10):
+    #     rc.info("KOČAL Z OBHODOM")
 
 
     # obhod po detektiranih parih ptič-obroč
