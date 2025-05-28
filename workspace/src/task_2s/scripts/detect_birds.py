@@ -185,7 +185,7 @@ class Detect_birds(Node):
 					bird_image_cropped = cv_image[y_min:y_max, x_min:x_max]
 					image_copy = bird_image_cropped.copy()
 
-					cv2.imshow(f"cropped bird", bird_image_cropped)
+					# cv2.imshow(f"cropped bird", bird_image_cropped)
 					# Save bird center pixel coordinates (we'll map to 3D in pointcloud_callback)
 					self.birds.append(Bird(center=(x_center, y_center), detection_time=detection_time, image=image_copy, image_procent=bird_proportion))
 

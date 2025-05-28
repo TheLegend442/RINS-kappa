@@ -107,10 +107,10 @@ class detect_rings(Node):
         cv2.namedWindow("Detected rings", cv2.WINDOW_NORMAL)
         # cv2.namedWindow("Gray Image", cv2.WINDOW_NORMAL)
         # cv2.namedWindow("Depth window", cv2.WINDOW_NORMAL)
-        cv2.namedWindow("Live camera feed", cv2.WINDOW_NORMAL)
+        # cv2.namedWindow("Live camera feed", cv2.WINDOW_NORMAL)
         # cv2.namedWindow("Ring depth", cv2.WINDOW_NORMAL)
-        cv2.namedWindow("Edges", cv2.WINDOW_NORMAL)
-        cv2.namedWindow("Detected ellipses", cv2.WINDOW_NORMAL)
+        # cv2.namedWindow("Edges", cv2.WINDOW_NORMAL)
+        # cv2.namedWindow("Detected ellipses", cv2.WINDOW_NORMAL)
         cv2.namedWindow("Ring mask", cv2.WINDOW_NORMAL)
         cv2.resizeWindow("Ring mask", 400, 400)
 
@@ -173,8 +173,8 @@ class detect_rings(Node):
             cv2.line(cv_dashed, (x1, y1), (x2, y2), (0, 0, 0), 1)
             cv2.line(cv_dashed, (x1, y1+self.max_threshold-self.min_threshold), (x2, y2+self.max_threshold-self.min_threshold), (0, 0, 0), 1)
 
-        cv2.imshow("Live camera feed", cv_dashed)
-        cv2.waitKey(1)
+        # cv2.imshow("Live camera feed", cv_dashed)
+        # cv2.waitKey(1)
 
 
         ## ____ELLIPSE DETECTION____
@@ -265,7 +265,7 @@ class detect_rings(Node):
                     continue  # Ignore invalid depth values
 
                 # Check if the depth is within a certain range - detection of flat objects
-                if (depth1 > 0.01 and depth1 < 10) or (depth2 > 0.01 and depth2 < 10):
+                if (depth1 > 0.01 and depth1 < 3) or (depth2 > 0.01 and depth2 < 3):
                     self.flat_rings.append(Ring(le,se)) # First large, then small ellipse
                     continue
 
@@ -334,8 +334,8 @@ class detect_rings(Node):
 
         ## ____VIZUALIZATION (edges)____
 
-        cv2.imshow("Edges", edges)
-        cv2.waitKey(1)
+        # cv2.imshow("Edges", edges)
+        # cv2.waitKey(1)
 
 
         ## ____VIZUALIZATION (detected ellipses)____
@@ -343,8 +343,8 @@ class detect_rings(Node):
         cv_elps = cv_image.copy()
         for e in elps:
             cv2.ellipse(cv_elps, e, (255, 0, 0), 2)
-        cv2.imshow("Detected ellipses", cv_elps)
-        cv2.waitKey(1)
+        # cv2.imshow("Detected ellipses", cv_elps)
+        # cv2.waitKey(1)
 
 
         ## ____VIZUALIZATION (detected rings)____
@@ -414,6 +414,12 @@ class detect_rings(Node):
 
             cv2.imshow("Ring mask", resized_crop)
             cv2.waitKey(1)
+
+
+        if len(self.rings) > 0:
+            self.get_logger().info(f"Detected {len(self.rings)} rings and {len(self.flat_rings)} flat rings.")
+        else:
+            self.get_logger().info("No rings detected.")
         
 
     def create_marker(self, d, data):
