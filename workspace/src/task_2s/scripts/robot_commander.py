@@ -910,7 +910,7 @@ def main(args=None):
     current_pose = (int(current_pose[0]), int(current_pose[1]), rc.current_pose.pose.orientation.z)
 
     rc.get_logger().info(f"Moving arm to starting position")
-    process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String","{data: 'manual:[0.,0.,0.6,1.0]'}"])
+    process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String","{data: 'manual:[0.,0.,0.5,1.0]'}"])
     time.sleep(5) # Wait for the robot arm to reach the starting position
     process.terminate()
 
@@ -962,7 +962,7 @@ def main(args=None):
             time.sleep(0.1)
 
     for i  in range(10):
-        rc.info("KOČAL Z OBHODOM")
+        rc.info("KONČAL Z OBHODOM")
 
 
     # obhod po detektiranih parih ptič-obroč

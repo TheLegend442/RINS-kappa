@@ -76,7 +76,7 @@ class detect_rings(Node):
         self.detection_color = (255,0,0) # blue
 
         self.arm_pub = self.create_publisher(String, '/arm_command', qos_profile)
-        self.arm_pub.publish(String(data='manual:[0.,0.,0.6,1.0]'))
+        self.arm_pub.publish(String(data='manual:[0.,0.,0.5,1.0]'))
         
         self.device = self.get_parameter('device').get_parameter_value().string_value
 
@@ -96,7 +96,7 @@ class detect_rings(Node):
         self.flat_rings = []
 
         self.min_threshold = 70
-        self.max_threshold = 160
+        self.max_threshold = 200
 
         self.save_counter = 0
 
@@ -123,6 +123,9 @@ class detect_rings(Node):
         except CvBridgeError as e:
             print(e)
 
+        # resize depth image to 320x240
+        #depth_image = cv2.resize(depth_image, (320, 240), interpolation=cv2.INTER_LINEAR)
+
         depth_image[depth_image==np.inf] = 0
         self.depth_img = depth_image
 
@@ -148,6 +151,9 @@ class detect_rings(Node):
         except CvBridgeError as e:
             print(e)
         
+        # resize image to 320*240
+        #cv_image = cv2.resize(cv_image, (320, 240), interpolation=cv2.INTER_LINEAR)
+
         ## ____VIZUALIZATION (dashed line at y=90)____
 
         cv_dashed = cv_image.copy()
@@ -177,7 +183,7 @@ class detect_rings(Node):
         self.rings = []
         self.flat_rings = []
 
-        def ellipse_detection(image, canny_threshold1=50, canny_threshold2=150, min_major_axis=20, max_major_axis=100):
+        def ellipse_detection(image, canny_threshold1=50, canny_threshold2=150, min_major_axis=6, max_major_axis=100):
             cut_image = image[self.min_threshold:self.max_threshold,:]
             image_blured = cv2.GaussianBlur(cut_image, (3, 3), 0)
             

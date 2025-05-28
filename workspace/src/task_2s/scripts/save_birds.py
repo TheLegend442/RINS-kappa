@@ -148,9 +148,14 @@ class BirdMarkerSubscriber(Node):
                         self.publish_bird_marker(new_position, bird_id)
                     return True
 
+        # check if transformed_position contains nan
+        if np.isnan(transformed_position).any():
+            return False
+
         # **Če obraz ni bil zaznan, ga dodamo v slovar**
         self.bird_counter += 1
         self.get_logger().info(f"Zaznan nov ptič z ID-jem {self.bird_counter}.")
+        print(transformed_position)
         #transformed_bottom_right_position = None; transformed_upper_left_position = None
         self.birds[self.bird_counter] = Bird(self.bird_counter, transformed_position, self.robot_position, count=1)
         # self.publish_face_marker(transformed_position, self.bird_counter)

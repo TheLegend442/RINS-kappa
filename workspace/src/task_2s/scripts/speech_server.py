@@ -136,7 +136,7 @@ def get_bird_name(model, engine, birds):
     while not bird_recongized:
         text, bird = get_user_input(model, 4, playback=False, birds=birds)
         print("Transcribed text:", text)
-        print("Detected bird:", bird)
+        print("Detected bird in transcribed text:", bird)
         if bird:
             bird_recongized = True
             return text, bird
@@ -158,6 +158,7 @@ def talk_to_female(model, engine, list_of_birds):
     engine.say(f'The {bird} is sitting on a {color} ring in the {location} part of the park.')
     engine.runAndWait()
     time.sleep(2)
+    print(f"Final detected bird: {bird}")
 
     return bird
 
@@ -190,6 +191,8 @@ def talk_to_male(model, engine, list_of_birds):
         elif bird != None:
             pending_bird = bird
             time.sleep(2)
+    
+    print(f"Final detected bird: {bird}")
 
 
     location = list_of_birds[pending_bird].location
