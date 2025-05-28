@@ -79,7 +79,7 @@ class RobotCommander(Node):
         super().__init__(node_name=node_name, namespace=namespace)
         
         #Parameters
-        self.min_wall_distance_m = 0.4
+        self.min_wall_distance_m = 0.35
         
         #Parameters
         
@@ -924,11 +924,11 @@ def main(args=None):
         print("Obhod že obstaja")
         rc.clicked_points = np.load('src/task_2s/data/obhod.npy')
 
-    # show_points = np.zeros_like(rc.map_image)
-    # for (px, py, orientation) in rc.clicked_points:
-    #     world_x, world_y = rc.pixel_to_world(px, py)
-    #     cv2.circle(show_points, (int(px), int(py)), 3, (255), -1)
-    # cv2.imshow("Map", show_points)
+    show_points = np.zeros_like(rc.map_image)
+    for (px, py, orientation) in rc.clicked_points:
+        world_x, world_y = rc.pixel_to_world(px, py)
+        cv2.circle(show_points, (int(px), int(py)), 3, (255), -1)
+    cv2.imshow("Map", show_points)
  
 
     poses_za_obhod = []
