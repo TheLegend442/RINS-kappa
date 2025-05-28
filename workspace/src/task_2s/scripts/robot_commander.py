@@ -1032,12 +1032,12 @@ def main(args=None):
 
     # publish pink arrow markers to spots_in_front_of_faces
     marker_array_faces = MarkerArray()
-    for face_pose in response_faces.poses:
+    for i, face_pose in enumerate(response_faces.poses):
         marker = Marker()
         marker.header.frame_id = "map"
         marker.header.stamp = rc.get_clock().now().to_msg()
         marker.ns = "spots_in_front_of_faces"
-        marker.id = len(marker.ns)
+        marker.id = i
         marker.type = Marker.ARROW
         marker.action = Marker.ADD
         marker.pose = face_pose

@@ -47,7 +47,7 @@ class BirdMarkerSubscriber(Node):
         self.birds = {}  # Slovar {face_id: (position, timestamp, robot_position, count)}
         self.threshold = 0.7  # Razdalja za zaznavanje istega obraza
         self.time_threshold = 0.1  # Sekunde preden obraz ponovno upoštevamo
-        self.detections_needed = 2
+        self.detections_needed = 1
         self.bird_counter = 0  # Števec za unikatne ID-je obrazov
 
         self.marker_queue = []  # Čakalna vrsta za markerje
@@ -160,7 +160,11 @@ class BirdMarkerSubscriber(Node):
         self.get_logger().info(f"Zaznan nov ptič z ID-jem {self.bird_counter}.")
         print(transformed_position)
         #transformed_bottom_right_position = None; transformed_upper_left_position = None
-        self.birds[self.bird_counter] = Bird(self.bird_counter, transformed_position, self.robot_position, count=1)
+        new_bird = Bird(self.bird_counter, transformed_position, self.robot_position, count=1)
+        self.birds[self.bird_counter] = new_bird
+        if bird.count >= self.detections_needed:
+            # **Objavimo nov marker**
+            self.publish_bird_marker(transformed_position, self.bird_counter)
         # self.publish_face_marker(transformed_position, self.bird_counter)
         return True
 
