@@ -46,8 +46,8 @@ class BirdMarkerSubscriber(Node):
         self.robot_position = None  # Shranjena pozicija robota
         self.birds = {}  # Slovar {face_id: (position, timestamp, robot_position, count)}
         self.threshold = 0.7  # Razdalja za zaznavanje istega obraza
-        self.time_threshold = 0.2  # Sekunde preden obraz ponovno upoštevamo
-        self.detections_needed = 4
+        self.time_threshold = 0.02  # Sekunde preden obraz ponovno upoštevamo
+        self.detections_needed = 2
         self.bird_counter = 0  # Števec za unikatne ID-je obrazov
 
         self.marker_queue = []  # Čakalna vrsta za markerje
