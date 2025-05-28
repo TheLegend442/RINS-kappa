@@ -46,7 +46,7 @@ class BirdMarkerSubscriber(Node):
         self.robot_position = None  # Shranjena pozicija robota
         self.birds = {}  # Slovar {face_id: (position, timestamp, robot_position, count)}
         self.threshold = 0.7  # Razdalja za zaznavanje istega obraza
-        self.time_threshold = 0.02  # Sekunde preden obraz ponovno upoštevamo
+        self.time_threshold = 0.1  # Sekunde preden obraz ponovno upoštevamo
         self.detections_needed = 2
         self.bird_counter = 0  # Števec za unikatne ID-je obrazov
 
@@ -59,6 +59,8 @@ class BirdMarkerSubscriber(Node):
         # Pripravi odgovor
         response.marker_array = MarkerArray()
         for bird in self.birds.values():
+            if bird.count < self.detections_needed:
+                continue
             marker = Marker()
             marker.header.frame_id = "map"
             marker.header.stamp = self.get_clock().now().to_msg()
@@ -95,6 +97,7 @@ class BirdMarkerSubscriber(Node):
     def robot_position_callback(self, msg):
         # Shrani pozicijo robota iz AMCL topica
         self.robot_position = np.array([msg.pose.pose.position.x, msg.pose.pose.position.y, msg.pose.pose.position.z])
+        self.process_markers()
 
     def marker_callback(self, msg):
         if self.robot_position is None:

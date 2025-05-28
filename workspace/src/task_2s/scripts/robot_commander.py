@@ -131,7 +131,7 @@ class RobotCommander(Node):
         
         self.gender_client = self.create_client(GetGenderService, "get_gender_service")
         # publisher for publishing markers of spots in front of faces
-        self.spots_in_front_of_faces_pub = self.create_publisher(Marker, '/spots_in_front_of_faces', 10)
+        self.spots_in_front_of_faces_pub = self.create_publisher(MarkerArray, '/spots_in_front_of_faces', 10)
 
         # publisher for publishing markers of spots near rings
         self.ring_spots_pub = self.create_publisher(Marker, '/spots_in_front_of_rings', 10)
@@ -810,8 +810,8 @@ def get_poses_in_front_of_birds(rc):
                         marker.scale.y = 0.1
                         marker.scale.z = 0.1
                         marker.color.r = 0.0
-                        marker.color.g = 1.0
-                        marker.color.b = 0.0
+                        marker.color.g = 0.0
+                        marker.color.b = 1.0
                         marker.color.a = 1.0
                         marker.lifetime = Duration(sec=0)
 
@@ -1029,6 +1029,29 @@ def main(args=None):
     rclpy.spin_until_future_complete(rc, future_faces)
     response_faces = future_faces.result()
     rc.info(f"{len(response_faces.poses)} detected faces")
+
+    # publish pink arrow markers to spots_in_front_of_faces
+    marker_array_faces = MarkerArray()
+    for face_pose in response_faces.poses:
+        marker = Marker()
+        marker.header.frame_id = "map"
+        marker.header.stamp = rc.get_clock().now().to_msg()
+        marker.ns = "spots_in_front_of_faces"
+        marker.id = len(marker.ns)
+        marker.type = Marker.ARROW
+        marker.action = Marker.ADD
+        marker.pose = face_pose
+        marker.scale.x = 0.4
+        marker.scale.y = 0.1
+        marker.scale.z = 0.1
+        marker.color.r = 1.0
+        marker.color.g = 0.0
+        marker.color.b = 1.0
+        marker.color.a = 1.0
+        marker.lifetime = Duration(sec=0)
+        marker_array_faces.markers.append(marker)
+    rc.spots_in_front_of_faces_pub.publish(marker_array_faces)
+
 
     faces_with_meta = [{"pose": pose, "type": "face"} for pose,gender in zip(response_faces.poses, response_faces.genders)]
 

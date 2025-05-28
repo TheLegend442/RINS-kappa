@@ -9,6 +9,7 @@ import numpy as np
 import time
 import tf2_ros
 import tf2_geometry_msgs  # Za uporabo transformacij med sporočili
+from turtle_tf2_py.turtle_tf2_broadcaster import quaternion_from_euler
 
 class Face():
 
@@ -95,7 +96,13 @@ class PeopleMarkerSubscriber(Node):
             pose.position.x = tocka_pred_sliko[0]
             pose.position.y = tocka_pred_sliko[1]
             pose.position.z = tocka_pred_sliko[2]
-            pose.orientation.z = orientation
+
+            #transform orientation to quaternion
+            quaternion = quaternion_from_euler(0.0, 0.0, orientation)
+            pose.orientation.x = quaternion[0]
+            pose.orientation.y = quaternion[1]
+            pose.orientation.z = quaternion[2]
+            pose.orientation.w = quaternion[3]
 
             # self.get_logger().info(f"Face {face.id} detected at {center}, robot at {robot_position_when_detected}, pose in front of face: {pose}")
             # print(pose)

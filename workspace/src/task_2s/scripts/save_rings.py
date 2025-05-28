@@ -72,7 +72,7 @@ class RingMarkerSubscriber(Node):
         self.time_threshold = 0.1
         self.ring_counter = 0
         self.min_wall_distance_m = 0.7
-        self.ring_count_threshold = 4
+        self.ring_count_threshold = 5
         self.load_and_process_map('src/task_2s/maps/bird_map.pgm', 'src/task_2s/maps/bird_map.yaml')
         self.map_data = (self.map_image.flatten() / 255 * 100).astype(int).tolist()
 
@@ -142,6 +142,8 @@ class RingMarkerSubscriber(Node):
 
     def robot_position_callback(self, msg):
         self.robot_position = np.array([msg.pose.pose.position.x, msg.pose.pose.position.y, msg.pose.pose.position.z])
+        self.proccess_markers()
+
 
     def marker_callback(self, msg):
         if self.robot_position is None:
@@ -153,7 +155,7 @@ class RingMarkerSubscriber(Node):
 
     def proccess_markers(self):
         new_queue = []
-        self.get_logger().info(f"Processing {len(self.marker_queue)} markers")
+        #self.get_logger().info(f"Processing {len(self.marker_queue)} markers")
         for msg in self.marker_queue:
             was_proccessed = self.proccess_marker(msg)
             if not was_proccessed:
@@ -176,7 +178,7 @@ class RingMarkerSubscriber(Node):
                                              transformed_pose.position.z])
         except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
             msg = str(e)
-            self.get_logger().error(f"Napaka pri transformaciji: {msg}")
+            #self.get_logger().error(f"Napaka pri transformaciji: {msg}")
 
             if "extrapolation into the past" in msg.lower():
                 # Transform requested in the past
