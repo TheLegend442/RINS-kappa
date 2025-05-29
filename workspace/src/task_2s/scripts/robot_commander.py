@@ -892,7 +892,7 @@ def get_location(marker):
 
 
 def pojdi_na_nejcovo_tocko(rc):
-    nejc_point = [90,168]
+    nejc_point = [90,170]
     world_x, world_y = rc.pixel_to_world(nejc_point[0], nejc_point[1])
     rc.info(f"Točka {0}: ({world_x}, {world_y})")
     goal_msg = PoseStamped()
@@ -958,177 +958,179 @@ def main(args=None):
         rc.clicked_points = np.load('src/task_2s/data/obhod.npy')
  
 
-    poses_za_obhod = []
-    for (px, py, orientation) in rc.clicked_points:
-        world_x, world_y = rc.pixel_to_world(px, py)
-        pose = Pose()
-        pose.position.x = world_x
-        pose.position.y = world_y
-        pose.position.z = 0.0
-        pose.orientation = rc.YawToQuaternion(orientation)
+    # poses_za_obhod = []
+    # for (px, py, orientation) in rc.clicked_points:
+    #     world_x, world_y = rc.pixel_to_world(px, py)
+    #     pose = Pose()
+    #     pose.position.x = world_x
+    #     pose.position.y = world_y
+    #     pose.position.z = 0.0
+    #     pose.orientation = rc.YawToQuaternion(orientation)
 
-        poses_za_obhod.append(pose)
+    #     poses_za_obhod.append(pose)
     
-    publish_markers(rc,"/sweep_spots", poses_za_obhod, scale=(0.4, 0.1, 0.1), color=(0.0, 1.0, 0.0, 1.0), shape=Marker.ARROW)
-    #POSTAVI MARKERJE ZA OBHOD
+    # publish_markers(rc,"/sweep_spots", poses_za_obhod, scale=(0.4, 0.1, 0.1), color=(0.0, 1.0, 0.0, 1.0), shape=Marker.ARROW)
+    # #POSTAVI MARKERJE ZA OBHOD
 
-    for i, (px, py, orientation) in enumerate(rc.clicked_points):
-        world_x, world_y = rc.pixel_to_world(px, py)
-        rc.get_logger().info(f"Točka {i+1}: ({world_x}, {world_y})")
+    # for i, (px, py, orientation) in enumerate(rc.clicked_points):
+    #     world_x, world_y = rc.pixel_to_world(px, py)
+    #     rc.get_logger().info(f"Točka {i+1}: ({world_x}, {world_y})")
 
-        goal_msg = PoseStamped()
-        goal_msg.header.frame_id = "map"
-        goal_msg.header.stamp = rc.get_clock().now().to_msg()
-        goal_msg.pose.position.x = world_x
-        goal_msg.pose.position.y = world_y
-        goal_msg.pose.orientation = rc.YawToQuaternion(orientation)  
-        rc.info(f"Going to pose: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
-        rc.goToPose(goal_msg)
-        while not rc.isTaskComplete():
-            #rc.info("Waiting for the task to complete...")
-            time.sleep(0.1)
+    #     goal_msg = PoseStamped()
+    #     goal_msg.header.frame_id = "map"
+    #     goal_msg.header.stamp = rc.get_clock().now().to_msg()
+    #     goal_msg.pose.position.x = world_x
+    #     goal_msg.pose.position.y = world_y
+    #     goal_msg.pose.orientation = rc.YawToQuaternion(orientation)  
+    #     rc.info(f"Going to pose: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
+    #     rc.goToPose(goal_msg)
+    #     while not rc.isTaskComplete():
+    #         #rc.info("Waiting for the task to complete...")
+    #         time.sleep(0.1)
 
-    for i  in range(10):
-        rc.info("KONČAL Z OBHODOM")
+    # for i  in range(10):
+    #     rc.info("KONČAL Z OBHODOM")
 
 
-    # obhod po detektiranih parih ptič-obroč
-    pair_poses, ring_colors = get_poses_in_front_of_birds(rc)
-    birds = []
+    # # obhod po detektiranih parih ptič-obroč
+    # pair_poses, ring_colors = get_poses_in_front_of_birds(rc)
+    # birds = []
 
-    for (ring_marker, bird_marker, poses), ring_color in zip(pair_poses, ring_colors):
-        rc.info(f"Checking poses for ring color: {ring_color}")
-        found_valid = False
+    # for (ring_marker, bird_marker, poses), ring_color in zip(pair_poses, ring_colors):
+    #     rc.info(f"Checking poses for ring color: {ring_color}")
+    #     found_valid = False
 
-        for pose in poses:
-            goal_msg = PoseStamped()
-            goal_msg.header.frame_id = "map"
-            goal_msg.header.stamp = rc.get_clock().now().to_msg()
-            goal_msg.pose = pose
+    #     for pose in poses:
+    #         goal_msg = PoseStamped()
+    #         goal_msg.header.frame_id = "map"
+    #         goal_msg.header.stamp = rc.get_clock().now().to_msg()
+    #         goal_msg.pose = pose
 
-            rc.info(f"Trying pose at: x={pose.position.x}, y={pose.position.y}")
-            rc.goToPose(goal_msg)
+    #         rc.info(f"Trying pose at: x={pose.position.x}, y={pose.position.y}")
+    #         rc.goToPose(goal_msg)
 
-            while not rc.isTaskComplete():
-                time.sleep(0.1)
-            # Poskusi pridobiti sliko in jo analizirati
-            for dalpha in [-0.1, 0.0 ,0.1]:
-                message = "{data: 'manual:[" + str(dalpha) + ",0.3,0.0,1.0]'}"
-                process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String",message])
-                time.sleep(4)
-                request = GetImage.Request()
-                future = rc.get_bird_image_client.call_async(request)
-                rclpy.spin_until_future_complete(rc, future)
-                response = future.result()
-                time.sleep(2)
-                if response is None:
-                    rc.error("Error while getting image")
-                    continue
+    #         while not rc.isTaskComplete():
+    #             time.sleep(0.1)
+    #         # Poskusi pridobiti sliko in jo analizirati
+    #         for dalpha in [-0.1, 0.0 ,0.1]:
+    #             message = "{data: 'manual:[" + str(dalpha) + ",0.3,0.0,1.0]'}"
+    #             process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String",message])
+    #             time.sleep(4)
+    #             request = GetImage.Request()
+    #             future = rc.get_bird_image_client.call_async(request)
+    #             rclpy.spin_until_future_complete(rc, future)
+    #             response = future.result()
+    #             time.sleep(2)
+    #             if response is None:
+    #                 rc.error("Error while getting image")
+    #                 continue
                 
-                if response.isok:
-                    bird = Bird()
-                    bird.species = response.species_name
-                    bird.image = response.image
-                    bird.location = get_location(ring_marker)  # ali uporabi `get_location(marker)`
-                    bird.ring_color = ring_color
-                    bird.detection_time = "TODO"
-                    birds.append(bird)
+    #             if response.isok:
+    #                 bird = Bird()
+    #                 bird.species = response.species_name
+    #                 bird.image = response.image
+    #                 bird.location = get_location(ring_marker)  # ali uporabi `get_location(marker)`
+    #                 bird.ring_color = ring_color
+    #                 bird.detection_time = "TODO"
+    #                 birds.append(bird)
 
-                    rc.info(f"Bird species: {bird.species}")
-                    rc.info(f"Ring color: {bird.ring_color}")
-                    rc.say_something(f"Detected {bird.species} with {bird.ring_color} ring")
-                    time.sleep(3)
-                    found_valid = True
-                    break  # pojdi na naslednji par
-                else:
-                    rc.warn("Image received, but detection not successful.")
-            if found_valid:
-                break
+    #                 rc.info(f"Bird species: {bird.species}")
+    #                 rc.info(f"Ring color: {bird.ring_color}")
+    #                 rc.say_something(f"Detected {bird.species} with {bird.ring_color} ring")
+    #                 time.sleep(3)
+    #                 found_valid = True
+    #                 break  # pojdi na naslednji par
+    #             else:
+    #                 rc.warn("Image received, but detection not successful.")
+    #         if found_valid:
+    #             break
             
 
-        if not found_valid:
-            rc.warn(f"No successful detection for bird with ring color {ring_color}")
-        # generate bird catalogue
-        process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String","{data: 'manual:[0.0,0.3,0.0,1.0]'}"])
-    request = BirdCollection.Request()
-    request.birds = birds
-    future = rc.bird_catalogue_client.call_async(request)
-    # rclpy.spin_until_future_complete(rc, future) NEKI KATALOG NE DELA
-    # response = future.result()                   NEKI KATALOG NE DELA
+    #     if not found_valid:
+    #         rc.warn(f"No successful detection for bird with ring color {ring_color}")
+    #     # generate bird catalogue
+    #     process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String","{data: 'manual:[0.0,0.3,0.0,1.0]'}"])
+    # request = BirdCollection.Request()
+    # request.birds = birds
+    # future = rc.bird_catalogue_client.call_async(request)
+    # # rclpy.spin_until_future_complete(rc, future) NEKI KATALOG NE DELA
+    # # response = future.result()                   NEKI KATALOG NE DELA
 
 
-    #Dobimo obraze
-    rc.info("Getting faces")
-    request_faces = PosesInFrontOfFaces.Request()
-    future_faces = rc.pose_client.call_async(request_faces)
-    rclpy.spin_until_future_complete(rc, future_faces)
-    response_faces = future_faces.result()
-    rc.info(f"{len(response_faces.poses)} detected faces")
+    # #Dobimo obraze
+    # rc.info("Getting faces")
+    # request_faces = PosesInFrontOfFaces.Request()
+    # future_faces = rc.pose_client.call_async(request_faces)
+    # rclpy.spin_until_future_complete(rc, future_faces)
+    # response_faces = future_faces.result()
+    # rc.info(f"{len(response_faces.poses)} detected faces")
 
-    # publish pink arrow markers to spots_in_front_of_faces
-    marker_array_faces = MarkerArray()
-    for i, face_pose in enumerate(response_faces.poses):
-        marker = Marker()
-        marker.header.frame_id = "map"
-        marker.header.stamp = rc.get_clock().now().to_msg()
-        marker.ns = "spots_in_front_of_faces"
-        marker.id = i
-        marker.type = Marker.ARROW
-        marker.action = Marker.ADD
-        marker.pose = face_pose
-        marker.scale.x = 0.4
-        marker.scale.y = 0.1
-        marker.scale.z = 0.1
-        marker.color.r = 1.0
-        marker.color.g = 0.0
-        marker.color.b = 1.0
-        marker.color.a = 1.0
-        marker.lifetime = Duration(sec=0)
-        marker_array_faces.markers.append(marker)
-    rc.spots_in_front_of_faces_pub.publish(marker_array_faces)
+    # # publish pink arrow markers to spots_in_front_of_faces
+    # marker_array_faces = MarkerArray()
+    # for i, face_pose in enumerate(response_faces.poses):
+    #     marker = Marker()
+    #     marker.header.frame_id = "map"
+    #     marker.header.stamp = rc.get_clock().now().to_msg()
+    #     marker.ns = "spots_in_front_of_faces"
+    #     marker.id = i
+    #     marker.type = Marker.ARROW
+    #     marker.action = Marker.ADD
+    #     marker.pose = face_pose
+    #     marker.scale.x = 0.4
+    #     marker.scale.y = 0.1
+    #     marker.scale.z = 0.1
+    #     marker.color.r = 1.0
+    #     marker.color.g = 0.0
+    #     marker.color.b = 1.0
+    #     marker.color.a = 1.0
+    #     marker.lifetime = Duration(sec=0)
+    #     marker_array_faces.markers.append(marker)
+    # rc.spots_in_front_of_faces_pub.publish(marker_array_faces)
 
 
-    faces_with_meta = [{"pose": pose, "type": "face"} for pose,gender in zip(response_faces.poses, response_faces.genders)]
+    # faces_with_meta = [{"pose": pose, "type": "face"} for pose,gender in zip(response_faces.poses, response_faces.genders)]
 
-    # Združimo v eno zaporedje
-    all_targets =  faces_with_meta #+ rings_with_meta
-    all_targets = best_round((rc.current_pose.pose.position.x, rc.current_pose.pose.position.y), all_targets)
-    rc.info(f"Going to {len(all_targets)} targets")
+    # # Združimo v eno zaporedje
+    # all_targets =  faces_with_meta #+ rings_with_meta
+    # all_targets = best_round((rc.current_pose.pose.position.x, rc.current_pose.pose.position.y), all_targets)
+    # rc.info(f"Going to {len(all_targets)} targets")
 
-    for i, item in enumerate(all_targets):
-        pose = item["pose"]
-        goal_msg = PoseStamped()
-        goal_msg.header.frame_id = "map"
-        goal_msg.header.stamp = rc.get_clock().now().to_msg()
-        goal_msg.pose = pose
-        if math.isnan(goal_msg.pose.position.x) or math.isnan(goal_msg.pose.position.y):
-            rc.info("NaN detected, skipping this target")
-            continue
-        rc.info(f"Going to pose {i+1}: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
-        rc.goToPose(goal_msg)
+    # for i, item in enumerate(all_targets):
+    #     pose = item["pose"]
+    #     goal_msg = PoseStamped()
+    #     goal_msg.header.frame_id = "map"
+    #     goal_msg.header.stamp = rc.get_clock().now().to_msg()
+    #     goal_msg.pose = pose
+    #     if math.isnan(goal_msg.pose.position.x) or math.isnan(goal_msg.pose.position.y):
+    #         rc.info("NaN detected, skipping this target")
+    #         continue
+    #     rc.info(f"Going to pose {i+1}: {goal_msg.pose.position.x}, {goal_msg.pose.position.y}")
+    #     rc.goToPose(goal_msg)
 
-        while not rc.isTaskComplete():
-            time.sleep(0.1)
+    #     while not rc.isTaskComplete():
+    #         time.sleep(0.1)
 
-        if item["type"] == "face":
-            # strings = ["Hello how are you?", "Nice to meet you!", "Hi there friend!"]
-            # random_string = strings[randrange(len(strings))]
-            rc.info("Getting gender from a face")
-            request = GetGenderService.Request()
-            future = rc.gender_client.call_async(request)
-            rclpy.spin_until_future_complete(rc, future)
-            response = future.result()
-            spol = response.gender
-            rc.info(f"Detected gender: {spol}")
+    #     if item["type"] == "face":
+    #         # strings = ["Hello how are you?", "Nice to meet you!", "Hi there friend!"]
+    #         # random_string = strings[randrange(len(strings))]
+    #         rc.info("Getting gender from a face")
+    #         spol = None
+    #         while(spol not in ["F","M"]):
+    #             request = GetGenderService.Request()
+    #             future = rc.gender_client.call_async(request)
+    #             rclpy.spin_until_future_complete(rc, future)
+    #             response = future.result()
+    #             spol = response.gender
+    #             rc.info(f"Detected gender: {spol}")
 
-            request = SpeechService.Request()
-            request.gender = spol
-            request.birds = birds
-            future = rc.speech_client.call_async(request)
-            rclpy.spin_until_future_complete(rc, future)
-            response = future.result()
+    #         request = SpeechService.Request()
+    #         request.gender = spol
+    #         request.birds = birds
+    #         future = rc.speech_client.call_async(request)
+    #         rclpy.spin_until_future_complete(rc, future)
+    #         response = future.result()
 
-        time.sleep(2.0)
+    #     time.sleep(2.0)
     rc.info("Going to Nejc's point")
     pojdi_na_nejcovo_tocko(rc)
     rc.info("Sending request to bridge follower")

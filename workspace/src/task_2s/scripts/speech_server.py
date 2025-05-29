@@ -142,20 +142,24 @@ def get_bird_name(model, engine, birds):
             return text, bird
         else:
             engine.say("Sorry, I couldn't identify the bird. Please try again.")
-            print(f"List of birds in the park: {birds.keys()}")
+            print(f"List of birds in the park: {list(birds.keys())}")
             engine.runAndWait()
             time.sleep(4)
 
 def talk_to_female(model, engine, list_of_birds):
     engine.say("Hello lady! Which is your favorite bird?")
     engine.runAndWait()
+    print("nejc1")
     time.sleep(2)
     _, bird = get_bird_name(model, engine, list_of_birds)
+    print("nejc2")
     location = list_of_birds[bird].location
-    color = list_of_birds[bird].ring_color
+    print("nejc3")
+    color = list_of_birds[bird].ring_color.lower()
+    print("nejc4")
     engine.say(f"Thank you for letting me know.")
     engine.runAndWait()
-    engine.say(f'The {bird} is sitting on a {color} ring in the {location} part of the park.'.tolower())
+    engine.say(f'The {bird} is sitting on a {color} ring in the {location} part of the park.')
     engine.runAndWait()
     time.sleep(2)
     print(f"Final detected bird: {bird}")
@@ -197,7 +201,7 @@ def talk_to_male(model, engine, list_of_birds):
 
     location = list_of_birds[pending_bird].location
     color = list_of_birds[pending_bird].ring_color
-    engine.say(f'The {pending_bird} is sitting on a {color} ring in the {location} part of the park  .')
+    engine.say(f'The {pending_bird} is sitting on a {color} ring in the {location} part of the park  .'.lower())
     engine.runAndWait()
     time.sleep(1)
 
@@ -264,9 +268,15 @@ class SpeechServer(Node):
 
         fav_bird = None
         if gender == "M":
-            fav_bird = talk_to_male(self.model, self.engine, self.birds)
+            try:
+                fav_bird = talk_to_male(self.model, self.engine, self.birds)
+            except:
+                print("Nisem se mogel pogovarjati z MOŠKIMI")
         elif gender == "F":
-            fav_bird = talk_to_female(self.model, self.engine, self.birds)
+            try:
+                fav_bird = talk_to_female(self.model, self.engine, self.birds)
+            except:
+                print("Nisem se mogel pogovarjati z Ženskami")
         else:
             self.get_logger(f"Gender {gender} not supported.").error
 
