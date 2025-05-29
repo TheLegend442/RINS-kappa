@@ -155,7 +155,7 @@ def talk_to_female(model, engine, list_of_birds):
     color = list_of_birds[bird].ring_color
     engine.say(f"Thank you for letting me know.")
     engine.runAndWait()
-    engine.say(f'The {bird} is sitting on a {color} ring in the {location} part of the park.')
+    engine.say(f'The {bird} is sitting on a {color} ring in the {location} part of the park.'.tolower())
     engine.runAndWait()
     time.sleep(2)
     print(f"Final detected bird: {bird}")

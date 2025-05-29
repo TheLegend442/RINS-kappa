@@ -80,7 +80,7 @@ class RobotCommander(Node):
         
         #Parameters
         self.min_wall_distance_m = 0.35
-        self.distance_from_bird_m = 0.4
+        self.distance_from_bird_m = 0.5
         #Parameters
         
         self.pose_frame_id = 'map'
@@ -757,7 +757,8 @@ def get_poses_in_front_of_birds(rc):
     for ring_marker, bird_marker, robot_position_marker, ring_color in ring_bird_pairs:
         ring_colors.append(ring_color)
         bird_px, bird_py = rc.world_to_pixel(bird_marker.pose.position.x, bird_marker.pose.position.y)
-
+        ring_px, ring_py = rc.world_to_pixel(ring_marker.pose.position.x, ring_marker.pose.position.y)
+        ring_world_x , ring_world_y  = rc.pixel_to_world(ring_px, ring_py) 
         # sredina med ptičem in obročem
         mid_x = (ring_marker.pose.position.x + bird_marker.pose.position.x) / 2
         mid_y = (ring_marker.pose.position.y + bird_marker.pose.position.y) / 2
@@ -781,8 +782,8 @@ def get_poses_in_front_of_birds(rc):
             steps = [i * sign for i in range(1, 31) for sign in (1, -1)]
             for step in steps:
                 for dx, dy in candidates:
-                    nx = int(bird_px + step * dx)
-                    ny = int(bird_py + step * dy)
+                    nx = int(ring_px + step * dx)
+                    ny = int(ring_py + step * dy)
 
                     if not (0 <= nx < rc.map_width and 0 <= ny < rc.map_height):
                         continue
@@ -791,7 +792,7 @@ def get_poses_in_front_of_birds(rc):
                         world_x, world_y = rc.pixel_to_world(nx, ny)
 
                         # preveri razdaljo do sredine para (obroč-ptič)
-                        dist_to_mid = math.sqrt((world_x - mid_x) ** 2 + (world_y - mid_y) ** 2)
+                        dist_to_mid = math.sqrt((world_x - ring_world_x) ** 2 + (world_y - ring_world_y) ** 2)
                         if dist_to_mid < rc.distance_from_bird_m:
                             continue  # preskoči, ker je preblizu
 
