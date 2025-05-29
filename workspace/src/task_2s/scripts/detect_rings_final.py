@@ -56,6 +56,8 @@ class Ring():
 
         self.center3D = center3D  # np.array([x, y, z]=
 
+        self.avg_depth = 0.0
+
         self.mask = mask
         self.color = color
         self.avg_hue = 0
@@ -76,16 +78,20 @@ class detect_rings(Node):
         self.detection_color = (255,0,0) # blue
 
         self.arm_pub = self.create_publisher(String, '/arm_command', qos_profile)
-        self.arm_pub.publish(String(data='manual:[0.,0.,0.5,1.0]'))
+        self.arm_pub.publish(String(data='manual:[0.0,0.5,0.0,0.95]'))
         
         self.device = self.get_parameter('device').get_parameter_value().string_value
 
         self.bridge = CvBridge() # An object we use for converting images between ROS format and OpenCV format
 
-        self.depth_sub = self.create_subscription(Image, "/top_camera/rgb/preview/depth", self.depth_callback, 1)
-        self.image_sub = self.create_subscription(Image, "/top_camera/rgb/preview/image_raw", self.image_callback, 1)
-        self.pointcloud_sub = self.create_subscription(PointCloud2, "/top_camera/rgb/preview/depth/points", self.pointcloud_callback, qos_profile_sensor_data)
+        # self.depth_sub = self.create_subscription(Image, "/top_camera/rgb/preview/depth", self.depth_callback, 1)
+        # self.image_sub = self.create_subscription(Image, "/top_camera/rgb/preview/image_raw", self.image_callback, 1)
+        # self.pointcloud_sub = self.create_subscription(PointCloud2, "/top_camera/rgb/preview/depth/points", self.pointcloud_callback, qos_profile_sensor_data)
 
+
+        self.depth_sub = self.create_subscription(Image, "/oakd/rgb/preview/depth", self.depth_callback, 1)
+        self.image_sub = self.create_subscription(Image, "/oakd/rgb/preview/image_raw", self.image_callback, 1)
+        self.pointcloud_sub = self.create_subscription(PointCloud2, "/oakd/rgb/preview/depth/points", self.pointcloud_callback, qos_profile_sensor_data)
         self.marker_pub = self.create_publisher(RingCoordinates, marker_topic, QoSReliabilityPolicy.BEST_EFFORT)
 
         self.robot_position = None  # Shranjena pozicija robota
@@ -95,8 +101,8 @@ class detect_rings(Node):
         self.rings = []
         self.flat_rings = []
 
-        self.min_threshold = 150
-        self.max_threshold = 370
+        self.min_threshold = 0 # 150
+        self.max_threshold = 150 # 370
 
         self.save_counter = 0
 
@@ -110,7 +116,7 @@ class detect_rings(Node):
         # cv2.namedWindow("Live camera feed", cv2.WINDOW_NORMAL)
         # cv2.namedWindow("Ring depth", cv2.WINDOW_NORMAL)
         # cv2.namedWindow("Edges", cv2.WINDOW_NORMAL)
-        # cv2.namedWindow("Detected ellipses", cv2.WINDOW_NORMAL)
+        cv2.namedWindow("Detected ellipses", cv2.WINDOW_NORMAL)
         cv2.namedWindow("Ring mask", cv2.WINDOW_NORMAL)
         cv2.resizeWindow("Ring mask", 400, 400)
 
@@ -194,7 +200,7 @@ class detect_rings(Node):
             contours, _ = cv2.findContours(edges, cv2.RETR_TREE, cv2.CHAIN_APPROX_NONE)
             
             for contour in contours:
-                if len(contour) >= 5:  # Fit ellipse requires at least 5 points
+                if len(contour) >= 10:  # Fit ellipse requires at least 5 points
                     ellipse = cv2.fitEllipse(contour)
                     (center, axes, angle) = ellipse
                     # increase center y by self.min_threshold
@@ -230,7 +236,7 @@ class detect_rings(Node):
                 if dist >= 5:
                     continue
 
-                # The center of the elipses should be above between the lines
+                # The center of the elipses should be between the lines
                 if not (self.min_threshold < e1[0][1] < self.max_threshold and self.min_threshold < e2[0][1] < self.max_threshold): 
                     continue
 
@@ -323,6 +329,12 @@ class detect_rings(Node):
             
                 
                 ring.mask = final_mask
+
+                ring_avg_depth = self.depth_img[final_mask].mean()
+                if ring_avg_depth > 3:
+                    self.get_logger().warn(f"Ring average depth {ring_avg_depth:.2f} is too high, skipping this ring.")
+                    continue
+                ring.avg_depth = ring_avg_depth
                 self.rings.append(ring) # First large, then small ellipse
 
 
@@ -343,8 +355,8 @@ class detect_rings(Node):
         cv_elps = cv_image.copy()
         for e in elps:
             cv2.ellipse(cv_elps, e, (255, 0, 0), 2)
-        # cv2.imshow("Detected ellipses", cv_elps)
-        # cv2.waitKey(1)
+        cv2.imshow("Detected ellipses", cv_elps)
+        cv2.waitKey(1)
 
 
         ## ____VIZUALIZATION (detected rings)____
@@ -356,6 +368,7 @@ class detect_rings(Node):
             depth2 = self.depth_img[c.center2.y,c.center2.x]
 
             cv2.putText(det_rings, f"Dist2center: {depth1:.3f}, {depth2:.3f}", (0, 180), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 255, 0), 1)
+            cv2.putText(det_rings, f"Avg depth: {depth1:.3f}, {depth2:.3f}", (0, 160), cv2.FONT_HERSHEY_SIMPLEX, 0.4, (0, 255, 0), 1)
 
             # drawing the ellipses on the image
             cv2.ellipse(det_rings, c.ellipse1, (0, 255, 0), 2)

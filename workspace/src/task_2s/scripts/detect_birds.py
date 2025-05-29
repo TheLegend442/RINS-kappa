@@ -56,7 +56,7 @@ class Detect_birds(Node):
 		super().__init__('detect_birds')
 
 		self.arm_pub = self.create_publisher(String, '/arm_command', qos_profile)
-		self.arm_pub.publish(String(data='manual:[0.,0.,0.5,1.0]'))
+		self.arm_pub.publish(String(data='manual:[0.0,0.5,0.0,0.95]'))
 		time.sleep(3) # Wait for the robot arm to reach the starting position
 
 
@@ -104,6 +104,16 @@ class Detect_birds(Node):
 
 	def predict_bird_species(self, bird_image_real):
 		# Preprocess the image
+		self.bird_classification_model = torch.load('./src/task_2s/models/bird_species_model.pth')
+		self.bird_classification_model = self.bird_classification_model.to(self.device)
+		self.bird_classification_model.eval()
+
+		self.label_encoder = joblib.load('./src/task_2s/models/label_encoder.pkl')
+
+		self.bird_image_transform = transforms.Compose([
+			transforms.Resize((224, 224)),
+			transforms.ToTensor(),
+		])
 		bird_image = bird_image_real.copy()
 		bird_image = cv2.cvtColor(bird_image, cv2.COLOR_BGR2RGB)
 		bird_image = PILImage.fromarray(bird_image)

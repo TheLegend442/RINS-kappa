@@ -76,11 +76,14 @@ class detect_faces(Node):
 
 		self.get_logger().info(f"Node has been initialized! Will publish face markers to {marker_topic}.")
 
-		model_name = "prithivMLmods/Realistic-Gender-Classification"
-		self.processor = AutoImageProcessor.from_pretrained(model_name, use_fast=True)
-		self.model_gender = AutoModelForImageClassification.from_pretrained(model_name)
+		self.processor = None
+		self.model_gender = None
 
 	def get_gender_callback(self, request, response):
+		if self.model_gender is None:
+			model_name = "prithivMLmods/Realistic-Gender-Classification"
+			self.processor = AutoImageProcessor.from_pretrained(model_name, use_fast=True)
+			self.model_gender = AutoModelForImageClassification.from_pretrained(model_name)
 		response = GetGenderService.Response()
 		if len(self.faces) == 0:
 			self.get_logger().info("No faces detected.")

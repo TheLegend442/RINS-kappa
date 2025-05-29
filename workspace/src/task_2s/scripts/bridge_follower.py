@@ -57,9 +57,6 @@ class BridgeFollower(Node):
         self.get_logger().info(f"Initialized the Bridge Follower node! Waiting for commands...")
         
 
-        cv2.namedWindow("Live camera feed", cv2.WINDOW_NORMAL)
-        # cv2.namedWindow("Binary Image", cv2.WINDOW_NORMAL)
-        cv2.namedWindow("Directions", cv2.WINDOW_NORMAL)
         # cv2.namedWindow("Depth window", cv2.WINDOW_NORMAL)
 
     def make_active_callback(self, request, response):
@@ -69,6 +66,10 @@ class BridgeFollower(Node):
         self.active = True
         response.success = True
         self.get_logger().info("Bridge follower is active!")
+
+        cv2.namedWindow("Live camera feed", cv2.WINDOW_NORMAL)
+        # cv2.namedWindow("Binary Image", cv2.WINDOW_NORMAL)
+        cv2.namedWindow("Directions", cv2.WINDOW_NORMAL)
         return response
 
     def send_cmd_vel(self):

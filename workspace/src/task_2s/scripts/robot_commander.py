@@ -80,7 +80,7 @@ class RobotCommander(Node):
         
         #Parameters
         self.min_wall_distance_m = 0.35
-        
+        self.distance_from_bird_m = 0.4
         #Parameters
         
         self.pose_frame_id = 'map'
@@ -674,22 +674,34 @@ class RobotCommander(Node):
                 if i <= j:
                     distance_matrix[i][j] = distance_between_points(self, clicked_points[i][0], clicked_points[i][1], clicked_points[j][0], clicked_points[j][1])
                     distance_matrix[j][i] = distance_matrix[i][j]
-        permutation = []
+        permutation = [] 
         for i in range(len(clicked_points)):
-            permutation.append(i)
+            permutation.append(i)       
         best_score = trenutna_dolzina_poti(0, permutation, distance_matrix)
-        for i in range(10000):
-            k,m = randrange(1, len(clicked_points)), randrange(1, len(clicked_points))
-            permutation[k], permutation[m] = permutation[m], permutation[k]
-            new_score = trenutna_dolzina_poti(0, permutation, distance_matrix)
-            if new_score < best_score:
-                best_score = new_score
-            else:
-                permutation[k], permutation[m] = permutation[m], permutation[k]
         best_permutation = []
+        for j in range(10):
+            permutation = []
+            t_score = 9999999999
+            t_best_permutation = []
+            for i in range(len(clicked_points)):
+                permutation.append(i)
+            for i in range(10000):
+                k,m = randrange(1, len(clicked_points)), randrange(1, len(clicked_points))
+                permutation[k], permutation[m] = permutation[m], permutation[k]
+                new_score = trenutna_dolzina_poti(0, permutation, distance_matrix)
+                if new_score < t_score:
+                    t_score = new_score
+                    t_best_permutation = permutation.copy()
+                else:
+                    permutation[k], permutation[m] = permutation[m], permutation[k]
+            if t_score < best_score:
+                best_permutation = t_best_permutation
+                best_score = t_score
+
+        best_permutation_koncna = []
         for i in range(len(clicked_points)):
-            best_permutation.append(clicked_points[permutation[i]])
-        return best_permutation
+            best_permutation_koncna.append(clicked_points[permutation[i]])
+        return best_permutation_koncna
 
 
 def best_round(robot_position, all_targets):
@@ -780,7 +792,7 @@ def get_poses_in_front_of_birds(rc):
 
                         # preveri razdaljo do sredine para (obroč-ptič)
                         dist_to_mid = math.sqrt((world_x - mid_x) ** 2 + (world_y - mid_y) ** 2)
-                        if dist_to_mid < 0.6:
+                        if dist_to_mid < rc.distance_from_bird_m:
                             continue  # preskoči, ker je preblizu
 
                         angle_to_bird = math.atan2(
@@ -910,7 +922,7 @@ def main(args=None):
     current_pose = (int(current_pose[0]), int(current_pose[1]), rc.current_pose.pose.orientation.z)
 
     rc.get_logger().info(f"Moving arm to starting position")
-    process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String","{data: 'manual:[0.,0.,0.5,1.0]'}"])
+    process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String","{data: 'manual:[0.0,0.5,0.0,0.95]'}"])
     time.sleep(5) # Wait for the robot arm to reach the starting position
     process.terminate()
 
