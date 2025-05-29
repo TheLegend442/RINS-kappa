@@ -797,8 +797,8 @@ def get_poses_in_front_of_birds(rc):
                             continue  # preskoči, ker je preblizu
 
                         angle_to_bird = math.atan2(
-                            bird_marker.pose.position.y - world_y,
-                            bird_marker.pose.position.x - world_x
+                            ring_marker.pose.position.y - world_y,
+                            ring_marker.pose.position.x - world_x
                         )
                         q = quaternion_from_euler(0, 0, angle_to_bird)
 
@@ -923,7 +923,7 @@ def main(args=None):
     current_pose = (int(current_pose[0]), int(current_pose[1]), rc.current_pose.pose.orientation.z)
 
     rc.get_logger().info(f"Moving arm to starting position")
-    process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String","{data: 'manual:[0.0,0.5,0.0,0.95]'}"])
+    process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String","{data: 'manual:[0.0,0.3,0.0,1.0]'}"])
     time.sleep(5) # Wait for the robot arm to reach the starting position
     process.terminate()
 

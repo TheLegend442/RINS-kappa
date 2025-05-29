@@ -55,9 +55,9 @@ class Detect_birds(Node):
 	def __init__(self):
 		super().__init__('detect_birds')
 
-		self.arm_pub = self.create_publisher(String, '/arm_command', qos_profile)
-		self.arm_pub.publish(String(data='manual:[0.0,0.5,0.0,0.95]'))
-		time.sleep(3) # Wait for the robot arm to reach the starting position
+		# self.arm_pub = self.create_publisher(String, '/arm_command', qos_profile)
+		# self.arm_pub.publish(String(data='manual:[0.0,0.5,0.0,0.95]'))
+		# time.sleep(3) # Wait for the robot arm to reach the starting position
 
 
 		self.declare_parameters(

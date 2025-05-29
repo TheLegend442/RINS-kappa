@@ -217,7 +217,6 @@ class SpeechServer(Node):
     def __init__(self):
         super().__init__('speech_server')
         self.srv = self.create_service(SpeechService, 'speech_service', self.speech_callback)
-        self.model = whisper.load_model("medium.en")
         self.birds = {}
 
         self.engine = pyttsx3.init()
@@ -230,7 +229,8 @@ class SpeechServer(Node):
 
     def speech_callback(self, request, response):
         self.get_logger().info("\nReceived request to talk to the person in front of me.\n")
-
+        if self.model is None:
+            self.model = whisper.load_model("medium.en")
         for bird in request.birds:
 
             bird_species = bird.species

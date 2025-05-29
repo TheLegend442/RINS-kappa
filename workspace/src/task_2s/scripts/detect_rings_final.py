@@ -77,8 +77,8 @@ class detect_rings(Node):
         marker_topic = '/ring_marker'
         self.detection_color = (255,0,0) # blue
 
-        self.arm_pub = self.create_publisher(String, '/arm_command', qos_profile)
-        self.arm_pub.publish(String(data='manual:[0.0,0.5,0.0,0.95]'))
+        # self.arm_pub = self.create_publisher(String, '/arm_command', qos_profile)
+        # self.arm_pub.publish(String(data='manual:[0.0,0.5,0.0,0.95]'))
         
         self.device = self.get_parameter('device').get_parameter_value().string_value
 
