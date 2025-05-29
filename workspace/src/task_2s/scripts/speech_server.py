@@ -224,7 +224,7 @@ class SpeechServer(Node):
         self.engine.setProperty('volume', 1)       # 0.0–1.0
         voices = self.engine.getProperty('voices')
         self.engine.setProperty('voice', voices[19].id)
-
+        self.model = None
         self.get_logger().info("Speech server ready to receive requests.")
 
     def speech_callback(self, request, response):
