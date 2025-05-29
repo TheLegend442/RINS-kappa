@@ -113,7 +113,7 @@ class BirdMarkerSubscriber(Node):
         current_time = time.time()
         stamp = msg.header.stamp
         try:
-            transform = self.tf_buffer.lookup_transform('map', 'base_link', stamp,timeout=rclpy.duration.Duration(seconds=0.1))
+            transform = self.tf_buffer.lookup_transform('map', 'top_camera_link', stamp,timeout=rclpy.duration.Duration(seconds=0.1))
             transformed_pose = tf2_geometry_msgs.do_transform_pose(msg.pose, transform)
             transformed_position = np.array([transformed_pose.position.x, transformed_pose.position.y, transformed_pose.position.z])
 

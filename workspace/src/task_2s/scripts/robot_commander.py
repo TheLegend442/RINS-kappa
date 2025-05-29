@@ -80,7 +80,7 @@ class RobotCommander(Node):
         
         #Parameters
         self.min_wall_distance_m = 0.35
-        self.distance_from_bird_m = 0.5
+        self.distance_from_bird_m = 0.45
         #Parameters
         
         self.pose_frame_id = 'map'
@@ -674,35 +674,55 @@ class RobotCommander(Node):
                 if i <= j:
                     distance_matrix[i][j] = distance_between_points(self, clicked_points[i][0], clicked_points[i][1], clicked_points[j][0], clicked_points[j][1])
                     distance_matrix[j][i] = distance_matrix[i][j]
-        permutation = [] 
-        for i in range(len(clicked_points)):
-            permutation.append(i)       
-        best_score = trenutna_dolzina_poti(0, permutation, distance_matrix)
-        best_permutation = []
-        for j in range(10):
-            permutation = []
-            t_score = 9999999999
-            t_best_permutation = []
-            for i in range(len(clicked_points)):
-                permutation.append(i)
-            for i in range(10000):
-                k,m = randrange(1, len(clicked_points)), randrange(1, len(clicked_points))
-                permutation[k], permutation[m] = permutation[m], permutation[k]
-                new_score = trenutna_dolzina_poti(0, permutation, distance_matrix)
-                if new_score < t_score:
-                    t_score = new_score
-                    t_best_permutation = permutation.copy()
-                else:
-                    permutation[k], permutation[m] = permutation[m], permutation[k]
-            if t_score < best_score:
-                best_permutation = t_best_permutation
-                best_score = t_score
+        # permutation = [] 
+        # for i in range(len(clicked_points)):
+        #     permutation.append(i)       
+        # best_score = trenutna_dolzina_poti(0, permutation, distance_matrix)
+        # best_permutation = []
+        # for j in range(10):
+        #     permutation = []
+        #     t_score = 9999999999
+        #     t_best_permutation = []
+        #     for i in range(len(clicked_points)):
+        #         permutation.append(i)
+        #     for i in range(10000):
+        #         k,m = randrange(1, len(clicked_points)), randrange(1, len(clicked_points))
+        #         permutation[k], permutation[m] = permutation[m], permutation[k]
+        #         new_score = trenutna_dolzina_poti(0, permutation, distance_matrix)
+        #         if new_score < t_score:
+        #             t_score = new_score
+        #             t_best_permutation = permutation.copy()
+        #         else:
+        #             permutation[k], permutation[m] = permutation[m], permutation[k]
+        #     if t_score < best_score:
+        #         best_permutation = t_best_permutation
+        #         best_score = t_score
 
+        # best_permutation_koncna = []
+        # for i in range(len(clicked_points)):
+        #     best_permutation_koncna.append(clicked_points[permutation[i]])
+        # return best_permutation_koncna
+
+        visited = [False for i in range(len(clicked_points))]
+        visited[0] = True
+        permutation = [0]
+
+        for _ in range(len(clicked_points)-1):
+            current = permutation[-1]
+            min_dist = 99999999
+            best_index = None
+            for j in range(len(clicked_points)):
+                if not visited[j]:
+                    dist = distance_matrix[current][j]
+                    if dist < min_dist:
+                        min_dist = dist
+                        best_index = j
+            visited[best_index] = True
+            permutation.append(best_index)
         best_permutation_koncna = []
         for i in range(len(clicked_points)):
             best_permutation_koncna.append(clicked_points[permutation[i]])
         return best_permutation_koncna
-
 
 def best_round(robot_position, all_targets):
     def trenutna_dolžina_poti(robot_position, all_targets):
@@ -782,8 +802,8 @@ def get_poses_in_front_of_birds(rc):
             steps = [i * sign for i in range(1, 31) for sign in (1, -1)]
             for step in steps:
                 for dx, dy in candidates:
-                    nx = int(ring_px + step * dx)
-                    ny = int(ring_py + step * dy)
+                    nx = int(bird_px + step * dx)
+                    ny = int(bird_py + step * dy)
 
                     if not (0 <= nx < rc.map_width and 0 <= ny < rc.map_height):
                         continue
@@ -797,8 +817,8 @@ def get_poses_in_front_of_birds(rc):
                             continue  # preskoči, ker je preblizu
 
                         angle_to_bird = math.atan2(
-                            ring_marker.pose.position.y - world_y,
-                            ring_marker.pose.position.x - world_x
+                            bird_marker.pose.position.y - world_y,
+                            bird_marker.pose.position.x - world_x
                         )
                         q = quaternion_from_euler(0, 0, angle_to_bird)
 
@@ -936,12 +956,6 @@ def main(args=None):
     else:
         print("Obhod že obstaja")
         rc.clicked_points = np.load('src/task_2s/data/obhod.npy')
-
-    show_points = np.zeros_like(rc.map_image)
-    for (px, py, orientation) in rc.clicked_points:
-        world_x, world_y = rc.pixel_to_world(px, py)
-        cv2.circle(show_points, (int(px), int(py)), 3, (255), -1)
-    cv2.imshow("Map", show_points)
  
 
     poses_za_obhod = []
@@ -998,36 +1012,44 @@ def main(args=None):
             while not rc.isTaskComplete():
                 time.sleep(0.1)
             # Poskusi pridobiti sliko in jo analizirati
-            request = GetImage.Request()
-            future = rc.get_bird_image_client.call_async(request)
-            rclpy.spin_until_future_complete(rc, future)
-            response = future.result()
-            time.sleep(2)
-            if response is None:
-                rc.error("Error while getting image")
-                continue
+            for dalpha in [-0.1, 0.0 ,0.1]:
+                message = "{data: 'manual:[" + str(dalpha) + ",0.3,0.0,1.0]'}"
+                process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String",message])
+                time.sleep(4)
+                request = GetImage.Request()
+                future = rc.get_bird_image_client.call_async(request)
+                rclpy.spin_until_future_complete(rc, future)
+                response = future.result()
+                time.sleep(2)
+                if response is None:
+                    rc.error("Error while getting image")
+                    continue
+                
+                if response.isok:
+                    bird = Bird()
+                    bird.species = response.species_name
+                    bird.image = response.image
+                    bird.location = get_location(ring_marker)  # ali uporabi `get_location(marker)`
+                    bird.ring_color = ring_color
+                    bird.detection_time = "TODO"
+                    birds.append(bird)
 
-            if response.isok:
-                bird = Bird()
-                bird.species = response.species_name
-                bird.image = response.image
-                bird.location = get_location(ring_marker)  # ali uporabi `get_location(marker)`
-                bird.ring_color = ring_color
-                bird.detection_time = "TODO"
-                birds.append(bird)
-
-                rc.info(f"Bird species: {bird.species}")
-                rc.info(f"Ring color: {bird.ring_color}")
-                rc.say_something(f"Detected {bird.species} with {bird.ring_color} ring")
-
-                found_valid = True
-                break  # pojdi na naslednji par
-            else:
-                rc.warn("Image received, but detection not successful.")
+                    rc.info(f"Bird species: {bird.species}")
+                    rc.info(f"Ring color: {bird.ring_color}")
+                    rc.say_something(f"Detected {bird.species} with {bird.ring_color} ring")
+                    time.sleep(3)
+                    found_valid = True
+                    break  # pojdi na naslednji par
+                else:
+                    rc.warn("Image received, but detection not successful.")
+            if found_valid:
+                break
+            
 
         if not found_valid:
             rc.warn(f"No successful detection for bird with ring color {ring_color}")
         # generate bird catalogue
+        process = subprocess.Popen(["ros2", "topic", "pub", "--once", "/arm_command", "std_msgs/msg/String","{data: 'manual:[0.0,0.3,0.0,1.0]'}"])
     request = BirdCollection.Request()
     request.birds = birds
     future = rc.bird_catalogue_client.call_async(request)

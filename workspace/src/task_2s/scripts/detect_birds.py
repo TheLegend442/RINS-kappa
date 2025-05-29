@@ -153,7 +153,7 @@ class Detect_birds(Node):
 			self.get_logger().info("Bird image is too small.")
 			response.isok = False
 			return response
-		if bird.image.shape[0]/bird.image.shape[1] > 2:
+		if bird.image.shape[0]/bird.image.shape[1] > 3:
 			self.get_logger().info("Bird image is too tall.")
 			response.isok = False
 			return response
@@ -214,7 +214,7 @@ class Detect_birds(Node):
 	def create_marker(self, d, data):
 		marker = Marker()
 
-		marker.header.frame_id = "/base_link"
+		marker.header.frame_id = "/top_camera_link"
 		marker.header.stamp = data.header.stamp
 
 		marker.type = 2
@@ -238,7 +238,7 @@ class Detect_birds(Node):
 		marker.pose.position.z = float(d[2])
 
 		text_marker = Marker()
-		text_marker.header.frame_id = "/base_link"
+		text_marker.header.frame_id = "/top_camera_link"
 		text_marker.header.stamp = data.header.stamp
 		text_marker.type = Marker.TEXT_VIEW_FACING
 		text_marker.id = 1  # Important: unique ID per marker in same namespace
